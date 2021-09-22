@@ -20,7 +20,7 @@ You can install the released version of SaviR from
 [Github](https://github.com/randyyee/SaviR) with:
 
 ``` r
-devtools::install_github("randyyee/SaviR")
+devtools::install_github("CDCgov/SaviR")
 ```
 
 ### COVAD - COVID Analytical Datasets
