@@ -197,9 +197,9 @@ map_vaccinations <- function(df, vac_type = c("People", "Fully")){
   }
 
   cat_labs <- c("<3", "3- <10", "10- <20", "20- <30", "30- <40", "40- <60", "60- <70", "70+")
-  cat_vals <- c("#b1eeec","#98D1CF", "#7EB3B2", "#659695", "#4C7877", "#335B5A", "#193D3D", "#002020")
 
   if(vac_type == "People"){
+    cat_vals <- c("#b1eeec", "#98d1cf", "#7eb3b2", "#659695", "#4c7877", "#335b5a", "#193d3d", "#002020")
     map_template(df, cat_labs, cat_vals) +
       labs(title    = "People Vaccinated per 100 People",
            subtitle = paste0("Data as of ",format(max(df$date), "%B %d, %Y"),"\nNumber of people out of 100 who received at least one vaccine dose; \ndoes not represent percent of population fully vaccinated"),
@@ -210,6 +210,7 @@ map_vaccinations <- function(df, vac_type = c("People", "Fully")){
       ggplot2::coord_sf(xlim = bbox[c(1, 3)],
                         ylim = bbox[c(2, 4)])
   } else {
+    cat_vals <- c("#ccece6", "#afdacb", "#92c8b1", "#75b696", "#57a37c", "#3a9161", "#1d7f47", "#006d2c")
     map_template(df, cat_labs, cat_vals) +
       labs(title    = "People Fully Vaccinated per 100 People",
            subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"),"\nRepresents percent of population fully vaccinated"),
