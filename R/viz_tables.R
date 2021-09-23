@@ -235,17 +235,33 @@ table_10percentchange <- function(df, type = "Global", run_date = "Enter a date"
 #'
 #' @export
 
-table_10vaccinations <- function(df, type = "Global", run_date = "Enter a date"){
+table_10vaccinations <- function(df, vac_type = "Partial", type = "Global", run_date = "Enter a date"){
 
-  if(type == "Global"){
-    title_label <-  gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Vaccination per 100 People", "</b>"))
+  if(type == "Global") {
+    if(vac_type == "Partial") {
+      title_label <- gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Vaccination per 100 People", "</b>"))
+    } else {
+      title_label <- gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Fully Vaccination per 100 People", "</b>"))
+    }
     exclude_note <- "Countries with population size less than or equal to 1 million were excluded"
   } else {
-    title_label  <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest <br> Vaccination per 100 People", "</b>"))
+    if(vac_type == "Partial") {
+      title_label <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest <br> Vaccination per 100 People", "</b>"))
+    } else {
+      title_label <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest <br> Fully Vaccination per 100 People", "</b>"))
+    }
     exclude_note <- "Countries with population size less than or equal to 100,000 were excluded"
   }
 
-  gt::gt(df) %>%
+  if(vac_type == "Partial") {
+    cols_label1 <- gt::html("People Vaccinated <br> per 100 People")
+    vax_palette <- c("#b1eeec", "#98d1cf", "#7eb3b2", "#659695", "#4c7877", "#335b5a", "#193d3d", "#002020")
+  } else {
+    cols_label1 <- gt::html("People Fully Vaccinated <br> per 100 People")
+    vax_palette <- c("#ccece6", "#afdacb", "#92c8b1", "#75b696", "#57a37c", "#3a9161", "#1d7f47", "#006d2c")
+  }
+
+  t <- gt::gt(df) %>%
     gt::tab_header(title    = title_label)%>%
     gt::fmt_number(columns  = c(value1),
                    decimals = 1) %>%
@@ -253,25 +269,29 @@ table_10vaccinations <- function(df, type = "Global", run_date = "Enter a date")
                    sep_mark = ",",
                    decimals = 2 ) %>%
     gt::data_color(columns  = c(value1),
-                   colors   = scales::col_bin(palette = c("#a5c9c9", "#1f9fa9", "#005e70", "#27343a"),
-                                      bins    = c(0, 3, 10,30, Inf))) %>%
+                   colors   = scales::col_bin(palette = vax_palette,
+                                              bins    = c(0, 3, 10, 20, 30, 40, 60, 70, Inf))) %>%
     gt::cols_label(country  = "Country/ Area",
-                   value1   = gt::html("People Vaccinated <br> per 100 People"),
+                   value1   = cols_label1,
                    value2   = gt::html("Daily Vaccines <br> Administered <br> per 100 People")) %>%
     gt::cols_align("center") %>%
     gt::tab_options(column_labels.font.weight = "bold",
-                table.font.size           = 20,
-                table.font.weight         = "bold",
-                footnotes.font.size       = pct(70),
-                source_notes.font.size    = pct(70),
-                source_notes.padding      = 0,
-                footnotes.padding         = 0) %>%
-
-    gt::tab_footnote(footnote  = "Number of people out of 100 who received at least one vaccine dose; does not represent percent of population fully vaccinated",
-                     locations = cells_column_labels(columns = c(value1))) %>%
+                    table.font.size           = 20,
+                    table.font.weight         = "bold",
+                    footnotes.font.size       = pct(70),
+                    source_notes.font.size    = pct(70),
+                    source_notes.padding      = 0,
+                    footnotes.padding         = 0) %>%
     gt::tab_footnote(footnote  = "Vaccine doses administered per day (7 day rolling average); does not represent number of people vaccinated",
                      locations = cells_column_labels(columns = c(value2))) %>%
     gt::tab_footnote(footnote  = exclude_note,
                      locations = cells_title()) %>%
     gt::tab_source_note(source_note = paste0("Data as of ", run_date))
+
+  if(vac_type == "Partial") {
+    t <- gt::tab_footnote(t, footnote  = "Number of people out of 100 who received at least one vaccine dose; does not represent percent of population fully vaccinated",
+                             locations = cells_column_labels(columns = c(value1)))
+  }
+  return(t)
+
 }
