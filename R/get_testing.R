@@ -1,7 +1,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #' @title get_testing
-#' @description Get testing data from OWID and FIND.
+#' @description Get testing data from OWID and FIND. And adds a new_tests column where OWID NA's are filled in with FIND observations.
 #' @importFrom magrittr `%>%`
 #'
 #' @export
