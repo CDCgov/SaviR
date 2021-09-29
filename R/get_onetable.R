@@ -51,7 +51,9 @@ get_onetable <- function(country_geometries = country_coords){
     dplyr::ungroup()
 
   ## State Department Regions
-  df_meta <- dplyr::left_join(df_meta, openxlsx::read.xlsx(file.choose()), by = "id")
+  df_meta <- dplyr::left_join(df_meta, openxlsx::read.xlsx(file.choose()), by = "id") %>%
+    dplyr::mutate(state_region = dplyr::case_when(who_country == "United States of America" ~"US",
+                                                  TRUE ~state_region))
 
   ## UN World Population
   # Getting the population numbers from UN and gaps from CIA Factbook (https://www.cia.gov/the-world-factbook/field/population/country-comparison).
