@@ -52,8 +52,9 @@ IN DEVELOPMENT
 | plot\_epicurve\_dailydouble | map\_vaccinations | table\_10vaccinations  |
 | plot\_riskmatrix            |                   |                        |
 | plot\_vaxcoverage           |                   |                        |
+| plot\_vaxcurve              |                   |                        |
 
-## Pulic Domain Standard Notice
+## Public Domain Standard Notice
 
 This repository constitutes a work of the United States Government and
 is not subject to domestic copyright protection under 17 USC § 105. This
