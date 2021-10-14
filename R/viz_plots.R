@@ -57,12 +57,17 @@ plot_epicurve <- function(df, by_cat = "WHO Region", legend = "in", transparent 
     gtitle                <- paste0("Confirmed COVID-19 Cases - ", category_color_labels)
   }
 
-  g <- ggplot2::ggplot(data    = df_c,
-                       mapping = aes(x    = lubridate::floor_date(date, "week", week_start = 1),
+  df_sum <- df_c %>%
+    mutate(week = lubridate::floor_date(date, "week", week_start = 1)) %>%
+    group_by(week, cat) %>%
+    summarize(new_cases = sum(new_cases))
+
+  g <- ggplot2::ggplot(data    = df_sum,
+                       mapping = aes(x    = week,
                                      y    = new_cases,
                                      fill = cat)) +
-    ggplot2::geom_bar(position = "stack",
-                      stat     = "identity",
+    ggplot2::geom_bar(stat = "identity",
+                      position = "stack",
                       alpha    = 0.9) +
     ggplot2::labs(title    = gtitle,
                   subtitle = paste0(str_squish(format(min(df_c$date, na.rm = T), "%B %e, %Y")), " - ",
@@ -465,7 +470,7 @@ plot_vaxcoverage <- function(df, type = "partial", by_cat = "State Region") {
 #' @description Visualize vaccine coverage by date of reporting and by WHO region(s), State region(s), or Income levels.
 #'
 #' @param df A dataframe with the following: date, people_vaccinated_per_hundred or people_fully_vaccinated_per_hundred, and one of these columns for by_cat: who_region, state_region, or incomelevel_value.
-#' @param type = "partial" (default) for partial vaccinated or "full" for fully vaccinated 
+#' @param type = "partial" (default) for partial vaccinated or "full" for fully vaccinated
 #' @param by_cat = "State Region" (default), "WHO Region" or "Income Level"
 #' @param countries = "All" (default) for all countries or "AMC/AU" for AMC/AU countries (n=100)
 #'
@@ -474,7 +479,7 @@ plot_vaxcoverage <- function(df, type = "partial", by_cat = "State Region") {
 #' @export
 
 plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region", countries = "All") {
-  
+
   if(grepl("WHO", by_cat, fixed = TRUE)) {
     cat_values <- c("AMRO", "EURO", "SEARO", "EMRO", "AFRO", "WPRO")
     cat_names  <- c("Americas", "Europe", "Southeast Asia", "Eastern Mediterranean", "Africa", "Western Pacific")
@@ -528,7 +533,7 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
     df_c       <- df %>% dplyr::mutate(cat = factor(incomelevel_value,levels = cat_values))
   }
   col_master <- data.frame(cat_values, cat_names, cat_colors, cat_lines)
-  
+
   category_labels       <- col_master$cat_names
   category_color_values <- col_master$cat_colors
   category_line_values  <- col_master$cat_lines
@@ -540,20 +545,20 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
   if(countries != "All") {
     gtitle <- paste0(gtitle, " in ", countries, " countries")
   }
-  
+
   g <- ggplot2::ggplot(data    = df_c,
                        mapping = aes(x        = date,
-                                     y        = if(type == "full") {people_fully_vaccinated_per_hundred_r} 
+                                     y        = if(type == "full") {people_fully_vaccinated_per_hundred_r}
                                      else {people_vaccinated_per_hundred_r},
                                      colour   = cat,
                                      linetype = cat)) +
     ggplot2::geom_line() +
     ggplot2::labs(title    = gtitle,
                   subtitle = paste0("by ", by_cat),
-                  color    = by_cat, 
+                  color    = by_cat,
                   linetype = by_cat) +
     ggplot2::xlab("Date of Reporting") +
-    ggplot2::ylab(if(type == "full") {"People fully vaccinated per 100"} 
+    ggplot2::ylab(if(type == "full") {"People fully vaccinated per 100"}
                   else {"People vaccinated with at least one dose per 100"}) +
     ggplot2::scale_x_date(labels = function(x) format(x, "%b%e,\n%Y"),
                           limits = c(min(df_c$date), max(df_c$date)),
