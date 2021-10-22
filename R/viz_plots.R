@@ -13,8 +13,17 @@
 #'
 #' @export
 
-plot_epicurve <- function(df, by_cat = "WHO Region", legend = "in", transparent = T) {
-
+plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "in", transparent = T) {
+  if(!type %in% c("cases", "deaths")){
+    stop("Wrong Type! You must use either cases or deaths!")
+  }
+  if(type == "cases") {
+    ylab <- "Weekly Cases"
+    heading <- "Confirmed COVID-19 Cases"
+  } else if(type == "deaths") {
+    ylab <- "Weekly Deaths"
+    heading <- "COVID-19 Deaths"
+  }
   if(grepl("WHO", by_cat, fixed = TRUE)) {
     cat_values <- c("AMRO", "EURO", "SEARO", "EMRO", "AFRO", "WPRO")
     cat_names  <- c("Americas", "Europe", "Southeast Asia", "Eastern Mediterranean", "Africa", "Western Pacific")
@@ -60,11 +69,11 @@ plot_epicurve <- function(df, by_cat = "WHO Region", legend = "in", transparent 
   df_sum <- df_c %>%
     mutate(week = lubridate::floor_date(date, "week", week_start = 1)) %>%
     group_by(week, cat) %>%
-    summarize(new_cases = sum(new_cases))
+    summarize(val = ifelse(type=="cases",sum(new_cases, na.rm = TRUE),sum(new_deaths, na.rm = TRUE)))
 
   g <- ggplot2::ggplot(data    = df_sum,
                        mapping = aes(x    = week,
-                                     y    = new_cases,
+                                     y    = val,
                                      fill = cat)) +
     ggplot2::geom_bar(stat = "identity",
                       position = "stack",
@@ -82,7 +91,7 @@ plot_epicurve <- function(df, by_cat = "WHO Region", legend = "in", transparent 
                                             by   = "4 weeks"),
                           date_labels = "%e\n%b",
                           expand      = c(0, 0)) +
-    ggplot2::scale_y_continuous(expand = c(0, 5000),
+    ggplot2::scale_y_continuous(expand = c(0, 0),
                                 labels = scales::comma) +
     ggplot2::scale_fill_manual(values = category_color_values,
                                labels = category_color_labels) +
