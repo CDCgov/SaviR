@@ -59,11 +59,11 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
   if(length(unique(df_c$cat)) > 1) {
     category_color_labels <- col_master$cat_names
     category_color_values <- col_master$cat_colors
-    gtitle                <- paste0("Confirmed COVID-19 Cases by Week of Report and ", by_cat)
+    gtitle                <- paste0(heading, " by Week of Report and ", by_cat)
   } else {
     category_color_labels <- col_master[cat_values == as.character(unique(df_c$cat)), ]$cat_names
     category_color_values <- col_master[cat_values == as.character(unique(df_c$cat)), ]$cat_colors
-    gtitle                <- paste0("Confirmed COVID-19 Cases - ", category_color_labels)
+    gtitle                <- paste0(heading, " - ", category_color_labels)
   }
 
   df_sum <- df_c %>%
@@ -82,7 +82,7 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
                   subtitle = paste0(str_squish(format(min(df_c$date, na.rm = T), "%B %e, %Y")), " - ",
                                     str_squish(format(max(df_c$date, na.rm = T), "%B %e, %Y"))),
                   fill     = by_cat) +
-    ggplot2::ylab("Weekly Cases") +
+    ggplot2::ylab(ylab) +
     ggplot2::xlab("Week of Reporting") +
     ggplot2::scale_x_date(limits = c(lubridate::floor_date(min(df_c$date, na.rm = T)-7, "week", week_start = 1),
                                      lubridate::floor_date(max(df_c$date, na.rm = T)+7, "week", week_start = 1)),
