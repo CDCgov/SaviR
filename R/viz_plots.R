@@ -301,8 +301,8 @@ plot_epicurve_dailydouble <- function(df){
 #'
 #' @export
 
-plot_riskmatrix <- function(df){
-  ggplot2::ggplot(data = df, aes(x = percent_change_case, y = week_case_incidence)) +
+plot_riskmatrix_test <- function(df, v = NA, h = NA){
+r <-  ggplot2::ggplot(data = df, aes(x = percent_change_case, y = week_case_incidence)) +
     ggplot2::geom_point(aes(size = week_case, color = who_region), alpha=0.7) +
     ggplot2::scale_color_manual(values = c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#d4ece8"),
                                 labels = c("Americas", "Europe", "Southeast Asia", "Eastern \nMediterranean", "Africa", "Western Pacific")) +
@@ -321,11 +321,6 @@ plot_riskmatrix <- function(df){
     ggplot2::ylim(0,max(df$week_case_incidence, na.rm = T)) +
     ggplot2::xlab("% Change in Weekly Cases") + labs(color="WHO Region")+
     ggplot2::ylab("Average Daily Incidence per 100,000") +
-    ggplot2::geom_vline(xintercept = 0,    color = 'gray50',    lty = 2) +
-    ggplot2::geom_hline(yintercept = 0,    color = "green3",    linetype = "dashed") +
-    ggplot2::geom_hline(yintercept = 1.0,  color = "goldenrod1",linetype = "dashed") +
-    ggplot2::geom_hline(yintercept = 10.0, color = "orange2",   linetype = "dashed") +
-    ggplot2::geom_hline(yintercept = 25.0, color = "red3",      linetype = "dashed") +
     ggplot2::annotate(geom = "text", x = -133, y = 0.6,  label = "< 1.0 per 100k",       color = "green3",    size = 3)+
     ggplot2::annotate(geom = "text", x = -125, y = 1.7,  label = "1.0 - 9.9 per 100k",   color = "goldenrod1",size = 3)+
     ggplot2::annotate(geom = "text", x = -122, y = 10.7, label = "10.0 - 24.9 per 100k", color = "orange2",   size = 3)+
@@ -347,6 +342,28 @@ plot_riskmatrix <- function(df){
       - Includes countries with a population greater than 10 million people and more than 100 cases in the last week
       - Countries with a population over 10 million are labeled if they are among the top ten highest countries for cases,
         incidence, or weekly percent change in cases.")
+
+if(v == "TRUE" & is.na(h)) {
+  return(r + ggplot2::geom_vline(xintercept = 15,    color = 'gray50',    lty = 2)  )
+} else {
+
+if(h == "TRUE" & is.na(v)) {
+  return(r + 
+           ggplot2::geom_hline(yintercept = 0,    color = "green3",    linetype = "dashed") +
+           ggplot2::geom_hline(yintercept = 1.0,  color = "goldenrod1",linetype = "dashed") +
+           ggplot2::geom_hline(yintercept = 10.0, color = "orange2",   linetype = "dashed") +
+           ggplot2::geom_hline(yintercept = 25.0, color = "red3",      linetype = "dashed") )
+} else {
+  if(h == "TRUE" & h == "TRUE") {
+    return(r + ggplot2::geom_vline(xintercept = 15,    color = 'gray50',    lty = 2) +
+             ggplot2::geom_hline(yintercept = 0,    color = "green3",    linetype = "dashed") +
+             ggplot2::geom_hline(yintercept = 1.0,  color = "goldenrod1",linetype = "dashed") +
+             ggplot2::geom_hline(yintercept = 10.0, color = "orange2",   linetype = "dashed") +
+             ggplot2::geom_hline(yintercept = 25.0, color = "red3",      linetype = "dashed") )
+  } else {
+    
+  return(r)
+}}}
 }
 
 
