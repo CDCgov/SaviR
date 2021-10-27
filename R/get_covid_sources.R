@@ -17,6 +17,27 @@ get_covid_df <- function(){
                                                   country == "Other"                             ~"OT",
                                                   country == "Bonaire, Sint Eustatius, and Saba" ~"BQ",
                                                   TRUE ~country_code)) %>%
+    dplyr::mutate(country = dplyr::case_when(country == "Bolivia (Plurinational State of)"                             ~"Bolivia",
+                                             country == "Democratic Republic of the Congo"                             ~"Congo",
+                                             country == "Falkland Islands (Malvinas)"                                  ~"Falkland Islands",
+                                             country == "Iran (Islamic Republic of)"                                   ~"Iran",
+                                             country == "Democratic People's Republic of Korea"                        ~"Korea (North)",
+                                             country == "Lao People's Democratic Republic"                             ~"Laos",
+                                             country == "Micronesia (Federated States of)"                             ~"Micronesia",
+                                             country == "Northern Mariana Islands (Commonwealth of the)"               ~"Northern Mariana Islands",
+                                             country == "occupied Palestinian territory, including east Jerusalem"     ~"Palestinian Territory",
+                                             country == "Republic of Korea"                                            ~"Korea (South)",
+                                             country == "North Macedonia"                                              ~"Macedonia",
+                                             country == "Republic of Korea"                                            ~"Korea (South)",
+                                             country == "Republic of Korea"                                            ~"Korea (South)",
+                                             country == "Republic of Moldova"                                          ~"Moldova",
+                                             country == "Saint Vincent and the Grenadines"                             ~"Moldova",
+                                             country == "Syrian Arab Republic"                                         ~"Syria",
+                                             country == "United Republic of Tanzania"                                  ~"Tanzania",
+                                             country == "United States Virgin Islands"                                 ~"Virgin Islands, US",
+                                             country == "Venezuela (Bolivarian Republic of)"                           ~"Venezuela",
+                                             country == "The United Kingdom"                                           ~"United Kingdom",
+                                                  TRUE ~country)) %>%
     dplyr::rename("date" = names(.)[1]) %>%
     dplyr::group_by_if(is.character) %>%
     dplyr::summarize_all(list(~sum(., na.rm=T))) %>%
