@@ -26,12 +26,9 @@ get_covid_df <- function(){
                                              country == "Micronesia (Federated States of)"                             ~"Micronesia",
                                              country == "Northern Mariana Islands (Commonwealth of the)"               ~"Northern Mariana Islands",
                                              country == "occupied Palestinian territory, including east Jerusalem"     ~"Palestinian Territory",
-                                             country == "Republic of Korea"                                            ~"Korea (South)",
                                              country == "North Macedonia"                                              ~"Macedonia",
                                              country == "Republic of Korea"                                            ~"Korea (South)",
-                                             country == "Republic of Korea"                                            ~"Korea (South)",
-                                             country == "Republic of Moldova"                                          ~"Moldova",
-                                             country == "Saint Vincent and the Grenadines"                             ~"Moldova",
+                                             country == "Republic of Moldova"                                          ~"Moldova"
                                              country == "Syrian Arab Republic"                                         ~"Syria",
                                              country == "United Republic of Tanzania"                                  ~"Tanzania",
                                              country == "United States Virgin Islands"                                 ~"Virgin Islands, US",
