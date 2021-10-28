@@ -301,8 +301,8 @@ plot_epicurve_dailydouble <- function(df){
 #'
 #' @export
 
-plot_riskmatrix <- function(df, v = NA, h = NA){
-r <-  ggplot2::ggplot(data = df, aes(x = percent_change_case, y = week_case_incidence)) +
+plot_riskmatrix <- function(df, v = T, h = T){
+  r <- ggplot2::ggplot(data = df, aes(x = percent_change_case, y = week_case_incidence)) +
     ggplot2::geom_point(aes(size = week_case, color = who_region), alpha=0.7) +
     ggplot2::scale_color_manual(values = c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#d4ece8"),
                                 labels = c("Americas", "Europe", "Southeast Asia", "Eastern \nMediterranean", "Africa", "Western Pacific")) +
@@ -343,27 +343,19 @@ r <-  ggplot2::ggplot(data = df, aes(x = percent_change_case, y = week_case_inci
       - Countries with a population over 10 million are labeled if they are among the top ten highest countries for cases,
         incidence, or weekly percent change in cases.")
 
-if(v == "TRUE" & is.na(h)) {
-  return(r + ggplot2::geom_vline(xintercept = 15,    color = 'gray50',    lty = 2)  )
-} else {
+  if(v == T) {
+    r <- r + ggplot2::geom_vline(xintercept = 0,    color = 'gray50',    lty = 2)
+  }
 
-if(h == "TRUE" & is.na(v)) {
-  return(r + 
-           ggplot2::geom_hline(yintercept = 0,    color = "green3",    linetype = "dashed") +
-           ggplot2::geom_hline(yintercept = 1.0,  color = "goldenrod1",linetype = "dashed") +
-           ggplot2::geom_hline(yintercept = 10.0, color = "orange2",   linetype = "dashed") +
-           ggplot2::geom_hline(yintercept = 25.0, color = "red3",      linetype = "dashed") )
-} else {
-  if(h == "TRUE" & v == "TRUE") {
-    return(r + ggplot2::geom_vline(xintercept = 15,    color = 'gray50',    lty = 2) +
-             ggplot2::geom_hline(yintercept = 0,    color = "green3",    linetype = "dashed") +
+  if(h == T) {
+    r <- r + ggplot2::geom_hline(yintercept = 0,    color = "green3",    linetype = "dashed") +
              ggplot2::geom_hline(yintercept = 1.0,  color = "goldenrod1",linetype = "dashed") +
              ggplot2::geom_hline(yintercept = 10.0, color = "orange2",   linetype = "dashed") +
-             ggplot2::geom_hline(yintercept = 25.0, color = "red3",      linetype = "dashed") )
-  } else {
-    
+             ggplot2::geom_hline(yintercept = 25.0, color = "red3",      linetype = "dashed")
+  }
+
   return(r)
-}}}
+
 }
 
 
