@@ -24,7 +24,7 @@ get_covid_df <- function(){
                                              country == "Myanmar"                                                  ~"Burma",
                                              country == "Republic of Korea"                                        ~"Korea (South)",
                                              country == "Republic of Moldova"                                      ~"Moldova",
-                                             country == "Russian Federation"                                       ~"Russia"
+                                             country == "Russian Federation"                                       ~"Russia",
                                              country == "Syrian Arab Republic"                                     ~"Syria",
                                              country == "United Republic of Tanzania"                              ~"Tanzania",
                                              country == "United States Virgin Islands"                             ~"Virgin Islands, US",
