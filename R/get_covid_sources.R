@@ -58,7 +58,8 @@ get_covid_df <- function(){
         dplyr::mutate(date             = lubridate::mdy(date)) %>%
         dplyr::mutate(`country/region` = dplyr::recode(`country/region`, "Taiwan*" = "Taiwan")) %>%
         dplyr::group_by(`country/region`) %>%
-        dplyr::mutate(new_cases        = cumulative_cases - dplyr::lag(cumulative_cases)) %>%
+        dplyr::mutate(new_cases        = dplyr::case_when(is.na(lag(cumulative_cases)) ~ cumulative_cases,
+                                                          TRUE ~ cumulative_cases - dplyr::lag(cumulative_cases))) %>%
         dplyr::ungroup() %>%
         dplyr::left_join(
           read.csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv",
@@ -76,7 +77,8 @@ get_covid_df <- function(){
             dplyr::mutate(date             = lubridate::mdy(date)) %>%
             dplyr::mutate(`country/region` = dplyr::recode(`country/region`, "Taiwan*" = "Taiwan")) %>%
             dplyr::group_by(`country/region`) %>%
-            dplyr::mutate(new_deaths       = cumulative_deaths - dplyr::lag(cumulative_deaths)) %>%
+            dplyr::mutate(new_deaths       = dplyr::case_when(is.na(lag(cumulative_deaths)) ~ cumulative_deaths,
+                                                              TRUE ~ cumulative_deaths - dplyr::lag(cumulative_deaths)) %>%
             dplyr::ungroup()
         ) %>%
         dplyr::rename(country = `country/region`) %>%
