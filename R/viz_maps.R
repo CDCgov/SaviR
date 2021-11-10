@@ -217,7 +217,8 @@ map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "
            subtitle = paste0("Data as of ",format(max(df$date), "%B %d, %Y"),"\nNumber of people out of 100 who received at least one vaccine dose; \ndoes not represent percent of population fully vaccinated"),
            caption  = "Note:
        -Countries in white do not have data reported for total people vaccinated
-       -Vaccine data are incomplete and data may be out of date") +
+       -Vaccine data are incomplete and data may be out of date
+       -People vaccinated per 100 people represents total population (all ages)") +
       guides(fill=guide_legend(title = "People \nVaccinated \nper 100 \nPeople")) +
       ggplot2::coord_sf(xlim = bbox[c(1, 3)],
                         ylim = bbox[c(2, 4)])
@@ -228,7 +229,8 @@ map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "
            subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"),"\nRepresents percent of population fully vaccinated"),
            caption  = "Note:
        -Countries in white do not have data reported for fully vaccinated
-       -Vaccine data are incomplete and data may be out of date") +
+       -Vaccine data are incomplete and data may be out of date
+       -People vaccinated per 100 people represents total population (all ages)") +
       guides(fill=guide_legend(title = "People \nFully \nVaccinated \nper 100 \nPeople")) +
       ggplot2::coord_sf(xlim = bbox[c(1, 3)],
                         ylim = bbox[c(2, 4)])
