@@ -83,25 +83,29 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
 #'
 #' @export
 
-map_burden <- function(df){
+map_burden <- function(df, region = "WHO Region") {
 
   if(length(unique(df$date)) > 1){
     warning("Your dataframe has more than 1 date! This is a cross-sectional visualization!")
   }
 
   if(length(unique(df$who_region)) == 1){
-    if (df$who_region == "EURO"){
-      bbox <- sf::st_bbox(c(xmin = -2500000, ymin = 2000000, xmax = 7000000, ymax = 8500000))
-    } else if (df$who_region == "AMRO") {
-      bbox <- sf::st_bbox(c(xmin=-10775454, ymin=-5900074, xmax=-3072374, ymax=5318372))
-    } else if (df$who_region == "SEARO") {
-      bbox <- sf::st_bbox(c(xmin=6284395, ymin=-1808021, xmax=13315540, ymax=3796098))
-    } else if (df$who_region == "EMRO"){
-      bbox <- sf::st_bbox(c(xmin=-2500688.1, ymin=-850026.8, xmax=6918436.7, ymax=6245846.3))
-    } else if (df$who_region == "AFRO"){
-      bbox <- sf::st_bbox(c(xmin=-1800000, ymin=-3900074, xmax=4700000, ymax=4018372))
-    } else {
-      bbox <- sf::st_bbox(sf::st_as_sf(df))
+    if(grepl("WHO", region, fixed = TRUE)) {
+      if (df$who_region == "EURO"){
+        bbox <- sf::st_bbox(c(xmin = -2500000, ymin = 2000000, xmax = 7000000, ymax = 8500000))
+      } else if (df$who_region == "AMRO") {
+        bbox <- sf::st_bbox(c(xmin=-10775454, ymin=-5900074, xmax=-3072374, ymax=5318372))
+      } else if (df$who_region == "SEARO") {
+        bbox <- sf::st_bbox(c(xmin=6284395, ymin=-1808021, xmax=13315540, ymax=3796098))
+      } else if (df$who_region == "EMRO"){
+        bbox <- sf::st_bbox(c(xmin=-2500688.1, ymin=-850026.8, xmax=6918436.7, ymax=6245846.3))
+      } else if (df$who_region == "AFRO"){
+        bbox <- sf::st_bbox(c(xmin=-1800000, ymin=-3900074, xmax=4700000, ymax=4018372))
+      } else {
+        bbox <- sf::st_bbox(sf::st_as_sf(df))
+      }
+    } else if(grepl("State", region, fixed = TRUE)) {
+        bbox <- sf::st_bbox(sf::st_as_sf(df))
     }
     subt <- paste0("Average daily incidence over the past 7 days per 100,000 \npopulation ", str_squish(format(max(df$date), "%B %e, %Y")))
   } else {
@@ -131,25 +135,29 @@ map_burden <- function(df){
 #'
 #' @export
 
-map_trend <- function(df){
+map_trend <- function(df, region = "WHO Region") {
 
   if(length(unique(df$date)) > 1){
     warning("Your dataframe has more than 1 date! This is a cross-sectional visualization!")
   }
 
   if(length(unique(df$who_region)) == 1){
-    if (df$who_region == "EURO"){
-      bbox <- sf::st_bbox(c(xmin = -2500000, ymin = 2000000, xmax = 7000000, ymax = 8500000))
-    } else if (df$who_region == "AMRO") {
-      bbox <- sf::st_bbox(c(xmin=-10775454, ymin=-5900074, xmax=-3072374, ymax=5318372))
-    } else if (df$who_region == "SEARO") {
-      bbox <- sf::st_bbox(c(xmin=6284395, ymin=-1808021, xmax=13315540, ymax=3796098))
-    } else if (df$who_region == "EMRO"){
-      bbox <- sf::st_bbox(c(xmin=-2500688.1, ymin=-850026.8, xmax=6918436.7, ymax=6245846.3))
-    } else if (df$who_region == "AFRO"){
-      bbox <- sf::st_bbox(c(xmin=-1800000, ymin=-3900074, xmax=4700000, ymax=4018372))
-    } else {
-      bbox <- sf::st_bbox(sf::st_as_sf(df))
+    if(grepl("WHO", region, fixed = TRUE)) {
+      if (df$who_region == "EURO"){
+        bbox <- sf::st_bbox(c(xmin = -2500000, ymin = 2000000, xmax = 7000000, ymax = 8500000))
+      } else if (df$who_region == "AMRO") {
+        bbox <- sf::st_bbox(c(xmin=-10775454, ymin=-5900074, xmax=-3072374, ymax=5318372))
+      } else if (df$who_region == "SEARO") {
+        bbox <- sf::st_bbox(c(xmin=6284395, ymin=-1808021, xmax=13315540, ymax=3796098))
+      } else if (df$who_region == "EMRO"){
+        bbox <- sf::st_bbox(c(xmin=-2500688.1, ymin=-850026.8, xmax=6918436.7, ymax=6245846.3))
+      } else if (df$who_region == "AFRO"){
+        bbox <- sf::st_bbox(c(xmin=-1800000, ymin=-3900074, xmax=4700000, ymax=4018372))
+      } else {
+        bbox <- sf::st_bbox(sf::st_as_sf(df))
+      }
+    } else if(grepl("State", region, fixed = TRUE)) {
+        bbox <- sf::st_bbox(sf::st_as_sf(df))
     }
   } else {
     bbox <- sf::st_bbox(sf::st_as_sf(df))
@@ -176,21 +184,25 @@ map_trend <- function(df){
 #'
 #' @export
 
-map_vaccinations <- function(df, vac_type = c("People", "Fully")){
+map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "Fully")) {
 
   if(length(unique(df$who_region)) == 1){
-    if (df$who_region == "EURO"){
-      bbox <- sf::st_bbox(c(xmin = -2500000, ymin = 2000000, xmax = 7000000, ymax = 8500000))
-    } else if (df$who_region == "AMRO") {
-      bbox <- sf::st_bbox(c(xmin=-10775454, ymin=-5900074, xmax=-3072374, ymax=5318372))
-    } else if (df$who_region == "SEARO") {
-      bbox <- sf::st_bbox(c(xmin=6284395, ymin=-1808021, xmax=13315540, ymax=3796098))
-    } else if (df$who_region == "EMRO"){
-      bbox <- sf::st_bbox(c(xmin=-2500688.1, ymin=-850026.8, xmax=6918436.7, ymax=6245846.3))
-    } else if (df$who_region == "AFRO"){
-      bbox <- sf::st_bbox(c(xmin=-1800000, ymin=-3900074, xmax=4700000, ymax=4018372))
-    } else {
-      bbox <- sf::st_bbox(sf::st_as_sf(df))
+    if(grepl("WHO", region, fixed = TRUE)) {
+      if (df$who_region == "EURO"){
+        bbox <- sf::st_bbox(c(xmin = -2500000, ymin = 2000000, xmax = 7000000, ymax = 8500000))
+      } else if (df$who_region == "AMRO") {
+        bbox <- sf::st_bbox(c(xmin=-10775454, ymin=-5900074, xmax=-3072374, ymax=5318372))
+      } else if (df$who_region == "SEARO") {
+        bbox <- sf::st_bbox(c(xmin=6284395, ymin=-1808021, xmax=13315540, ymax=3796098))
+      } else if (df$who_region == "EMRO"){
+        bbox <- sf::st_bbox(c(xmin=-2500688.1, ymin=-850026.8, xmax=6918436.7, ymax=6245846.3))
+      } else if (df$who_region == "AFRO"){
+        bbox <- sf::st_bbox(c(xmin=-1800000, ymin=-3900074, xmax=4700000, ymax=4018372))
+      } else {
+        bbox <- sf::st_bbox(sf::st_as_sf(df))
+      }
+    } else if(grepl("State", region, fixed = TRUE)) {
+        bbox <- sf::st_bbox(sf::st_as_sf(df))
     }
   } else {
     bbox <- sf::st_bbox(sf::st_as_sf(df))
