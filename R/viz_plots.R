@@ -301,11 +301,38 @@ plot_epicurve_dailydouble <- function(df){
 #'
 #' @export
 
-plot_riskmatrix <- function(df, v = T, h = T){
-  r <- ggplot2::ggplot(data = df, aes(x = percent_change_case, y = week_case_incidence)) +
-    ggplot2::geom_point(aes(size = week_case, color = who_region), alpha=0.7) +
-    ggplot2::scale_color_manual(values = c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#d4ece8"),
-                                labels = c("Americas", "Europe", "Southeast Asia", "Eastern \nMediterranean", "Africa", "Western Pacific")) +
+plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
+
+  if(grepl("WHO", region, fixed = TRUE)) {
+    cat_values <- c("AMRO", "EURO", "SEARO", "EMRO", "AFRO", "WPRO")
+    category_color_labels <- c("Americas", "Europe", "Southeast Asia", "Eastern \nMediterranean", "Africa", "Western Pacific")
+    category_color_values <- c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#d4ece8")
+    df_r <- df %>% dplyr::mutate(reg = factor(who_region,levels = cat_values))
+  } else if(grepl("State", region, fixed = TRUE)) {
+    cat_values <- c("East Asia and the Pacific",
+                    "Europe and Eurasia",
+                    "Near East (Middle East and Northern Africa)",
+                    "South and Central Asia",
+                    "Sub-Saharan Africa",
+                    "Western Hemisphere",
+                    "US",
+                    "None-state")
+    category_color_labels <- c("East Asia and the Pacific",
+						                   "Europe and Eurasia",
+						                   "Near East (Middle East and North Africa)",
+						                   "South and Central Asia",
+						                   "Sub-Saharan Africa",
+						                   "Western Hemisphere (not incl US)",
+						                   "US",
+						                   "None-state")
+    category_color_values <- c("#d00000", "#ffba08", "#3f88c5", "#032b43", "#136f63", "#a5c651", "#d64550", "#808080")
+    df_r <- df %>% dplyr::mutate(reg = factor(state_region,levels = cat_values))
+  }
+
+  r <- ggplot2::ggplot(data = df_r, aes(x = percent_change_case, y = week_case_incidence)) +
+    ggplot2::geom_point(aes(size = week_case, color = reg), alpha=0.7) +
+    ggplot2::scale_color_manual(values = category_color_values,
+                                labels = category_color_labels) +
     ggrepel::geom_text_repel(aes(label = labels),
                              color              = 'black',
                              size               = 2.7,
@@ -319,12 +346,12 @@ plot_riskmatrix <- function(df, v = T, h = T){
     ggplot2::guides(color = guide_legend(override.aes = list(size = 6), order = 1)) +
     ggplot2::xlim(min(df$percent_change_case, na.rm = T), max(df$percent_change_case, na.rm = T)) +
     ggplot2::ylim(0,max(df$week_case_incidence, na.rm = T)) +
-    ggplot2::xlab("% Change in Weekly Cases") + labs(color="WHO Region")+
+    ggplot2::xlab("% Change in Weekly Cases") + labs(color = region) +
     ggplot2::ylab("Average Daily Incidence per 100,000") +
-    ggplot2::annotate(geom = "text", x = -133, y = 0.6,  label = "< 1.0 per 100k",       color = "green3",    size = 3)+
-    ggplot2::annotate(geom = "text", x = -125, y = 1.7,  label = "1.0 - 9.9 per 100k",   color = "goldenrod1",size = 3)+
-    ggplot2::annotate(geom = "text", x = -122, y = 10.7, label = "10.0 - 24.9 per 100k", color = "orange2",   size = 3)+
-    ggplot2::annotate(geom = "text", x = -133, y = 25.7, label = "25.0+ per 100k",       color = "red3",      size = 3)+
+    ggplot2::annotate(geom = "text", x = -133, y = 0.6,  label = "< 1.0 per 100k",       color = "green3",     size = 3) +
+    ggplot2::annotate(geom = "text", x = -125, y = 1.7,  label = "1.0 - 9.9 per 100k",   color = "goldenrod1", size = 3) +
+    ggplot2::annotate(geom = "text", x = -122, y = 10.7, label = "10.0 - 24.9 per 100k", color = "orange2",    size = 3) +
+    ggplot2::annotate(geom = "text", x = -133, y = 25.7, label = "25.0+ per 100k",       color = "red3",       size = 3) +
     ggplot2::theme_classic() +
     ggplot2::theme(axis.text     = element_text(size = 8, family = "Calibri"),
                    axis.title    = element_text(size = 10, family = "Calibri"),
