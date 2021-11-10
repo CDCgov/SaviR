@@ -78,7 +78,7 @@ get_covid_df <- function(){
             dplyr::mutate(`country/region` = dplyr::recode(`country/region`, "Taiwan*" = "Taiwan")) %>%
             dplyr::group_by(`country/region`) %>%
             dplyr::mutate(new_deaths       = dplyr::case_when(is.na(lag(cumulative_deaths)) ~ cumulative_deaths,
-                                                              TRUE ~ cumulative_deaths - dplyr::lag(cumulative_deaths)) %>%
+                                                              TRUE ~ cumulative_deaths - dplyr::lag(cumulative_deaths))) %>%
             dplyr::ungroup()
         ) %>%
         dplyr::rename(country = `country/region`) %>%
