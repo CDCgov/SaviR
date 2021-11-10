@@ -286,6 +286,8 @@ table_10vaccinations <- function(df, vac_type = "Partial", type = "Global", run_
                      locations = cells_column_labels(columns = c(value2))) %>%
     gt::tab_footnote(footnote  = exclude_note,
                      locations = cells_title()) %>%
+    gt::tab_footnote(footnote  = "People vaccinated per 100 people represents total population (all ages)",
+                     locations = cells_title()) %>%
     gt::tab_source_note(source_note = paste0("Data as of ", run_date))
 
   if(vac_type == "Partial") {
