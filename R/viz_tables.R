@@ -137,7 +137,7 @@ table_10incidence <- function(df, type = "Global", run_date = "Enter a date"){
   gt::gt(df) %>%
     gt::tab_header(title   = title_label) %>%
     gt::data_color(columns = c(value1),
-                   colors  = scales::col_bin(palette = c("#1f9fa9", "#e7b351", "#d26230", "#aa001e"),
+                   colors  = scales::col_bin(palette = c("#e7b351", "#E57E51", "#d26230", "#aa001e"),
                                              bins    = c(0, 1, 10, 25, 1000),
                                              na.color = "white")) %>%
     gt::data_color(columns = c(value2),
