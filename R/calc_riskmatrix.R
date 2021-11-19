@@ -5,7 +5,7 @@
 #' @param df Dataframe with id (iso3), date, new_cases, new_deaths, cumulative_cases, cumulative_deaths, AND population.
 #'
 #' @importFrom magrittr `%>%`
-#'
+#' @importFrom RcppRoll roll_mean
 #' @export
 #'
 #' @examples
@@ -23,8 +23,8 @@ calc_add_risk <- function(df){
     dplyr::group_by(source, id) %>%
     dplyr::arrange(date) %>%
     dplyr::mutate(weekdate              = lubridate::floor_date(date, "week", week_start = 1),
-                  new_cases_7dav        = zoo::rollmean(new_cases, k = 7, fill = 0, align = "right"),
-                  new_deaths_7dav       = zoo::rollmean(new_deaths, k = 7, fill = 0, align = "right"),
+                  new_cases_7dav        = roll_mean(new_cases, n = 7, fill = 0, align = "right"),
+                  new_deaths_7dav       = roll_mean(new_deaths, n = 7, fill = 0, align = "right"),
                   daily_case_incidence  = dplyr::if_else(population > 0, ((new_cases_copy/population)) * 100000,  NA_real_),
                   daily_death_incidence = dplyr::if_else(population > 0, ((new_deaths_copy/population)) * 100000, NA_real_),
                   week_case             = cumulative_cases_copy - dplyr::lag(cumulative_cases_copy, 7),
