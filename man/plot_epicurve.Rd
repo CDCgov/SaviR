@@ -4,7 +4,13 @@
 \alias{plot_epicurve}
 \title{plot_epicurve}
 \usage{
-plot_epicurve(df, by_cat = "WHO Region", legend = "in", transparent = T)
+plot_epicurve(
+  df,
+  type = "cases",
+  by_cat = "WHO Region",
+  legend = "in",
+  transparent = T
+)
 }
 \arguments{
 \item{df}{A dataframe with the following: date, new_cases and one of these columns for by_cat: who_region, state_region, or incomelevel_value.

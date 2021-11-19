@@ -18,6 +18,7 @@ Add dates to country data
 }
 \examples{
 \dontrun{
-country_coords <- get_country_coords()}
+country_coords <- get_country_coords()
+}
 
 }

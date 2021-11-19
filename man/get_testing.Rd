@@ -7,9 +7,11 @@
 get_testing()
 }
 \description{
-Get testing data from OWID and FIND.
+Get testing data from OWID and FIND. And adds a new_tests column where OWID NA's are filled in with FIND observations.
 }
 \examples{
 \dontrun{
-testing_df <- get_testing()}
+testing_df <- get_testing()
+}
+
 }

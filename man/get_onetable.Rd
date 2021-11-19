@@ -20,5 +20,7 @@ To regenerate and make the data available again for the package, run the followi
 }
 \examples{
 \dontrun{
-onetable <- get_onetable()}
+onetable <- get_onetable()
+}
+
 }

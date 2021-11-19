@@ -14,6 +14,7 @@ Calculate epi stats a generalized df input.
 }
 \examples{
 \dontrun{
-riskmatrix_v3_df <- calc_riskmatrix_v3()}
+riskmatrix_v3_df <- calc_riskmatrix_v3()
+}
 
 }
