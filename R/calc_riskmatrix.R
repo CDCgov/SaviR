@@ -4,7 +4,7 @@
 #' @description Calculate epi stats a generalized df input.
 #' @param df Dataframe with id (iso3), date, new_cases, new_deaths, cumulative_cases, cumulative_deaths, AND population.
 #'
-#' @importFrom magrittr `%>%`
+
 #' @importFrom RcppRoll roll_mean
 #' @export
 #'

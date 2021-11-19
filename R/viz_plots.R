@@ -9,7 +9,7 @@
 #' @param legend Default "in" - position legend inside the plot area.
 #' @param transparent Default TRUE - returns a transparent plot.
 #'
-#' @importFrom magrittr `%>%`
+
 #'
 #' @export
 
@@ -26,13 +26,13 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
   }
   if (grepl("WHO", by_cat, fixed = TRUE)) {
     col_master <- who_values
-    df_c <- df %>% dplyr::mutate(cat = factor(who_region, levels = col_master$cat_values))
+    df_c <- df %>% mutate(cat = factor(who_region, levels = col_master$cat_values))
   } else if (grepl("State", by_cat, fixed = TRUE)) {
     col_master <- state_values
-    df_c <- df %>% dplyr::mutate(cat = factor(state_region, levels = col_master$cat_values))
+    df_c <- df %>% mutate(cat = factor(state_region, levels = col_master$cat_values))
   } else if (grepl("Income", by_cat, fixed = TRUE)) {
     col_master <- income_values
-    df_c <- df %>% dplyr::mutate(cat = factor(incomelevel_value, levels = col_master$cat_values))
+    df_c <- df %>% mutate(cat = factor(incomelevel_value, levels = col_master$cat_values))
   }
 
 
@@ -142,7 +142,7 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
 #' @param type Default cases.
 #' @param incidence Default TRUE. Specify inputs are incidence values or not.
 #'
-#' @importFrom magrittr `%>%`
+
 #'
 #' @export
 
@@ -267,7 +267,7 @@ plot_epicurve_ind <- function(df, type = "cases", incidence = T) {
 #'
 #' @param df A dataframe with the following: country, weekdate, cases and deaths
 #'
-#' @importFrom magrittr `%>%`
+
 #'
 #' @export
 
@@ -327,7 +327,7 @@ plot_epicurve_epidouble <- function(df) {
 #'
 #' @param df A dataframe with the following: country, date, cases and deaths
 #'
-#' @importFrom magrittr `%>%`
+
 #'
 #' @export
 
@@ -381,17 +381,17 @@ plot_epicurve_dailydouble <- function(df) {
 #' @description Plot risk matrix.
 #' @param df A dataframe with riskmatrix stats.
 #'
-#' @importFrom magrittr `%>%`
+
 #'
 #' @export
 
 plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
   if (grepl("WHO", region, fixed = TRUE)) {
     col_master <- who_values
-    df_r <- df %>% dplyr::mutate(reg = factor(who_region, levels = col_master$cat_values))
+    df_r <- df %>% mutate(reg = factor(who_region, levels = col_master$cat_values))
   } else if (grepl("State", region, fixed = TRUE)) {
     col_master <- state_values
-    df_r <- df %>% dplyr::mutate(reg = factor(state_region, levels = col_master$cat_values))
+    df_r <- df %>% mutate(reg = factor(state_region, levels = col_master$cat_values))
   }
 
   r <- ggplot2::ggplot(data = df_r, aes(x = percent_change_case, y = week_case_incidence)) +
@@ -468,20 +468,20 @@ plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
 #' @description Plot vaccination coverage (partial or fully) by WHO region(s), State region(s), or Income levels.
 #' @param df A dataframe with vaccination stats.
 #'
-#' @importFrom magrittr `%>%`
+
 #'
 #' @export
 
 plot_vaxcoverage <- function(df, type = "partial", by_cat = "State Region") {
   if (by_cat == "WHO Region") {
     col_master <- who_values
-    df_c <- df %>% dplyr::mutate(cat = factor(who_region, levels = who_values$cat_values))
+    df_c <- df %>% mutate(cat = factor(who_region, levels = who_values$cat_values))
   } else if (by_cat == "State Region") {
     col_master <- state_values
-    df_c <- df %>% dplyr::mutate(cat = factor(state_region, levels = col_master$cat_values))
+    df_c <- df %>% mutate(cat = factor(state_region, levels = col_master$cat_values))
   } else if (by_cat == "Income Level") {
     col_master <- income_values
-    df_c <- df %>% dplyr::mutate(cat = factor(incomelevel_value, levels = col_master$cat_values))
+    df_c <- df %>% mutate(cat = factor(incomelevel_value, levels = col_master$cat_values))
   }
 
   category_color_labels <- col_master$cat_names
@@ -596,14 +596,14 @@ plot_vaxcoverage <- function(df, type = "partial", by_cat = "State Region") {
 #' @param by_cat = "State Region" (default), "WHO Region" or "Income Level"
 #' @param countries = "All" (default) for all countries or "AMC/AU" for AMC/AU countries (n=100)
 #'
-#' @importFrom magrittr `%>%`
+
 #'
 #' @export
 
 plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region", countries = "All") {
   if (grepl("WHO", by_cat, fixed = TRUE)) {
     col_master <- who_values
-    df_c <- df %>% dplyr::mutate(cat = factor(who_region, levels = who_values$cat_values))
+    df_c <- df %>% mutate(cat = factor(who_region, levels = who_values$cat_values))
   } else if (grepl("State", by_cat, fixed = TRUE)) {
     col_master <- state_values
 
@@ -611,10 +611,10 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
       col_master <- col_master %>%
         filter(case_values != "US")
     }
-    df_c <- df %>% dplyr::mutate(cat = factor(state_region, levels = col_master$cat_values))
+    df_c <- df %>% mutate(cat = factor(state_region, levels = col_master$cat_values))
   } else if (grepl("Income", by_cat, fixed = TRUE)) {
     col_master <- income_values
-    df_c <- df %>% dplyr::mutate(cat = factor(incomelevel_value, levels = col_master$cat_values))
+    df_c <- df %>% mutate(cat = factor(incomelevel_value, levels = col_master$cat_values))
   }
   col_master <- data.frame(cat_values, cat_names, cat_colors, cat_lines)
 
