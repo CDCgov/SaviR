@@ -3,7 +3,7 @@
 #' @title get_covid_df
 #' @description Get and prepare COVID data.
 #' @import dplyr
-#' @importFrom fread data.table
+#' @importFrom data.table fread
 #' @export
 
 get_covid_df <- function() {
