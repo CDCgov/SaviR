@@ -27,7 +27,7 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
   if(grepl("WHO", by_cat, fixed = TRUE)) {
     cat_values <- c("AMRO", "EURO", "SEARO", "EMRO", "AFRO", "WPRO")
     cat_names  <- c("Americas", "Europe", "Southeast Asia", "Eastern Mediterranean", "Africa", "Western Pacific")
-    cat_colors <- c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#d4ece8")
+    cat_colors <- c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#9c4f9f")
     df_c       <- df %>% dplyr::mutate(cat = factor(who_region,levels = cat_values))
   } else if(grepl("State", by_cat, fixed = TRUE)) {
     cat_values <- c("East Asia and the Pacific",
@@ -306,7 +306,7 @@ plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
   if(grepl("WHO", region, fixed = TRUE)) {
     cat_values <- c("AMRO", "EURO", "SEARO", "EMRO", "AFRO", "WPRO")
     category_color_labels <- c("Americas", "Europe", "Southeast Asia", "Eastern \nMediterranean", "Africa", "Western Pacific")
-    category_color_values <- c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#d4ece8")
+    category_color_values <- c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#9c4f9f")
     df_r <- df %>% dplyr::mutate(reg = factor(who_region,levels = cat_values))
   } else if(grepl("State", region, fixed = TRUE)) {
     cat_values <- c("East Asia and the Pacific",
@@ -401,7 +401,7 @@ plot_vaxcoverage <- function(df, type = "partial", by_cat = "State Region") {
   if(by_cat == "WHO Region") {
     cat_values <- c("AMRO", "EURO", "SEARO", "EMRO", "AFRO", "WPRO")
     cat_names  <- c("Americas", "Europe", "Southeast Asia", "Eastern Mediterranean", "Africa", "Western Pacific")
-    cat_colors <- c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#d4ece8")
+    cat_colors <- c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#9c4f9f")
     df_c       <- df %>% dplyr::mutate(cat = factor(who_region,levels = cat_values))
   } else if(by_cat == "State Region") {
     cat_values <- c("East Asia and the Pacific",
@@ -528,7 +528,7 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
   if(grepl("WHO", by_cat, fixed = TRUE)) {
     cat_values <- c("AMRO", "EURO", "SEARO", "EMRO", "AFRO", "WPRO")
     cat_names  <- c("Americas", "Europe", "Southeast Asia", "Eastern Mediterranean", "Africa", "Western Pacific")
-    cat_colors <- c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#d4ece8")
+    cat_colors <- c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#9c4f9f")
     cat_lines  <- c("solid", "solid", "solid", "solid", "solid", "solid")
     df_c       <- df %>% dplyr::mutate(cat = factor(who_region,levels = cat_values))
   } else if(grepl("State", by_cat, fixed = TRUE)) {
