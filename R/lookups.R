@@ -1,5 +1,5 @@
 #' Aesthetics for WHO regions
-who_values <- data.frame(
+who_aes <- data.frame(
   cat_values = c("AMRO", "EURO", "SEARO", "EMRO", "AFRO", "WPRO"),
   cat_names = c("Americas", "Europe", "Southeast Asia", "Eastern Mediterranean", "Africa", "Western Pacific"),
   cat_colors = c("#aa001e", "#e7b351", "#00818a", "#d26230", "#005e70", "#9c4f9f"),
@@ -7,7 +7,7 @@ who_values <- data.frame(
 )
 
 #' Aesthetics for State regions
-state_values <- data.frame(
+state_aes <- data.frame(
   cat_values = c(
     "East Asia and the Pacific",
     "Europe and Eurasia",
@@ -33,9 +33,25 @@ state_values <- data.frame(
 )
 
 #' Income Aesthetics
-income_values <- data.frame(
+income_aes <- data.frame(
   cat_values = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified"),
   cat_names = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified"),
   cat_colors = c("#045a8d", "#74a9cf", "#fdbb84", "#d7301f", "#808080"),
   cat_lines = c("solid", "solid", "solid", "solid", "solid")
+)
+
+#' OWID location renamings
+owid_lk <- c(
+  "United Kingdom"            = "The United Kingdom",
+  "Syria"                     = "Syrian Arab Republic",
+  "South Korea"               = "Republic of Korea",
+  "Sint Maarten (Dutch part)" = "Sint Maarten",
+  "Russia"                    = "Russian Federation",
+  "Pitcairn"                  = "Pitcairn Islands",
+  "Moldova"                   = "Republic of Moldova",
+  "Macao"                     = "Macau",
+  "Laos"                      = "Lao People's Democratic Republic",
+  "Iran"                      = "Iran (Islamic Republic of)",
+  "Curacao"                   = "Curaçao",
+  "Cape Verde"                = "Cabo Verde"
 )

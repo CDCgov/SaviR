@@ -25,13 +25,13 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
     heading <- "COVID-19 Deaths"
   }
   if (grepl("WHO", by_cat, fixed = TRUE)) {
-    col_master <- who_values
+    col_master <- who_aes
     df_c <- df %>% mutate(cat = factor(who_region, levels = col_master$cat_values))
   } else if (grepl("State", by_cat, fixed = TRUE)) {
-    col_master <- state_values
+    col_master <- state_aes
     df_c <- df %>% mutate(cat = factor(state_region, levels = col_master$cat_values))
   } else if (grepl("Income", by_cat, fixed = TRUE)) {
-    col_master <- income_values
+    col_master <- income_aes
     df_c <- df %>% mutate(cat = factor(incomelevel_value, levels = col_master$cat_values))
   }
 
@@ -387,10 +387,10 @@ plot_epicurve_dailydouble <- function(df) {
 
 plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
   if (grepl("WHO", region, fixed = TRUE)) {
-    col_master <- who_values
+    col_master <- who_aes
     df_r <- df %>% mutate(reg = factor(who_region, levels = col_master$cat_values))
   } else if (grepl("State", region, fixed = TRUE)) {
-    col_master <- state_values
+    col_master <- state_aes
     df_r <- df %>% mutate(reg = factor(state_region, levels = col_master$cat_values))
   }
 
@@ -474,13 +474,13 @@ plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
 
 plot_vaxcoverage <- function(df, type = "partial", by_cat = "State Region") {
   if (by_cat == "WHO Region") {
-    col_master <- who_values
-    df_c <- df %>% mutate(cat = factor(who_region, levels = who_values$cat_values))
+    col_master <- who_aes
+    df_c <- df %>% mutate(cat = factor(who_region, levels = who_aes$cat_values))
   } else if (by_cat == "State Region") {
-    col_master <- state_values
+    col_master <- state_aes
     df_c <- df %>% mutate(cat = factor(state_region, levels = col_master$cat_values))
   } else if (by_cat == "Income Level") {
-    col_master <- income_values
+    col_master <- income_aes
     df_c <- df %>% mutate(cat = factor(incomelevel_value, levels = col_master$cat_values))
   }
 
@@ -602,10 +602,10 @@ plot_vaxcoverage <- function(df, type = "partial", by_cat = "State Region") {
 
 plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region", countries = "All") {
   if (grepl("WHO", by_cat, fixed = TRUE)) {
-    col_master <- who_values
-    df_c <- df %>% mutate(cat = factor(who_region, levels = who_values$cat_values))
+    col_master <- who_aes
+    df_c <- df %>% mutate(cat = factor(who_region, levels = who_aes$cat_values))
   } else if (grepl("State", by_cat, fixed = TRUE)) {
-    col_master <- state_values
+    col_master <- state_aes
 
     if (countries == "AMC/AU") {
       col_master <- col_master %>%
@@ -613,7 +613,7 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
     }
     df_c <- df %>% mutate(cat = factor(state_region, levels = col_master$cat_values))
   } else if (grepl("Income", by_cat, fixed = TRUE)) {
-    col_master <- income_values
+    col_master <- income_aes
     df_c <- df %>% mutate(cat = factor(incomelevel_value, levels = col_master$cat_values))
   }
   col_master <- data.frame(cat_values, cat_names, cat_colors, cat_lines)
