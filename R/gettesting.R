@@ -11,7 +11,6 @@
 #' \dontrun{
 #' testing_df <- get_testing() }
 
-pacman::p_load(dplyr, zoo, rvest, stringr, passport, stringr)
 
 get_owid_meta <- function(url = "https://ourworldindata.org/coronavirus-testing") {
   
