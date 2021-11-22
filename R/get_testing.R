@@ -4,6 +4,8 @@
 #' @description To scrape the OWID coronavirus testing website for data related to the source and definitions of their testing data by country
 #' OUTPUT: Data set of scraped information related to data definitions and sources by country
 #' @importFrom magrittr `%>%`
+#' @import rvest
+#' @import xml2
 #'
 #' @export
 #'
