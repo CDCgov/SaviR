@@ -10,3 +10,10 @@ get_preferred_testpos7(test_long, last_X_days = 14, analysis_date = NULL)
 Evaluates testing data sources for quality based on new tests per 1K and test positivity over the last 7 days providing a preferred choice between the two sources, OWID or FIND
 OUTPUT:
 }
+\examples{
+\dontrun{
+tests_preferred <- get_preferred_testpos7(test_long, last_X_days = 14, analysis_date = analysis_date)
+tests_preferred <- get_preferred_testpos7(test_long, last_X_days = 14, analysis_date = Sys.Date - 1)
+}
+
+}

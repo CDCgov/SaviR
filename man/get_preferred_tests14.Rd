@@ -13,3 +13,9 @@ OUTPUT:
 - After accounting for flags, we pick OWID by default when both OWID and FIND are available in last X days
 - Subject to future revisions
 }
+\examples{
+\dontrun{
+tests_preferred <- get_preferred_tests14(test_long, last_X_days = 14, analysis_date = analysis_date)
+tests_preferred <- get_preferred_tests14(test_long, last_X_days = 14, analysis_date = Sys.Date - 1)}
+
+}
