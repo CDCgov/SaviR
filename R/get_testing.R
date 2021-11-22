@@ -818,10 +818,9 @@ get_preferred_testpos7 <- function(test_long, last_X_days = 14, analysis_date = 
 #' @title get_testing
 #' @description Subsets the full testing data set obtained via get_testing_long to have only one preferred source per country
 #' OUTPUT:
-# - Function argument test_long is the output from get_testing_long()
-# - Most recent 7-day average data points for new tests per 1K AND positivity rate for use in risk matrix plots by WHO region.
-# - After accounting for flags, we pick OWID by default when both OWID and FIND are available in last X days
-#' @importFrom magrittr `%>%`
+#' - Function argument test_long is the output from get_testing_long()
+#' - Most recent 7-day average data points for new tests per 1K AND positivity rate for use in risk matrix plots by WHO region.
+#' - After accounting for flags, we pick OWID by default when both OWID and FIND are available in last X days
 #'
 #' @export
 #'
@@ -830,8 +829,7 @@ get_preferred_testpos7 <- function(test_long, last_X_days = 14, analysis_date = 
 #' testing <- get_testing()
 #' }
 #'
-get_testing <- function() {
-  analysis_date <- Sys.Date() - 1
+get_testing <- function(analysis_date = Sys.Date() - 1L) {
 
   # Create testing data frame
   testing_long <- get_testing_long()
