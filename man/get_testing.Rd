@@ -7,9 +7,11 @@
 get_testing()
 }
 \description{
-Get testing data from OWID and FIND.
+Subsets the full testing data set obtained via get_testing_long to have only one preferred source per country
+OUTPUT:
 }
 \examples{
 \dontrun{
-testing_df <- get_testing()}
+testing <- get_testing()}
+
 }

@@ -4,7 +4,7 @@
 \alias{map_burden}
 \title{map_burden}
 \usage{
-map_burden(df)
+map_burden(df, region = "WHO Region")
 }
 \arguments{
 \item{df}{A dataframe with the following: region, country, date, incidence as 4-level factors (0- <1, 1- <10, 10- <25, 25+)

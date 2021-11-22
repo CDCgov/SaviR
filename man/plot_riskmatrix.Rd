@@ -4,7 +4,7 @@
 \alias{plot_riskmatrix}
 \title{plot_riskmatrix}
 \usage{
-plot_riskmatrix(df)
+plot_riskmatrix(df, region = "WHO Region", v = T, h = T)
 }
 \arguments{
 \item{df}{A dataframe with riskmatrix stats.}
