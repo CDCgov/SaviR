@@ -10,8 +10,7 @@
 #' @examples
 #' \dontrun{
 #' testing_df <- get_testing() }
-
-pacman::p_load(dplyr, zoo, rvest, stringr, passport, stringr)
+#'
 
 get_owid_meta <- function(url = "https://ourworldindata.org/coronavirus-testing") {
   
@@ -736,7 +735,7 @@ get_preferred_testpos7 <- function(test_long, last_X_days = 14, analysis_date = 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#' @title get_testing2
+#' @title get_testing
 #' @description Subsets the full testing data set obtained via get_testing_long to have only one preferred source per country
 #' OUTPUT: 
 # - Function argument test_long is the output from get_testing_long()
@@ -751,7 +750,7 @@ get_preferred_testpos7 <- function(test_long, last_X_days = 14, analysis_date = 
 #' testing <- get_testing()}
 #'
 
-get_testing2 <- function() {
+get_testing <- function() {
 
 analysis_date <- Sys.Date() - 1
   
