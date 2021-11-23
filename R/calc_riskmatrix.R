@@ -6,6 +6,7 @@
 #'
 
 #' @importFrom RcppRoll roll_mean
+#' @import lubridate
 #' @export
 #'
 #' @examples

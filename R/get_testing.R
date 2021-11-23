@@ -152,7 +152,8 @@ get_owid_meta <- function(url = "https://ourworldindata.org/coronavirus-testing"
 #' @title get_testing_long
 #' @description Download and combine full time series data related to testing as compiled by Our World in Data and FIND
 #' OUTPUT: Longitudinal data set with both FIND and OWID data sets with consistent definitions
-#' @importFrom magrittr `%>%`
+#'
+#' @import zoo
 #'
 #' @export
 #'

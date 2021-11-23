@@ -7,6 +7,7 @@
 #' @param category_color_values List of color values for mapping the labels. Needs to have the same length as category_color_labels!
 
 #' @import sf
+#' @import ggplot2
 #' @export
 
 map_template <- function(df, category_color_labels = "None", category_color_values) {

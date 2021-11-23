@@ -11,6 +11,7 @@
 #' @param country_geometries Default is country_coords which is incomplete. Replacement should have an iso3code column!
 
 #' @import sf
+#' @import passport
 #' @export
 #'
 #' @examples
@@ -121,7 +122,8 @@ get_onetable <- function(country_geometries = country_coords) {
 
 #'
 #' @export
-#'
+#' @importFrom rgdal readOGR
+#' @importFrom sp spTransform
 #' @examples
 #' \dontrun{
 #' country_coords <- get_country_coords()

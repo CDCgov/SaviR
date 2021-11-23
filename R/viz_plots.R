@@ -10,7 +10,7 @@
 #' @param transparent Default TRUE - returns a transparent plot.
 #'
 
-#'
+#' @import scales
 #' @export
 
 plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "in", transparent = T) {
@@ -380,7 +380,7 @@ plot_epicurve_dailydouble <- function(df) {
 #' @title plot_riskmatrix
 #' @description Plot risk matrix.
 #' @param df A dataframe with riskmatrix stats.
-#'
+#' @import ggrepel
 
 #'
 #' @export

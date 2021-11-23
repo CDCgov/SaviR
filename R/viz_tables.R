@@ -6,8 +6,10 @@
 #' new_deaths, week_death_incidence, week_death, prev_week_death, percent_change_death
 #' @param df_vaccinations A dataframe with the following: location, date, people_vaccinated_per_hundred, total_vaccinations_per_hundred
 #' @param df_manufacturers A dataframe with the following: location, date, vaccines
-
-#'
+#' @import flextable
+#' @import officer
+#' @importFrom purrr set_names
+#' @importFrom tibble rownames_to_column
 #' @export
 
 table_countriesofconcern <- function(df_risk, df_vaccinations, df_vaccinations_maufacturers, country_list) {
@@ -82,7 +84,7 @@ table_countriesofconcern <- function(df_risk, df_vaccinations, df_vaccinations_m
 #' @description Table for displaying top 10's.
 #' @param df A dataframe with the following and in this order: country, value1 - cases, value2 - percent change
 
-#'
+#' @import gt
 #' @export
 
 table_10mostcases <- function(df, type = "Global", run_date = "Enter a date") {
