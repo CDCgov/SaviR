@@ -4,7 +4,7 @@
 \alias{map_trend}
 \title{map_trend}
 \usage{
-map_trend(df)
+map_trend(df, region = "WHO Region")
 }
 \arguments{
 \item{df}{A dataframe with the following: region, country, date, percent_change as 6-level factors (0- <1, 1- <10, 10- <25, 25+).

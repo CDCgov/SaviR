@@ -4,7 +4,12 @@
 \alias{table_10vaccinations}
 \title{table_10vaccinations}
 \usage{
-table_10vaccinations(df, type = "Global", run_date = "Enter a date")
+table_10vaccinations(
+  df,
+  vac_type = "Partial",
+  type = "Global",
+  run_date = "Enter a date"
+)
 }
 \arguments{
 \item{df}{A dataframe with the following and in this order: country, value1 - people vaccinated per 100, value2 - daily vaccines administered per 100 people, date}
