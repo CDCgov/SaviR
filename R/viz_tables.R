@@ -39,6 +39,7 @@ table_countriesofconcern <- function(df_risk, df_vaccinations, df_vaccinations_m
             dplyr::filter(date == max(date)) %>%
             dplyr::mutate(`Most Recent Date for Vaccinations` = date,
                           `People Vaccinated Per 100 People`  = people_vaccinated_per_hundred,
+                          `People Fully Vaccinated Per 100 People`  = people_fully_vaccinated_per_hundred,
                           `Total Vaccinations Per 100 People` = total_vaccinations_per_hundred) %>%
             dplyr::select(location,`Most Recent Date for Vaccinations`:`Total Vaccinations Per 100 People`), by = c("Country" = "location")
         ) %>%
