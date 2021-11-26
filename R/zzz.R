@@ -7,6 +7,9 @@ NULL
   # Create a cache that expires every hour
   cache <- cachem::cache_mem(max_age = 60 * 60)
 
+  # Re-assigning these into the package envir as memoised functions
+  # i.e. the output gets cached after the first run, subsequent calls fetch
+  # the cached result instead of pulling down the data again.
   get_testing <<- memoise::memoise(get_testing, cache = cache)
   get_onetable <<- memoise::memoise(get_onetable, cache = cache)
   get_covid_df <<- memoise::memoise(get_covid_df, cache = cache)
