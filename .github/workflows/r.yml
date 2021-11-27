@@ -22,6 +22,8 @@ jobs:
         r-version: ['3.6.3', '4.1.1']
 
     steps:
+      - if: runner.os == 'macOS'
+        run: brew install --cask xquartz
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-pandoc@v1 
       - name: Set up R ${{ matrix.r-version }}
