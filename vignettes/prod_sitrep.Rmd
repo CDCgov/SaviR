@@ -10,25 +10,32 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  root.dir = "C:/Users/lanak/Desktop/Sitrep"
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>"
 )
+
+# phantomjs is needed to save/render images in this document
+# so we need to install it if it's not already
+if (!webshot::is_phantomjs_installed()) {
+  webshot::install_phantomjs()
+}
 
 library(SaviR)
 library(tidyverse)
 library(gt)
 
-sunday_date <-  lubridate::floor_date(Sys.Date(), "week", week_start = 7)
+sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
 ```
 
-## Data: The Frankenstein Dataset
+## Data: The Frankenstein Dataset  
 
-onetable - stored metadata with iso2 and iso3 codes, country names, WHO/State/WorldBank regions, and UN population estimates
-get_covid_df() - COVID dataframe from WHO and appended with select JHU obs
-calc_add_risk() - Add risk matrix calculations to dataframe
-get_vax() - Get vaccination data from OWID
-
-This snippet produces the master dataframe with all the variables required for all of the sitrep graphics.
+`onetable` - stored metadata with iso2 and iso3 codes, country names, WHO/State/WorldBank regions, and UN population estimates  
+`get_covid_df()` - COVID dataframe from WHO and appended with select JHU obs  
+`calc_add_risk()` - Add risk matrix calculations to dataframe  
+`get_vax()` - Get vaccination data from OWID  
+  
+This snippet produces the master dataframe with all the variables required for all of the sitrep graphics.  
 
 ```{r}
 df <- onetable %>%
@@ -39,80 +46,101 @@ df <- onetable %>%
 
 ## Epicurves
 
-plot_epicurve(df, transparent = T)
+`plot_epicurve(df, transparent = T)`  
+  
+The "plot_epicurve" function should take in the df with only WHO observations in order to match the same curve on the who.int dashboard. The individual epicurves for each region can be run simply by filtering for one region in the dataframe. The function will detect that the region column has only one region and will produce the epicurve accordingly.  
+  
+Data prep: In this snippet, I first filter out any N/A WHO regions so the final plot won't have an extra unknown region, and I also filter just for WHO data (again in order to match who.int).  
 
-The "plot_epicurve" function should take in the df with only WHO observations in order to match the same curve on the who.int dashboard. The individual epicurves for each region can be run simply by filtering for one region in the dataframe. The function will detect that the region column has only one region and will produce the epicurve accordingly.
-
-Data prep: In this snippet, I first filter out any N/A WHO regions so the final plot won't have an extra unknown region, and I also filter just for WHO data (again in order to match who.int).
-
-```{r}
+```{r, fig.width = 13, fig.height = 7}
 # Global
-plot_epicurve(filter(df, !is.na(who_region) & source == "WHO"), transparent = T) %>%
-  ggsave(filename = "epi_curve_transparent_who.png", width = 13, height = 7, units = "in", bg = "transparent")
+epi_curve_global <- plot_epicurve(filter(df, !is.na(who_region) & source == "WHO"), transparent = T)
 
-plot_epicurve(filter(df, !is.na(who_region)  & source == "WHO"), transparent = F)%>%
-  ggsave(filename = "epi_curve_who.png", width = 13, height = 7, units = "in")
+ggsave(epi_curve_global, filename = "../inst/extdata/epi_curve_transparent_who.png", width = 13, height = 7, units = "in", bg = "transparent")
 
-#Regions
-for (r in unique(filter(df, !is.na(who_region))$who_region)){
-  plot_epicurve(filter(df, !is.na(who_region) & source == "WHO" & who_region == r), transparent = F) %>%
-    ggsave(filename = paste0("epi_curve_", Sys.Date(), "_", r, ".png"), width = 9, height = 2.5, units = "in", bg = "transparent")
+epi_curve_global
+
+plot_epicurve(filter(df, !is.na(who_region) & source == "WHO"), transparent = F) %>%
+  ggsave(filename = "../inst/extdata/epi_curve_who.png", width = 13, height = 7, units = "in")
+```
+
+```{r, fig.width = 9, fig.height = 2.5}
+# Regions
+for (r in unique(filter(df, !is.na(who_region))$who_region)) {
+  epi_curve_regional <- plot_epicurve(filter(df, !is.na(who_region) & source == "WHO" & who_region == r), transparent = F)
+
+  ggsave(epi_curve_regional, filename = paste0("../inst/extdata/epi_curve_", Sys.Date(), "_", r, ".png"), width = 9, height = 2.5, units = "in", bg = "transparent")
+
+  print(epi_curve_regional)
 }
-
 ```
 
 ## Burden Map
 
-map_burden(df)
+`map_burden(df)`  
 
-The "map_burden" function requires a result column where weekly average incidence is converted into factors using "cut". The dataframe normally used is WHO appended with JHU and filtered for the report date. The region maps can also be produced by simply filtering the input dataframe for the specific region. Again the function will detect the number of regions provided and will act accordingly.
-
-```{r}
-map_burden(df %>%
-             filter(id != "CHN" | source != "WHO") %>%
-             mutate(result = cut(week_case_incidence, breaks = c(-0.1, 1, 10, 25, Inf))) %>%
-             filter(date == sunday_date)) %>%
-  ggsave(filename = paste0("epi_curve_", Sys.Date(), "_", r, ".png"), width = 9, height = 2.5, units = "in", bg = "transparent")
-
-for (r in unique(filter(df, !is.na(who_region))$who_region)){
-  map_burden(df %>%
-               filter(id != "CHN" | source != "WHO") %>%
-               filter(date == sunday_date) %>%
-               filter(who_region == r) %>%
-               mutate(result = cut(week_case_incidence, breaks = c(-0.1, 1, 10, 25, Inf)))) %>%
-    ggsave(filename = paste0("burdenmap_", Sys.Date(), "_", r, ".png"), width = 6, height = 6, units = "in", bg = "white")
-}
-
-```
-## Trend Map
-
-map_trend(df)
-
-The "map_trend" function requires a result column where weekly percent change is converted into factors using "cut". The dataframe normally used is WHO appended with JHU and filtered for the report date. The region maps can also be produced by simply filtering the input dataframe for the specific region. Again the function will detect the number of regions provided and will act accordingly.
+The "map_burden" function requires a result column where weekly average incidence is converted into factors using "cut". The dataframe normally used is WHO appended with JHU and filtered for the report date. The region maps can also be produced by simply filtering the input dataframe for the specific region. Again the function will detect the number of regions provided and will act accordingly.  
 
 ```{r}
-map_trend(df %>%
-            filter(date == sunday_date) %>%
-            filter(id != "CHN" | source != "WHO") %>%
-            mutate(result = cut(percent_change_case, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf)))) %>%
-  ggsave(filename = paste0("percent_change_who_", Sys.Date(), ".png"), width = 7.5, height = 4.2, units = "in", bg = "white")
+burden_map_global <- map_burden(df %>%
+  filter(id != "CHN" | source != "WHO") %>%
+  mutate(result = cut(week_case_incidence, breaks = c(-0.1, 1, 10, 25, Inf))) %>%
+  filter(date == sunday_date))
 
-for (r in unique(filter(df, !is.na(who_region))$who_region)){
-  map_trend(df %>%
-              filter(date == sunday_date) %>%
-              filter(id != "CHN" | source != "WHO") %>%
-              filter(who_region == r) %>%
-              mutate(result = cut(percent_change_case, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf)))) %>%
-    ggsave(filename = paste0("percent_change_who_", Sys.Date(), "_", r, ".png"), width = 6, height = 6, units = "in", bg = "white")
+ggsave(burden_map_global, filename = paste0("../inst/extdata/epi_curve_", Sys.Date(), "_", r, ".png"), width = 9, height = 2.5, units = "in", bg = "transparent")
+
+burden_map_global
+
+for (r in unique(filter(df, !is.na(who_region))$who_region)) {
+  burden_map_regional <- map_burden(df %>%
+    filter(id != "CHN" | source != "WHO") %>%
+    filter(date == sunday_date) %>%
+    filter(who_region == r) %>%
+    mutate(result = cut(week_case_incidence, breaks = c(-0.1, 1, 10, 25, Inf))))
+
+  ggsave(burden_map_regional, filename = paste0("../inst/extdata/burdenmap_", Sys.Date(), "_", r, ".png"), width = 6, height = 6, units = "in", bg = "white")
+
+  print(burden_map_regional)
 }
 ```
 
-## Vaccine Map (Global Only)
+## Trend Map  
+  
+`map_trend(df)`
+  
+The "map_trend" function requires a result column where weekly percent change is converted into factors using "cut". The dataframe normally used is WHO appended with JHU and filtered for the report date. The region maps can also be produced by simply filtering the input dataframe for the specific region. Again the function will detect the number of regions provided and will act accordingly.  
+  
+```{r, fig.width = 7.5, fig.height = 4.2}
+trend_map_global <- map_trend(df %>%
+  filter(date == sunday_date) %>%
+  filter(id != "CHN" | source != "WHO") %>%
+  mutate(result = cut(percent_change_case, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf))))
 
-map_vaccinations(df, type = c("People", "Fully"))
+ggsave(trend_map_global, filename = paste0("../inst/extdata/percent_change_who_", Sys.Date(), ".png"), width = 7.5, height = 4.2, units = "in", bg = "white")
 
-```{r}
-df %>% 
+trend_map_global
+```
+
+```{r, fig.width = 6, fig.height = 6}
+for (r in unique(filter(df, !is.na(who_region))$who_region)) {
+  trend_map_reg <- map_trend(df %>%
+    filter(date == sunday_date) %>%
+    filter(id != "CHN" | source != "WHO") %>%
+    filter(who_region == r) %>%
+    mutate(result = cut(percent_change_case, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf))))
+
+  ggsave(trend_map_reg, filename = paste0("../inst/extdata/percent_change_who_", Sys.Date(), "_", r, ".png"), width = 6, height = 6, units = "in", bg = "white")
+
+  print(trend_map_reg)
+}
+```
+
+## Vaccine Map (Global Only)  
+
+`map_vaccinations(df, vac_type = c("People", "Fully"))`  
+
+```{r, fig.width = 7.5, fig.height = 4.2}
+global_vax_map <- df %>%
   filter(date <= sunday_date) %>%
   filter(id != "CHN" | source != "WHO") %>%
   mutate(result = cut(people_vaccinated_per_hundred, breaks = c(0, 1, 3, 10, 30, Inf))) %>%
@@ -120,8 +148,12 @@ df %>%
   filter(!is.na(result)) %>%
   filter(date == max(date)) %>%
   ungroup() %>%
-  map_vaccinations(., type = "People") %>%
-  ggsave(filename =  paste0("vaccine_map_", Sys.Date(), ".png"), width = 7.5, height = 4.2, units = "in", bg = "white")
+  map_vaccinations(., vac_type = "People")
+
+
+ggsave(global_vax_map, filename = paste0("../inst/extdata/vaccine_map_", Sys.Date(), ".png"), width = 7.5, height = 4.2, units = "in", bg = "white")
+
+global_vax_map
 ```
 
 
@@ -132,21 +164,21 @@ df %>%
   filter(date == sunday_date) %>%
   filter(id != "CHN" | source != "WHO") %>%
   select(country = who_country, value1 = week_case, value2 = percent_change_case) %>%
-  arrange (desc(value1)) %>%
+  arrange(desc(value1)) %>%
   head(10) %>%
   table_10mostcases(., run_date = format(sunday_date, "%B %d, %Y")) %>%
-  gtsave(filename =  paste0("most_cases_table_t1", Sys.Date(), ".png"), vwidth=650)
+  gtsave(filename = paste0("../inst/extdata/most_cases_table_t1", Sys.Date(), ".png"), vwidth = 650)
 
-for (r in unique(filter(df, !is.na(who_region))$who_region)){
+for (r in unique(filter(df, !is.na(who_region))$who_region)) {
   df %>%
     filter(date == sunday_date) %>%
     filter(id != "CHN" | source != "WHO") %>%
     filter(who_region == r) %>%
     select(country = who_country, value1 = week_case, value2 = percent_change_case) %>%
-    arrange (desc(value1)) %>%
+    arrange(desc(value1)) %>%
     head(10) %>%
-    table_10mostcases(., type = r, run_date = format(sunday_date, "%B %d, %Y"))%>%
-  gtsave(filename =  paste0('_wkcase_table_', Sys.Date(), "_", r, ".png"), vwidth = 650)
+    table_10mostcases(., type = r, run_date = format(sunday_date, "%B %d, %Y")) %>%
+    gtsave(filename = paste0("../inst/extdata/_wkcase_table_", Sys.Date(), "_", r, ".png"), vwidth = 650)
 }
 ```
 
@@ -157,21 +189,21 @@ df %>%
   filter(date == sunday_date) %>%
   filter(id != "CHN" | source != "WHO") %>%
   select(country = who_country, value1 = week_case_incidence, value2 = percent_change_case) %>%
-  arrange (desc(value1)) %>%
+  arrange(desc(value1)) %>%
   head(10) %>%
   table_10incidence(., run_date = format(sunday_date, "%B %d, %Y")) %>%
-  gtsave(filename =  paste0("incidence_table_t2", Sys.Date(), ".png"), vwidth = 650)
+  gtsave(filename = paste0("../inst/extdata/incidence_table_t2", Sys.Date(), ".png"), vwidth = 650)
 
-for (r in unique(filter(df, !is.na(who_region))$who_region)){
+for (r in unique(filter(df, !is.na(who_region))$who_region)) {
   df %>%
     filter(date == sunday_date) %>%
     filter(id != "CHN" | source != "WHO") %>%
     filter(who_region == r) %>%
     select(country = who_country, value1 = week_case_incidence, value2 = percent_change_case) %>%
-    arrange (desc(value1)) %>%
+    arrange(desc(value1)) %>%
     head(10) %>%
-    table_10incidence(., type = r, run_date = format(sunday_date, "%B %d, %Y"))%>%
-  gtsave(filename =  paste0('_wkcase_table2_', Sys.Date(), "_", r, ".png"), vwidth = 650)
+    table_10incidence(., type = r, run_date = format(sunday_date, "%B %d, %Y")) %>%
+    gtsave(filename = paste0("../inst/extdata/_wkcase_table2_", Sys.Date(), "_", r, ".png"), vwidth = 650)
 }
 ```
 
@@ -181,35 +213,35 @@ for (r in unique(filter(df, !is.na(who_region))$who_region)){
 df %>%
   filter(date == sunday_date) %>%
   filter(id != "CHN" | source != "WHO") %>%
-  filter(population >= 10000000) %>% #Exclude population less than 10M
+  filter(population >= 10000000) %>% # Exclude population less than 10M
   select(country = who_country, value1 = percent_change_case, value2 = percent_change4_case) %>%
-  arrange (desc(value1)) %>%
+  arrange(desc(value1)) %>%
   head(10) %>%
   table_10percentchange(., run_date = format(sunday_date, "%B %d, %Y")) %>%
-  gtsave(filename =  paste0("pct_chng_table_output_who_t3", Sys.Date(), ".png"), vwidth=650)
+  gtsave(filename = paste0("../inst/extdata/pct_chng_table_output_who_t3", Sys.Date(), ".png"), vwidth = 650)
 
-for (r in unique(filter(df, !is.na(who_region))$who_region)){
+for (r in unique(filter(df, !is.na(who_region))$who_region)) {
   df %>%
     filter(date == sunday_date) %>%
     filter(id != "CHN" | source != "WHO") %>%
-    filter(population >= 100000) %>% #Exclude population less than 100,000
+    filter(population >= 100000) %>% # Exclude population less than 100,000
     filter(who_region == r) %>%
     select(country = who_country, value1 = percent_change_case, value2 = percent_change4_case) %>%
-    arrange (desc(value1)) %>%
+    arrange(desc(value1)) %>%
     head(10) %>%
-    table_10percentchange(., type = r, run_date = format(sunday_date, "%B %d, %Y"))%>%
-  gtsave(filename =  paste0('_wkcase_table3_', Sys.Date(), "_", r, ".png"), vwidth = 650)
+    table_10percentchange(., type = r, run_date = format(sunday_date, "%B %d, %Y")) %>%
+    gtsave(filename = paste0("../inst/extdata/_wkcase_table3_", Sys.Date(), "_", r, ".png"), vwidth = 650)
 }
 ```
 
 ## Top 10 Vaccinations Table
 
-table_10vaccinations(df, type = Global or Region, run_date)
+`table_10vaccinations(df, type = c("Global", "Region"), run_date)`
 
 The "table_10vaccinations" function takes looks for a country, value1 (people vaccinated per hundred), and a value2 (daily vaccinations per hundred) column. Note as vaccination reporting has gaps, the dataframe must be sliced by country and the most recent date with people_vaccinated_per_hundred value (if there is one). 
 
 ```{r}
-df %>% 
+df %>%
   filter(date <= sunday_date) %>%
   filter(id != "CHN" | source != "WHO") %>%
   filter(population > 1000000) %>%
@@ -221,13 +253,13 @@ df %>%
   arrange(desc(value1)) %>%
   head(10) %>%
   table_10vaccinations(., run_date = format(sunday_date, "%B %d, %Y")) %>%
-  gtsave(filename =  paste0("top_10_vax_table", Sys.Date(), ".png"), vwidth = 2000)
+  gtsave(filename = paste0("../inst/extdata/top_10_vax_table", Sys.Date(), ".png"), vwidth = 2000)
 
-for (r in unique(filter(df, !is.na(who_region))$who_region)){
+for (r in unique(filter(df, !is.na(who_region))$who_region)) {
   df %>%
     filter(date <= sunday_date) %>%
     filter(id != "CHN" | source != "WHO") %>%
-    filter(population > 100000) %>% #Exclude population less than 100,000
+    filter(population > 100000) %>% # Exclude population less than 100,000
     filter(who_region == r) %>%
     group_by(country) %>%
     filter(!is.na(people_vaccinated_per_hundred)) %>%
@@ -238,55 +270,71 @@ for (r in unique(filter(df, !is.na(who_region))$who_region)){
     arrange(desc(value1)) %>%
     head(10) %>%
     table_10vaccinations(., type = r, run_date = format(sunday_date, "%B %d, %Y")) %>%
-    gtsave(filename =  paste0("top_10_vax_table", Sys.Date(), "_", r, ".png"), vwidth = 700)
+    gtsave(filename = paste0("../inst/extdata/top_10_vax_table", Sys.Date(), "_", r, ".png"), vwidth = 700)
 }
 ```
 
 ## Top 10 Fully Vaccinated Table
 
 ```{r}
-table_10fullyvaccinations <- function(df, type = "Global", run_date = "Enter a date"){
-
-  if(type == "Global"){
-    title_label <-  gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Fully Vaccinated per 100 People", "</b>"))
+table_10fullyvaccinations <- function(df, type = "Global", run_date = "Enter a date") {
+  if (type == "Global") {
+    title_label <- gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Fully Vaccinated per 100 People", "</b>"))
     exclude_note <- "Countries with population size less than or equal to 1 million were excluded"
   } else {
-    title_label  <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest <br> Vaccination per 100 People", "</b>"))
+    title_label <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest <br> Vaccination per 100 People", "</b>"))
     exclude_note <- "Countries with population size less than or equal to 100,000 were excluded"
   }
 
   gt::gt(df) %>%
-    gt::tab_header(title    = title_label)%>%
-    gt::fmt_number(columns  = c(value1),
-                   decimals = 1) %>%
-    gt::fmt_number(columns  = c(value2),
-                   sep_mark = ",",
-                   decimals = 2 ) %>%
-    gt::data_color(columns  = c(value1),
-                   colors   = scales::col_bin(palette = c("#CCECE6", "#AFDACB", "#92C8B1", "#75B696", "#57A37C", "#3A9161", "#1D7F47", "#006D2C"),
-                                      bins    = c(0, 3, 10, 20, 30, 40, 60, 70, Inf))) %>%
-    gt::cols_label(country  = "Country/ Area",
-                   value1   = gt::html("People Fully Vaccinated <br> per 100 People"),
-                   value2   = gt::html("Daily Vaccines <br> Administered <br> per 100 People")) %>%
+    gt::tab_header(title = title_label) %>%
+    gt::fmt_number(
+      columns = c(value1),
+      decimals = 1
+    ) %>%
+    gt::fmt_number(
+      columns = c(value2),
+      sep_mark = ",",
+      decimals = 2
+    ) %>%
+    gt::data_color(
+      columns = c(value1),
+      colors = scales::col_bin(
+        palette = c("#CCECE6", "#AFDACB", "#92C8B1", "#75B696", "#57A37C", "#3A9161", "#1D7F47", "#006D2C"),
+        bins = c(0, 3, 10, 20, 30, 40, 60, 70, Inf)
+      )
+    ) %>%
+    gt::cols_label(
+      country = "Country/ Area",
+      value1 = gt::html("People Fully Vaccinated <br> per 100 People"),
+      value2 = gt::html("Daily Vaccines <br> Administered <br> per 100 People")
+    ) %>%
     gt::cols_align("center") %>%
-    gt::tab_options(column_labels.font.weight = "bold",
-                table.font.size           = 20,
-                table.font.weight         = "bold",
-                footnotes.font.size       = pct(70),
-                source_notes.font.size    = pct(70),
-                source_notes.padding      = 0,
-                footnotes.padding         = 0) %>%
-
-    gt::tab_footnote(footnote  = "Number of people out of 100 who are fully vaccinated",
-                     locations = cells_column_labels(columns = c(value1))) %>%
-    gt::tab_footnote(footnote  = "Vaccine doses administered per day (7 day rolling average); does not represent number of people vaccinated",
-                     locations = cells_column_labels(columns = c(value2))) %>%
-    gt::tab_footnote(footnote  = exclude_note,
-                     locations = cells_title()) %>%
+    gt::tab_options(
+      column_labels.font.weight = "bold",
+      table.font.size = 20,
+      table.font.weight = "bold",
+      footnotes.font.size = pct(70),
+      source_notes.font.size = pct(70),
+      source_notes.padding = 0,
+      footnotes.padding = 0
+    ) %>%
+    gt::tab_footnote(
+      footnote = "Number of people out of 100 who are fully vaccinated",
+      locations = cells_column_labels(columns = c(value1))
+    ) %>%
+    gt::tab_footnote(
+      footnote = "Vaccine doses administered per day (7 day rolling average); does not represent number of people vaccinated",
+      locations = cells_column_labels(columns = c(value2))
+    ) %>%
+    gt::tab_footnote(
+      footnote = exclude_note,
+      locations = cells_title()
+    ) %>%
     gt::tab_source_note(source_note = paste0("Data as of ", run_date))
 }
 
-df %>% 
+df %>%
   filter(date <= sunday_date) %>%
   filter(id != "CHN" | source != "WHO") %>%
   filter(population > 1000000) %>%
@@ -298,51 +346,57 @@ df %>%
   arrange(desc(value1)) %>%
   head(10) %>%
   table_10fullyvaccinations(., run_date = format(sunday_date, "%B %d, %Y")) %>%
-  gtsave(filename =  paste0("top_10_vax_table", Sys.Date(), ".png"), vwidth = 650)
+  gtsave(filename = paste0("../inst/extdata/top_10_vax_table", Sys.Date(), ".png"), vwidth = 650)
 ```
 
 
 ## Risk Matrix (Global Only)
 
-plot_riskmatrix(df)
+`plot_riskmatrix(df)`  
 
-Note for labeling purposes, the labels variable should be added to the dataframe specifying the top 10 countries for weekly average incidence, week case percent change, and weekly total cases. Exclusion criteria: Countries with population less than 10 million and countries with weekly cases totals less than 100.
+Note for labeling purposes, the labels variable should be added to the dataframe specifying the top 10 countries for weekly average incidence, week case percent change, and weekly total cases. Exclusion criteria: Countries with population less than 10 million and countries with weekly cases totals less than 100.  
 
-```{r}
-df %>%
+```{r, fig.width=11, fig.height=7}
+global_risk_matrix <- df %>%
   filter(date == sunday_date) %>%
   filter(id != "CHN" | source != "WHO") %>%
-  filter(population >= 10000000) %>% #Exclude population less than 10M
+  filter(population >= 10000000) %>% # Exclude population less than 10M
   filter(week_case >= 100) %>%
-  mutate(rank_inc = dense_rank(desc(week_case_incidence)),
-         rank_per = dense_rank(desc(percent_change_case)),
-         rank_cas = dense_rank(desc(week_case))) %>%
-  mutate(labels   = case_when(rank_inc %in% 1:10 ~ country,
-                              rank_per %in% 1:10 ~ country,
-                              rank_cas %in% 1:10 ~ country)) %>%
-  plot_riskmatrix() %>%
-  ggsave(filename =  paste0('global_risk_matrix_who_', Sys.Date(), ".png"), width = 11, height = 7, units = "in")
-           
+  mutate(
+    rank_inc = dense_rank(desc(week_case_incidence)),
+    rank_per = dense_rank(desc(percent_change_case)),
+    rank_cas = dense_rank(desc(week_case))
+  ) %>%
+  mutate(labels = case_when(
+    rank_inc %in% 1:10 ~ country,
+    rank_per %in% 1:10 ~ country,
+    rank_cas %in% 1:10 ~ country
+  )) %>%
+  plot_riskmatrix()
+
+ggsave(global_risk_matrix, filename = paste0("../inst/extdata/global_risk_matrix_who_", Sys.Date(), ".png"), width = 11, height = 7, units = "in")
+
+global_risk_matrix
 ```
 
 ## Vaccination Coverage (Global Only)
 
-```{r}
-df %>% 
+```{r, fig.width=11, fig.height=7}
+global_vax_coverage <- df %>%
   filter(date <= sunday_date) %>%
   filter(id != "CHN" | source != "WHO") %>%
+  mutate(state_region = ifelse(id == "USA", "US", state_region)) %>%
   group_by(country, source) %>%
   arrange(desc(date)) %>%
   fill(total_vaccinations, .direction = "updown") %>%
   fill(people_vaccinated_per_hundred, .direction = "updown") %>%
   ungroup() %>%
   filter(date == max(date)) %>%
-  group_by(who_region) %>%
-  mutate(rank_people = dense_rank(-people_vaccinated_per_hundred),
-         rank_total  = dense_rank(-total_vaccinations)) %>%
-  mutate(labels      = case_when(rank_people %in% 1:3 ~ country,
-                                 rank_total  %in% 1:3 ~ country)) %>%
-  ungroup() %>%
-  plot_vaxcoverage()
+  filter(!is.na(state_region)) %>%
+  plot_vaxcoverage(by_cat = "State Region")
+
+ggsave(global_vax_coverage, filename = paste0("../inst/extdata/vax_cov_region_dos", Sys.Date(), ".png"), width = 11, height = 7, units = "in")
+
+global_vax_coverage
 ```
 
