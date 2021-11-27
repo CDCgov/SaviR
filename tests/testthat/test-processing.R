@@ -23,16 +23,18 @@ test_that("COVID Case Data is accessible", {
   #   ungroup() %>%
   #   arrange(iso2code)
 
-  # readr::write_csv(df, "inst/extdata/2021-11-26-testdata-input.csv")
+  # NOTE: This has to be stored as RDS since the vector types
+  # will read in messed up if stored as a CSV.
+  # saveRDS(df, "2021-11-26-testdata-input.RDS")
 
-  df <- readr::read_csv("inst/extdata/2021-11-26-testdata-input.csv")
-  output <- readRDS("inst/extdata/2021-11-26-testdata-output.RDS")
+  df <- readRDS("2021-11-26-testdata-input.RDS")
+  output <- readRDS("2021-11-26-testdata-output.RDS")
 
   out <- calc_add_risk(df)
 
   # NOTE: This has to be stored as RDS since the vector types
   # will read in messed up if stored as a CSV.
-  # saveRDS(out, "inst/extdata/2021-11-26-testdata-output.RDS")
+  # saveRDS(out, "2021-11-26-testdata-output.RDS")
 
-  expect_identical(out, output)
+  expect_equal(out, output)
 })
