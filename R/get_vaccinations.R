@@ -15,7 +15,8 @@ get_vax <- function() {
     mutate(iso_code = recode(iso_code, "OWID_KOS" = "XKX")) %>%
     filter(!grepl("OWID", iso_code)) %>%
     mutate(location = recode(location, !!!owid_lk)) %>%
-    mutate(daily_vaccinations_per_hundred = daily_vaccinations_per_million / 10000)
+    mutate(daily_vaccinations_per_hundred = daily_vaccinations_per_million / 10000) %>%
+    mutate(across(where(bit64::is.integer64), as.double))
 
   return(df)
 }
