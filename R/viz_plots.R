@@ -41,8 +41,8 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
     category_color_values <- col_master$cat_colors
     gtitle <- paste0(heading, " by Week of Report and ", by_cat)
   } else {
-    category_color_labels <- col_master[cat_values == as.character(unique(df_c$cat)), ]$cat_names
-    category_color_values <- col_master[cat_values == as.character(unique(df_c$cat)), ]$cat_colors
+    category_color_labels <- col_master[col_master$cat_values == as.character(unique(df_c$cat)), ]$cat_names
+    category_color_values <- col_master[col_master$cat_values == as.character(unique(df_c$cat)), ]$cat_colors
     gtitle <- paste0(heading, " - ", category_color_labels)
   }
 
@@ -393,6 +393,9 @@ plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
     col_master <- state_aes
     df_r <- df %>% mutate(reg = factor(state_region, levels = col_master$cat_values))
   }
+
+  category_color_labels <- col_master$cat_names
+  category_color_values <- col_master$cat_colors
 
   r <- ggplot2::ggplot(data = df_r, aes(x = percent_change_case, y = week_case_incidence)) +
     ggplot2::geom_point(aes(size = week_case, color = reg), alpha = 0.7) +
