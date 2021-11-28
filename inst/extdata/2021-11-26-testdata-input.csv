@@ -1,0 +1,484 @@
+id,iso2code,state_region,who_region,who_country,incomelevel_value,population,eighteenplus,date,country,new_cases,cumulative_cases,new_deaths,cumulative_deaths,source,region
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-26,United Arab Emirates,77,741720,0,2145,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-25,United Arab Emirates,73,741643,1,2145,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-24,United Arab Emirates,70,741570,0,2144,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-23,United Arab Emirates,67,741500,0,2144,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-22,United Arab Emirates,63,741433,0,2144,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-21,United Arab Emirates,79,741370,0,2144,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-20,United Arab Emirates,77,741291,0,2144,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-19,United Arab Emirates,66,741214,0,2144,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-18,United Arab Emirates,74,741148,0,2144,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-17,United Arab Emirates,68,741074,0,2144,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-16,United Arab Emirates,61,741006,1,2144,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-15,United Arab Emirates,66,740945,0,2143,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-14,United Arab Emirates,78,740879,1,2143,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-13,United Arab Emirates,72,740801,0,2142,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-12,United Arab Emirates,82,740729,0,2142,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-11,United Arab Emirates,75,740647,0,2142,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-10,United Arab Emirates,72,740572,0,2142,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-09,United Arab Emirates,68,740500,2,2142,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-08,United Arab Emirates,70,740432,1,2140,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-07,United Arab Emirates,73,740362,1,2139,WHO,Eastern Mediterranean
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,United Arab Emirates,High income,9890400,8205627,2021-11-06,United Arab Emirates,80,740289,1,2138,WHO,Eastern Mediterranean
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-26,Angola,25,65105,1,1732,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-25,Angola,19,65080,1,1731,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-24,Angola,28,65061,0,1730,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-23,Angola,22,65033,0,1730,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-22,Angola,0,65011,0,1730,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-21,Angola,14,65011,1,1730,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-20,Angola,12,64997,0,1729,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-19,Angola,17,64985,0,1729,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-18,Angola,28,64968,0,1729,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-17,Angola,27,64940,2,1729,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-16,Angola,0,64913,0,1727,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-15,Angola,14,64913,0,1727,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-14,Angola,24,64899,1,1727,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-13,Angola,18,64875,1,1726,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-12,Angola,95,64857,2,1725,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-11,Angola,0,64762,0,1723,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-10,Angola,38,64762,2,1723,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-09,Angola,50,64724,1,1721,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-08,Angola,20,64674,1,1720,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-07,Angola,42,64654,0,1719,WHO,Africa
+AGO,AO,Sub-Saharan Africa,AFRO,Angola,Lower middle income,32866268,15408818,2021-11-06,Angola,29,64612,1,1719,WHO,Africa
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-26,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-25,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-24,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-23,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-22,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-21,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-20,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-19,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-18,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-17,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-16,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-15,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-14,American Samoa,0,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-13,American Samoa,1,5,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-12,American Samoa,0,4,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-11,American Samoa,0,4,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-10,American Samoa,0,4,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-09,American Samoa,0,4,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-08,American Samoa,0,4,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-07,American Samoa,0,4,0,0,WHO,Western Pacific
+ASM,AS,NA,WPRO,American Samoa,Upper middle income,55197,NA,2021-11-06,American Samoa,0,4,0,0,WHO,Western Pacific
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-26,Brazil,12930,22043112,273,613339,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-25,Brazil,10312,22030182,284,613066,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-24,Brazil,2594,22019870,123,612782,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-23,Brazil,5126,22017276,72,612659,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-22,Brazil,8833,22012150,217,612587,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-21,Brazil,13355,22003317,226,612370,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-20,Brazil,12301,21989962,293,612144,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-19,Brazil,11977,21977661,373,611851,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-18,Brazil,4918,21965684,132,611478,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-17,Brazil,2799,21960766,63,611346,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-16,Brazil,4129,21957967,61,611283,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-15,Brazil,14642,21953838,731,611222,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-14,Brazil,14598,21939196,267,610491,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-13,Brazil,15300,21924598,188,610224,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-12,Brazil,12273,21909298,280,610036,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-11,Brazil,10948,21897025,183,609756,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-10,Brazil,5638,21886077,126,609573,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-09,Brazil,6115,21880439,59,609447,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-08,Brazil,11866,21874324,328,609388,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-07,Brazil,13321,21862458,389,609060,WHO,Americas
+BRA,BR,Western Hemisphere,AMRO,Brazil,Upper middle income,212559409,158962081,2021-11-06,Brazil,13352,21849137,436,608671,WHO,Americas
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-26,Finland,1406,182284,3,1305,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-25,Finland,432,180878,0,1302,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-24,Finland,986,180446,0,1302,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-23,Finland,1319,179460,0,1302,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-22,Finland,553,178141,0,1302,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-21,Finland,561,177588,0,1302,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-20,Finland,1267,177027,0,1302,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-19,Finland,1212,175760,1,1302,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-18,Finland,1164,174548,0,1301,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-17,Finland,1192,173384,2,1301,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-16,Finland,1250,172192,2,1299,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-15,Finland,572,170942,1,1297,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-14,Finland,615,170370,1,1296,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-13,Finland,945,169755,3,1295,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-12,Finland,933,168810,2,1292,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-11,Finland,969,167877,2,1290,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-10,Finland,831,166908,6,1288,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-09,Finland,1117,166077,6,1282,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-08,Finland,508,164960,1,1276,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-07,Finland,513,164452,7,1275,WHO,Europe
+FIN,FI,Europe and Eurasia,EURO,Finland,High income,5540718,4483820,2021-11-06,Finland,841,163939,9,1268,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-26,Ireland,4763,546909,0,5652,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-25,Ireland,3891,542146,43,5652,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-24,Ireland,3661,538255,0,5609,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-23,Ireland,5630,534594,0,5609,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-22,Ireland,4181,528964,0,5609,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-21,Ireland,5959,524783,0,5609,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-20,Ireland,3133,518824,0,5609,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-19,Ireland,4646,515691,0,5609,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-18,Ireland,3632,511045,43,5609,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-17,Ireland,4407,507413,0,5566,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-16,Ireland,4570,503006,0,5566,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-15,Ireland,3805,498436,0,5566,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-14,Ireland,4642,494631,0,5566,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-13,Ireland,5483,489989,0,5566,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-12,Ireland,3680,484506,0,5566,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-11,Ireland,2975,480826,74,5566,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-10,Ireland,3578,477851,0,5492,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-09,Ireland,3161,474273,0,5492,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-08,Ireland,3428,471112,0,5492,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-07,Ireland,3685,467684,0,5492,WHO,Europe
+IRL,IE,Europe and Eurasia,EURO,Ireland,High income,4937796,3717638,2021-11-06,Ireland,3903,463999,0,5492,WHO,Europe
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-26,Liberia,0,5819,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-25,Liberia,0,5819,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-24,Liberia,0,5819,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-23,Liberia,0,5819,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-22,Liberia,0,5819,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-21,Liberia,0,5819,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-20,Liberia,1,5819,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-19,Liberia,0,5818,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-18,Liberia,0,5818,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-17,Liberia,0,5818,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-16,Liberia,0,5818,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-15,Liberia,0,5818,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-14,Liberia,0,5818,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-13,Liberia,0,5818,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-12,Liberia,0,5818,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-11,Liberia,0,5818,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-10,Liberia,1,5818,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-09,Liberia,2,5817,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-08,Liberia,0,5815,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-07,Liberia,0,5815,0,287,WHO,Africa
+LBR,LR,Sub-Saharan Africa,AFRO,Liberia,Low income,5057677,2674650,2021-11-06,Liberia,0,5815,0,287,WHO,Africa
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-26,Luxembourg,421,87773,2,864,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-25,Luxembourg,556,87352,0,862,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-24,Luxembourg,159,86796,0,862,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-23,Luxembourg,71,86637,0,862,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-22,Luxembourg,283,86566,0,862,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-21,Luxembourg,323,86283,0,862,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-20,Luxembourg,300,85960,0,862,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-19,Luxembourg,299,85660,2,862,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-18,Luxembourg,491,85361,0,860,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-17,Luxembourg,130,84870,0,860,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-16,Luxembourg,50,84740,1,860,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-15,Luxembourg,191,84690,3,859,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-14,Luxembourg,251,84499,0,856,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-13,Luxembourg,180,84248,1,856,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-12,Luxembourg,243,84068,2,855,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-11,Luxembourg,347,83825,0,853,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-10,Luxembourg,185,83478,1,853,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-09,Luxembourg,41,83293,0,852,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-08,Luxembourg,186,83252,1,852,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-07,Luxembourg,224,83066,2,851,WHO,Europe
+LUX,LU,Europe and Eurasia,EURO,Luxembourg,High income,625976,508490,2021-11-06,Luxembourg,219,82842,0,849,WHO,Europe
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-26,Mozambique,9,151512,0,1940,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-25,Mozambique,8,151503,1,1940,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-24,Mozambique,3,151495,1,1939,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-23,Mozambique,4,151492,0,1938,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-22,Mozambique,0,151488,2,1938,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-21,Mozambique,11,151488,0,1936,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-20,Mozambique,5,151477,0,1936,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-19,Mozambique,15,151472,0,1936,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-18,Mozambique,0,151457,0,1936,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-17,Mozambique,25,151457,0,1936,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-16,Mozambique,5,151432,0,1936,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-15,Mozambique,5,151427,2,1936,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-14,Mozambique,8,151422,0,1934,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-13,Mozambique,4,151414,0,1934,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-12,Mozambique,20,151410,0,1934,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-11,Mozambique,8,151390,0,1934,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-10,Mozambique,11,151382,0,1934,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-09,Mozambique,3,151371,0,1934,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-08,Mozambique,1,151368,0,1934,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-07,Mozambique,15,151367,1,1934,WHO,Africa
+MOZ,MZ,Sub-Saharan Africa,AFRO,Mozambique,Low income,31255435,15287520,2021-11-06,Mozambique,13,151352,1,1933,WHO,Africa
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-26,Nepal,242,820527,2,11518,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-25,Nepal,281,820285,3,11516,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-24,Nepal,305,820004,4,11513,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-23,Nepal,313,819699,9,11509,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-22,Nepal,367,819386,4,11500,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-21,Nepal,232,819019,1,11496,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-20,Nepal,209,818787,1,11495,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-19,Nepal,271,818578,5,11494,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-18,Nepal,272,818307,6,11489,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-17,Nepal,363,818035,1,11483,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-16,Nepal,339,817672,4,11482,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-15,Nepal,367,817333,1,11478,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-14,Nepal,291,816966,6,11477,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-13,Nepal,260,816675,2,11471,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-12,Nepal,355,816415,3,11469,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-11,Nepal,301,816060,6,11466,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-10,Nepal,387,815759,6,11460,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-09,Nepal,443,815372,1,11454,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-08,Nepal,371,814929,5,11453,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-07,Nepal,141,814558,9,11448,WHO,Southeast Asia
+NPL,NP,South and Central Asia,SEARO,Nepal,Lower middle income,29136808,18853471,2021-11-06,Nepal,128,814417,1,11439,WHO,Southeast Asia
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-26,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-25,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-24,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-23,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-22,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-21,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-20,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-19,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-18,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-17,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-16,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-15,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-14,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-13,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-12,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-11,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-10,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-09,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-08,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-07,Palau,0,8,0,0,WHO,Western Pacific
+PLW,PW,East Asia and the Pacific,WPRO,Palau,High income,18092,NA,2021-11-06,Palau,0,8,0,0,WHO,Western Pacific
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-26,Paraguay,64,462453,1,16365,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-25,Paraguay,58,462389,1,16364,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-24,Paraguay,48,462331,3,16363,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-23,Paraguay,41,462283,5,16360,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-22,Paraguay,44,462242,1,16355,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-21,Paraguay,52,462198,5,16354,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-20,Paraguay,37,462146,6,16349,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-19,Paraguay,50,462109,1,16343,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-18,Paraguay,56,462059,2,16342,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-17,Paraguay,46,462003,3,16340,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-16,Paraguay,45,461957,2,16337,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-15,Paraguay,47,461912,1,16335,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-14,Paraguay,291,461865,61,16334,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-13,Paraguay,54,461574,1,16273,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-12,Paraguay,54,461520,0,16272,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-11,Paraguay,53,461466,6,16272,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-10,Paraguay,52,461413,3,16266,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-09,Paraguay,48,461361,4,16263,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-08,Paraguay,38,461313,1,16259,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-07,Paraguay,50,461275,2,16258,WHO,Americas
+PRY,PY,Western Hemisphere,AMRO,Paraguay,Upper middle income,7132530,4677178,2021-11-06,Paraguay,41,461225,0,16256,WHO,Americas
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-26,Qatar,155,242673,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-25,Qatar,143,242518,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-24,Qatar,147,242375,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-23,Qatar,141,242228,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-22,Qatar,118,242087,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-21,Qatar,150,241969,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-20,Qatar,147,241819,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-19,Qatar,145,241672,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-18,Qatar,149,241527,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-17,Qatar,146,241378,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-16,Qatar,143,241232,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-15,Qatar,124,241089,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-14,Qatar,137,240965,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-13,Qatar,123,240828,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-12,Qatar,148,240705,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-11,Qatar,172,240557,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-10,Qatar,138,240385,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-09,Qatar,149,240247,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-08,Qatar,103,240098,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-07,Qatar,124,239995,0,611,WHO,Eastern Mediterranean
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Qatar,High income,2881060,2431330,2021-11-06,Qatar,119,239871,0,611,WHO,Eastern Mediterranean
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-26,Serbia,2677,1244169,48,11433,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-25,Serbia,2631,1241492,50,11385,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-24,Serbia,3033,1238861,54,11335,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-23,Serbia,2771,1235828,56,11281,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-22,Serbia,2081,1233057,59,11225,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-21,Serbia,2648,1230976,51,11166,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-20,Serbia,3086,1228328,53,11115,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-19,Serbia,3219,1225242,55,11062,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-18,Serbia,3600,1222023,56,11007,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-17,Serbia,3773,1218423,55,10951,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-16,Serbia,3487,1214650,57,10896,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-15,Serbia,2777,1211163,58,10839,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-14,Serbia,3484,1208386,59,10781,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-13,Serbia,3822,1204902,67,10722,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-12,Serbia,3998,1201080,60,10655,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-11,Serbia,4606,1197082,61,10595,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-10,Serbia,5103,1192476,62,10534,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-09,Serbia,4348,1187373,67,10472,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-08,Serbia,3888,1183025,69,10405,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-07,Serbia,4804,1179137,65,10336,WHO,Europe
+SRB,RS,Europe and Eurasia,EURO,Serbia,Upper middle income,8737370,7088811,2021-11-06,Serbia,5725,1174333,68,10271,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-26,Sweden,2047,1196688,0,15142,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-25,Sweden,2080,1194641,0,15142,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-24,Sweden,954,1192561,1,15142,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-23,Sweden,482,1191607,2,15141,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-22,Sweden,1092,1191125,0,15139,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-21,Sweden,1316,1190033,3,15139,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-20,Sweden,1130,1188717,1,15136,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-19,Sweden,1206,1187587,3,15135,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-18,Sweden,1300,1186381,3,15132,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-17,Sweden,575,1185081,4,15129,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-16,Sweden,311,1184506,3,15125,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-15,Sweden,830,1184195,2,15122,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-14,Sweden,911,1183365,5,15120,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-13,Sweden,926,1182454,8,15115,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-12,Sweden,1020,1181528,2,15107,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-11,Sweden,1325,1180508,8,15105,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-10,Sweden,505,1179183,2,15097,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-09,Sweden,278,1178678,2,15095,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-08,Sweden,597,1178400,7,15093,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-07,Sweden,731,1177803,5,15086,WHO,Europe
+SWE,SE,Europe and Eurasia,EURO,Sweden,High income,10099270,7989652,2021-11-06,Sweden,827,1177072,2,15081,WHO,Europe
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-26,Suriname,48,50629,1,1158,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-25,Suriname,50,50581,5,1157,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-24,Suriname,67,50531,0,1152,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-23,Suriname,26,50464,3,1152,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-22,Suriname,28,50438,3,1149,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-21,Suriname,54,50410,3,1146,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-20,Suriname,54,50356,3,1143,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-19,Suriname,60,50302,0,1140,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-18,Suriname,72,50242,1,1140,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-17,Suriname,92,50170,0,1139,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-16,Suriname,32,50078,3,1139,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-15,Suriname,33,50046,3,1136,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-14,Suriname,63,50013,0,1133,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-13,Suriname,48,49950,7,1133,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-12,Suriname,90,49902,4,1126,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-11,Suriname,82,49812,5,1122,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-10,Suriname,128,49730,0,1117,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-09,Suriname,52,49602,3,1117,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-08,Suriname,46,49550,2,1114,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-07,Suriname,104,49504,5,1112,WHO,Americas
+SUR,SR,Western Hemisphere,AMRO,Suriname,Upper middle income,586634,399644,2021-11-06,Suriname,38,49400,6,1107,WHO,Americas
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-25,Taiwan,10,16554,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-24,Taiwan,5,16544,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-23,Taiwan,7,16539,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-22,Taiwan,3,16532,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-21,Taiwan,9,16529,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-20,Taiwan,4,16520,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-19,Taiwan,10,16516,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-18,Taiwan,3,16506,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-17,Taiwan,5,16503,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-16,Taiwan,2,16498,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-15,Taiwan,9,16496,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-14,Taiwan,8,16487,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-13,Taiwan,4,16479,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-12,Taiwan,10,16475,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-11,Taiwan,9,16465,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-10,Taiwan,5,16456,0,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-09,Taiwan,6,16451,1,848,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-08,Taiwan,3,16445,0,847,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-07,Taiwan,4,16442,0,847,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-06,Taiwan,1,16438,0,847,JHU,Western Pacific
+TWN,TW,East Asia and the Pacific,WPRO,Taiwan,High income,23816775,20097335,2021-11-05,Taiwan,7,16437,0,847,JHU,Western Pacific
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-26,Uganda,76,127413,1,3251,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-25,Uganda,32,127337,0,3250,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-24,Uganda,37,127305,0,3250,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-23,Uganda,31,127268,-6,3250,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-22,Uganda,22,127237,0,3256,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-21,Uganda,49,127215,0,3256,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-20,Uganda,38,127166,0,3256,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-19,Uganda,55,127128,9,3256,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-18,Uganda,27,127073,3,3247,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-17,Uganda,44,127046,3,3244,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-16,Uganda,37,127002,2,3241,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-15,Uganda,42,126965,1,3239,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-14,Uganda,34,126923,1,3238,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-13,Uganda,56,126889,1,3237,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-12,Uganda,70,126833,2,3236,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-11,Uganda,49,126763,3,3234,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-10,Uganda,70,126714,1,3231,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-09,Uganda,19,126644,2,3230,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-08,Uganda,55,126625,1,3228,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-07,Uganda,78,126570,2,3227,WHO,Africa
+UGA,UG,Sub-Saharan Africa,AFRO,Uganda,Low income,45741000,21424113,2021-11-06,Uganda,85,126492,2,3225,WHO,Africa
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-26,United States of America,100455,47802459,1367,771529,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-25,United States of America,102708,47702004,1597,770162,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-24,United States of America,162130,47599296,1269,768565,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-23,United States of America,32036,47437166,111,767296,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-22,United States of America,32331,47405130,269,767185,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-21,United States of America,112734,47372799,1832,766916,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-20,United States of America,124223,47260065,3893,765084,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-19,United States of America,105052,47135842,1412,761191,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-18,United States of America,96586,47030790,1431,759779,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-17,United States of America,145975,46934204,1110,758348,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-16,United States of America,27821,46788229,174,757238,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-15,United States of America,61281,46760408,480,757064,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-14,United States of America,124645,46699127,1814,756584,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-13,United States of America,69994,46574482,919,754770,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-12,United States of America,92270,46504488,1333,753851,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-11,United States of America,83063,46412218,1549,752518,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-10,United States of America,128066,46329155,1160,750969,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-09,United States of America,25859,46201089,197,749809,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-08,United States of America,28745,46175230,411,749612,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-07,United States of America,89454,46146485,1590,749201,WHO,Americas
+USA,US,NA,AMRO,United States of America,High income,331002647,257509854,2021-11-06,United States of America,87995,46057031,1171,747611,WHO,Americas
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-26,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-25,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-24,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-23,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-22,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-21,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-20,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-19,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-18,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-17,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-16,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-15,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-14,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-13,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-12,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-11,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-10,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-09,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-08,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-07,Holy See,0,26,0,0,WHO,Europe
+VAT,VA,Europe and Eurasia,EURO,Holy See,NA,809,NA,2021-11-06,Holy See,0,26,0,0,WHO,Europe
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-26,British Virgin Islands,0,2773,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-25,British Virgin Islands,8,2773,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-24,British Virgin Islands,0,2765,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-23,British Virgin Islands,0,2765,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-22,British Virgin Islands,0,2765,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-21,British Virgin Islands,0,2765,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-20,British Virgin Islands,0,2765,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-19,British Virgin Islands,0,2765,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-18,British Virgin Islands,0,2765,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-17,British Virgin Islands,20,2765,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-16,British Virgin Islands,0,2745,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-15,British Virgin Islands,0,2745,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-14,British Virgin Islands,0,2745,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-13,British Virgin Islands,0,2745,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-12,British Virgin Islands,0,2745,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-11,British Virgin Islands,0,2745,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-10,British Virgin Islands,0,2745,0,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-09,British Virgin Islands,20,2745,1,38,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-08,British Virgin Islands,0,2725,0,37,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-07,British Virgin Islands,0,2725,0,37,WHO,Americas
+VGB,VG,NA,AMRO,British Virgin Islands,High income,30237,NA,2021-11-06,British Virgin Islands,0,2725,0,37,WHO,Americas
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-26,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-25,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-24,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-23,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-22,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-21,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-20,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-19,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-18,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-17,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-16,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-15,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-14,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-13,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-12,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-11,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-10,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-09,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-08,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-07,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+WLF,WF,NA,WPRO,Wallis and Futuna,NA,11246,NA,2021-11-06,Wallis and Futuna,0,454,0,7,WHO,Western Pacific
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-26,Mayotte,24,20938,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-25,Mayotte,0,20914,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-24,Mayotte,54,20914,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-23,Mayotte,0,20860,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-22,Mayotte,0,20860,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-21,Mayotte,0,20860,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-20,Mayotte,0,20860,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-19,Mayotte,23,20860,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-18,Mayotte,47,20837,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-17,Mayotte,0,20790,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-16,Mayotte,0,20790,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-15,Mayotte,21,20790,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-14,Mayotte,0,20769,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-13,Mayotte,0,20769,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-12,Mayotte,18,20769,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-11,Mayotte,0,20751,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-10,Mayotte,42,20751,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-09,Mayotte,0,20709,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-08,Mayotte,58,20709,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-07,Mayotte,0,20651,0,185,WHO,Africa
+MYT,YT,NA,AFRO,Mayotte,NA,272813,148010,2021-11-06,Mayotte,0,20651,0,185,WHO,Africa

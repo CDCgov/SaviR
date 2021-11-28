@@ -91,9 +91,6 @@ ggsave(burden_map_global, filename = paste0("../inst/extdata/epi_curve_", Sys.Da
 
 burden_map_global
 
-```
-
-```{r, fig.width = 6, fig.height = 6}
 for (r in unique(filter(df, !is.na(who_region))$who_region)) {
   burden_map_regional <- map_burden(df %>%
     filter(id != "CHN" | source != "WHO") %>%
