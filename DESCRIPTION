@@ -35,6 +35,7 @@ LazyData: true
 RoxygenNote: 7.1.2
 Suggests: 
     rmarkdown,
+    tidyr,
     webshot,
     knitr,
     vdiffr,
