@@ -2,7 +2,7 @@
 
 #' @title get_vax
 #' @description Get vaccinations from OWID
-#'
+#' @importFrom bit64 is.integer64
 #' @export
 #'
 

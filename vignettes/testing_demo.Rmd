@@ -2,12 +2,16 @@
 title: "Testing Demo"
 author: "Randy"
 date: "8/19/2021"
+vignette: >
+  %\VignetteIndexEntry{Testing Demo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(SaviR)
-library(tidyverse)
+library(dplyr)
 ```
 
 ```{r}
