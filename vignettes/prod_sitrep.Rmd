@@ -22,7 +22,9 @@ if (!webshot::is_phantomjs_installed()) {
 }
 
 library(SaviR)
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 library(gt)
 
 sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
