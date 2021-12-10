@@ -84,7 +84,7 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
         to = as.Date(lubridate::floor_date(max(df_c$date, na.rm = T) + 7, "week", week_start = 1)),
         by = "4 weeks"
       ),
-      date_labels = "%e\n%b",
+      date_labels = "%e %b",
       expand = c(0, 0)
     ) +
     ggplot2::scale_y_continuous(
@@ -98,7 +98,9 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
     ggplot2::theme_classic() +
     ggplot2::theme(
       plot.title = ggplot2::element_text(size = 17, face = "bold", family = "Calibri"),
-      axis.text = ggplot2::element_text(size = 10, family = "Calibri"),
+      plot.margin = unit(c(5.5, 11, 5.5, 5.5), "points"),
+      axis.text.x = ggplot2::element_text(size = 9, family = "Calibri", angle = 45, hjust = 1),
+      axis.text.y = ggplot2::element_text(size = 10, family = "Calibri"),
       axis.title = ggplot2::element_text(size = 12, family = "Calibri"),
       legend.title = ggplot2::element_text(size = 12, face = "bold", family = "Calibri"),
       legend.text = ggplot2::element_text(size = 9, family = "Calibri"),
