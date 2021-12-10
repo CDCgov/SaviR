@@ -28,7 +28,7 @@ get_owid_meta <- function(url = "https://ourworldindata.org/coronavirus-testing"
   countries <- countries[!is.na(countries)]
 
   # Selector under which all the data is located
-  root.selector <- "body > main > article > div.content-wrapper > div.offset-content > div > div > section:nth-child(5)"
+  root.selector <- "body > main > article > div.content-wrapper > div.offset-content > div.content-and-footnotes > div.article-content > section:nth-child(4)"
   n.children <- content %>%
     # Number of children the selector has
     html_elements(css = root.selector) %>%
