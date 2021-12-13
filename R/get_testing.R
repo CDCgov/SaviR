@@ -564,29 +564,39 @@ get_preferred_tests14 <- function(test_long, last_X_days = 14, analysis_date = N
 
   all_recent_final <- all_recent %>%
     mutate(
-      preferred_source = ifelse(iso_code %in% owid_first, "OWID",
-        ifelse(iso_code %in% find_second, "FIND", NA)
+      preferred_source = case_when(
+        iso_code %in% owid_first ~ "OWID",
+        iso_code %in% find_second ~ "FIND",
+        TRUE ~ NA_character_
       ),
-      new_tests_daily14 = ifelse(preferred_source == "OWID", owid_tests_daily14,
-        ifelse(preferred_source == "FIND", find_tests_daily14, NA)
+      new_tests_daily14 = case_when(
+        preferred_source == "OWID" ~ owid_tests_daily14,
+        preferred_source == "FIND" ~ find_tests_daily14
       ),
-      new_tests_daily14_prev = ifelse(preferred_source == "OWID", owid_tests_daily14_prev,
-        ifelse(preferred_source == "FIND", find_tests_daily14_prev, NA)
+      new_tests_daily14_prev = case_when(
+        preferred_source == "OWID" ~ owid_tests_daily14_prev,
+        preferred_source == "FIND" ~ find_tests_daily14_prev
       ),
-      new_tests_daily14_1k = ifelse(preferred_source == "OWID", owid_tests_daily14_1k,
-        ifelse(preferred_source == "FIND", find_tests_daily14_1k, NA)
+      new_tests_daily14_1k = case_when(
+        preferred_source == "OWID" ~ owid_tests_daily14_1k,
+        preferred_source == "FIND" ~ find_tests_daily14_1k
       ),
-      new_tests_daily14_1k_prev = ifelse(preferred_source == "OWID", owid_tests_daily14_1k_prev,
-        ifelse(preferred_source == "FIND", find_tests_daily14_1k_prev, NA)
+      new_tests_daily14_1k_prev = case_when(
+        preferred_source == "OWID" ~ owid_tests_daily14_1k_prev,
+        preferred_source == "FIND" ~ find_tests_daily14_1k_prev
       ),
-      preferred_recent_date = as.Date(ifelse(preferred_source == "OWID", owid_date,
-        ifelse(preferred_source == "FIND", find_date, NA)
-      )),
-      flag_negative_tests_previous14 = ifelse(preferred_source == "OWID", owid_flag_negative_tests_prev14,
-        ifelse(preferred_source == "FIND", find_flag_negative_tests_prev14, NA)
+      preferred_recent_date = case_when(
+        preferred_source == "OWID" ~ as.Date(owid_date),
+        preferred_source == "FIND" ~ as.Date(find_date),
+        TRUE ~ as.Date(NA)
       ),
-      flag_increase_tests_previous14 = ifelse(preferred_source == "OWID", owid_flag_increase_tests_prev14,
-        ifelse(preferred_source == "FIND", find_flag_increase_tests_prev14, NA)
+      flag_negative_tests_previous14 = case_when(
+        preferred_source == "OWID" ~ owid_flag_negative_tests_prev14,
+        preferred_source == "FIND" ~ find_flag_negative_tests_prev14
+      ),
+      flag_increase_tests_previous14 = case_when(
+        preferred_source == "OWID" ~ owid_flag_increase_tests_prev14,
+        preferred_source == "FIND" ~ find_flag_increase_tests_prev14
       )
     ) %>%
     relocate(
