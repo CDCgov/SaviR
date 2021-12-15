@@ -12,6 +12,7 @@ OUTPUT: Data set of scraped information related to data definitions and sources 
 }
 \examples{
 \dontrun{
-testing_df <- get_testing() }
+testing_df <- get_testing()
+}
 
 }

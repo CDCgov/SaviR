@@ -11,5 +11,7 @@ Get last 2 weeks of GDELT COVID news. Deduplicated by DateTime, URL, and DomainC
 }
 \examples{
 \dontrun{
-gdeltnews_df <- get_gdeltnews()}
+gdeltnews_df <- get_gdeltnews()
+}
+
 }

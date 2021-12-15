@@ -4,14 +4,18 @@
 \alias{get_testing}
 \title{get_testing}
 \usage{
-get_testing()
+get_testing(analysis_date = Sys.Date() - 1L)
 }
 \description{
 Subsets the full testing data set obtained via get_testing_long to have only one preferred source per country
 OUTPUT:
+- Function argument test_long is the output from get_testing_long()
+- Most recent 7-day average data points for new tests per 1K AND positivity rate for use in risk matrix plots by WHO region.
+- After accounting for flags, we pick OWID by default when both OWID and FIND are available in last X days
 }
 \examples{
 \dontrun{
-testing <- get_testing()}
+testing <- get_testing()
+}
 
 }

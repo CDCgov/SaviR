@@ -98,6 +98,8 @@ get_owid_meta <- function(url = "https://ourworldindata.org/coronavirus-testing"
     mutate(
       test_definition = replace(test_definition, test_definition == "", NA_character_),
       case_definition = replace(case_definition, case_definition == "", NA_character_),
+      # NOTE: Passport doesn't parse Timor, so it'll throw a warning
+      # it'll be handled in the next ifelse() line, though
       iso_code = passport::parse_country(country, to = "iso3c"),
       iso_code = ifelse(country == "Timor", "TLS", iso_code)
     ) %>%
@@ -152,7 +154,8 @@ get_owid_meta <- function(url = "https://ourworldindata.org/coronavirus-testing"
 #' @title get_testing_long
 #' @description Download and combine full time series data related to testing as compiled by Our World in Data and FIND
 #' OUTPUT: Longitudinal data set with both FIND and OWID data sets with consistent definitions
-#' @importFrom magrittr `%>%`
+#'
+#' @import zoo
 #'
 #' @export
 #'

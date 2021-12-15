@@ -14,6 +14,12 @@ Calculate epi stats a generalized df input.
 }
 \examples{
 \dontrun{
-riskmatrix_v3_df <- calc_riskmatrix_v3()}
+df <- onetable \%>\%
+     right_join(get_covid_df() \%>\% select(-who_region), by = c("iso2code" = "country_code")) \%>\%
+     filter(!(country == "China" & source == "WHO"))
+
+calc_add_risk(df)
+
+}
 
 }

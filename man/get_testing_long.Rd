@@ -23,6 +23,7 @@ OUTPUT: Longitudinal data set with both FIND and OWID data sets with consistent 
 }
 \examples{
 \dontrun{
-testing_long <- get_testing_long()}
+testing_long <- get_testing_long()
+}
 
 }

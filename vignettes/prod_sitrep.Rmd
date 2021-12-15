@@ -22,7 +22,9 @@ if (!webshot::is_phantomjs_installed()) {
 }
 
 library(SaviR)
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 library(gt)
 
 sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
@@ -81,7 +83,7 @@ for (r in unique(filter(df, !is.na(who_region))$who_region)) {
 
 The "map_burden" function requires a result column where weekly average incidence is converted into factors using "cut". The dataframe normally used is WHO appended with JHU and filtered for the report date. The region maps can also be produced by simply filtering the input dataframe for the specific region. Again the function will detect the number of regions provided and will act accordingly.  
 
-```{r}
+```{r, fig.width = 9, fig.height = 2.5}
 burden_map_global <- map_burden(df %>%
   filter(id != "CHN" | source != "WHO") %>%
   mutate(result = cut(week_case_incidence, breaks = c(-0.1, 1, 10, 25, Inf))) %>%
