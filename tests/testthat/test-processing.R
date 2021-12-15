@@ -1,4 +1,4 @@
-test_that("COVID Case Data is accessible", {
+test_that("Calc_add_risk returns expected result", {
 
   # Sean NOTE:
   # I used this code to generate the test set you see below.
