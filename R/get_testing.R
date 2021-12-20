@@ -36,7 +36,7 @@ get_owid_meta <- function(url = "https://ourworldindata.org/coronavirus-testing"
     length()
 
   # Identify elements with information
-  element.list <- seq(14, n.children - 26, by = 2)
+  element.list <- seq(13, n.children - 26, by = 2)
   # Country data starts on element 14
   # Last 26 elements are not country data but general footnotes
   # Country headings & country names are in the even elements
