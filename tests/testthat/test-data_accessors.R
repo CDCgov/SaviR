@@ -35,6 +35,6 @@ test_that("GDELT News accessor returns data", {
   # Should have > 0 records
   expect_gt(dims[1], 0)
 
-  # Should have 17 columns per spec
-  expect_equal(dims[2], 17)
+  # Should have 16 columns per spec
+  expect_equal(dims[2], 16)
 })

@@ -7,7 +7,7 @@
 #' @param period (numeric) Number of days to look back from start_date
 #' @param start_date (Date) Date from which to look back
 #'
-#' @return A data frame with n rows and 17 variables:
+#' @return A data frame with n rows and 16 variables:
 #' \itemize{
 #'   \item{\code{DateTime}}{  POSIXct}
 #'   \item{\code{URL}}{  character}
