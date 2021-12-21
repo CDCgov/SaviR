@@ -401,4 +401,3 @@ ggsave(global_vax_coverage, filename = paste0("../inst/extdata/vax_cov_region_do
 
 global_vax_coverage
 ```
-

@@ -13,11 +13,6 @@ test_that("COVID Case Data is accessible", {
   expect_gt(nrow(df), 0)
 })
 
-test_that("OWID Testing webscraping returns data", {
-  df <- get_owid_meta()
-  expect_gt(nrow(df), 0)
-})
-
 test_that("OWID+FIND Time Series data is available", {
   df <- get_testing_long()
   expect_gt(nrow(df), 0)
