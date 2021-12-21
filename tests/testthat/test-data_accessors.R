@@ -29,6 +29,12 @@ test_that("OWID+FIND Testing pipeline returns data", {
 })
 
 test_that("GDELT News accessor returns data", {
-  df <- get_gdeltnews()
-  expect_gt(nrow(df), 0)
+  df <- get_gdeltnews(2)
+  dims <- dim(df)
+
+  # Should have > 0 records
+  expect_gt(dims[1], 0)
+
+  # Should have 16 columns per spec
+  expect_equal(dims[2], 16)
 })
