@@ -24,7 +24,8 @@ get_covid_df <- function() {
     mutate(
       date = as.Date(date),
       source = "WHO"
-    )
+    ) %>%
+    select(-who_region)
 
   jhu_cases <- fread("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv", stringsAsFactors = FALSE, check.names = FALSE) %>%
     rename_all(tolower) %>%
@@ -73,7 +74,6 @@ get_covid_df <- function() {
   jhu_data <- left_join(jhu_cases, jhu_deaths, by = c("country/region", "date")) %>%
     rename(country = `country/region`) %>%
     mutate(
-      who_region = "WPRO",
       iso2code = case_when(
         country == "China" ~ "CN",
         country == "Taiwan" ~ "TW",
@@ -85,20 +85,6 @@ get_covid_df <- function() {
     arrange(country, date)
 
   df <- bind_rows(who_data, jhu_data)
-
-  df <- df %>%
-    mutate(who_region = factor(who_region, levels = c("AMRO", "EURO", "SEARO", "EMRO", "AFRO", "WPRO"))) %>%
-    mutate(
-      region = case_when(
-        who_region == "AMRO" ~ "Americas",
-        who_region == "EURO" ~ "Europe",
-        who_region == "SEARO" ~ "Southeast Asia",
-        who_region == "EMRO" ~ "Eastern Mediterranean",
-        who_region == "AFRO" ~ "Africa",
-        who_region == "WPRO" ~ "Western Pacific"
-      ),
-      region = factor(region, levels = c("Americas", "Europe", "Southeast Asia", "Eastern Mediterranean", "Africa", "Western Pacific"))
-    )
 
   return(df)
 }
