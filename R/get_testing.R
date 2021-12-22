@@ -23,15 +23,14 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
 
   # Download various OWID/FIND datasets
   ## The testing-specific OWID dataset may be more up to date than the overall OWID dataset
-  testing_OWID <-
-    data.table::fread(owid_test_source, data.table = F, showProgress = F, verbose = F) %>%
+  testing_OWID <- data.table::fread(owid_test_source, data.table = F, showProgress = F, verbose = F) %>%
     filter(!(Entity %in% c(
       "Poland - samples tested", "Italy - people tested",
       "Canada - people tested"
     ))) %>%
     mutate(date = as.Date(Date)) %>%
     select(
-      iso_code = `ISO code`,
+      iso3code = `ISO code`,
       date,
       test_source_url = `Source URL`,
       total_tests = `Cumulative total`,
@@ -41,27 +40,27 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
       new_tests_smoothed_per_thousand = `7-day smoothed daily change per thousand`,
       positive_rate = `Short-term positive rate`
     ) %>%
-    mutate(iso_code = recode(iso_code, "OWID_KOS" = "XKX"))
+    mutate(iso3code = recode(iso3code, "OWID_KOS" = "XKX"))
 
   # Make sure you have just 1 observation per iso-code/date pairing
   n_test_iso <- testing_OWID %>%
-    count(iso_code, date) %>%
+    count(iso3code, date) %>%
     filter(n > 1)
   if (nrow(n_test_iso) > 0) {
     stop("Check testing dataset in get_testing_long() -- multiple values per country-date")
   }
 
-  full_OWID <-
-    data.table::fread(owid_all_source, data.table = F, showProgress = F, verbose = F) %>%
+  full_OWID <- data.table::fread(owid_all_source, data.table = F, showProgress = F, verbose = F) %>%
+    rename(iso3code = iso_code) %>%
     mutate(date = as.Date(date)) %>%
-    mutate(iso_code = recode(iso_code, "OWID_KOS" = "XKX")) %>%
-    filter(!grepl("OWID", iso_code)) %>%
+    mutate(iso3code = recode(iso3code, "OWID_KOS" = "XKX")) %>%
+    filter(!grepl("OWID", iso3code)) %>%
     select(
-      iso_code, location, date, population, total_cases, new_cases, new_cases_smoothed,
+      iso3code, location, date, population, total_cases, new_cases, new_cases_smoothed,
       tests_units
     )
 
-  full_OWID_tests <- full_join(full_OWID, testing_OWID, by = c("iso_code", "date"))
+  full_OWID_tests <- full_join(full_OWID, testing_OWID, by = c("iso3code", "date"))
 
   full_FIND <-
     data.table::fread(find_source, data.table = F, verbose = F, showProgress = F) %>%
@@ -71,7 +70,7 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
     data.table::fread(find_meta_source, data.table = F, verbose = F, showProgress = F) %>%
     filter(set == "country") %>%
     select(
-      iso_code = unit,
+      iso3code = unit,
       tests_units = tests_description,
       test_definition = tests_type
     ) %>%
@@ -100,20 +99,20 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
 
   iso_countries <- rbind(
     iso_nocumtest <- owid_countries %>% filter(is.na(total_tests) & !is.na(new_tests)) %>%
-      group_by(iso_code) %>% summarize(n_obs = n(), cumtest_available = F),
+      group_by(iso3code) %>% summarize(n_obs = n(), cumtest_available = F),
     iso_cumtest <- owid_countries %>% filter(!is.na(total_tests)) %>%
-      group_by(iso_code) %>% summarize(n_obs = n(), cumtest_available = T)
+      group_by(iso3code) %>% summarize(n_obs = n(), cumtest_available = T)
   )
 
   # Full series for countries with any new tests or cumulative tests data at any point in time
   owid_data <- full_OWID_tests %>%
     # Use above to limit to just the countries where there is at least some OWID data
-    filter(iso_code %in% iso_countries$iso_code) %>%
-    left_join(iso_countries %>% select(iso_code, cumtest_available),
-      by = "iso_code"
+    filter(iso3code %in% iso_countries$iso3code) %>%
+    left_join(iso_countries %>% select(iso3code, cumtest_available),
+      by = "iso3code"
     ) %>%
     select(-test_source_url) %>%
-    group_by(iso_code) %>%
+    group_by(iso3code) %>%
     arrange(date) %>%
     mutate(
       total_tests_int = zoo::na.approx(total_tests, na.rm = F, maxgap = find_maxgap),
@@ -180,13 +179,13 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
     select(-set) %>%
     rename(
       date = time,
-      iso_code = unit
+      iso3code = unit
     ) %>%
     mutate(date = as.Date(date)) %>%
-    mutate(iso_code = recode(iso_code, "XK" = "XKX"))
+    mutate(iso3code = recode(iso3code, "XK" = "XKX"))
 
   find_data2 <- find_data %>%
-    group_by(iso_code) %>%
+    group_by(iso3code) %>%
     arrange(date) %>%
     mutate(
       # First, replace 0s with NAs
@@ -241,7 +240,7 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
     ungroup(.)
 
   # Create several longitudinal datasets -- save as RDS, excel, csv
-  find_longdata <- left_join(find_data2, find_meta, by = "iso_code") %>%
+  find_longdata <- left_join(find_data2, find_meta, by = "iso3code") %>%
     rename(
       total_tests_original = cum_tests_orig,
       new_tests_original = new_tests_orig,
@@ -252,7 +251,7 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
       cumtest_available = T
     ) %>%
     select(
-      iso_code, date, population, total_tests_original, new_tests_original,
+      iso3code, date, population, total_tests_original, new_tests_original,
       total_tests_int, new_tests_int,
       new_tests_daily7, new_tests_daily7_prev, new_tests_daily7_per_1k, new_tests_daily7_per_1k_prev,
       new_tests_daily14, new_tests_daily14_prev, new_tests_daily14_per_1k, new_tests_daily14_per_1k_prev,
@@ -261,9 +260,9 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
       starts_with("FLAG_"),
       tests_units:posrate_definition, cumtest_available
     ) %>%
-    arrange(iso_code, date)
+    arrange(iso3code, date)
 
-  owid_longdata <- left_join(owid_data, owid_meta, by = "iso_code") %>%
+  owid_longdata <- left_join(owid_data, owid_meta, by = "iso3code") %>%
     mutate(
       # When positivity rate is directly calculated from source, ignore the flag
       FLAG_negative_cases_7day = replace(FLAG_negative_cases_7day, posrate_direct == TRUE, 0),
@@ -277,7 +276,7 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
       new_cases_original = new_cases
     ) %>%
     select(
-      iso_code, date, population,
+      iso3code, date, population,
       total_tests_original, new_tests_original,
       total_tests_int,
       new_tests_int = new_tests_int2,
@@ -289,7 +288,7 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
       tests_units, test_definition:posrate_definition, cumtest_available
     ) %>%
     select(-posrate_direct) %>%
-    arrange(iso_code, date)
+    arrange(iso3code, date)
 
   # Combine into a single longitudinal dataset and output
   test_long <-
@@ -299,8 +298,8 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
       find_longdata[, names(owid_longdata)] %>%
         mutate(data_source = "FIND")
     ) %>%
-    relocate(data_source, iso_code, date) %>%
-    arrange(data_source, iso_code, date)
+    relocate(data_source, iso3code, date) %>%
+    arrange(data_source, iso3code, date)
 
   return(test_long)
 }
@@ -342,7 +341,7 @@ get_preferred_tests14 <- function(test_long, last_X_days = 14, analysis_date = N
 
   owid_recent <- owid_df %>%
     filter(!is.na(new_tests_daily14_per_1k)) %>%
-    group_by(iso_code) %>%
+    group_by(iso3code) %>%
     arrange(date) %>%
     slice_max(order_by = date, n = 1) %>%
     ungroup() %>%
@@ -351,7 +350,7 @@ get_preferred_tests14 <- function(test_long, last_X_days = 14, analysis_date = N
 
   find_recent <- find_df %>%
     filter(!is.na(new_tests_daily14_per_1k)) %>%
-    group_by(iso_code) %>%
+    group_by(iso3code) %>%
     arrange(date) %>%
     slice_max(order_by = date, n = 1) %>%
     ungroup()
@@ -360,7 +359,7 @@ get_preferred_tests14 <- function(test_long, last_X_days = 14, analysis_date = N
   all_recent <-
     full_join(
       owid_recent %>%
-        select(iso_code,
+        select(iso3code,
           owid_date = date,
           owid_total_tests_orig = total_tests_original,
           owid_total_tests_int = total_tests_int,
@@ -378,7 +377,7 @@ get_preferred_tests14 <- function(test_long, last_X_days = 14, analysis_date = N
           owid_test_definition = test_definition
         ),
       find_recent %>%
-        select(iso_code,
+        select(iso3code,
           find_date = date,
           find_total_tests = total_tests_original,
           find_total_tests_int = total_tests_int,
@@ -395,7 +394,7 @@ get_preferred_tests14 <- function(test_long, last_X_days = 14, analysis_date = N
           find_tests_units = tests_units,
           find_test_definition = test_definition
         ),
-      by = "iso_code"
+      by = "iso3code"
     )
 
   owid_recent_sub <- owid_recent %>%
@@ -406,14 +405,14 @@ get_preferred_tests14 <- function(test_long, last_X_days = 14, analysis_date = N
     filter(date >= X_date) %>%
     filter(FLAG_increase_tests_14day == 0 & FLAG_negative_tests_14day == 0)
 
-  owid_first <- unique(owid_recent_sub$iso_code)
-  find_second <- setdiff(unique(find_recent_sub$iso_code), owid_first)
+  owid_first <- unique(owid_recent_sub$iso3code)
+  find_second <- setdiff(unique(find_recent_sub$iso3code), owid_first)
 
   all_recent_final <- all_recent %>%
     mutate(
       preferred_source = case_when(
-        iso_code %in% owid_first ~ "OWID",
-        iso_code %in% find_second ~ "FIND",
+        iso3code %in% owid_first ~ "OWID",
+        iso3code %in% find_second ~ "FIND",
         TRUE ~ NA_character_
       ),
       new_tests_daily14 = case_when(
@@ -447,7 +446,7 @@ get_preferred_tests14 <- function(test_long, last_X_days = 14, analysis_date = N
       )
     ) %>%
     relocate(
-      iso_code, preferred_source, preferred_recent_date, new_tests_daily14:new_tests_daily14_1k_prev,
+      iso3code, preferred_source, preferred_recent_date, new_tests_daily14:new_tests_daily14_1k_prev,
       starts_with("flag_")
     )
 
@@ -496,43 +495,43 @@ get_preferred_testpos7 <- function(test_long, last_X_days = 14, analysis_date = 
 
   owid_recent_both <- owid_df %>%
     filter(!is.na(new_tests_daily7_per_1k) & !is.na(positive_rate_7day)) %>%
-    group_by(iso_code) %>%
+    group_by(iso3code) %>%
     arrange(date) %>%
     slice_max(order_by = date, n = 1) %>%
     ungroup()
 
   owid_recent_tests <- owid_df %>%
     filter(!is.na(new_tests_daily7_per_1k)) %>%
-    group_by(iso_code) %>%
+    group_by(iso3code) %>%
     arrange(date) %>%
     slice_max(order_by = date, n = 1) %>%
     ungroup()
 
-  owid_test_diff <- setdiff(owid_recent_tests$iso_code, owid_recent_both$iso_code)
+  owid_test_diff <- setdiff(owid_recent_tests$iso3code, owid_recent_both$iso3code)
   # Why does OWID not calculate positivity for Iceland, Qatar?
   # Likely the test and case definitions are known to differ
 
   owid_recent <-
     rbind(
       owid_recent_both,
-      owid_recent_tests %>% filter(iso_code %in% owid_test_diff)
+      owid_recent_tests %>% filter(iso3code %in% owid_test_diff)
     )
 
   find_recent_both <- find_df %>%
     filter(!is.na(new_tests_daily7_per_1k) & !is.na(positive_rate_7day)) %>%
-    group_by(iso_code) %>%
+    group_by(iso3code) %>%
     arrange(date) %>%
     slice_max(order_by = date, n = 1) %>%
     ungroup()
 
   find_recent_tests <- find_df %>%
     filter(!is.na(new_tests_daily7_per_1k)) %>%
-    group_by(iso_code) %>%
+    group_by(iso3code) %>%
     arrange(date) %>%
     slice_max(order_by = date, n = 1) %>%
     ungroup()
 
-  find_test_diff <- setdiff(find_recent_tests$iso_code, find_recent_both$iso_code)
+  find_test_diff <- setdiff(find_recent_tests$iso3code, find_recent_both$iso3code)
   # For some countries, FIND does not have case data
   # Some of these do exist (e.g., HKG) so it's not clear why
   # TODO: Later, we may want to pull in JHU case data on our own rather than rely on FIND's data
@@ -540,14 +539,14 @@ get_preferred_testpos7 <- function(test_long, last_X_days = 14, analysis_date = 
   find_recent <-
     rbind(
       find_recent_both,
-      find_recent_tests %>% filter(iso_code %in% find_test_diff)
+      find_recent_tests %>% filter(iso3code %in% find_test_diff)
     )
 
   # Try a full join between them, rename variables as needed
   all_recent <-
     full_join(
       owid_recent %>%
-        select(iso_code,
+        select(iso3code,
           owid_date = date,
           owid_new_cases = new_cases_original,
           owid_new_cases_daily7 = new_cases_daily7,
@@ -572,7 +571,7 @@ get_preferred_testpos7 <- function(test_long, last_X_days = 14, analysis_date = 
           owid_posrate_definition = posrate_definition
         ),
       find_recent %>%
-        select(iso_code,
+        select(iso3code,
           find_date = date,
           find_new_cases = new_cases_original,
           find_new_cases_daily7 = new_cases_daily7,
@@ -596,7 +595,7 @@ get_preferred_testpos7 <- function(test_long, last_X_days = 14, analysis_date = 
           find_case_definition = case_definition,
           find_posrate_definition = posrate_definition
         ),
-      by = "iso_code"
+      by = "iso3code"
     )
 
   owid_recent_sub <- owid_recent %>%
@@ -610,15 +609,15 @@ get_preferred_testpos7 <- function(test_long, last_X_days = 14, analysis_date = 
       # Some locations in FIND do not have case data -- can include still
       (FLAG_negative_cases_7day == 0 | is.na(FLAG_negative_cases_7day)))
 
-  owid_first <- unique(owid_recent_sub$iso_code)
-  find_second <- setdiff(unique(find_recent_sub$iso_code), owid_first)
+  owid_first <- unique(owid_recent_sub$iso3code)
+  find_second <- setdiff(unique(find_recent_sub$iso3code), owid_first)
 
 
   all_recent_final <- all_recent %>%
     mutate(
       preferred_source = case_when(
-        iso_code %in% owid_first ~ "OWID",
-        iso_code %in% find_second ~ "FIND",
+        iso3code %in% owid_first ~ "OWID",
+        iso3code %in% find_second ~ "FIND",
         TRUE ~ NA_character_
       ),
       new_tests_daily7 = case_when(
@@ -664,7 +663,7 @@ get_preferred_testpos7 <- function(test_long, last_X_days = 14, analysis_date = 
       )
     ) %>%
     relocate(
-      iso_code, preferred_source, preferred_recent_date, positive_rate, positive_rate_prev,
+      iso3code, preferred_source, preferred_recent_date, positive_rate, positive_rate_prev,
       new_tests_daily7:new_tests_daily7_1k_prev, starts_with("flag_")
     )
 
@@ -695,11 +694,11 @@ get_testing <- function(analysis_date = Sys.Date() - 1L) {
   testing_long <- get_testing_long()
   preferred <- get_preferred_testpos7(testing_long, last_X_days = 14, analysis_date = analysis_date)
   preferred_long <- testing_long %>%
-    left_join(preferred %>% select(iso_code, preferred_source), by = c("iso_code" = "iso_code")) %>%
+    left_join(preferred %>% select(iso3code, preferred_source), by = c("iso3code" = "iso3code")) %>%
     filter(data_source == preferred_source)
   # Time Series based on Preferred-Source Data Frame
   preferred_long_locf <- preferred_long %>%
-    group_by(iso_code) %>%
+    group_by(iso3code) %>%
     arrange(date) %>%
     mutate(
       new_tests_smoothed_per_thousand = zoo::na.locf(new_tests_daily7_per_1k, na.rm = F, maxgap = 14),
@@ -707,7 +706,7 @@ get_testing <- function(analysis_date = Sys.Date() - 1L) {
       positive_rate = zoo::na.locf(positive_rate_7day, na.rm = F, maxgap = 14)
     ) %>%
     ungroup(.) %>%
-    select(iso_code, date, new_tests_smoothed_per_thousand, new_tests_smoothed_per_thousand_14, positive_rate)
+    select(iso3code, date, new_tests_smoothed_per_thousand, new_tests_smoothed_per_thousand_14, positive_rate)
 
   return(preferred_long_locf)
 }

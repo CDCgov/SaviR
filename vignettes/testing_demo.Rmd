@@ -38,7 +38,7 @@ df_FIND <- read.csv("https://raw.githubusercontent.com/dsbbfinddx/FINDCov19Track
 
 ```{r}
 df <- onetable %>%
-  right_join(get_covid_df() %>% select(-who_region), by = c("iso2code" = "country_code")) %>%
+  right_join(get_covid_df(), by = "iso2code") %>%
   mutate(date = as.character(date)) %>%
   left_join(df_OWID, by = c("iso3code", "date")) %>%
   left_join(df_FIND, by = c("iso3code", "date")) %>%

@@ -62,6 +62,7 @@ get_gdeltnews <- function(period = 14, start_date = Sys.Date() - 1) {
   }
 
   out <- gdeltnews %>%
+    rename(iso2code = CountryCode) %>%
     mutate(DateTime = as.POSIXct(DateTime)) %>%
     distinct()
 

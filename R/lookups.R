@@ -55,3 +55,30 @@ owid_lk <- c(
   "Curacao"                   = "Curaçao",
   "Cape Verde"                = "Cabo Verde"
 )
+
+#' WHO Country renamings / rebinnings
+who_lk <- c(
+  "Kosovo[1]" = "Kosovo",
+  "Bonaire" = "Bonaire, Sint Eustatius, and Saba",
+  "Sint Eustatius" = "Bonaire, Sint Eustatius, and Saba",
+  "Saba" = "Bonaire, Sint Eustatius, and Saba",
+  "Côte d\u2019Ivoire" = "Cote d'Ivoire",
+  "Bolivia (Plurinational State of)" = "Bolivia",
+  "Democratic Republic of the Congo" = "Congo DR",
+  "Falkland Islands (Malvinas)" = "Falkland Islands",
+  "Iran (Islamic Republic of)" = "Iran",
+  "Democratic People's Republic of Korea" = "Korea (North)",
+  "Lao People's Democratic Republic" = "Laos",
+  "Micronesia (Federated States of)" = "Micronesia",
+  "Northern Mariana Islands (Commonwealth of the)" = "Northern Mariana Islands",
+  "occupied Palestinian territory, including east Jerusalem" = "Palestinian Territory",
+  "Myanmar" = "Burma",
+  "Republic of Korea" = "Korea (South)",
+  "Republic of Moldova" = "Moldova",
+  "Russian Federation" = "Russia",
+  "Syrian Arab Republic" = "Syria",
+  "United Republic of Tanzania" = "Tanzania",
+  "United States Virgin Islands" = "Virgin Islands, US",
+  "Venezuela (Bolivarian Republic of)" = "Venezuela",
+  "The United Kingdom" = "United Kingdom"
+)
