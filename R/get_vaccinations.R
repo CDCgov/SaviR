@@ -11,10 +11,11 @@ get_vax <- function() {
     stringsAsFactors = FALSE,
     check.names = FALSE
   ) %>%
+    rename(iso3code = iso_code, owid_country = location) %>%
     mutate(date = as.Date(date)) %>%
-    mutate(iso_code = recode(iso_code, "OWID_KOS" = "XKX")) %>%
-    filter(!grepl("OWID", iso_code)) %>%
-    mutate(location = recode(location, !!!owid_lk)) %>%
+    mutate(iso3code = recode(iso3code, "OWID_KOS" = "XKX")) %>%
+    filter(!grepl("OWID", iso3code)) %>%
+    mutate(owid_country = recode(owid_country, !!!owid_lk)) %>%
     mutate(daily_vaccinations_per_hundred = daily_vaccinations_per_million / 10000) %>%
     mutate(across(where(bit64::is.integer64), as.double))
 
@@ -33,14 +34,15 @@ get_vax <- function() {
 #'
 
 get_vax_manufacturers <- function() {
-  df <- fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/locations.csv",
+  df <- fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/owid_countrys.csv",
     stringsAsFactors = FALSE,
     check.names = FALSE
   ) %>%
+    rename(iso3code = iso_code, owid_country = location) %>%
     mutate(last_observation_date = as.Date(last_observation_date)) %>%
-    mutate(iso_code = recode(iso_code, "OWID_KOS" = "XKX")) %>%
-    filter(!grepl("OWID", iso_code)) %>%
-    mutate(location = recode(location, !!!owid_lk))
-  
+    mutate(iso3code = recode(iso3code, "OWID_KOS" = "XKX")) %>%
+    filter(!grepl("OWID", iso3code)) %>%
+    mutate(owid_country = recode(owid_country, !!!owid_lk))
+
   return(df)
 }
