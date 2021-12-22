@@ -7,15 +7,15 @@
 \format{
 A data frame with 238 rows and 9 variables:
 \itemize{
-  \item{\code{iso3code}}{  character ISO 3166-1 alpha-3 country code}
-  \item{\code{iso2code}}{  character ISO 3166-1 alpha-2 country code}
-  \item{\code{state_region}}{  character US Department of State Region}
-  \item{\code{who_region}}{  integer WHO Region}
-  \item{\code{who_country}}{  character WHO English country text name}
-  \item{\code{incomelevel_value}}{  character World Bank Income level}
-  \item{\code{population}}{  double UN Total population estimates for 2020}
-  \item{\code{eighteenplus}}{  double UN 18+ population estimates for 2020}
-  \item{\code{geometry}}{  list List of simple features for mapping}
+  \item{\code{iso3code}}{character ISO 3166-1 alpha-3 country code}
+  \item{\code{iso2code}}{character ISO 3166-1 alpha-2 country code}
+  \item{\code{state_region}}{character US Department of State Region}
+  \item{\code{who_region}}{integer WHO Region}
+  \item{\code{who_country}}{character WHO English country text name}
+  \item{\code{incomelevel_value}}{character World Bank Income level}
+  \item{\code{population}}{double UN Total population estimates for 2020}
+  \item{\code{eighteenplus}}{double UN 18+ population estimates for 2020}
+  \item{\code{geometry}}{list List of simple features for mapping}
 }
 }
 \usage{
