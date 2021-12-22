@@ -39,7 +39,8 @@ get_onetable <- function(country_geometries = country_coords) {
   ) %>%
     rename_all(tolower) %>%
     filter(region.value != "Aggregates" | is.na(region.value)) %>%
-    select(id,
+    select(
+      iso3code = id,
       iso2code,
       wb_country        = name,
       wb_region_name    = region.value,
@@ -51,11 +52,11 @@ get_onetable <- function(country_geometries = country_coords) {
     ) %>%
     filter(iso2code != "OT") %>%
     rowwise() %>%
-    mutate(id = ifelse(is.na(id), passport::parse_country(who_country, to = "iso3c", language = c("en")), id)) %>%
+    mutate(iso3code = ifelse(is.na(iso3code), passport::parse_country(who_country, to = "iso3c", language = c("en")), iso3code)) %>%
     ungroup()
 
   ## State Department Regions
-  df_meta <- left_join(df_meta, openxlsx::read.xlsx(file.choose()), by = "id") %>%
+  df_meta <- left_join(df_meta, openxlsx::read.xlsx(file.choose()), by = "iso3code") %>%
     mutate(state_region = case_when(
       who_country == "United States of America" ~ "US",
       TRUE ~ state_region
@@ -99,13 +100,13 @@ get_onetable <- function(country_geometries = country_coords) {
 
   ## WB-WHO-Country-Population-List
   # Joined by iso3code.
-  df_meta <- left_join(df_meta, df_un3, by = c("id" = "ISO3.Alpha-code"))
+  df_meta <- left_join(df_meta, df_un3, by = c("iso3code" = "ISO3.Alpha-code"))
 
   ## Add Geometries
   df_meta <- df_meta %>%
-    left_join(country_geometries, by = c("id" = "iso3code")) # country_coords
+    left_join(country_geometries, by = c("iso3code" = "iso3code")) # country_coords
 
-  df_meta <- select(df_meta, id, iso2code, state_region, who_region, who_country, incomelevel_value, population = `2020`, eighteenplus = `18+`, geometry)
+  df_meta <- select(df_meta, iso3code, iso2code, state_region, who_region, who_country, incomelevel_value, population = `2020`, eighteenplus = `18+`, geometry)
 }
 
 
