@@ -12,7 +12,7 @@ get_gdeltnews(period = 14, start_date = Sys.Date() - 1)
 \item{start_date}{(Date) Date from which to look back}
 }
 \value{
-A data frame with n rows and 17 variables:
+A data frame with n rows and 16 variables:
 \itemize{
   \item{\code{DateTime}}{  POSIXct}
   \item{\code{URL}}{  character}

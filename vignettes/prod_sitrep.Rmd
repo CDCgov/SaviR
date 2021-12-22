@@ -43,7 +43,7 @@ This snippet produces the master dataframe with all the variables required for a
 df <- onetable %>%
   right_join(get_covid_df() %>% select(-who_region), by = c("iso2code" = "country_code")) %>%
   calc_add_risk() %>%
-  left_join(get_vax(), by = c("id" = "iso_code", "date"))
+  left_join(get_vax(), by = c("iso3code" = "iso_code", "date"))
 ```
 
 ## Epicurves
@@ -85,7 +85,7 @@ The "map_burden" function requires a result column where weekly average incidenc
 
 ```{r, fig.width = 9, fig.height = 2.5}
 burden_map_global <- map_burden(df %>%
-  filter(id != "CHN" | source != "WHO") %>%
+  filter(iso3code != "CHN" | source != "WHO") %>%
   mutate(result = cut(week_case_incidence, breaks = c(-0.1, 1, 10, 25, Inf))) %>%
   filter(date == sunday_date))
 
@@ -95,7 +95,7 @@ burden_map_global
 
 for (r in unique(filter(df, !is.na(who_region))$who_region)) {
   burden_map_regional <- map_burden(df %>%
-    filter(id != "CHN" | source != "WHO") %>%
+    filter(iso3code != "CHN" | source != "WHO") %>%
     filter(date == sunday_date) %>%
     filter(who_region == r) %>%
     mutate(result = cut(week_case_incidence, breaks = c(-0.1, 1, 10, 25, Inf))))
@@ -115,7 +115,7 @@ The "map_trend" function requires a result column where weekly percent change is
 ```{r, fig.width = 7.5, fig.height = 4.2}
 trend_map_global <- map_trend(df %>%
   filter(date == sunday_date) %>%
-  filter(id != "CHN" | source != "WHO") %>%
+  filter(iso3code != "CHN" | source != "WHO") %>%
   mutate(result = cut(percent_change_case, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf))))
 
 ggsave(trend_map_global, filename = paste0("../inst/extdata/percent_change_who_", Sys.Date(), ".png"), width = 7.5, height = 4.2, units = "in", bg = "white")
@@ -127,7 +127,7 @@ trend_map_global
 for (r in unique(filter(df, !is.na(who_region))$who_region)) {
   trend_map_reg <- map_trend(df %>%
     filter(date == sunday_date) %>%
-    filter(id != "CHN" | source != "WHO") %>%
+    filter(iso3code != "CHN" | source != "WHO") %>%
     filter(who_region == r) %>%
     mutate(result = cut(percent_change_case, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf))))
 
@@ -144,7 +144,7 @@ for (r in unique(filter(df, !is.na(who_region))$who_region)) {
 ```{r, fig.width = 7.5, fig.height = 4.2}
 global_vax_map <- df %>%
   filter(date <= sunday_date) %>%
-  filter(id != "CHN" | source != "WHO") %>%
+  filter(iso3code != "CHN" | source != "WHO") %>%
   mutate(result = cut(people_vaccinated_per_hundred, breaks = c(0, 1, 3, 10, 30, Inf))) %>%
   group_by(country) %>%
   filter(!is.na(result)) %>%
@@ -164,7 +164,7 @@ global_vax_map
 ```{r}
 df %>%
   filter(date == sunday_date) %>%
-  filter(id != "CHN" | source != "WHO") %>%
+  filter(iso3code != "CHN" | source != "WHO") %>%
   select(country = who_country, value1 = week_case, value2 = percent_change_case) %>%
   arrange(desc(value1)) %>%
   head(10) %>%
@@ -174,7 +174,7 @@ df %>%
 for (r in unique(filter(df, !is.na(who_region))$who_region)) {
   df %>%
     filter(date == sunday_date) %>%
-    filter(id != "CHN" | source != "WHO") %>%
+    filter(iso3code != "CHN" | source != "WHO") %>%
     filter(who_region == r) %>%
     select(country = who_country, value1 = week_case, value2 = percent_change_case) %>%
     arrange(desc(value1)) %>%
@@ -189,7 +189,7 @@ for (r in unique(filter(df, !is.na(who_region))$who_region)) {
 ```{r}
 df %>%
   filter(date == sunday_date) %>%
-  filter(id != "CHN" | source != "WHO") %>%
+  filter(iso3code != "CHN" | source != "WHO") %>%
   select(country = who_country, value1 = week_case_incidence, value2 = percent_change_case) %>%
   arrange(desc(value1)) %>%
   head(10) %>%
@@ -199,7 +199,7 @@ df %>%
 for (r in unique(filter(df, !is.na(who_region))$who_region)) {
   df %>%
     filter(date == sunday_date) %>%
-    filter(id != "CHN" | source != "WHO") %>%
+    filter(iso3code != "CHN" | source != "WHO") %>%
     filter(who_region == r) %>%
     select(country = who_country, value1 = week_case_incidence, value2 = percent_change_case) %>%
     arrange(desc(value1)) %>%
@@ -214,7 +214,7 @@ for (r in unique(filter(df, !is.na(who_region))$who_region)) {
 ```{r}
 df %>%
   filter(date == sunday_date) %>%
-  filter(id != "CHN" | source != "WHO") %>%
+  filter(iso3code != "CHN" | source != "WHO") %>%
   filter(population >= 10000000) %>% # Exclude population less than 10M
   select(country = who_country, value1 = percent_change_case, value2 = percent_change4_case) %>%
   arrange(desc(value1)) %>%
@@ -225,7 +225,7 @@ df %>%
 for (r in unique(filter(df, !is.na(who_region))$who_region)) {
   df %>%
     filter(date == sunday_date) %>%
-    filter(id != "CHN" | source != "WHO") %>%
+    filter(iso3code != "CHN" | source != "WHO") %>%
     filter(population >= 100000) %>% # Exclude population less than 100,000
     filter(who_region == r) %>%
     select(country = who_country, value1 = percent_change_case, value2 = percent_change4_case) %>%
@@ -245,7 +245,7 @@ The "table_10vaccinations" function takes looks for a country, value1 (people va
 ```{r}
 df %>%
   filter(date <= sunday_date) %>%
-  filter(id != "CHN" | source != "WHO") %>%
+  filter(iso3code != "CHN" | source != "WHO") %>%
   filter(population > 1000000) %>%
   group_by(country) %>%
   filter(!is.na(people_vaccinated_per_hundred)) %>%
@@ -260,14 +260,14 @@ df %>%
 for (r in unique(filter(df, !is.na(who_region))$who_region)) {
   df %>%
     filter(date <= sunday_date) %>%
-    filter(id != "CHN" | source != "WHO") %>%
+    filter(iso3code != "CHN" | source != "WHO") %>%
     filter(population > 100000) %>% # Exclude population less than 100,000
     filter(who_region == r) %>%
     group_by(country) %>%
     filter(!is.na(people_vaccinated_per_hundred)) %>%
     arrange(date) %>%
     top_n(1, date) %>%
-    distinct(id, .keep_all = T) %>%
+    distinct(iso3code, .keep_all = T) %>%
     select(country = who_country, value1 = people_vaccinated_per_hundred, value2 = daily_vaccinations_per_hundred) %>%
     arrange(desc(value1)) %>%
     head(10) %>%
@@ -338,7 +338,7 @@ table_10fullyvaccinations <- function(df, type = "Global", run_date = "Enter a d
 
 df %>%
   filter(date <= sunday_date) %>%
-  filter(id != "CHN" | source != "WHO") %>%
+  filter(iso3code != "CHN" | source != "WHO") %>%
   filter(population > 1000000) %>%
   group_by(country) %>%
   filter(!is.na(people_fully_vaccinated_per_hundred)) %>%
@@ -361,7 +361,7 @@ Note for labeling purposes, the labels variable should be added to the dataframe
 ```{r, fig.width=11, fig.height=7}
 global_risk_matrix <- df %>%
   filter(date == sunday_date) %>%
-  filter(id != "CHN" | source != "WHO") %>%
+  filter(iso3code != "CHN" | source != "WHO") %>%
   filter(population >= 10000000) %>% # Exclude population less than 10M
   filter(week_case >= 100) %>%
   mutate(
@@ -386,8 +386,8 @@ global_risk_matrix
 ```{r, fig.width=11, fig.height=7}
 global_vax_coverage <- df %>%
   filter(date <= sunday_date) %>%
-  filter(id != "CHN" | source != "WHO") %>%
-  mutate(state_region = ifelse(id == "USA", "US", state_region)) %>%
+  filter(iso3code != "CHN" | source != "WHO") %>%
+  mutate(state_region = ifelse(iso3code == "USA", "US", state_region)) %>%
   group_by(country, source) %>%
   arrange(desc(date)) %>%
   fill(total_vaccinations, .direction = "updown") %>%
