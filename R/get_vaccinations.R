@@ -34,7 +34,7 @@ get_vax <- function() {
 #'
 
 get_vax_manufacturers <- function() {
-  df <- fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/owid_countrys.csv",
+  df <- fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/locations.csv",
     stringsAsFactors = FALSE,
     check.names = FALSE
   ) %>%
