@@ -41,9 +41,9 @@ This snippet produces the master dataframe with all the variables required for a
 
 ```{r}
 df <- onetable %>%
-  right_join(get_covid_df() %>% select(-who_region), by = c("iso2code" = "country_code")) %>%
+  right_join(get_covid_df(), by = "iso2code") %>%
   calc_add_risk() %>%
-  left_join(get_vax(), by = c("iso3code" = "iso_code", "date"))
+  left_join(get_vax(), by = c("iso3code", "date"))
 ```
 
 ## Epicurves

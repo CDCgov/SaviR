@@ -12,7 +12,7 @@ test_that("Calc_add_risk returns expected result", {
 
   # df <- onetable %>%
   #   select(-geometry) %>%
-  #   right_join(get_covid_df() %>% select(-who_region), by = c("iso2code" = "country_code")) %>%
+  #   right_join(get_covid_df(), by = "iso2code") %>%
   #   filter(
   #     !(country == "China" & source == "WHO"),
   #     who_country %in% sample_countries
