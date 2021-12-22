@@ -9,34 +9,13 @@
 get_covid_df <- function() {
   who_data <- fread("https://covid19.who.int/WHO-COVID-19-global-data.csv", stringsAsFactors = FALSE, encoding = "UTF-8") %>%
     rename_all(tolower) %>%
-    mutate(country = case_when(
-      country == "Kosovo[1]" ~ "Kosovo",
-      country %in% c("Bonaire", "Sint Eustatius", "Saba") ~ "Bonaire, Sint Eustatius, and Saba",
-      country == "Bolivia (Plurinational State of)" ~ "Bolivia",
-      country == "Democratic Republic of the Congo" ~ "Congo DR",
-      country == "Falkland Islands (Malvinas)" ~ "Falkland Islands",
-      country == "Iran (Islamic Republic of)" ~ "Iran",
-      country == "Democratic People's Republic of Korea" ~ "Korea (North)",
-      country == "Lao People's Democratic Republic" ~ "Laos",
-      country == "Micronesia (Federated States of)" ~ "Micronesia",
-      country == "Northern Mariana Islands (Commonwealth of the)" ~ "Northern Mariana Islands",
-      country == "occupied Palestinian territory, including east Jerusalem" ~ "Palestinian Territory",
-      country == "Myanmar" ~ "Burma",
-      country == "Republic of Korea" ~ "Korea (South)",
-      country == "Republic of Moldova" ~ "Moldova",
-      country == "Russian Federation" ~ "Russia",
-      country == "Syrian Arab Republic" ~ "Syria",
-      country == "United Republic of Tanzania" ~ "Tanzania",
-      country == "United States Virgin Islands" ~ "Virgin Islands, US",
-      country == "Venezuela (Bolivarian Republic of)" ~ "Venezuela",
-      country == "The United Kingdom" ~ "United Kingdom",
-      TRUE ~ country
-    )) %>%
-    mutate(country_code = case_when(
+    rename(iso2code = country_code) %>%
+    mutate(country = recode(country, !!!who_lk)) %>%
+    mutate(iso2code = case_when(
       country == "Namibia" ~ "NA",
       country == "Other" ~ "OT",
       country == "Bonaire, Sint Eustatius, and Saba" ~ "BQ",
-      TRUE ~ country_code
+      TRUE ~ iso2code
     )) %>%
     rename("date" = names(.)[1]) %>%
     group_by_if(~ is.character(.) | lubridate::is.Date(.)) %>%
@@ -95,7 +74,7 @@ get_covid_df <- function() {
     rename(country = `country/region`) %>%
     mutate(
       who_region = "WPRO",
-      country_code = case_when(
+      iso2code = case_when(
         country == "China" ~ "CN",
         country == "Taiwan" ~ "TW",
         country == "Hong Kong" ~ "HK",
@@ -108,7 +87,6 @@ get_covid_df <- function() {
   df <- bind_rows(who_data, jhu_data)
 
   df <- df %>%
-    mutate(country = recode(country, "Côte d’Ivoire" = "Cote d'Ivoire")) %>%
     mutate(who_region = factor(who_region, levels = c("AMRO", "EURO", "SEARO", "EMRO", "AFRO", "WPRO"))) %>%
     mutate(
       region = case_when(
