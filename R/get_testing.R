@@ -1,7 +1,10 @@
 #' @title get_testing_long
 #' @description Download and combine full time series data related to testing as compiled by Our World in Data and FIND
-#' OUTPUT: Longitudinal data set with both FIND and OWID data sets with consistent definitions
 #'
+#' @param find_maxgap (numeric, default: 31) Gap between cumulative testing number to linearly interpolate
+#' @param flag_test_increase (numeric, default: 5) Flag for increase in interpolated cumulative tests
+#'
+#' @return Longitudinal data frame with both FIND and OWID data sets with consistent definitions
 #' @import zoo
 #'
 #' @export
@@ -11,19 +14,13 @@
 #' testing_long <- get_testing_long()
 #' }
 #'
-get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv",
-                             owid_test_source = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/testing/covid-testing-all-observations.csv",
-                             find_source = "https://raw.githubusercontent.com/dsbbfinddx/FINDCov19TrackerData/master/processed/data_all.csv",
-                             find_meta_source = "https://raw.githubusercontent.com/dsbbfinddx/FINDCov19TrackerData/master/processed/unit_info.csv",
-                             find_maxgap = 31, # Gap between cumulative testing number to linearly interpolate
-                             flag_test_increase = 5 # Flag for increase in interpolated cumulative tests
-) {
+get_testing_long <- function(find_maxgap = 31, flag_test_increase = 5) {
 
 
 
   # Download various OWID/FIND datasets
   ## The testing-specific OWID dataset may be more up to date than the overall OWID dataset
-  testing_OWID <- data.table::fread(owid_test_source, data.table = F, showProgress = F, verbose = F) %>%
+  testing_OWID <- data.table::fread(datasource_lk$owid_testing, data.table = F, showProgress = F, verbose = F) %>%
     filter(!(Entity %in% c(
       "Poland - samples tested", "Italy - people tested",
       "Canada - people tested"
@@ -50,7 +47,7 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
     stop("Check testing dataset in get_testing_long() -- multiple values per country-date")
   }
 
-  full_OWID <- data.table::fread(owid_all_source, data.table = F, showProgress = F, verbose = F) %>%
+  full_OWID <- data.table::fread(datasource_lk$owid_all, data.table = F, showProgress = F, verbose = F) %>%
     rename(iso3code = iso_code) %>%
     mutate(date = as.Date(date)) %>%
     mutate(iso3code = recode(iso3code, "OWID_KOS" = "XKX")) %>%
@@ -63,11 +60,11 @@ get_testing_long <- function(owid_all_source = "https://raw.githubusercontent.co
   full_OWID_tests <- full_join(full_OWID, testing_OWID, by = c("iso3code", "date"))
 
   full_FIND <-
-    data.table::fread(find_source, data.table = F, verbose = F, showProgress = F) %>%
+    data.table::fread(datasource_lk$find_testing, data.table = F, verbose = F, showProgress = F) %>%
     filter(set == "country")
 
   find_meta <-
-    data.table::fread(find_meta_source, data.table = F, verbose = F, showProgress = F) %>%
+    data.table::fread(datasource_lk$find_metadata, data.table = F, verbose = F, showProgress = F) %>%
     filter(set == "country") %>%
     select(
       iso3code = unit,

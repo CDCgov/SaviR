@@ -7,7 +7,7 @@
 #' @export
 
 get_covid_df <- function() {
-  who_data <- fread("https://covid19.who.int/WHO-COVID-19-global-data.csv", stringsAsFactors = FALSE, encoding = "UTF-8") %>%
+  who_data <- fread(datasource_lk$who_all, stringsAsFactors = FALSE, encoding = "UTF-8") %>%
     rename_all(tolower) %>%
     rename(iso2code = country_code) %>%
     mutate(country = recode(country, !!!who_lk)) %>%
@@ -27,7 +27,7 @@ get_covid_df <- function() {
     ) %>%
     select(-who_region)
 
-  jhu_cases <- fread("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv", stringsAsFactors = FALSE, check.names = FALSE) %>%
+  jhu_cases <- fread(datasource_lk$jhu_case, stringsAsFactors = FALSE, check.names = FALSE) %>%
     rename_all(tolower) %>%
     filter(`country/region` %in% c("Taiwan*", "China")) %>%
     mutate(`country/region` = case_when(
@@ -49,7 +49,7 @@ get_covid_df <- function() {
     )) %>%
     ungroup()
 
-  jhu_deaths <- fread("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv", stringsAsFactors = FALSE, check.names = FALSE) %>%
+  jhu_deaths <- fread(datasource_lk$jhu_death, stringsAsFactors = FALSE, check.names = FALSE) %>%
     rename_all(tolower) %>%
     filter(`country/region` %in% c("Taiwan*", "China")) %>%
     mutate(`country/region` = case_when(
