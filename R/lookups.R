@@ -82,3 +82,24 @@ who_lk <- c(
   "Venezuela (Bolivarian Republic of)" = "Venezuela",
   "The United Kingdom" = "United Kingdom"
 )
+
+#' A list of all data sources used in the package
+#' to be updated as needed.
+datasource_lk <- list(
+  # OWID cases and deaths
+  owid_all = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv",
+  # OWID Testing dataset
+  owid_testing = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/testing/covid-testing-all-observations.csv",
+  # Testing data and metadata from FIND
+  find_testing = "https://raw.githubusercontent.com/dsbbfinddx/FINDCov19TrackerData/master/processed/data_all.csv",
+  find_metadata = "https://raw.githubusercontent.com/dsbbfinddx/FINDCov19TrackerData/master/processed/unit_info.csv",
+  # OWID vaccination data
+  owid_vax = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.csv",
+  # OWID vaccination metadata that lists current vaccines in use by country
+  owid_vax_manufacturers = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/locations.csv",
+  # WHO Case and Death data
+  who_all = "https://covid19.who.int/WHO-COVID-19-global-data.csv",
+  # Cases and Deaths from JHU (for HK, Macau, Taiwan)
+  jhu_case = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv",
+  jhu_death = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+)

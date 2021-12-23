@@ -7,10 +7,7 @@
 #'
 
 get_vax <- function() {
-  df <- fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.csv",
-    stringsAsFactors = FALSE,
-    check.names = FALSE
-  ) %>%
+  df <- fread(datasource_lk$owid_vax, stringsAsFactors = FALSE, check.names = FALSE) %>%
     rename(iso3code = iso_code, owid_country = location) %>%
     mutate(date = as.Date(date)) %>%
     mutate(iso3code = recode(iso3code, "OWID_KOS" = "XKX")) %>%
@@ -34,10 +31,7 @@ get_vax <- function() {
 #'
 
 get_vax_manufacturers <- function() {
-  df <- fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/locations.csv",
-    stringsAsFactors = FALSE,
-    check.names = FALSE
-  ) %>%
+  df <- fread(datasource_lk$owid_vax_manufacturers, stringsAsFactors = FALSE, check.names = FALSE) %>%
     rename(iso3code = iso_code, owid_country = location) %>%
     mutate(last_observation_date = as.Date(last_observation_date)) %>%
     mutate(iso3code = recode(iso3code, "OWID_KOS" = "XKX")) %>%
