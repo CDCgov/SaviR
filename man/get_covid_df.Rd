@@ -6,6 +6,22 @@
 \usage{
 get_covid_df()
 }
+\value{
+A data frame with n rows and 8 variables:
+\itemize{
+  \item{\code{date}}{  date Date of observation}
+  \item{\code{iso2code}}{  character ISO 3166-1 alpha-2 country code}
+  \item{\code{country}}{  character WHO/JHU english country name}
+  \item{\code{new_cases}}{  integer Number of new cases reported on date}
+  \item{\code{cumulative_cases}}{  integer Number of cumulative cases to date}
+  \item{\code{new_deaths}}{  integer Number of new deaths reported on date}
+  \item{\code{cumulative_deaths}}{  integer Number of cumulative deaths to date}
+  \item{\code{source}}{  character Data Source (JHU, WHO)}
+}
+}
 \description{
 Get and prepare COVID data.
+
+Pull in current case and death counts from WHO source.
+For Hong Kong, Macau, and Taiwan, we pull from John Hopkins source.
 }
