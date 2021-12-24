@@ -1,4 +1,12 @@
-#' Aesthetics for WHO regions
+#' @title Aesthetics for WHO regions
+#' @description Used internally in plotting functions to style plots with WHO-regions.
+#' @format A data frame with 6 rows and 4 variables:
+#' \describe{
+#'   \item{\code{cat_values}}{character plot legend values (which match directly to WHO region names)}
+#'   \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
+#'   \item{\code{cat_colors}}{character Color mappings for each WHO region}
+#'   \item{\code{cat_lines}}{character Line-styles for each WHO region}
+#' }
 who_aes <- data.frame(
   cat_values = c("AMRO", "EURO", "SEARO", "EMRO", "AFRO", "WPRO"),
   cat_names = c("Americas", "Europe", "Southeast Asia", "Eastern Mediterranean", "Africa", "Western Pacific"),
@@ -6,7 +14,15 @@ who_aes <- data.frame(
   cat_lines = c("solid", "solid", "solid", "solid", "solid", "solid")
 )
 
-#' Aesthetics for State regions
+#' @title Aesthetics for US Department of State regions
+#' @description Used internally in plotting functions to style plots with DoS-regions.
+#' @format A data frame with 8 rows and 4 variables:
+#' \describe{
+#'   \item{\code{cat_values}}{character plot legend values (which match directly to DoS region names)}
+#'   \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
+#'   \item{\code{cat_colors}}{character Color mappings for each state region}
+#'   \item{\code{cat_lines}}{character Line-styles for each state region}
+#' }
 state_aes <- data.frame(
   cat_values = c(
     "East Asia and the Pacific",
@@ -32,7 +48,15 @@ state_aes <- data.frame(
   cat_lines = c("solid", "solid", "solid", "solid", "solid", "solid", "dashed", "solid")
 )
 
-#' Income Aesthetics
+#' @title Aesthetics for World Bank Country income group
+#' @description Used internally in plotting functions to style plots with World Bank income group.
+#' @format A data frame with 5 rows and 4 variables:
+#' \describe{
+#'   \item{\code{cat_values}}{character plot legend values (which match directly to World Bank income levels)}
+#'   \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
+#'   \item{\code{cat_colors}}{character Color mappings for income group level}
+#'   \item{\code{cat_lines}}{character Line-styles for each income group level}
+#' }
 income_aes <- data.frame(
   cat_values = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified"),
   cat_names = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified"),
