@@ -3,14 +3,20 @@
 \docType{data}
 \name{state_aes}
 \alias{state_aes}
-\title{Aesthetics for State regions}
+\title{Aesthetics for US Department of State regions}
 \format{
-An object of class \code{data.frame} with 8 rows and 4 columns.
+A data frame with 8 rows and 4 variables:
+\describe{
+  \item{\code{cat_values}}{character plot legend values (which match directly to DoS region names)}
+  \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
+  \item{\code{cat_colors}}{character Color mappings for each state region}
+  \item{\code{cat_lines}}{character Line-styles for each state region}
+}
 }
 \usage{
 state_aes
 }
 \description{
-Aesthetics for State regions
+Used internally in plotting functions to style plots with DoS-regions.
 }
 \keyword{datasets}

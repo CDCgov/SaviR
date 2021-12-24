@@ -3,14 +3,23 @@
 \docType{data}
 \name{income_aes}
 \alias{income_aes}
-\title{Income Aesthetics}
+\title{Aesthetics for World Bank Country income group}
 \format{
 An object of class \code{data.frame} with 5 rows and 4 columns.
 }
 \usage{
 income_aes
 }
+\value{
+A data frame with 5 rows and 4 variables:
+\describe{
+  \item{\code{cat_values}}{character plot legend values (which match directly to World Bank income levels)}
+  \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
+  \item{\code{cat_colors}}{character Color mappings for income group level}
+  \item{\code{cat_lines}}{character Line-styles for each income group level}
+}
+}
 \description{
-Income Aesthetics
+Used internally in plotting functions to style plots with World Bank income group.
 }
 \keyword{datasets}
