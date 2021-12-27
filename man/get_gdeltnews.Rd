@@ -24,7 +24,7 @@ A data frame with n rows and 16 variables:
   \item{\code{Location}}{  character}
   \item{\code{Lat}}{  double}
   \item{\code{Lon}}{  double}
-  \item{\code{CountryCode}}{  character}
+  \item{\code{iso2code}}{  character}
   \item{\code{Adm1Code}}{  character}
   \item{\code{GeoType}}{  character}
   \item{\code{ContextualText}}{  character}

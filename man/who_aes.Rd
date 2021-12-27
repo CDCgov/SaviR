@@ -11,7 +11,6 @@ An object of class \code{data.frame} with 6 rows and 4 columns.
 who_aes
 }
 \value{
-A data frame with 6 rows and 4 variables:
 \describe{
   \item{\code{cat_values}}{character plot legend values (which match directly to WHO region names)}
   \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}

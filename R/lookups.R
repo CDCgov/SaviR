@@ -1,6 +1,6 @@
 #' @title Aesthetics for WHO regions
 #' @description Used internally in plotting functions to style plots with WHO-regions.
-#' @format A data frame with 6 rows and 4 variables:
+#' @returns
 #' \describe{
 #'   \item{\code{cat_values}}{character plot legend values (which match directly to WHO region names)}
 #'   \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
@@ -16,7 +16,7 @@ who_aes <- data.frame(
 
 #' @title Aesthetics for US Department of State regions
 #' @description Used internally in plotting functions to style plots with DoS-regions.
-#' @format A data frame with 8 rows and 4 variables:
+#' @returns
 #' \describe{
 #'   \item{\code{cat_values}}{character plot legend values (which match directly to DoS region names)}
 #'   \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
@@ -50,7 +50,7 @@ state_aes <- data.frame(
 
 #' @title Aesthetics for World Bank Country income group
 #' @description Used internally in plotting functions to style plots with World Bank income group.
-#' @format A data frame with 5 rows and 4 variables:
+#' @returns
 #' \describe{
 #'   \item{\code{cat_values}}{character plot legend values (which match directly to World Bank income levels)}
 #'   \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
