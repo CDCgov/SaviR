@@ -1,20 +1,25 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #' @title get_onetable
-#' @description One table to rule them all and in keys bind them!
+#' @description 
+#' One table to rule them all and in keys bind them!
 #' Output is available through the package as "onetable," but this function can be used to recreate this dataset.
-#' Note: state regions is handled externally by an excel file (two column table: id -iso3code and state_region).
-#' User will be prompted to import this file by the function!
-#' To regenerate and make the data available again for the package, run the following in dev and rebuild package:
+#' 
+#' Note: state regions is handled externally in a CSV file.
 
 #' @param usaid_metadata_file (character) A file path to the file containing State Department regions. Expects at least two columns, ["iso_alpha3", "state_region"]
 #' @param vintage (numeric, default: 2021) The year of population projections to use from UN data
 #' @param country_geometries (data.frame, default: country_coords) a data.frame/sfc with at least two columns: ["iso3code", "geometry"]
 
+#' @return a data.frame of 238 rows and 9 columns
+#' 
 #' @import sf
 #' @import passport
 #' @export
 #'
+#' @section Note:
+#' Population updates for Pitcairn Islands, Jersey, Guernsey, and Kosovo are hardcoded and must be pulled manually via CIA factbook unless another source is found.
+#' 
 #' @seealso [onetable] for more complete data documentation
 #' @examples
 #' \dontrun{
@@ -102,17 +107,18 @@ get_onetable <- function(usaid_metadata_file, vintage = 2021, country_geometries
     summarize(`18+` = 1000 * sum(PopTotal)) %>%
     ungroup()
 
+  # Join all UN pop estimates together and add the manual CIA ones
   df_all_un_pop_est <- df_un_location_meta %>%
     left_join(df_un_medium_pop_est, by = "LocID") %>%
     left_join(df_un_medium_pop_est_single_year, by = c("LocID", "Time")) %>%
-    select(country, id, total, `18+`) # %>%
-  # add_row(country = "Guernsey", id = "GGY", total = 67334) %>%
-  # # CIA
-  # add_row(country = "Jersey", id = "JEY", total = 101476) %>%
-  # # CIA
-  # add_row(country = "Pitcairn Islands", id = "PCN", total = 50) %>%
-  # # CIA
-  # add_row(country = "Kosovo", id = "XKX", total = 1935259) # CIA
+    select(country, id, total, `18+`) %>%
+    add_row(country = "Guernsey", id = "GGY", total = 67334) %>%
+    # CIA
+    add_row(country = "Jersey", id = "JEY", total = 101476) %>%
+    # CIA
+    add_row(country = "Pitcairn Islands", id = "PCN", total = 50) %>%
+    # CIA
+    add_row(country = "Kosovo", id = "XKX", total = 1935259)
 
   ## WB-WHO-Country-Population-List
   # Joined by iso3code.

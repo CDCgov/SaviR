@@ -17,13 +17,20 @@ get_onetable(
 
 \item{country_geometries}{(data.frame, default: country_coords) a data.frame/sfc with at least two columns: ["iso3code", "geometry"]}
 }
+\value{
+a data.frame of 238 rows and 9 columns
+}
 \description{
 One table to rule them all and in keys bind them!
 Output is available through the package as "onetable," but this function can be used to recreate this dataset.
-Note: state regions is handled externally by an excel file (two column table: id -iso3code and state_region).
-User will be prompted to import this file by the function!
-To regenerate and make the data available again for the package, run the following in dev and rebuild package:
+
+Note: state regions is handled externally in a CSV file.
 }
+\section{Note}{
+
+Population updates for Pitcairn Islands, Jersey, Guernsey, and Kosovo are hardcoded and must be pulled manually via CIA factbook unless another source is found.
+}
+
 \examples{
 \dontrun{
 # UPDATING ONETABLE
