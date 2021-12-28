@@ -11,7 +11,6 @@ An object of class \code{data.frame} with 5 rows and 4 columns.
 income_aes
 }
 \value{
-A data frame with 5 rows and 4 variables:
 \describe{
   \item{\code{cat_values}}{character plot legend values (which match directly to World Bank income levels)}
   \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
