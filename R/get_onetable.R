@@ -7,7 +7,7 @@
 #' 
 #' Note: state regions is handled externally in a CSV file.
 
-#' @param usaid_metadata_file (character) A file path to the file containing State Department regions. Expects at least two columns, ["iso_alpha3", "state_region"]
+#' @param usaid_metadata_file (character, optional) A file path to the file containing State Department regions. Expects at least two columns, ["iso_alpha3", "state_region"]
 #' @param vintage (numeric, default: 2021) The year of population projections to use from UN data
 #' @param country_geometries (data.frame, default: country_coords) a data.frame/sfc with at least two columns: ["iso3code", "geometry"]
 
@@ -30,10 +30,12 @@
 #' usethis::use_data(onetable, overwrite = TRUE)
 #' }
 #'
-get_onetable <- function(usaid_metadata_file, vintage = 2021, country_geometries = country_coords) {
+get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geometries = country_coords) {
 
   ## Country List
   # From COVID sources.
+  # TODO: This is a complete bodge and needs to be fixed when #20 is pulled in
+  # See: https://github.com/CDCgov/SaviR/pull/20
   country_list <- get_covid_df() %>%
     select(who_region, region, country, country_code) %>%
     unique()
@@ -66,10 +68,13 @@ get_onetable <- function(usaid_metadata_file, vintage = 2021, country_geometries
     ungroup()
 
   ## State Department Regions
-  # Allow user to choose CSV file.
-  # this is currently stored in the top-level files directory for SAVI,
-  # called usaid_dos_regions.csv
-  usaid_metadata <- readr::read_csv(usaid_metadata_file) %>%
+
+  # If no file was passed, use the one saved in the package files
+  if (is.null(usaid_metadata_file)) {
+    usaid_metadata_file <- system.file("extdata/usaid_dos_regions.csv", package="SaviR")
+  }
+
+  usaid_metadata <- readr::read_csv(usaid_metadata_file, show_col_types = FALSE) %>%
     distinct(id = iso_alpha3, state_region)
 
   df_meta <- df_meta %>%
@@ -129,6 +134,8 @@ get_onetable <- function(usaid_metadata_file, vintage = 2021, country_geometries
     left_join(country_geometries, by = c("id" = "iso3code")) # country_coords
 
   df_meta <- select(df_meta, id, iso2code, state_region, who_region, who_country, incomelevel_value, population = total, eighteenplus = `18+`, geometry)
+
+  return(df_meta)
 }
 
 

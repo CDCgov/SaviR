@@ -5,7 +5,7 @@
 \title{get_onetable}
 \usage{
 get_onetable(
-  usaid_metadata_file,
+  usaid_metadata_file = NULL,
   vintage = 2021,
   country_geometries = country_coords
 )
