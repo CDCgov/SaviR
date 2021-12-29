@@ -4,23 +4,43 @@
 \alias{get_onetable}
 \title{get_onetable}
 \usage{
-get_onetable(country_geometries = country_coords)
+get_onetable(
+  usaid_metadata_file = NULL,
+  vintage = 2021,
+  country_geometries = country_coords
+)
 }
 \arguments{
-\item{country_geometries}{Default is country_coords which is incomplete. Replacement should have an iso3code column!}
+\item{usaid_metadata_file}{(character) A file path to the file containing State Department regions. Expects at least two columns, ["iso_alpha3", "state_region"]}
+
+\item{vintage}{(numeric, default: 2021) The year of population projections to use from UN data}
+
+\item{country_geometries}{(data.frame, default: country_coords) a data.frame/sfc with at least two columns: ["iso3code", "geometry"]}
+}
+\value{
+a data.frame of 238 rows and 9 columns
 }
 \description{
 One table to rule them all and in keys bind them!
 Output is available through the package as "onetable," but this function can be used to recreate this dataset.
-Note: state regions is handled externally by an excel file (two column table: id -iso3code and state_region).
-User will be prompted to import this file by the function!
-To regenerate and make the data available again for the package, run the following in dev and rebuild package:
-1. onetable <- get_onetable()
-2. usethis::use_data(onetable, overwrite=T)
+
+Note: state regions is handled externally in a CSV file.
 }
-\examples{
-\dontrun{
-onetable <- get_onetable()
+\section{Note}{
+
+Population updates for Pitcairn Islands, Jersey, Guernsey, and Kosovo are hardcoded and must be pulled manually via CIA factbook unless another source is found.
 }
 
+\examples{
+\dontrun{
+# UPDATING ONETABLE
+# This is the typical location of the USAID DoS file:
+usaid_file <- file.path(Sys.getenv("USERPROFILE"), "CDC", "ITF-COVID19-SAVI - Documents", "usaid_dos_regions.csv")
+onetable <- get_onetable(usaid_file)
+usethis::use_data(onetable, overwrite = TRUE)
+}
+
+}
+\seealso{
+[onetable] for more complete data documentation
 }
