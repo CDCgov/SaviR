@@ -107,6 +107,13 @@ who_lk <- c(
   "The United Kingdom" = "United Kingdom"
 )
 
+#' Manual ISO 3166-1 alpha-3 country code entries that don't get parsed in get_onetable()
+manual_iso3_lk <- list(
+  Micronesia = "FSM",
+  `Saint Martin` = "MAF",
+  `Eswatini` = "SWZ"
+)
+
 #' A list of all data sources used in the package
 #' to be updated as needed.
 datasource_lk <- list(
@@ -125,5 +132,15 @@ datasource_lk <- list(
   who_all = "https://covid19.who.int/WHO-COVID-19-global-data.csv",
   # Cases and Deaths from JHU (for HK, Macau, Taiwan)
   jhu_case = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv",
-  jhu_death = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+  jhu_death = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv",
+  # World Bank country income classification
+  wb_income = "http://api.worldbank.org/v2/country?format=json&per_page=300",
+  # UN World Population Projections (UNWPP)
+  # Location metadata
+  un_location_meta = "https://population.un.org/wpp/Download/Files/4_Metadata/WPP2019_F01_LOCATIONS.XLSX",
+  # Total country population projections
+  un_overall_projections = "https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/CSV_FILES/WPP2019_TotalPopulationBySex.csv",
+  # Country population projections by age group
+  un_age_projections = "https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/CSV_FILES/WPP2019_PopulationBySingleAgeSex_2020-2100.csv"
+
 )
