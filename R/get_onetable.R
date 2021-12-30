@@ -15,6 +15,7 @@
 #' 
 #' @import sf
 #' @import passport
+#' @importFrom openxlsx read.xlsx
 #' @export
 #'
 #' @section Note:

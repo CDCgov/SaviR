@@ -25,6 +25,7 @@ Imports:
     RcppRoll,
     cachem,
     data.table,
+    openxlsx,
     magrittr,
     memoise,
     rgdal,
