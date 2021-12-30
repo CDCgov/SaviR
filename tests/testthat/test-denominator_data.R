@@ -20,8 +20,9 @@ test_that("UN Denominator Data is in alignment with OWID", {
   expect_identical(onetable_denom, df_owid_denom)
 })
 
-test_that("onetable can be reproduced and hasn't changed", {
+test_that("onetable can be reproduced and is up to date", {
   new_onetable <- get_onetable()
 
+  # If this fails, need to either reproduce the onetable, or see what changed
   expect_identical(new_onetable, onetable)
 })
