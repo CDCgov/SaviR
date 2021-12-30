@@ -36,37 +36,51 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
   # From COVID sources.
   # TODO: This is a complete bodge and needs to be fixed when #20 is pulled in
   # See: https://github.com/CDCgov/SaviR/pull/20
-  country_list <- get_covid_df() %>%
-    select(who_region, region, country, country_code) %>%
-    unique()
+  country_list <- fread(datasource_lk$who_all, stringsAsFactors = FALSE, encoding = "UTF-8") %>%
+    rename_all(tolower) %>%
+    rename(iso2code = country_code) %>%
+    select(who_region, iso2code, country) %>%
+    mutate(country = recode(country, !!!who_lk)) %>%
+    bind_rows(onetable_addn_countries) %>%
+    mutate(
+      iso2code = case_when(
+        country == "Namibia" ~ "NA",
+        country == "Other" ~ "OT",
+        country == "Bonaire, Sint Eustatius, and Saba" ~ "BQ",
+        TRUE ~ iso2code
+      )
+    ) %>%
+    # Required, because we've combined Bonaire, Sint Eustatius, and Saba
+    distinct(who_region, country, iso2code)
 
   ## World Bank
   # Make the API call to the World Bank's API for income classification metadata.
-  res <- httr::GET(paste0("http://api.worldbank.org/v2/country?format=json&per_page=300"))
-  df_wb <- jsonlite::fromJSON(rawToChar(res$content), flatten = T)[[2]]
+  res <- httr::GET(datasource_lk$wb_income)
+  df_wb <- jsonlite::fromJSON(rawToChar(res$content), flatten = T)[[2]] %>%
+    rename_all(tolower) %>%
+    # Remove aggregates, and "Channel Islands", which is not a country
+    filter(region.value != "Aggregates" | is.na(region.value), iso2code != "JG") %>%
+    as_tibble()
 
   ## WB-WHO-Country List
   # Full join starting with World Bank's metadata to get the combined list.
-  df_meta <- full_join(df_wb, country_list,
-    by = c("iso2Code" = "country_code")
-  ) %>%
-    rename_all(tolower) %>%
-    filter(region.value != "Aggregates" | is.na(region.value)) %>%
+  df_meta <- full_join(df_wb, country_list, by = "iso2code") %>%
     select(
       iso3code = id,
       iso2code,
-      wb_country        = name,
-      wb_region_name    = region.value,
-      incomelevel_id    = incomelevel.id,
       incomelevel_value = incomelevel.value,
       who_region,
-      who_region_name   = region,
-      who_country       = country
+      who_country = country
     ) %>%
     filter(iso2code != "OT") %>%
-    rowwise() %>%
-    mutate(iso3code = ifelse(is.na(iso3code), passport::parse_country(who_country, to = "iso3c", language = c("en")), iso3code)) %>%
-    ungroup()
+    mutate(
+      # Apply manual lookup for ISO3 codes that don't parse correctly
+      iso3code = recode(iso3code, !!!manual_iso3_lk),
+      # Parse remaining NA values for iso3code
+      # NOTE: This will throw warnings, but we've included 
+      iso3code = if_else(is.na(iso3code), parse_country(who_country, to = "iso3c"), iso3code)
+    )
+
 
   # If no file was passed, use the one saved in the package files
   if (is.null(usaid_metadata_file)) {
@@ -74,10 +88,10 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
   }
 
   usaid_metadata <- readr::read_csv(usaid_metadata_file, show_col_types = FALSE) %>%
-    distinct(id = iso_alpha3, state_region)
+    distinct(iso3code = iso_alpha3, state_region)
 
   df_meta <- df_meta %>%
-    left_join(usaid_metadata, by = "id") %>%
+    left_join(usaid_metadata, by = "iso3code") %>%
     mutate(
       state_region = case_when(
         who_country == "United States of America" ~ "US",
@@ -89,22 +103,17 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
   # Getting the population numbers from UN and gaps from CIA Factbook (https://www.cia.gov/the-world-factbook/field/population/country-comparison).
 
   # --- Location / Country metadata ------------
-  un_location_meta_url <- "https://population.un.org/wpp/Download/Files/4_Metadata/WPP2019_F01_LOCATIONS.XLSX"
-
-  df_un_location_meta <- openxlsx::read.xlsx(un_location_meta_url, sheet = 1, startRow = 17) %>%
+  df_un_location_meta <- openxlsx::read.xlsx(datasource_lk$un_location_meta, sheet = 1, startRow = 17) %>%
     select(country = 2, LocID = 4, id = 5, type = 7) %>%
     filter(type == "Country/Area") %>%
     as_tibble()
 
-  un_medium_pop_est_url <- "https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/CSV_FILES/WPP2019_TotalPopulationBySex.csv"
-  df_un_medium_pop_est <- data.table::fread(un_medium_pop_est_url) %>%
+  df_un_medium_pop_est <- data.table::fread(datasource_lk$un_overall_projections) %>%
     filter(Variant == "Medium", Time == vintage) %>%
     mutate(total = 1000 * as.numeric(PopTotal)) %>%
     distinct(LocID, Time, total)
 
-  un_medium_pop_est_single_year <- "https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/CSV_FILES/WPP2019_PopulationBySingleAgeSex_2020-2100.csv"
-
-  df_un_medium_pop_est_single_year <- data.table::fread(un_medium_pop_est_single_year) %>%
+  df_un_medium_pop_est_single_year <- data.table::fread(datasource_lk$un_age_projections) %>%
     semi_join(df_un_location_meta, by = "LocID") %>% # Filter to only countries, to speed up summarize step
     filter(Time == vintage, Variant == "Medium", AgeGrp >= 18) %>%
     group_by(LocID, Time) %>%
@@ -115,25 +124,20 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
   df_all_un_pop_est <- df_un_location_meta %>%
     left_join(df_un_medium_pop_est, by = "LocID") %>%
     left_join(df_un_medium_pop_est_single_year, by = c("LocID", "Time")) %>%
-    select(country, id, total, `18+`) %>%
-    add_row(country = "Guernsey", id = "GGY", total = 67334) %>%
-    # CIA
-    add_row(country = "Jersey", id = "JEY", total = 101476) %>%
-    # CIA
-    add_row(country = "Pitcairn Islands", id = "PCN", total = 50) %>%
-    # CIA
-    add_row(country = "Kosovo", id = "XKX", total = 1935259)
+    select(country, iso3code = id, total, `18+`) %>%
+    # Add in data from CIA world factbook
+    bind_rows(cia_wfb_addn_countries)
 
   ## WB-WHO-Country-Population-List
   # Joined by iso3code.
-  df_meta <- left_join(df_meta, df_all_un_pop_est, by = "id")
+  df_meta <- left_join(df_meta, df_all_un_pop_est, by = "iso3code")
 
   ## Add Geometries
   df_meta <- df_meta %>%
-    left_join(country_geometries, by = c("iso3code" = "iso3code")) # country_coords
+    left_join(country_geometries, by = "iso3code") # country_coords
 
 
-  df_meta <- select(df_meta, id, iso2code, state_region, who_region, who_country, incomelevel_value, population = total, eighteenplus = `18+`, geometry)
+  df_meta <- select(df_meta, iso3code, iso2code, state_region, who_region, who_country, incomelevel_value, population = total, eighteenplus = `18+`, geometry)
 
   return(df_meta)
 }
