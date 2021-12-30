@@ -7,7 +7,7 @@ test_that("UN Denominator Data is in alignment with OWID", {
   owid_denom_url <- "https://raw.githubusercontent.com/owid/covid-19-data/master/scripts/input/un/population_latest.csv"
 
   # Pull OWID metadata, filter to only those which use the same UNWPP source
-  df_owid_denom <- readr::read_csv(owid_denom_url) %>%
+  df_owid_denom <- data.table::fread(owid_denom_url) %>%
     filter(source == "https://population.un.org/wpp/Download/Standard/CSV/") %>%
     select(iso3code = iso_code, population) %>%
     semi_join(onetable, by = "iso3code") %>%

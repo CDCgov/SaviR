@@ -87,7 +87,7 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
     usaid_metadata_file <- system.file("extdata/usaid_dos_regions.csv", package="SaviR")
   }
 
-  usaid_metadata <- readr::read_csv(usaid_metadata_file, show_col_types = FALSE) %>%
+  usaid_metadata <- fread(usaid_metadata_file) %>%
     distinct(iso3code = iso_alpha3, state_region)
 
   df_meta <- df_meta %>%
