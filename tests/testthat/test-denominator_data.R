@@ -1,4 +1,7 @@
 test_that("UN Denominator Data is in alignment with OWID", {
+  # Track: https://github.com/owid/covid-19-data/issues/2206
+  skip("OWID currently diverging")
+
   # NOTE: We can only check those countries that OWID pulls from UN
   # because we expect that it won't match across the board if the source is different.
   owid_denom_url <- "https://raw.githubusercontent.com/owid/covid-19-data/master/scripts/input/un/population_latest.csv"
