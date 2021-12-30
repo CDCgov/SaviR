@@ -37,3 +37,21 @@
 #'   \item{\code{posrate_direct}}{  logical Indicator for whether OWID pulls test positivity directly, or computes it}
 #' }
 "owid_testing_meta"
+
+#' Additional entries not acknowledged by WHO
+#' but required to create onetable
+onetable_addn_countries <- data.frame(
+  iso2code = c("HK", "MO", "TW"),
+  country = c("Hong Kong", "Macau", "Taiwan"),
+  who_region = c("WPRO", "WPRO", "WPRO")
+)
+
+#' Countries with no current UNWPP data
+#' that are manually updated here from CIA world factbook
+#' https://www.cia.gov/the-world-factbook/field/population/country-comparison
+#' Currently 2021 projections are being used
+cia_wfb_addn_countries <- data.frame(
+  country = c("Guernsey", "Jersey", "Pitcairn Islands", "Kosovo"),
+  iso3code = c("GGY", "JEY", "PCN", "XKX"),
+  total = c(67334, 101476, 50, 1935259)
+)
