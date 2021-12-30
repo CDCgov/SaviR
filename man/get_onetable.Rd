@@ -11,7 +11,7 @@ get_onetable(
 )
 }
 \arguments{
-\item{usaid_metadata_file}{(character) A file path to the file containing State Department regions. Expects at least two columns, ["iso_alpha3", "state_region"]}
+\item{usaid_metadata_file}{(character, optional) A file path to the file containing State Department regions. Expects at least two columns, ["iso_alpha3", "state_region"]}
 
 \item{vintage}{(numeric, default: 2021) The year of population projections to use from UN data}
 

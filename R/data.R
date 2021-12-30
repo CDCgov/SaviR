@@ -27,7 +27,7 @@
 
 #' @title OWID Testing Metadata
 #' @describeIn get_owid_testing_meta Saved dataset
-#' @description A metadata table used within \code{\link[SaviR::get_testing]{get_testing()}} to determine how country testing data is computed.
+#' @description A metadata table used within [get_testing()] to determine how country testing data is computed.
 #' @format A data frame with 141 rows and 5 variables:
 #' \itemize{
 #'   \item{\code{iso3code}}{  character ISO 3166-1 alpha-3 country code}
