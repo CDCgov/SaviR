@@ -5,6 +5,7 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 # SaviR <img src='logo/hex-SaviR.png' align = "right" height="200" />
 <!-- badges: start -->
+[![Codecov test coverage](https://codecov.io/gh/CDCgov/SaviR/branch/master/graph/badge.svg)](https://app.codecov.io/gh/CDCgov/SaviR?branch=master)
 <!-- badges: end -->
 ## Overview
 The purpose of SaviR is to collect the functions needed to access and prepare various COVID data sources.
@@ -13,7 +14,7 @@ This package is divided into two main sections: analytical datasets and data vis
 
 ## Installation
 
-You can install the released version of SaviR from [Github](https://github.com/randyyee/SaviR) with:
+You can install the released version of SaviR from [Github](https://github.com/CDCGov/SaviR) with:
 
 ``` r
 devtools::install_github("CDCgov/SaviR")
@@ -49,7 +50,7 @@ IN DEVELOPMENT
 | plot_riskmatrix           |                  |                       |
 | plot_vaxcoverage          |                  |                       |
 
-## Pulic Domain Standard Notice
+## Public Domain Standard Notice
 This repository constitutes a work of the United States Government and is not subject to domestic copyright protection under 17 USC § 105. This repository is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the CC0 1.0 Universal public domain dedication. All contributions to this repository will be released under the CC0 dedication. By submitting a pull request you are agreeing to comply with this waiver of copyright interest.
 
 ## License Standard Notice
