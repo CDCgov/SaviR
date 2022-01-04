@@ -7,7 +7,7 @@
 calc_add_risk(df)
 }
 \arguments{
-\item{df}{Dataframe with iso3code, date, new_cases, new_deaths, cumulative_cases, cumulative_deaths, AND population.}
+\item{df}{Dataframe with id, date, new_cases, new_deaths, cumulative_cases, cumulative_deaths, AND population.}
 }
 \description{
 Calculate epi stats a generalized df input.

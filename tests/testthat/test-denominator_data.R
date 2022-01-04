@@ -9,15 +9,15 @@ test_that("UN Denominator Data is in alignment with OWID", {
   # Pull OWID metadata, filter to only those which use the same UNWPP source
   df_owid_denom <- data.table::fread(owid_denom_url) %>%
     filter(source == "https://population.un.org/wpp/Download/Standard/CSV/") %>%
-    select(iso3code = iso_code, population) %>%
-    semi_join(onetable, by = "iso3code") %>%
-    arrange(iso3code)
+    select(id = iso_code, population) %>%
+    semi_join(onetable, by = "id") %>%
+    arrange(id)
 
   # Also filter onetable countries only to those that OWID pulls from UN
   onetable_denom <- onetable %>%
-    select(iso3code, population) %>%
-    semi_join(df_owid_denom, by = "iso3code") %>%
-    arrange(iso3code)
+    select(id, population) %>%
+    semi_join(df_owid_denom, by = "id") %>%
+    arrange(id)
 
   # These countries should have the same (or similar, at least) population
   expect_identical(onetable_denom, df_owid_denom)

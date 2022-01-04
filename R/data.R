@@ -2,7 +2,7 @@
 #' @description A centralized metadata table containing all country ids, categories, and population counts
 #' @format A data frame with 238 rows and 9 variables:
 #' \itemize{
-#'   \item{\code{iso3code}}{character ISO 3166-1 alpha-3 country code}
+#'   \item{\code{id}}{character ISO 3166-1 alpha-3 country code}
 #'   \item{\code{iso2code}}{character ISO 3166-1 alpha-2 country code}
 #'   \item{\code{state_region}}{character US Department of State Region}
 #'   \item{\code{who_region}}{integer WHO Region}
@@ -30,7 +30,7 @@
 #' @description A metadata table used within [get_testing()] to determine how country testing data is computed.
 #' @format A data frame with 141 rows and 5 variables:
 #' \itemize{
-#'   \item{\code{iso3code}}{  character ISO 3166-1 alpha-3 country code}
+#'   \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
 #'   \item{\code{test_definition}}{  character Description of OWID testing definition}
 #'   \item{\code{case_definition}}{  character Description of OWID case definition}
 #'   \item{\code{posrate_definition}}{  character Description of OWID test positivity calculation}
@@ -52,6 +52,6 @@ onetable_addn_countries <- data.frame(
 #' Currently 2021 projections are being used
 cia_wfb_addn_countries <- data.frame(
   country = c("Guernsey", "Jersey", "Pitcairn Islands", "Kosovo"),
-  iso3code = c("GGY", "JEY", "PCN", "XKX"),
+  id = c("GGY", "JEY", "PCN", "XKX"),
   total = c(67334, 101476, 50, 1935259)
 )

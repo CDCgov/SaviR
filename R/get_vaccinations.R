@@ -6,7 +6,7 @@
 #'
 #' \describe{
 #'   \item{\code{owid_country}}{  character English country name from OWID}
-#'   \item{\code{iso3code}}{  character ISO 3166-1 alpha-3 country code}
+#'   \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
 #'   \item{\code{date}}{  date Date of vaccination observation}
 #'   \item{\code{total_vaccinations}}{  double total number of doses administered. For vaccines that require multiple doses, each individual dose is counted. If a person receives one dose of the vaccine, this metric goes up by 1. If they receive a second dose, it goes up by 1 again. If they receive a third/booster dose, it goes up by 1 again.}
 #'   \item{\code{people_vaccinated}}{  double total number of people who received at least one vaccine dose. If a person receives the first dose of a 2-dose vaccine, this metric goes up by 1. If they receive the second dose, the metric stays the same.}
@@ -30,10 +30,10 @@
 
 get_vax <- function() {
   df <- fread(datasource_lk$owid_vax, stringsAsFactors = FALSE, check.names = FALSE) %>%
-    rename(iso3code = iso_code, owid_country = location) %>%
+    rename(id = iso_code, owid_country = location) %>%
     mutate(date = as.Date(date)) %>%
-    mutate(iso3code = recode(iso3code, "OWID_KOS" = "XKX")) %>%
-    filter(!grepl("OWID", iso3code)) %>%
+    mutate(id = recode(id, "OWID_KOS" = "XKX")) %>%
+    filter(!grepl("OWID", id)) %>%
     mutate(owid_country = recode(owid_country, !!!owid_lk)) %>%
     mutate(daily_vaccinations_per_hundred = daily_vaccinations_per_million / 10000) %>%
     mutate(across(where(bit64::is.integer64), as.double))
@@ -51,7 +51,7 @@ get_vax <- function() {
 #'
 #' \itemize{
 #'   \item{\code{owid_country}}{  character English country name from OWID}
-#'   \item{\code{iso3code}}{  character ISO 3166-1 alpha-3 country code}
+#'   \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
 #'   \item{\code{vaccines}}{  character list of vaccines administered in the country up to the current date.}
 #'   \item{\code{last_observation_date}}{  date date of the last observation in OWID data.}
 #'   \item{\code{source_name}}{  character name of OWID source for data collection.}
@@ -64,10 +64,10 @@ get_vax <- function() {
 
 get_vax_manufacturers <- function() {
   df <- fread(datasource_lk$owid_vax_manufacturers, stringsAsFactors = FALSE, check.names = FALSE) %>%
-    rename(iso3code = iso_code, owid_country = location) %>%
+    rename(id = iso_code, owid_country = location) %>%
     mutate(last_observation_date = as.Date(last_observation_date)) %>%
-    mutate(iso3code = recode(iso3code, "OWID_KOS" = "XKX")) %>%
-    filter(!grepl("OWID", iso3code)) %>%
+    mutate(id = recode(id, "OWID_KOS" = "XKX")) %>%
+    filter(!grepl("OWID", id)) %>%
     mutate(owid_country = recode(owid_country, !!!owid_lk))
 
   return(df)

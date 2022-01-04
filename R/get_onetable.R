@@ -67,7 +67,7 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
   # Full join starting with World Bank's metadata to get the combined list.
   df_meta <- full_join(df_wb, country_list, by = "iso2code") %>%
     select(
-      iso3code = id,
+      id,
       iso2code,
       incomelevel_value = incomelevel.value,
       who_region,
@@ -76,10 +76,10 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
     filter(iso2code != "OT") %>%
     mutate(
       # Apply manual lookup for ISO3 codes that don't parse correctly
-      iso3code = recode(iso3code, !!!manual_iso3_lk),
-      # Parse remaining NA values for iso3code
+      id = recode(id, !!!manual_iso3_lk),
+      # Parse remaining NA values for id
       # NOTE: This will throw warnings, but we've included 
-      iso3code = if_else(is.na(iso3code), parse_country(who_country, to = "iso3c"), iso3code)
+      id = if_else(is.na(id), parse_country(who_country, to = "iso3c"), id)
     )
 
 
@@ -89,10 +89,10 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
   }
 
   usaid_metadata <- fread(usaid_metadata_file) %>%
-    distinct(iso3code = iso_alpha3, state_region)
+    distinct(id = iso_alpha3, state_region)
 
   df_meta <- df_meta %>%
-    left_join(usaid_metadata, by = "iso3code") %>%
+    left_join(usaid_metadata, by = "id") %>%
     mutate(
       state_region = case_when(
         who_country == "United States of America" ~ "US",
@@ -125,20 +125,20 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
   df_all_un_pop_est <- df_un_location_meta %>%
     left_join(df_un_medium_pop_est, by = "LocID") %>%
     left_join(df_un_medium_pop_est_single_year, by = c("LocID", "Time")) %>%
-    select(country, iso3code = id, total, `18+`) %>%
+    select(country, id = id, total, `18+`) %>%
     # Add in data from CIA world factbook
     bind_rows(cia_wfb_addn_countries)
 
   ## WB-WHO-Country-Population-List
-  # Joined by iso3code.
-  df_meta <- left_join(df_meta, df_all_un_pop_est, by = "iso3code")
+  # Joined by id.
+  df_meta <- left_join(df_meta, df_all_un_pop_est, by = "id")
 
   ## Add Geometries
   df_meta <- df_meta %>%
-    left_join(country_geometries, by = "iso3code") # country_coords
+    left_join(country_geometries, by = c("id" = "iso3code")) # country_coords
 
 
-  df_meta <- select(df_meta, iso3code, iso2code, state_region, who_region, who_country, incomelevel_value, population = total, eighteenplus = `18+`, geometry)
+  df_meta <- select(df_meta, id, iso2code, state_region, who_region, who_country, incomelevel_value, population = total, eighteenplus = `18+`, geometry)
 
   return(df_meta)
 }
@@ -169,10 +169,10 @@ get_country_coords <- function(world = file.choose()) {
     sp::spTransform(sp::CRS("+proj=robin +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs")) %>%
     sf::st_as_sf() %>%
     select(TYPE, ADMIN, ISO_A3) %>%
-    mutate(iso3code = passport::parse_country(ADMIN, to = "iso3c")) %>%
-    mutate(iso3code = if_else(ADMIN == "eSwatini", "SWZ", iso3code)) %>%
-    mutate(iso3code = if_else(ADMIN == "Kosovo", "XKX", iso3code)) %>%
-    filter(!iso3code == "ATA" & !iso3code == "FJI") %>%
+    mutate(id = passport::parse_country(ADMIN, to = "iso3c")) %>%
+    mutate(id = if_else(ADMIN == "eSwatini", "SWZ", id)) %>%
+    mutate(id = if_else(ADMIN == "Kosovo", "XKX", id)) %>%
+    filter(!id == "ATA" & !id == "FJI") %>%
     # remove Antarctica and Fiji
     filter(!ADMIN == "Northern Cyprus") # remove Northern Cyprus
 

@@ -11,7 +11,7 @@ A data frame with n rows and 17 variables:
 
 \describe{
   \item{\code{owid_country}}{  character English country name from OWID}
-  \item{\code{iso3code}}{  character ISO 3166-1 alpha-3 country code}
+  \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
   \item{\code{date}}{  date Date of vaccination observation}
   \item{\code{total_vaccinations}}{  double total number of doses administered. For vaccines that require multiple doses, each individual dose is counted. If a person receives one dose of the vaccine, this metric goes up by 1. If they receive a second dose, it goes up by 1 again. If they receive a third/booster dose, it goes up by 1 again.}
   \item{\code{people_vaccinated}}{  double total number of people who received at least one vaccine dose. If a person receives the first dose of a 2-dose vaccine, this metric goes up by 1. If they receive the second dose, the metric stays the same.}

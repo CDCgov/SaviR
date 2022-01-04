@@ -17,7 +17,7 @@ library(dplyr)
 ```{r}
 df_OWID <- read.csv("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/testing/covid-testing-all-observations.csv") %>%
   select(Entity,
-    iso3code = ISO.code,
+    id = ISO.code,
     date = Date,
     new_tests_OWID = Daily.change.in.cumulative.total,
     cum_tests_OWID = Cumulative.total
@@ -28,7 +28,7 @@ df_OWID <- read.csv("https://raw.githubusercontent.com/owid/covid-19-data/master
 df_FIND <- read.csv("https://raw.githubusercontent.com/dsbbfinddx/FINDCov19TrackerData/master/processed/data_all.csv") %>%
   filter(set == "country") %>%
   select(
-    iso3code = unit,
+    id = unit,
     date = time,
     new_tests_FIND = new_tests_orig,
     cum_tests_FIND = cum_tests_orig
@@ -40,8 +40,8 @@ df_FIND <- read.csv("https://raw.githubusercontent.com/dsbbfinddx/FINDCov19Track
 df <- onetable %>%
   right_join(get_covid_df(), by = "iso2code") %>%
   mutate(date = as.character(date)) %>%
-  left_join(df_OWID, by = c("iso3code", "date")) %>%
-  left_join(df_FIND, by = c("iso3code", "date")) %>%
+  left_join(df_OWID, by = c("id", "date")) %>%
+  left_join(df_FIND, by = c("id", "date")) %>%
   mutate(new_tests = case_when(
     is.na(new_tests_OWID) ~ new_tests_FIND,
     TRUE ~ new_tests_OWID

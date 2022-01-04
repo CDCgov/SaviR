@@ -8,7 +8,7 @@
 \format{
 A data frame with 141 rows and 5 variables:
 \itemize{
-  \item{\code{iso3code}}{  character ISO 3166-1 alpha-3 country code}
+  \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
   \item{\code{test_definition}}{  character Description of OWID testing definition}
   \item{\code{case_definition}}{  character Description of OWID case definition}
   \item{\code{posrate_definition}}{  character Description of OWID test positivity calculation}

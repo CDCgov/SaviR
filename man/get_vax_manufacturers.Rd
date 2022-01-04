@@ -11,7 +11,7 @@ A data frame with 218(-ish) rows and 6 variables:
 
 \itemize{
   \item{\code{owid_country}}{  character English country name from OWID}
-  \item{\code{iso3code}}{  character ISO 3166-1 alpha-3 country code}
+  \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
   \item{\code{vaccines}}{  character list of vaccines administered in the country up to the current date.}
   \item{\code{last_observation_date}}{  date date of the last observation in OWID data.}
   \item{\code{source_name}}{  character name of OWID source for data collection.}

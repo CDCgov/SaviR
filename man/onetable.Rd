@@ -7,7 +7,7 @@
 \format{
 A data frame with 238 rows and 9 variables:
 \itemize{
-  \item{\code{iso3code}}{character ISO 3166-1 alpha-3 country code}
+  \item{\code{id}}{character ISO 3166-1 alpha-3 country code}
   \item{\code{iso2code}}{character ISO 3166-1 alpha-2 country code}
   \item{\code{state_region}}{character US Department of State Region}
   \item{\code{who_region}}{integer WHO Region}

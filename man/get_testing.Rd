@@ -12,7 +12,7 @@ get_testing(analysis_date = Sys.Date() - 1L)
 \value{
 A data frame with n rows and 5 variables:
 \describe{
-  \item{\code{iso3code}}{  character ISO 3166-1 alpha-3 country code}
+  \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
   \item{\code{date}}{  date Date of testing observation}
   \item{\code{new_tests_smoothed_per_thousand}}{  double Tests / 1000 population (7d smooth)}
   \item{\code{new_tests_smoothed_per_thousand_14}}{  double Tests / 1000 population (14d smooth)}

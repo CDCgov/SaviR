@@ -2,7 +2,7 @@
 
 #' @title calc_add_risk
 #' @description Calculate epi stats a generalized df input.
-#' @param df Dataframe with iso3code, date, new_cases, new_deaths, cumulative_cases, cumulative_deaths, AND population.
+#' @param df Dataframe with id, date, new_cases, new_deaths, cumulative_cases, cumulative_deaths, AND population.
 #'
 
 #' @importFrom RcppRoll roll_mean
@@ -26,7 +26,7 @@ calc_add_risk <- function(df) {
       cumulative_cases_copy = replace(cumulative_cases, cumulative_cases < 0 | is.na(cumulative_cases), 0),
       cumulative_deaths_copy = replace(cumulative_deaths, cumulative_deaths < 0 | is.na(cumulative_deaths), 0)
     ) %>%
-    group_by(source, iso3code) %>%
+    group_by(source, id) %>%
     arrange(date) %>%
     mutate(
       weekdate = lubridate::floor_date(date, "week", week_start = 1),

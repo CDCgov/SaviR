@@ -100,18 +100,18 @@ get_owid_testing_meta <- function(url = "https://ourworldindata.org/coronavirus-
       case_definition = replace(case_definition, case_definition == "", NA_character_),
       # NOTE: Passport doesn't parse Timor, so it'll throw a warning
       # it'll be handled in the next ifelse() line, though
-      iso3code = passport::parse_country(country, to = "iso3c"),
-      iso3code = ifelse(country == "Timor", "TLS", iso3code)
+      id = passport::parse_country(country, to = "iso3c"),
+      id = ifelse(country == "Timor", "TLS", id)
     ) %>%
-    relocate(country, iso3code, test_definition, case_definition, posrate_definition)
+    relocate(country, id, test_definition, case_definition, posrate_definition)
 
   # Note some duplicated countries for some reason
   owid_meta2 <-
     left_join(owid_meta,
       owid_meta %>%
-        group_by(iso3code) %>%
+        group_by(id) %>%
         count(),
-      by = "iso3code"
+      by = "id"
     )
 
   # For Ecuador, we get 2 different test definitions.
@@ -124,24 +124,24 @@ get_owid_testing_meta <- function(url = "https://ourworldindata.org/coronavirus-
   # If Ecuador is not counted twice, throw an error -- need to change function
   owid_mult <- owid_meta2 %>% filter(n > 1)
 
-  if (!("ECU" %in% owid_mult$iso3code)) {
+  if (!("ECU" %in% owid_mult$id)) {
     stop("Function assumes multiple Ecuador entries -- check function code")
   }
 
   owid_meta3 <- owid_meta2 %>%
     mutate(
-      iso3code_old = iso3code,
-      country_duplicated = duplicated(iso3code_old),
-      iso3code = if_else(iso3code_old == "ECU" & country_duplicated == TRUE,
-        "SLV", iso3code_old
+      id_old = id,
+      country_duplicated = duplicated(id_old),
+      id = if_else(id_old == "ECU" & country_duplicated == TRUE,
+        "SLV", id_old
       ),
-      country_duplicated2 = duplicated(iso3code)
+      country_duplicated2 = duplicated(id)
     ) %>%
     filter(!country_duplicated2)
 
   owid_meta_final <- owid_meta3 %>%
-    select(iso3code:posrate_definition) %>%
-    arrange(iso3code) %>%
+    select(id:posrate_definition) %>%
+    arrange(id) %>%
     mutate(
       posrate_direct = ifelse(str_detect(posrate_definition, "collected directly"), T, F)
     )
