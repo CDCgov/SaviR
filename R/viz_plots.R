@@ -621,7 +621,6 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
     col_master <- income_aes
     df_c <- df %>% mutate(cat = factor(incomelevel_value, levels = col_master$cat_values))
   }
-  col_master <- data.frame(cat_values, cat_names, cat_colors, cat_lines)
 
   category_labels <- col_master$cat_names
   category_color_values <- col_master$cat_colors
