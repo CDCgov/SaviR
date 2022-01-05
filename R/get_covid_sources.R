@@ -27,9 +27,9 @@ get_covid_df <- function() {
     rename_all(tolower) %>%
     rename(iso2code = country_code) %>%
     mutate(country = recode(country, !!!who_lk)) %>%
+    filter(!country %in% "Other") %>%
     mutate(iso2code = case_when(
       country == "Namibia" ~ "NA",
-      country == "Other" ~ "OT",
       country == "Bonaire, Sint Eustatius, and Saba" ~ "BQ",
       TRUE ~ iso2code
     )) %>%
