@@ -17,6 +17,18 @@ An object of class \code{data.frame} with n rows and 55(56, if \code{geometry = 
 \description{
 Create combined Case/Death/Vax data.frame
 }
+\examples{
+\dontrun{
+# get_combined_table() is identical to the following sequence:
+onetable \%>\%
+  select(-geometry)  \%>\% # In the case that geometry = FALSE
+  right_join(get_covid_df(), by = "iso2code") \%>\%
+  filter(source == "WHO") \%>\% # In the case of type = "WHO"
+# filter(!(country == "China" & source == "WHO")) \%>\% # In the case of type = "Both"
+  calc_add_risk() \%>\%
+  left_join(get_vax(), by = c("id", "date"))
+}
+}
 \seealso{
 [get_covid_df()], [get_vax()], and [calc_add_risk()] for full column data documentation
 }
