@@ -269,6 +269,10 @@ table_10percentchange <- function(df, type = "Global", run_date = "Enter a date"
       value1 = gt::html("% Change<br>Last Week"),
       value2 = gt::html("% Change<br> 4 Weeks")
     ) %>%
+      fmt_missing(
+      columns = everything(),
+      missing_text = "-"
+    ) %>%
     gt::cols_align("center") %>%
     gt::cols_width(
       c(country) ~ gt::px(175),
