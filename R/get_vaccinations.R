@@ -2,6 +2,8 @@
 
 #' @title get_vax
 #' @description Get vaccination data from OWID
+#' Note that all cumulative totals are all carried forward if NA on a given day.
+#' 
 #' @return A data frame with n rows and 17 variables:
 #'
 #' \describe{
@@ -35,6 +37,10 @@ get_vax <- function() {
     mutate(id = recode(id, "OWID_KOS" = "XKX")) %>%
     filter(!grepl("OWID", id)) %>%
     mutate(owid_country = recode(owid_country, !!!owid_lk)) %>%
+    arrange(id, date) %>%
+    group_by(id) %>%
+    mutate(across(matches("^total|^people"), zoo::na.locf, na.rm = FALSE)) %>%
+    ungroup() %>%
     mutate(daily_vaccinations_per_hundred = daily_vaccinations_per_million / 10000) %>%
     mutate(across(where(bit64::is.integer64), as.double))
 
