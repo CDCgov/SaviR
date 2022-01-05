@@ -13,7 +13,31 @@ table_10vaccinations(
 }
 \arguments{
 \item{df}{A dataframe with the following and in this order: country, value1 - people vaccinated per 100, value2 - daily vaccines administered per 100 people, date}
+
+\item{vac_type}{(character, default: "Partial") one of ["Partial", "Fully"] depending on vaccination status being tabulated}
+
+\item{type}{(character, default: "Global") Text name for subset of data \code{df} is, to be included in title}
+
+\item{run_date}{(character, default: "Enter a date") Run date to include in table source}
 }
 \description{
 Table for displaying top 10's.
+}
+\examples{
+\dontrun{
+sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
+df_who <- get_combined_table("WHO")
+
+# Take global data for countries with population > 1,000,000
+df_who \%>\%
+ filter(date <= sunday_date, population > 1000000) \%>\%
+ group_by(country) \%>\%
+ filter(!is.na(people_fully_vaccinated_per_hundred)) \%>\%
+ filter(date == max(date)) \%>\%
+ ungroup() \%>\%
+ select(country = who_country, value1 = people_fully_vaccinated_per_hundred, value2 = daily_vaccinations_per_hundred) \%>\%
+ arrange(desc(value1)) \%>\%
+ head(10) \%>\%
+ table_10vaccinations(., run_date = format(sunday_date, "\%B \%d, \%Y"))
+}
 }

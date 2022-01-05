@@ -303,8 +303,27 @@ table_10percentchange <- function(df, type = "Global", run_date = "Enter a date"
 #' @title table_10vaccinations
 #' @description Table for displaying top 10's.
 #' @param df A dataframe with the following and in this order: country, value1 - people vaccinated per 100, value2 - daily vaccines administered per 100 people, date
-
+#' @param vac_type (character, default: "Partial") one of ["Partial", "Fully"] depending on vaccination status being tabulated
+#' @param type (character, default: "Global") Text name for subset of data \code{df} is, to be included in title
+#' @param run_date (character, default: "Enter a date") Run date to include in table source
 #'
+#' @examples
+#' \dontrun{
+#' sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
+#' df_who <- get_combined_table("WHO")
+#' 
+#' # Take global data for countries with population > 1,000,000
+#' df_who %>%
+#'  filter(date <= sunday_date, population > 1000000) %>%
+#'  group_by(country) %>%
+#'  filter(!is.na(people_fully_vaccinated_per_hundred)) %>%
+#'  filter(date == max(date)) %>%
+#'  ungroup() %>%
+#'  select(country = who_country, value1 = people_fully_vaccinated_per_hundred, value2 = daily_vaccinations_per_hundred) %>%
+#'  arrange(desc(value1)) %>%
+#'  head(10) %>%
+#'  table_10vaccinations(., run_date = format(sunday_date, "%B %d, %Y"))
+#'}
 #' @export
 
 table_10vaccinations <- function(df, vac_type = "Partial", type = "Global", run_date = "Enter a date") {
