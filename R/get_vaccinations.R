@@ -37,10 +37,7 @@ get_vax <- function() {
     mutate(id = recode(id, "OWID_KOS" = "XKX")) %>%
     filter(!grepl("OWID", id)) %>%
     mutate(owid_country = recode(owid_country, !!!owid_lk)) %>%
-    arrange(id, date) %>%
-    group_by(id) %>%
-    mutate(across(matches("^total|^people"), zoo::na.locf, na.rm = FALSE)) %>%
-    ungroup() %>%
+    calc_vax_carryforward() %>%
     mutate(daily_vaccinations_per_hundred = daily_vaccinations_per_million / 10000) %>%
     mutate(across(where(bit64::is.integer64), as.double))
 

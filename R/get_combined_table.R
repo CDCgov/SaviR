@@ -50,7 +50,8 @@ get_combined_table <- function(type = c("WHO", "Both"), geometry = FALSE) {
 
   out <- out %>%
     calc_add_risk() %>%
-    left_join(vax_df, by = c("id", "date"))
+    left_join(vax_df, by = c("id", "date")) %>%
+    calc_vax_carryforward()
 
   return(out)
 }

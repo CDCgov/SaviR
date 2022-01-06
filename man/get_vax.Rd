@@ -31,4 +31,5 @@ A data frame with n rows and 17 variables:
 }
 \description{
 Get vaccination data from OWID
+Note that all cumulative totals are all carried forward if NA on a given day.
 }
