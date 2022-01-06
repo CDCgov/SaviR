@@ -4,21 +4,44 @@
 \alias{table_countriesofconcern}
 \title{table_countriesofconcern}
 \usage{
-table_countriesofconcern(
-  df_risk,
-  df_vaccinations,
-  df_vaccinations_maufacturers,
-  country_list
-)
+table_countriesofconcern(df, df_vax_man, country_list)
 }
 \arguments{
-\item{df_risk}{A dataframe with the following: country, date, new_cases, week_case_incidence, week_case, prev_week_case, percent_change_case,
-new_deaths, week_death_incidence, week_death, prev_week_death, percent_change_death}
+\item{df}{A dataframe with the following: id, who_country, date, new_cases, week_case_incidence, week_case, prev_week_case, percent_change_case,
+new_deaths, week_death_incidence, week_death, prev_week_death, percent_change_death, people_vaccinated_per_hundred, total_vaccinations_per_hundred}
 
-\item{df_vaccinations}{A dataframe with the following: location, date, people_vaccinated_per_hundred, total_vaccinations_per_hundred}
+\item{df_vax_man}{A dataframe with the following: id, date, vaccines}
 
-\item{df_manufacturers}{A dataframe with the following: location, date, vaccines}
+\item{country_list}{(character) A vector of ISO 3166-1 alpha-3 country codes for countries to highlight}
 }
 \description{
 Table for displaying stats for list of countries of concern.
+}
+\section{Notes}{
+
+\code{Most Recent Date for Vaccinations} column is computed internally via a call to [get_vax()]
+}
+
+\examples{
+\dontrun{
+# Get case/death/vax data
+df_both <- get_combined_table("Both")
+
+# Select some countries
+c_list <- c("United Kingdom", "Denmark", "United States of America")
+# The function expects ISO3 codes, so parse if input is raw
+c_list_iso <- parse_country(c_list, to = "iso3c")
+
+# Take the latest observation for each country (vax + case + deaths)
+df_both_latest <- df_both \%>\%
+  group_by(id) \%>\%
+  filter(date == max(date)) \%>\%
+  ungroup()
+
+# Pull metadata on vax manufacturers
+vax_man <- get_vax_manufacturers()
+
+# Produce table
+table_countriesofconcern(df_both_latest, vax_man, c_list_iso)
+}
 }
