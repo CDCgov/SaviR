@@ -25,6 +25,7 @@ library(SaviR)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(passport)
 library(gt)
 
 sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
@@ -45,7 +46,9 @@ df_who <- get_combined_table("WHO")
 df_both <- get_combined_table("Both")
 ```
 
-## Epicurves
+## Plots {.tabset}
+
+### Epicurves
 
 `plot_epicurve(df, transparent = T)`  
   
@@ -71,7 +74,54 @@ for (r in unique(df_who$who_region)) {
 }
 ```
 
-## Notes on mapping
+### Risk Matrix (Global Only)
+
+`plot_riskmatrix(df)`  
+
+Note for labeling purposes, the labels variable should be added to the dataframe specifying the top 10 countries for weekly average incidence, week case percent change, and weekly total cases. Exclusion criteria: Countries with population less than 10 million and countries with weekly cases totals less than 100.  
+
+```{r, fig.width=11, fig.height=7}
+global_risk_matrix <- df_both %>%
+  filter(date == sunday_date) %>%
+  filter(population >= 10000000) %>% # Exclude population less than 10M
+  filter(week_case >= 100) %>%
+  mutate(
+    rank_inc = dense_rank(desc(week_case_incidence)),
+    rank_per = dense_rank(desc(percent_change_case)),
+    rank_cas = dense_rank(desc(week_case))
+  ) %>%
+  mutate(labels = case_when(
+    rank_inc %in% 1:10 ~ country,
+    rank_per %in% 1:10 ~ country,
+    rank_cas %in% 1:10 ~ country
+  )) %>%
+  plot_riskmatrix()
+
+
+global_risk_matrix
+```
+
+### Vaccination Coverage (Global Only)
+
+```{r, fig.width=11, fig.height=7}
+global_vax_coverage <- df_both %>%
+  filter(date <= sunday_date) %>%
+  mutate(state_region = ifelse(id == "USA", "US", state_region)) %>%
+  group_by(country, source) %>%
+  arrange(desc(date)) %>%
+  fill(total_vaccinations, .direction = "updown") %>%
+  fill(people_vaccinated_per_hundred, .direction = "updown") %>%
+  ungroup() %>%
+  filter(date == max(date)) %>%
+  filter(!is.na(state_region)) %>%
+  plot_vaxcoverage(by_cat = "State Region")
+
+global_vax_coverage
+```
+
+## Maps {.tabset}
+
+### Notes on mapping
 
 By default, `get_combined_table()` does *not* return geometry. This is preferable, since the size of the table is quite large and the geometry list column takes up a lot of space in memory.
 However, if we want to map these data, we can either call `get_combined_table("Both", geometry = TRUE)`, or join with `country_coords` after filtering, like so:
@@ -86,7 +136,7 @@ df_both_mapping <- df_both %>%
     by = "id")
 ```
 
-## Burden Map
+### Burden Map
 
 `map_burden(df)`  
 
@@ -111,7 +161,7 @@ for (r in unique(df_both$who_region)) {
 }
 ```
 
-## Trend Map  
+### Trend Map  
   
 `map_trend(df)`
   
@@ -138,7 +188,7 @@ for (r in unique(df_both_mapping$who_region)) {
 }
 ```
 
-## Vaccine Map (Global Only)  
+### Vaccine Map (Global Only)  
 
 `map_vaccinations(df, vac_type = c("People", "Fully"))`  
 
@@ -154,8 +204,9 @@ global_vax_map <- df_both_mapping %>%
 global_vax_map
 ```
 
+## Tables {.tabset}
 
-## Top 10 Most Cases Table
+### Top 10 Most Cases Table
 
 ```{r}
 df_both %>%
@@ -180,7 +231,7 @@ for (r in unique(df_both$who_region)) {
 }
 ```
 
-## Top 10 Incidence Table
+### Top 10 Incidence Table
 
 ```{r}
 df_both %>%
@@ -205,7 +256,7 @@ for (r in unique(df_both$who_region)) {
 }
 ```
 
-## Top 10 Percent Change Table
+### Top 10 Percent Change Table
 
 ```{r}
 df_both %>%
@@ -233,7 +284,7 @@ for (r in unique(df_both$who_region)) {
 }
 ```
 
-## Top 10 Vaccinations Table
+### Top 10 Vaccinations Table
 
 `table_10vaccinations(df, type = c("Global", "Region"), run_date)`
 
@@ -273,7 +324,7 @@ for (r in unique(df_both$who_region)) {
 }
 ```
 
-## Top 10 Fully Vaccinated Table
+### Top 10 Fully Vaccinated Table
 
 `table_10vaccinations(df, vac_type = c("Partial", "Fully"), type = "Global", run_date = "Enter a date")`
 
@@ -291,48 +342,19 @@ df_both %>%
   table_10vaccinations(., run_date = format(sunday_date, "%B %d, %Y"))
 ```
 
+### Countries of Concern Table
 
-## Risk Matrix (Global Only)
+`table_countriesofconcern(df, df_vaccinations_manufacturers, country_list)`
+```{r}
+c_list <- c("United Kingdom","Denmark","Portugal","South Africa","Kenya","Zambia","United States of America")
+c_list_iso <- parse_country(c_list, to = "iso3c")
 
-`plot_riskmatrix(df)`  
-
-Note for labeling purposes, the labels variable should be added to the dataframe specifying the top 10 countries for weekly average incidence, week case percent change, and weekly total cases. Exclusion criteria: Countries with population less than 10 million and countries with weekly cases totals less than 100.  
-
-```{r, fig.width=11, fig.height=7}
-global_risk_matrix <- df_both %>%
-  filter(date == sunday_date) %>%
-  filter(population >= 10000000) %>% # Exclude population less than 10M
-  filter(week_case >= 100) %>%
-  mutate(
-    rank_inc = dense_rank(desc(week_case_incidence)),
-    rank_per = dense_rank(desc(percent_change_case)),
-    rank_cas = dense_rank(desc(week_case))
-  ) %>%
-  mutate(labels = case_when(
-    rank_inc %in% 1:10 ~ country,
-    rank_per %in% 1:10 ~ country,
-    rank_cas %in% 1:10 ~ country
-  )) %>%
-  plot_riskmatrix()
-
-
-global_risk_matrix
-```
-
-## Vaccination Coverage (Global Only)
-
-```{r, fig.width=11, fig.height=7}
-global_vax_coverage <- df_both %>%
-  filter(date <= sunday_date) %>%
-  mutate(state_region = ifelse(id == "USA", "US", state_region)) %>%
-  group_by(country, source) %>%
-  arrange(desc(date)) %>%
-  fill(total_vaccinations, .direction = "updown") %>%
-  fill(people_vaccinated_per_hundred, .direction = "updown") %>%
-  ungroup() %>%
+df_both_latest <- df_both %>%
+  group_by(id) %>%
   filter(date == max(date)) %>%
-  filter(!is.na(state_region)) %>%
-  plot_vaxcoverage(by_cat = "State Region")
+  ungroup()
 
-global_vax_coverage
+vax_man <- get_vax_manufacturers()
+
+table_countriesofconcern(df_both_latest, vax_man, c_list_iso)
 ```
