@@ -6,14 +6,16 @@
 #' @return df with either columns in \code{...} carried forward, or default set
 #' @section Notes:
 #' By default, function carries forward the following (unless names are passed in \code{...}):
-# - \code{total_vaccinations}
-# - \code{people_vaccinated}
-# - \code{people_fully_vaccinated}
-# - \code{total_boosters}
-# - \code{total_vaccinations_per_hundred}
-# - \code{people_vaccinated_per_hundred}
-# - \code{people_fully_vaccinated_per_hundred}
-# - \code{total_boosters_per_hundred}
+#' \itemize{
+#'   \item{total_vaccinations}{}
+#'   \item{people_vaccinated}{}
+#'   \item{people_fully_vaccinated}{}
+#'   \item{total_boosters}{}
+#'   \item{total_vaccinations_per_hundred}{}
+#'   \item{people_vaccinated_per_hundred}{}
+#'   \item{people_fully_vaccinated_per_hundred}{}
+#'   \item{total_boosters_per_hundred}{}
+#' }
 #' @export
 calc_vax_carryforward <- function(df, ...) {
   # Optionally specify vax cols by name if we want to be specific

@@ -20,5 +20,15 @@ Carry-Forward vaccination metrics to latest date
 \section{Notes}{
 
 By default, function carries forward the following (unless names are passed in \code{...}):
+\itemize{
+  \item{total_vaccinations}{}
+  \item{people_vaccinated}{}
+  \item{people_fully_vaccinated}{}
+  \item{total_boosters}{}
+  \item{total_vaccinations_per_hundred}{}
+  \item{people_vaccinated_per_hundred}{}
+  \item{people_fully_vaccinated_per_hundred}{}
+  \item{total_boosters_per_hundred}{}
+}
 }
 
