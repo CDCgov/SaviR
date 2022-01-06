@@ -5,12 +5,13 @@
 \alias{onetable}
 \title{Onetable}
 \format{
-A data frame with 238 rows and 9 variables:
+A data frame with 237 rows and 10 variables:
 \itemize{
   \item{\code{id}}{character ISO 3166-1 alpha-3 country code}
   \item{\code{iso2code}}{character ISO 3166-1 alpha-2 country code}
   \item{\code{state_region}}{character US Department of State Region}
-  \item{\code{who_region}}{integer WHO Region}
+  \item{\code{who_region}}{character WHO Region acronym}
+  \item{\code{who_region_desc}}{character WHO Region english name}
   \item{\code{who_country}}{character WHO English country text name}
   \item{\code{incomelevel_value}}{character World Bank Income level}
   \item{\code{population}}{double UN Total population estimates for 2020}

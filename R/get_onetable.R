@@ -11,7 +11,7 @@
 #' @param vintage (numeric, default: 2021) The year of population projections to use from UN data
 #' @param country_geometries (data.frame, default: country_coords) a data.frame/sfc with at least two columns: ["iso3code", "geometry"]
 
-#' @return a data.frame of 238 rows and 9 columns
+#' @return a data.frame of 238 rows and 10 columns
 #' 
 #' @import sf
 #' @import passport
@@ -137,8 +137,11 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
   df_meta <- df_meta %>%
     left_join(country_geometries, by = c("id" = "iso3code")) # country_coords
 
+  # Add "pretty" WHO region names
+  df_meta <- df_meta %>%
+    mutate(who_region_desc = who_region_lk[who_region])
 
-  df_meta <- select(df_meta, id, iso2code, state_region, who_region, who_country, incomelevel_value, population = total, eighteenplus = `18+`, geometry)
+  df_meta <- select(df_meta, id, iso2code, state_region, who_region, who_region_desc, who_country, incomelevel_value, population = total, eighteenplus = `18+`, geometry)
 
   return(df_meta)
 }

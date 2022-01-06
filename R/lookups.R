@@ -14,6 +14,27 @@ who_aes <- data.frame(
   cat_lines = c("solid", "solid", "solid", "solid", "solid", "solid")
 )
 
+#' @title WHO "pretty" english region names
+#' @description A helper lookup table to map WHO region acronyms to a "pretty" english name.
+#' @format A character vector of length 6:  
+#' \describe{
+#'   \item{\code{AMRO}}{character Americas} 
+#'   \item{\code{EURO}}{character Europe} 
+#'   \item{\code{SEARO}}{character Southeast Asia}
+#'   \item{\code{EMRO}}{character Eastern Mediterranean}
+#'   \item{\code{AFRO}}{character Africa}
+#'   \item{\code{WPRO}}{character Western Pacific}
+#'}
+#' @details For internal use in generating [onetable] via [get_onetable()]
+who_region_lk <- c(
+  AMRO = "Americas",
+  EURO = "Europe",
+  SEARO = "Southeast Asia",
+  EMRO = "Eastern Mediterranean",
+  AFRO = "Africa",
+  WPRO = "Western Pacific"
+)
+
 #' @title Aesthetics for US Department of State regions
 #' @description Used internally in plotting functions to style plots with DoS-regions.
 #' @returns

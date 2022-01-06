@@ -3,7 +3,7 @@ test_that("Combined table returns WHO data appropriately", {
   dims <- dim(df)
   # Should have at least 1 row and 55 cols
   expect_gt(dims[1], 0)
-  expect_equal(dims[2], 55)
+  expect_equal(dims[2], 56)
 
   # Should only contain WHO-sourced data
   sources <- unique(df$source)
@@ -27,7 +27,7 @@ test_that("Combined table returns JHU+WHO data appropriately", {
 
   # Should have at least 1 row and 55 cols
   expect_gt(dims[1], 0)
-  expect_equal(dims[2], 55)
+  expect_equal(dims[2], 56)
 
   # Should contain both JHU and WHO data
   sources <- unique(df$source)
@@ -52,7 +52,14 @@ test_that("Combined table returns JHU+WHO data appropriately", {
 test_that("Combined table returns geometry if requested (not recommended)", {
   df <- get_combined_table(geometry = TRUE)
 
+  dims <- dim(df)
+
   expect_true("geometry" %in% names(df))
   expect_type(df[["geometry"]], "list")
+
+
+  # Should be n * 57
+  expect_gt(dims[1], 0)
+  expect_equal(dims[2], 57)
 })
 

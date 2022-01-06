@@ -18,7 +18,7 @@ get_onetable(
 \item{country_geometries}{(data.frame, default: country_coords) a data.frame/sfc with at least two columns: ["iso3code", "geometry"]}
 }
 \value{
-a data.frame of 238 rows and 9 columns
+a data.frame of 238 rows and 10 columns
 }
 \description{
 One table to rule them all and in keys bind them!
