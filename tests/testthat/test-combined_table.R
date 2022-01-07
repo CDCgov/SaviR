@@ -17,7 +17,7 @@ test_that("Combined table returns WHO data appropriately", {
   # Should return an empty table if no data has made it through
   resulting <- df %>%
     semi_join(onetable_addn_countries, by = "iso2code")
-  
+
   expect_identical(resulting, comp_shell)
 })
 
@@ -41,7 +41,7 @@ test_that("Combined table returns JHU+WHO data appropriately", {
 
   resulting <- df %>%
     filter(iso2code %in% expected_countries)
-  
+
   resulting_countries <- unique(resulting$iso2code)
   resulting_countries <- resulting_countries[order(resulting_countries)]
 
@@ -62,4 +62,3 @@ test_that("Combined table returns geometry if requested (not recommended)", {
   expect_gt(dims[1], 0)
   expect_equal(dims[2], 57)
 })
-

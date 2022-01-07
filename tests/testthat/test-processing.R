@@ -52,7 +52,7 @@ test_that("calc_vax_carryforward works as expected", {
     slice(1:2) %>%
     mutate(
       across(
-        -owid_country:-date, ~case_when(
+        -owid_country:-date, ~ case_when(
           date == max(date) ~ NA_real_, # The latest observation should be NA
           date == min(date) ~ cf_value # The second-to-last observation should be 1000
         )
@@ -65,7 +65,7 @@ test_that("calc_vax_carryforward works as expected", {
 
   vaccine_col_str <- c(
     "total_vaccinations", "people_vaccinated", "people_fully_vaccinated",
-    "total_boosters", "total_vaccinations_per_hundred", "people_vaccinated_per_hundred", 
+    "total_boosters", "total_vaccinations_per_hundred", "people_vaccinated_per_hundred",
     "people_fully_vaccinated_per_hundred", "total_boosters_per_hundred"
   )
 
@@ -84,8 +84,8 @@ test_that("calc_vax_carryforward works as expected", {
   # And each of those cols should add up to 2x whatever we assigned
   # to the second-to-last observation that got carried forward
   df_summed <- df_fixed %>%
-      group_by(id) %>%
-      summarize_at(vars(!!!vaccine_cols), sum)
+    group_by(id) %>%
+    summarize_at(vars(!!!vaccine_cols), sum)
 
   for (i in seq_along(vaccine_col_str)) {
     expect_true(all(df_summed[, vaccine_col_str[i]] == 2 * cf_value))

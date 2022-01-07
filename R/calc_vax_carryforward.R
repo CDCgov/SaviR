@@ -1,8 +1,8 @@
 #' @title Carry-Forward vaccination metrics to latest date
-#' 
+#'
 #' @param df (data.frame) Source data frame containing vaccine metrics from [get_vax()]
 #' @param ... (optional) (un-)quoted column names to carry forward. Overwrites standard variable set
-#' 
+#'
 #' @return df with either columns in \code{...} carried forward, or default set
 #' @section Notes:
 #' By default, function carries forward the following (unless names are passed in \code{...}):
@@ -25,7 +25,7 @@ calc_vax_carryforward <- function(df, ...) {
   if (!length(vax_cols)) {
     vaccine_col_str <- c(
       "total_vaccinations", "people_vaccinated", "people_fully_vaccinated",
-      "total_boosters", "total_vaccinations_per_hundred", "people_vaccinated_per_hundred", 
+      "total_boosters", "total_vaccinations_per_hundred", "people_vaccinated_per_hundred",
       "people_fully_vaccinated_per_hundred", "total_boosters_per_hundred"
     )
 

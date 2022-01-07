@@ -16,15 +16,15 @@ who_aes <- data.frame(
 
 #' @title WHO "pretty" english region names
 #' @description A helper lookup table to map WHO region acronyms to a "pretty" english name.
-#' @format A character vector of length 6:  
+#' @format A character vector of length 6:
 #' \describe{
-#'   \item{\code{AMRO}}{character Americas} 
-#'   \item{\code{EURO}}{character Europe} 
+#'   \item{\code{AMRO}}{character Americas}
+#'   \item{\code{EURO}}{character Europe}
 #'   \item{\code{SEARO}}{character Southeast Asia}
 #'   \item{\code{EMRO}}{character Eastern Mediterranean}
 #'   \item{\code{AFRO}}{character Africa}
 #'   \item{\code{WPRO}}{character Western Pacific}
-#'}
+#' }
 #' @details For internal use in generating [onetable] via [get_onetable()]
 who_region_lk <- c(
   AMRO = "Americas",
@@ -163,5 +163,4 @@ datasource_lk <- list(
   un_overall_projections = "https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/CSV_FILES/WPP2019_TotalPopulationBySex.csv",
   # Country population projections by age group
   un_age_projections = "https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/CSV_FILES/WPP2019_PopulationBySingleAgeSex_2020-2100.csv"
-
 )

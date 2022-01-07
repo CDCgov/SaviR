@@ -1,10 +1,10 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #' @title get_onetable
-#' @description 
+#' @description
 #' One table to rule them all and in keys bind them!
 #' Output is available through the package as "onetable," but this function can be used to recreate this dataset.
-#' 
+#'
 #' Note: state regions is handled externally in a CSV file.
 
 #' @param usaid_metadata_file (character, optional) A file path to the file containing State Department regions. Expects at least two columns, ["iso_alpha3", "state_region"]
@@ -12,7 +12,7 @@
 #' @param country_geometries (data.frame, default: country_coords) a data.frame/sfc with at least two columns: ["iso3code", "geometry"]
 
 #' @return a data.frame of 238 rows and 10 columns
-#' 
+#'
 #' @import sf
 #' @import passport
 #' @importFrom openxlsx read.xlsx
@@ -20,7 +20,7 @@
 #'
 #' @section Note:
 #' Population updates for Pitcairn Islands, Jersey, Guernsey, and Kosovo are hardcoded and must be pulled manually via CIA factbook unless another source is found.
-#' 
+#'
 #' @seealso [onetable] for more complete data documentation
 #' @examples
 #' \dontrun{
@@ -78,14 +78,14 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
       # Apply manual lookup for ISO3 codes that don't parse correctly
       id = recode(id, !!!manual_iso3_lk),
       # Parse remaining NA values for id
-      # NOTE: This will throw warnings, but we've included 
+      # NOTE: This will throw warnings, but we've included
       id = if_else(is.na(id), parse_country(who_country, to = "iso3c"), id)
     )
 
 
   # If no file was passed, use the one saved in the package files
   if (is.null(usaid_metadata_file)) {
-    usaid_metadata_file <- system.file("extdata/usaid_dos_regions.csv", package="SaviR")
+    usaid_metadata_file <- system.file("extdata/usaid_dos_regions.csv", package = "SaviR")
   }
 
   usaid_metadata <- fread(usaid_metadata_file) %>%

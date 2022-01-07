@@ -22,7 +22,7 @@ test_that("UN Denominator Data is in alignment with OWID", {
   # These countries should have the same (or similar, at least) population
   # Use 4 sig-fig tolerance to account for rounding errors
   # (we're also coercing from int64 to numeric, which applies some imprecision)
-  expect_identical(onetable_denom, df_owid_denom, tolerance=1e-4)
+  expect_identical(onetable_denom, df_owid_denom, tolerance = 1e-4)
 })
 
 test_that("onetable can be reproduced and is up to date", {

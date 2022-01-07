@@ -69,27 +69,21 @@ get_vax_dates <- function() {
   # and it's plenty fast anyways
   total_dates <- df %>%
     filter(!is.na(total_vaccinations_per_hundred)) %>%
-    arrange(id, desc(date)) %>%
-    group_by(owid_country, id) %>%
-    slice(1) %>%
-    ungroup() %>%
-    select(id, total_doses_date = date)
+    group_by(id) %>%
+    summarize(total_doses_date = max(date)) %>%
+    ungroup()
 
   partial_dates <- df %>%
     filter(!is.na(people_vaccinated_per_hundred)) %>%
-    arrange(id, desc(date)) %>%
-    group_by(owid_country, id) %>%
-    slice(1) %>%
-    ungroup() %>%
-    select(id, partial_date = date)
+    group_by(id) %>%
+    summarize(partial_date = max(date)) %>%
+    ungroup()
 
   fully_dates <- df %>%
     filter(!is.na(people_fully_vaccinated_per_hundred)) %>%
-    arrange(id, desc(date)) %>%
-    group_by(owid_country, id) %>%
-    slice(1) %>%
-    ungroup() %>%
-    select(id, fully_date = date)
+    group_by(id) %>%
+    summarize(fully_date = max(date)) %>%
+    ungroup()
 
   out <- df %>%
     distinct(owid_country, id) %>%
