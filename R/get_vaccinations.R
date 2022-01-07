@@ -3,7 +3,7 @@
 #' @title get_vax
 #' @description Get vaccination data from OWID
 #' Note that all cumulative totals are all carried forward if NA on a given day.
-#' 
+#'
 #' @return A data frame with n rows and 17 variables:
 #'
 #' \describe{
@@ -44,6 +44,61 @@ get_vax <- function() {
   return(df)
 }
 
+#' @title Get last non-NA date for key vaccination metrics by country
+#' @description Computes the latest date of vaccination data provided by each country from OWID source.
+#'
+#' @return a data frame with n rows and 5 columns
+#' \describe{
+#'   \item{\code{owid_country}}{  character English country name from OWID (may not match WHO country name)}
+#'   \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
+#'   \item{\code{total_doses_date}}{double Date of last update for total vaccine doses}
+#'   \item{\code{partial_date}}{double Date of last update for persons vaccinated}
+#'   \item{\code{fully_date}}{double Date of last update for persons fully vaccinated}
+#' }
+#' @seealso [get_vax()] for full vaccination data from the same source
+#' @export
+get_vax_dates <- function() {
+  df <- fread(datasource_lk$owid_vax, stringsAsFactors = FALSE, check.names = FALSE) %>%
+    rename(id = iso_code, owid_country = location) %>%
+    mutate(date = as.Date(date)) %>%
+    mutate(id = recode(id, "OWID_KOS" = "XKX")) %>%
+    filter(!grepl("OWID", id)) %>%
+    mutate(owid_country = recode(owid_country, !!!owid_lk))
+
+  # Note: I could have written a subfunction here, but I was lazy,
+  # and it's plenty fast anyways
+  total_dates <- df %>%
+    filter(!is.na(total_vaccinations_per_hundred)) %>%
+    arrange(id, desc(date)) %>%
+    group_by(owid_country, id) %>%
+    slice(1) %>%
+    ungroup() %>%
+    select(id, total_doses_date = date)
+
+  partial_dates <- df %>%
+    filter(!is.na(people_vaccinated_per_hundred)) %>%
+    arrange(id, desc(date)) %>%
+    group_by(owid_country, id) %>%
+    slice(1) %>%
+    ungroup() %>%
+    select(id, partial_date = date)
+
+  fully_dates <- df %>%
+    filter(!is.na(people_fully_vaccinated_per_hundred)) %>%
+    arrange(id, desc(date)) %>%
+    group_by(owid_country, id) %>%
+    slice(1) %>%
+    ungroup() %>%
+    select(id, fully_date = date)
+
+  out <- df %>%
+    distinct(owid_country, id) %>%
+    full_join(total_dates, by = "id") %>%
+    full_join(partial_dates, by = "id") %>%
+    full_join(fully_dates, by = "id")
+
+  return(out)
+}
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

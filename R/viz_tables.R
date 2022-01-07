@@ -10,29 +10,29 @@
 #' @import officer
 #' @importFrom purrr set_names
 #' @importFrom tibble rownames_to_column
-#' 
+#'
 #' @section Notes:
 #' \code{Most Recent Date for Vaccinations} column is computed internally via a call to [get_vax()]
-#' 
-#' @examples 
+#'
+#' @examples
 #' \dontrun{
 #' # Get case/death/vax data
 #' df_both <- get_combined_table("Both")
-#' 
+#'
 #' # Select some countries
 #' c_list <- c("United Kingdom", "Denmark", "United States of America")
 #' # The function expects ISO3 codes, so parse if input is raw
 #' c_list_iso <- parse_country(c_list, to = "iso3c")
-#' 
+#'
 #' # Take the latest observation for each country (vax + case + deaths)
 #' df_both_latest <- df_both %>%
 #'   group_by(id) %>%
 #'   filter(date == max(date)) %>%
 #'   ungroup()
-#' 
+#'
 #' # Pull metadata on vax manufacturers
 #' vax_man <- get_vax_manufacturers()
-#' 
+#'
 #' # Produce table
 #' table_countriesofconcern(df_both_latest, vax_man, c_list_iso)
 #' }
@@ -42,8 +42,9 @@ table_countriesofconcern <- function(df, df_vax_man, country_list) {
   str_border <- officer::fp_border(color = "#808080")
 
   # Pull latest dates for vaccine data
-  vax_latest_dates <- get_vax() %>%
+  vax_latest_dates <- get_vax_dates() %>%
     filter(id %in% country_list) %>%
+    pivot_longer(ends_with("date"), names_to = "type", values_to = "date") %>%
     group_by(id) %>%
     summarize(`Most Recent Date for Vaccinations` = max(date))
 
@@ -52,15 +53,15 @@ table_countriesofconcern <- function(df, df_vax_man, country_list) {
       dplyr::filter(df, id %in% country_list) %>%
         dplyr::filter(date == max(date)) %>%
         dplyr::mutate(
-          Country                                   = who_country,
-          Date                                      = date,
-          `New Cases 7 Day Average\n(7 Day Average Case Incidence per 100,000)` = paste0(format(round(new_cases_7dav, 1), format = "f", big.mark = ",", drop0trailing = TRUE), "\n(", round(week_case_incidence, 2),")"),
-          `7 Day Cases`                             = scales::comma(round(week_case)),
-          `Previous 7 Day Cases`                    = scales::comma(round(prev_week_case)),
-          `% Change in Cases from Previous 7 Days`  = scales::percent(percent_change_case, scale = 1, drop0trailing = TRUE),
-          `New Deaths 7 Day Average\n(7 Day Average Death Incidence per 100,000)` = paste0(format(round(new_deaths_7dav, 1), format = "f", big.mark = ",", drop0trailing = TRUE), "\n(", round(week_death_incidence, 2),")"),
-          `7 Day Deaths`                            = scales::comma(round(week_death)),
-          `Previous 7 Day Deaths`                   = scales::comma(round(prev_week_death)),
+          Country = who_country,
+          Date = date,
+          `New Cases 7 Day Average\n(7 Day Average Case Incidence per 100,000)` = paste0(format(round(new_cases_7dav, 1), format = "f", big.mark = ",", drop0trailing = TRUE), "\n(", round(week_case_incidence, 2), ")"),
+          `7 Day Cases` = scales::comma(round(week_case)),
+          `Previous 7 Day Cases` = scales::comma(round(prev_week_case)),
+          `% Change in Cases from Previous 7 Days` = scales::percent(percent_change_case, scale = 1, drop0trailing = TRUE),
+          `New Deaths 7 Day Average\n(7 Day Average Death Incidence per 100,000)` = paste0(format(round(new_deaths_7dav, 1), format = "f", big.mark = ",", drop0trailing = TRUE), "\n(", round(week_death_incidence, 2), ")"),
+          `7 Day Deaths` = scales::comma(round(week_death)),
+          `Previous 7 Day Deaths` = scales::comma(round(prev_week_death)),
           `% Change in Deaths from Previous 7 Days` = scales::percent(percent_change_death, scale = 1, drop0trailing = TRUE),
           `People Vaccinated Per 100 People` = people_vaccinated_per_hundred,
           `People Fully Vaccinated Per 100 People` = people_fully_vaccinated_per_hundred,
@@ -340,19 +341,19 @@ table_10percentchange <- function(df, type = "Global", run_date = "Enter a date"
 #' \dontrun{
 #' sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
 #' df_who <- get_combined_table("WHO")
-#' 
+#'
 #' # Take global data for countries with population > 1,000,000
 #' df_who %>%
-#'  filter(date <= sunday_date, population > 1000000) %>%
-#'  group_by(country) %>%
-#'  filter(!is.na(people_fully_vaccinated_per_hundred)) %>%
-#'  filter(date == max(date)) %>%
-#'  ungroup() %>%
-#'  select(country = who_country, value1 = people_fully_vaccinated_per_hundred, value2 = daily_vaccinations_per_hundred) %>%
-#'  arrange(desc(value1)) %>%
-#'  head(10) %>%
-#'  table_10vaccinations(., run_date = format(sunday_date, "%B %d, %Y"))
-#'}
+#'   filter(date <= sunday_date, population > 1000000) %>%
+#'   group_by(country) %>%
+#'   filter(!is.na(people_fully_vaccinated_per_hundred)) %>%
+#'   filter(date == max(date)) %>%
+#'   ungroup() %>%
+#'   select(country = who_country, value1 = people_fully_vaccinated_per_hundred, value2 = daily_vaccinations_per_hundred) %>%
+#'   arrange(desc(value1)) %>%
+#'   head(10) %>%
+#'   table_10vaccinations(., run_date = format(sunday_date, "%B %d, %Y"))
+#' }
 #' @export
 
 table_10vaccinations <- function(df, vac_type = "Partial", type = "Global", run_date = "Enter a date") {
