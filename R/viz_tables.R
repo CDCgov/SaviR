@@ -121,6 +121,10 @@ table_10mostcases <- function(df, type = "Global", run_date = "Enter a date") {
       columns = c(value2),
       decimals = 1
     ) %>%
+        fmt_missing(
+      columns = everything(),
+      missing_text = "-"
+    ) %>%
     gt::cols_label(
       country = gt::html("Country/ Area"),
       value1 = gt::html("New Cases<br>This Week"),
@@ -192,6 +196,10 @@ table_10incidence <- function(df, type = "Global", run_date = "Enter a date") {
       columns = c(value2),
       sep_mark = ",",
       decimals = 1
+    ) %>%
+        fmt_missing(
+      columns = everything(),
+      missing_text = "-"
     ) %>%
     gt::cols_label(
       country = gt::html("Country/ Area"),
