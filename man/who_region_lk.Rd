@@ -5,10 +5,10 @@
 \alias{who_region_lk}
 \title{WHO "pretty" english region names}
 \format{
-A character vector of length 6:  
+A character vector of length 6:
 \describe{
-  \item{\code{AMRO}}{character Americas} 
-  \item{\code{EURO}}{character Europe} 
+  \item{\code{AMRO}}{character Americas}
+  \item{\code{EURO}}{character Europe}
   \item{\code{SEARO}}{character Southeast Asia}
   \item{\code{EMRO}}{character Eastern Mediterranean}
   \item{\code{AFRO}}{character Africa}

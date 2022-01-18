@@ -21,10 +21,10 @@ Create combined Case/Death/Vax data.frame
 \dontrun{
 # get_combined_table() is identical to the following sequence:
 onetable \%>\%
-  select(-geometry)  \%>\% # In the case that geometry = FALSE
+  select(-geometry) \%>\% # In the case that geometry = FALSE
   right_join(get_covid_df(), by = "iso2code") \%>\%
   filter(source == "WHO") \%>\% # In the case of type = "WHO"
-# filter(!(country == "China" & source == "WHO")) \%>\% # In the case of type = "Both"
+  # filter(!(country == "China" & source == "WHO")) \%>\% # In the case of type = "Both"
   calc_add_risk() \%>\%
   left_join(get_vax(), by = c("id", "date"))
 }

@@ -30,14 +30,14 @@ df_who <- get_combined_table("WHO")
 
 # Take global data for countries with population > 1,000,000
 df_who \%>\%
- filter(date <= sunday_date, population > 1000000) \%>\%
- group_by(country) \%>\%
- filter(!is.na(people_fully_vaccinated_per_hundred)) \%>\%
- filter(date == max(date)) \%>\%
- ungroup() \%>\%
- select(country = who_country, value1 = people_fully_vaccinated_per_hundred, value2 = daily_vaccinations_per_hundred) \%>\%
- arrange(desc(value1)) \%>\%
- head(10) \%>\%
- table_10vaccinations(., run_date = format(sunday_date, "\%B \%d, \%Y"))
+  filter(date <= sunday_date, population > 1000000) \%>\%
+  group_by(country) \%>\%
+  filter(!is.na(people_fully_vaccinated_per_hundred)) \%>\%
+  filter(date == max(date)) \%>\%
+  ungroup() \%>\%
+  select(country = who_country, value1 = people_fully_vaccinated_per_hundred, value2 = daily_vaccinations_per_hundred) \%>\%
+  arrange(desc(value1)) \%>\%
+  head(10) \%>\%
+  table_10vaccinations(., run_date = format(sunday_date, "\%B \%d, \%Y"))
 }
 }
