@@ -122,7 +122,7 @@ table_10mostcases <- function(df, type = "Global", run_date = "Enter a date") {
       decimals = 1
     ) %>%
         fmt_missing(
-      columns = everything(),
+      columns = c(value1, value2),
       missing_text = "-"
     ) %>%
     gt::cols_label(
@@ -176,7 +176,7 @@ table_10incidence <- function(df, type = "Global", run_date = "Enter a date") {
       columns = c(value1),
       colors = scales::col_bin(
         palette = c("#f1e5a1", "#e7b351", "#d26230", "#aa001e"),
-        bins = c(0, 1, 10, 25, 1000),
+        bins = c(0, 1, 10, 25, Inf),
         na.color = "white"
       )
     ) %>%
@@ -198,7 +198,7 @@ table_10incidence <- function(df, type = "Global", run_date = "Enter a date") {
       decimals = 1
     ) %>%
         fmt_missing(
-      columns = everything(),
+      columns = c(value1, value2),
       missing_text = "-"
     ) %>%
     gt::cols_label(
@@ -278,7 +278,7 @@ table_10percentchange <- function(df, type = "Global", run_date = "Enter a date"
       value2 = gt::html("% Change<br> 4 Weeks")
     ) %>%
       fmt_missing(
-      columns = everything(),
+      columns = c(value1, value2),
       missing_text = "-"
     ) %>%
     gt::cols_align("center") %>%
