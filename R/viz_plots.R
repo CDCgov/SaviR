@@ -614,7 +614,7 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
 
     if (countries == "AMC/AU") {
       col_master <- col_master %>%
-        filter(case_values != "US")
+        filter(cat_values != "US")
     }
     df_c <- df %>% mutate(cat = factor(state_region, levels = col_master$cat_values))
   } else if (grepl("Income", by_cat, fixed = TRUE)) {
