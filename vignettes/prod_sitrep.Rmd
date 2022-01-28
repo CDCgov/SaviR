@@ -182,7 +182,7 @@ for (r in unique(na.omit(df_both_mapping$who_region))) {
 }
 ```
 
-### Vaccine Map (Global Only)  
+### Vaccine Map (Global Only)
 
 `map_vaccinations(df, vac_type = c("People", "Fully"))`  
 
@@ -197,6 +197,7 @@ global_vax_map <- df_both_mapping %>%
 
 global_vax_map
 ```
+
 
 ## Tables {.tabset}
 
