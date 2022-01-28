@@ -14,7 +14,7 @@ table_10vaccinations(
 \arguments{
 \item{df}{A dataframe with the following and in this order: country, value1 - people vaccinated per 100, value2 - daily vaccines administered per 100 people, date}
 
-\item{vac_type}{(character, default: "Partial") one of ["Partial", "Fully"] depending on vaccination status being tabulated}
+\item{vac_type}{(character, default: "Partial") one of \link{"Partial", "Fully"} depending on vaccination status being tabulated}
 
 \item{type}{(character, default: "Global") Text name for subset of data \code{df} is, to be included in title}
 

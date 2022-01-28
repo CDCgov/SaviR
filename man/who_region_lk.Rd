@@ -7,12 +7,12 @@
 \format{
 A character vector of length 6:
 \describe{
-  \item{\code{AMRO}}{character Americas}
-  \item{\code{EURO}}{character Europe}
-  \item{\code{SEARO}}{character Southeast Asia}
-  \item{\code{EMRO}}{character Eastern Mediterranean}
-  \item{\code{AFRO}}{character Africa}
-  \item{\code{WPRO}}{character Western Pacific}
+\item{\code{AMRO}}{character Americas}
+\item{\code{EURO}}{character Europe}
+\item{\code{SEARO}}{character Southeast Asia}
+\item{\code{EMRO}}{character Eastern Mediterranean}
+\item{\code{AFRO}}{character Africa}
+\item{\code{WPRO}}{character Western Pacific}
 }
 }
 \usage{
@@ -22,6 +22,6 @@ who_region_lk
 A helper lookup table to map WHO region acronyms to a "pretty" english name.
 }
 \details{
-For internal use in generating [onetable] via [get_onetable()]
+For internal use in generating \link{onetable} via \code{\link[=get_onetable]{get_onetable()}}
 }
 \keyword{datasets}

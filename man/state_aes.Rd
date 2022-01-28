@@ -12,10 +12,10 @@ state_aes
 }
 \value{
 \describe{
-  \item{\code{cat_values}}{character plot legend values (which match directly to DoS region names)}
-  \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
-  \item{\code{cat_colors}}{character Color mappings for each state region}
-  \item{\code{cat_lines}}{character Line-styles for each state region}
+\item{\code{cat_values}}{character plot legend values (which match directly to DoS region names)}
+\item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
+\item{\code{cat_colors}}{character Color mappings for each state region}
+\item{\code{cat_lines}}{character Line-styles for each state region}
 }
 }
 \description{

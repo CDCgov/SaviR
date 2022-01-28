@@ -8,11 +8,11 @@
 \format{
 A data frame with 141 rows and 5 variables:
 \itemize{
-  \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
-  \item{\code{test_definition}}{  character Description of OWID testing definition}
-  \item{\code{case_definition}}{  character Description of OWID case definition}
-  \item{\code{posrate_definition}}{  character Description of OWID test positivity calculation}
-  \item{\code{posrate_direct}}{  logical Indicator for whether OWID pulls test positivity directly, or computes it}
+\item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
+\item{\code{test_definition}}{  character Description of OWID testing definition}
+\item{\code{case_definition}}{  character Description of OWID case definition}
+\item{\code{posrate_definition}}{  character Description of OWID test positivity calculation}
+\item{\code{posrate_direct}}{  logical Indicator for whether OWID pulls test positivity directly, or computes it}
 }
 }
 \usage{
@@ -24,7 +24,7 @@ get_owid_testing_meta(url = "https://ourworldindata.org/coronavirus-testing")
 Data set of scraped information related to data definitions and sources by country
 }
 \description{
-A metadata table used within [get_testing()] to determine how country testing data is computed.
+A metadata table used within \code{\link[=get_testing]{get_testing()}} to determine how country testing data is computed.
 
 To scrape the OWID coronavirus testing website for data related to the source and definitions of their testing data by country
 }

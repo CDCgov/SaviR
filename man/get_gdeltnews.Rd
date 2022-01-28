@@ -14,22 +14,22 @@ get_gdeltnews(period = 14, start_date = Sys.Date() - 1)
 \value{
 A data frame with n rows and 16 variables:
 \itemize{
-  \item{\code{DateTime}}{  POSIXct}
-  \item{\code{URL}}{  character}
-  \item{\code{Title}}{  character}
-  \item{\code{SharingImage}}{  character}
-  \item{\code{LangCode}}{  character}
-  \item{\code{DocTone}}{  double}
-  \item{\code{DomainCountryCode}}{  character}
-  \item{\code{Location}}{  character}
-  \item{\code{Lat}}{  double}
-  \item{\code{Lon}}{  double}
-  \item{\code{iso2code}}{  character}
-  \item{\code{Adm1Code}}{  character}
-  \item{\code{GeoType}}{  character}
-  \item{\code{ContextualText}}{  character}
-  \item{\code{GeoCoord}}{  character}
-  \item{\code{Adm2Code}}{  character}
+\item{\code{DateTime}}{  POSIXct}
+\item{\code{URL}}{  character}
+\item{\code{Title}}{  character}
+\item{\code{SharingImage}}{  character}
+\item{\code{LangCode}}{  character}
+\item{\code{DocTone}}{  double}
+\item{\code{DomainCountryCode}}{  character}
+\item{\code{Location}}{  character}
+\item{\code{Lat}}{  double}
+\item{\code{Lon}}{  double}
+\item{\code{iso2code}}{  character}
+\item{\code{Adm1Code}}{  character}
+\item{\code{GeoType}}{  character}
+\item{\code{ContextualText}}{  character}
+\item{\code{GeoCoord}}{  character}
+\item{\code{Adm2Code}}{  character}
 }
 }
 \description{

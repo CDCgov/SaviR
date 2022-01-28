@@ -30,5 +30,5 @@ onetable \%>\%
 }
 }
 \seealso{
-[get_covid_df()], [get_vax()], and [calc_add_risk()] for full column data documentation
+\code{\link[=get_covid_df]{get_covid_df()}}, \code{\link[=get_vax]{get_vax()}}, and \code{\link[=calc_add_risk]{calc_add_risk()}} for full column data documentation
 }

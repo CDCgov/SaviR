@@ -7,7 +7,7 @@
 calc_vax_carryforward(df, ...)
 }
 \arguments{
-\item{df}{(data.frame) Source data frame containing vaccine metrics from [get_vax()]}
+\item{df}{(data.frame) Source data frame containing vaccine metrics from \code{\link[=get_vax]{get_vax()}}}
 
 \item{...}{(optional) (un-)quoted column names to carry forward. Overwrites standard variable set}
 }
@@ -21,14 +21,14 @@ Carry-Forward vaccination metrics to latest date
 
 By default, function carries forward the following (unless names are passed in \code{...}):
 \itemize{
-  \item{total_vaccinations}{}
-  \item{people_vaccinated}{}
-  \item{people_fully_vaccinated}{}
-  \item{total_boosters}{}
-  \item{total_vaccinations_per_hundred}{}
-  \item{people_vaccinated_per_hundred}{}
-  \item{people_fully_vaccinated_per_hundred}{}
-  \item{total_boosters_per_hundred}{}
+\item{total_vaccinations}{}
+\item{people_vaccinated}{}
+\item{people_fully_vaccinated}{}
+\item{total_boosters}{}
+\item{total_vaccinations_per_hundred}{}
+\item{people_vaccinated_per_hundred}{}
+\item{people_fully_vaccinated_per_hundred}{}
+\item{total_boosters_per_hundred}{}
 }
 }
 

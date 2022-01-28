@@ -11,11 +11,11 @@ get_onetable(
 )
 }
 \arguments{
-\item{usaid_metadata_file}{(character, optional) A file path to the file containing State Department regions. Expects at least two columns, ["iso_alpha3", "state_region"]}
+\item{usaid_metadata_file}{(character, optional) A file path to the file containing State Department regions. Expects at least two columns, \link{"iso_alpha3", "state_region"}}
 
 \item{vintage}{(numeric, default: 2021) The year of population projections to use from UN data}
 
-\item{country_geometries}{(data.frame, default: country_coords) a data.frame/sfc with at least two columns: ["iso3code", "geometry"]}
+\item{country_geometries}{(data.frame, default: country_coords) a data.frame/sfc with at least two columns: \link{"iso3code", "geometry"}}
 }
 \value{
 a data.frame of 238 rows and 10 columns
@@ -42,5 +42,5 @@ usethis::use_data(onetable, overwrite = TRUE)
 
 }
 \seealso{
-[onetable] for more complete data documentation
+\link{onetable} for more complete data documentation
 }

@@ -19,7 +19,7 @@ Table for displaying stats for list of countries of concern.
 }
 \section{Notes}{
 
-\code{Most Recent Date for Vaccinations} column is computed internally via a call to [get_vax()]
+\code{Most Recent Date for Vaccinations} column is computed internally via a call to \code{\link[=get_vax]{get_vax()}}
 }
 
 \examples{

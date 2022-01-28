@@ -12,10 +12,10 @@ who_aes
 }
 \value{
 \describe{
-  \item{\code{cat_values}}{character plot legend values (which match directly to WHO region names)}
-  \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
-  \item{\code{cat_colors}}{character Color mappings for each WHO region}
-  \item{\code{cat_lines}}{character Line-styles for each WHO region}
+\item{\code{cat_values}}{character plot legend values (which match directly to WHO region names)}
+\item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
+\item{\code{cat_colors}}{character Color mappings for each WHO region}
+\item{\code{cat_lines}}{character Line-styles for each WHO region}
 }
 }
 \description{

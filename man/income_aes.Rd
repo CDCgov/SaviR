@@ -12,10 +12,10 @@ income_aes
 }
 \value{
 \describe{
-  \item{\code{cat_values}}{character plot legend values (which match directly to World Bank income levels)}
-  \item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
-  \item{\code{cat_colors}}{character Color mappings for income group level}
-  \item{\code{cat_lines}}{character Line-styles for each income group level}
+\item{\code{cat_values}}{character plot legend values (which match directly to World Bank income levels)}
+\item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
+\item{\code{cat_colors}}{character Color mappings for income group level}
+\item{\code{cat_lines}}{character Line-styles for each income group level}
 }
 }
 \description{

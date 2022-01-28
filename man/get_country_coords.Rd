@@ -10,8 +10,10 @@ get_country_coords(world = file.choose())
 \item{world}{User prompt to import shapefile.
 Output is available through the package as "country_coords," but this function can be used to recreate this dataset.
 To regenerate and make the data available again for the package, run the following in dev and rebuild package:
-1. country_coords <- get_country_coords()
-2. usethis::use_data(country_coords, overwrite=T)}
+\enumerate{
+\item country_coords <- get_country_coords()
+\item usethis::use_data(country_coords, overwrite=T)
+}}
 }
 \description{
 Add dates to country data
