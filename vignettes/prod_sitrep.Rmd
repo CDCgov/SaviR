@@ -125,9 +125,7 @@ However, if we want to map these data, we can either call `get_combined_table("B
 # and join in geometry
 df_both_mapping <- df_both %>%
   filter(date == sunday_date) %>%
-  left_join(
-    select(country_coords, id = iso3code, geometry),
-    by = "id")
+  left_join(select(country_coords, id, geometry), by = "id")
 ```
 
 ### Burden Map
