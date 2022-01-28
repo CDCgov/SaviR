@@ -135,7 +135,7 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
 
   ## Add Geometries
   df_meta <- df_meta %>%
-    left_join(country_geometries, by = c("id" = "iso3code")) # country_coords
+    left_join(country_geometries, by = "id") # country_coords
 
   # Add "pretty" WHO region names
   df_meta <- df_meta %>%
@@ -171,7 +171,7 @@ get_country_coords <- function(world = file.choose()) {
   df <- rgdal::readOGR(world) %>%
     sp::spTransform(sp::CRS("+proj=robin +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs")) %>%
     sf::st_as_sf() %>%
-    select(TYPE, ADMIN, ISO_A3) %>%
+    select(TYPE, ADMIN, id = ISO_A3) %>%
     mutate(id = passport::parse_country(ADMIN, to = "iso3c")) %>%
     mutate(id = if_else(ADMIN == "eSwatini", "SWZ", id)) %>%
     mutate(id = if_else(ADMIN == "Kosovo", "XKX", id)) %>%
