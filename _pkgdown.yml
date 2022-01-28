@@ -1,4 +1,31 @@
 url: ~
 template:
   bootstrap: 5
+reference:
+- title: Data Sets and Transforms
+- desc:  Functions that pull data and transform it
+- contents:
+  - starts_with("get_")
+  - starts_with("calc_")
+  - onetable
+  - country_coords
+- title: Visualizations
+- subtitle: Plots
+- desc: Functions that produce a line/bubble charts
+- contents:
+  - starts_with("plot_")
+- subtitle: Maps
+- desc: Functions that produce maps
+- contents:
+  - starts_with("map_")
+- subtitle: Tables
+- desc: Functions that produce "pretty" tables
+- contents:
+  - starts_with("table_")
+- title: Misc
+- desc: Other datasets / lookups that are used internally
+- contents:
+  - ends_with("_lk")
+  - ends_with("_aes")
+  - ends_with("_countries")
 
