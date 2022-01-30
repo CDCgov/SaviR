@@ -1,9 +1,9 @@
 Package: SaviR
 Type: Package
-Title: ITF Analytics
-Version: 0.1.0
+Title: ITF Situational Awareness and Visualization
+Version: 0.2.0
 Author: Authors@R: person("Randy", "Yee", email = "pcx5@cdc.gov", role = c("aut", "cre"))
-Maintainer: Randy Yee <pcx5@cdc.gov>
+Maintainer: Sean Browning <sbrowning@cdc.gov>
 Description: Data access and management of open-source COVID data for the production of analytic datasets.
 License: Apache + file LICENSE
 Imports: 
