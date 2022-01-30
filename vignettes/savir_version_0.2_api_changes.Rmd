@@ -1,0 +1,147 @@
+---
+title: "SaviR Version 0.2 API Changes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SaviR Version 0.2 API Changes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>"
+)
+
+# phantomjs is needed to save/render images in this document
+# so we need to install it if it's not already
+if (!webshot::is_phantomjs_installed()) {
+  webshot::install_phantomjs()
+}
+
+library(SaviR)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+
+sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
+```
+
+## Background
+
+SaviR version 0.2 brings some major revisions to the SaviR API design; some complementary and some breaking. I'll highlight a few of them below.
+
+
+## Standardization of geography columns across datasets
+
+### Black box warning
+**This will have a pretty substantial impact on all products, and will likely break most existing downstream code...**
+
+### Motivation
+
+All data pull functions use different naming schemes for ISO country codes and country names.
+It's never apparent which column to join on, and after joining, it's very difficult to reason what came from where.
+I'm attempting to standardize all ISO code columns to either iso2code or iso3code depending on their value.
+
+There should be no guesswork involved when joining disparate datasets (it's always iso3code or iso2code, and they should join without specifying a `by` argument).
+
+### Impact
+
+##### owid_testing_meta, get_owid_testing_meta()
+- `iso_code` -> `iso3code`
+
+##### get_testing() (and all inner functions)
+- `iso_code` -> iso3code
+
+##### get_covid_df()
+- `country_code` -> `iso2code`
+- Removing `who_region`, `region`
+  - These are both provided in `onetable`, and `get_covid_df()` is never used without joining to this metadata table 
+
+##### get_vax(), get_vax_manufacturers()
+- `iso_code` -> `iso3code`
+- `location` -> `owid_country`
+  - Still not ideal, but it should be apparent where that column comes from
+- URL for `get_vax_manufacturers()` changed
+
+
+```{r Geography column changes 1}
+onetable
+```
+
+```{r Geography column changes 2}
+head(get_covid_df())
+```
+
+```{r Geography column changes 3}
+head(get_vax())
+```
+
+## New "Starting Block" function `get_combined_table()`
+
+Many scripts accomplished this task differently, and it was never clear to most exactly how to pull and join these data together.
+
+No one is forced to use it, but there is now an automated way to:  
+
+- Pull metadata, case + death data, and vaccine data
+- Join all together
+- Filter to only WHO source, or WHO + JHU source
+- Keep (or remove) geometry column for mapping
+
+`get_combined_table()` takes two arguments:  
+
+- type: one of "WHO" or "Both", based on which source you'd like
+- geometry: TRUE/FALSE (default:TRUE) based on whether you'd like geometry or not.
+
+```{r Starting Block}
+who_data <- get_combined_table("WHO")
+# is identical to the following sequence:
+# (which still works, but is unnecessary)
+# onetable %>%
+#   select(-geometry) %>% # In the case that geometry = FALSE
+#   right_join(get_covid_df(), by = "iso2code") %>%
+#   filter(source == "WHO") %>% # In the case of type = "WHO"
+#   # filter(!(country == "China" & source == "WHO")) %>% # In the case of type = "Both"
+#   calc_add_risk() %>%
+#   left_join(get_vax(), by = c("id", "date"))
+
+head(who_data)
+```
+
+## Vaccine carry-forward
+
+We were running into issues where vaccination data were sometimes carried forward, but not always.
+
+Since this is generally the behavior we want, I've applied it within SaviR using a new function, `calc_vax_carryforward()`
+
+### `calc_vax_carryforward()`
+
+This function is used internally in `get_vax()` and `get_combined_table()` to carry-forward the following columns:
+
+- `total_vaccinations`
+- `people_vaccinated`
+- `people_fully_vaccinated`
+- `total_boosters`
+- `total_vaccinations_per_hundred`
+- `people_vaccinated_per_hundred`
+- `people_fully_vaccinated_per_hundred`
+- `total_boosters_per_hundred`
+
+Passing columns to `calc_vax_carryforward` overrides that behavior, but there isn't presently a need for that.
+
+### `get_vax_dates()`
+
+Because vaccine data are carried-forward, the old way of computing the date the vaccine data were last updated
+is no longer possible. Instead, I've created a function which computes those dates automatically, `get_vax_dates()`
+
+`get_vax_dates()` takes no arguments, but returns a data frame with 1 row per country detailing when each vaccine metric was last updated.
+
+```{r get_vax_dates demo}
+vax_dates <- get_vax_dates()
+
+head(vax_dates)
+```
+
