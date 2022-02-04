@@ -2,8 +2,13 @@ Package: SaviR
 Type: Package
 Title: ITF Situational Awareness and Visualization
 Version: 0.2.0
-Author: Authors@R: person("Randy", "Yee", email = "pcx5@cdc.gov", role = c("aut", "cre"))
-Maintainer: Sean Browning <sbrowning@cdc.gov>
+Authors@R:  c(
+    person("Sean", "Browning", email = "sbrowning@cdc.gov", role = c("aut", "cre")),
+    person("Kimberly", "Wong", email = "nvj5@cdc.gov", role = "aut"),
+    person("Nartlada", "Chantharojwong", email = "nartlada@gmail.com", role = "aut"),
+    person("James", "Fuller", role = "aut"),
+    person("Dante", "Bugli", role = "ctb"),
+    person("Randy", "Yee", email = "pcx5@cdc.gov", role = "aut"))
 Description: Data access and management of open-source COVID data for the production of analytic datasets.
 License: Apache + file LICENSE
 Imports: 
