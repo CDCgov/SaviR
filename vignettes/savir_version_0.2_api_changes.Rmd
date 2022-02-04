@@ -44,17 +44,17 @@ SaviR version 0.2 brings some major revisions to the SaviR API design; some comp
 
 All data pull functions use different naming schemes for ISO country codes and country names.
 It's never apparent which column to join on, and after joining, it's very difficult to reason what came from where.
-I'm attempting to standardize all ISO code columns to either iso2code or iso3code depending on their value.
+I'm attempting to standardize all ISO code columns to either iso2code or id (iso3code) depending on their value.
 
-There should be no guesswork involved when joining disparate datasets (it's always iso3code or iso2code, and they should join without specifying a `by` argument).
+There should be no guesswork involved when joining disparate datasets (it's always id or iso2code, and they should join without specifying a `by` argument).
 
 ### Impact
 
 ##### owid_testing_meta, get_owid_testing_meta()
-- `iso_code` -> `iso3code`
+- `iso_code` -> `id`
 
 ##### get_testing() (and all inner functions)
-- `iso_code` -> iso3code
+- `iso_code` -> id
 
 ##### get_covid_df()
 - `country_code` -> `iso2code`
@@ -62,7 +62,7 @@ There should be no guesswork involved when joining disparate datasets (it's alwa
   - These are both provided in `onetable`, and `get_covid_df()` is never used without joining to this metadata table 
 
 ##### get_vax(), get_vax_manufacturers()
-- `iso_code` -> `iso3code`
+- `iso_code` -> `id`
 - `location` -> `owid_country`
   - Still not ideal, but it should be apparent where that column comes from
 - URL for `get_vax_manufacturers()` changed
