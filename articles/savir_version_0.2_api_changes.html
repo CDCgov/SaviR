@@ -94,8 +94,8 @@
 <div class="section level3">
 <h3 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
 </h3>
-<p>All data pull functions use different naming schemes for ISO country codes and country names. It’s never apparent which column to join on, and after joining, it’s very difficult to reason what came from where. I’m attempting to standardize all ISO code columns to either iso2code or iso3code depending on their value.</p>
-<p>There should be no guesswork involved when joining disparate datasets (it’s always iso3code or iso2code, and they should join without specifying a <code>by</code> argument).</p>
+<p>All data pull functions use different naming schemes for ISO country codes and country names. It’s never apparent which column to join on, and after joining, it’s very difficult to reason what came from where. I’m attempting to standardize all ISO code columns to either iso2code or id (iso3code) depending on their value.</p>
+<p>There should be no guesswork involved when joining disparate datasets (it’s always id or iso2code, and they should join without specifying a <code>by</code> argument).</p>
 </div>
 <div class="section level3">
 <h3 id="impact">Impact<a class="anchor" aria-label="anchor" href="#impact"></a>
@@ -105,7 +105,7 @@
 </h5>
 <ul>
 <li>
-<code>iso_code</code> -&gt; <code>iso3code</code>
+<code>iso_code</code> -&gt; <code>id</code>
 </li>
 </ul>
 </div>
@@ -114,7 +114,7 @@
 </h5>
 <ul>
 <li>
-<code>iso_code</code> -&gt; iso3code</li>
+<code>iso_code</code> -&gt; id</li>
 </ul>
 </div>
 <div class="section level5">
@@ -136,7 +136,7 @@
 </h5>
 <ul>
 <li>
-<code>iso_code</code> -&gt; <code>iso3code</code>
+<code>iso_code</code> -&gt; <code>id</code>
 </li>
 <li>
 <code>location</code> -&gt; <code>owid_country</code>
@@ -275,12 +275,12 @@
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">vax_dates</span><span class="op">)</span>
 <span class="co">#&gt;    owid_country  id total_doses_date partial_date fully_date</span>
-<span class="co">#&gt; 1:  Afghanistan AFG       2022-01-27   2022-01-27 2022-01-27</span>
-<span class="co">#&gt; 2:      Albania ALB       2022-01-13   2022-01-13 2022-01-13</span>
+<span class="co">#&gt; 1:  Afghanistan AFG       2022-02-02   2022-02-02 2022-02-02</span>
+<span class="co">#&gt; 2:      Albania ALB       2022-02-01   2022-02-01 2022-02-01</span>
 <span class="co">#&gt; 3:      Algeria DZA       2022-01-09   2022-01-09 2022-01-09</span>
-<span class="co">#&gt; 4:      Andorra AND       2022-01-16   2022-01-16 2022-01-16</span>
+<span class="co">#&gt; 4:      Andorra AND       2022-01-23   2022-01-23 2022-01-23</span>
 <span class="co">#&gt; 5:       Angola AGO       2022-01-28   2022-01-28 2022-01-28</span>
-<span class="co">#&gt; 6:     Anguilla AIA       2022-01-28   2022-01-28 2022-01-28</span></code></pre></div>
+<span class="co">#&gt; 6:     Anguilla AIA       2022-02-02   2022-02-02 2022-02-02</span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
