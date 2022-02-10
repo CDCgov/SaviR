@@ -54,7 +54,7 @@ calc_add_risk <- function(df) {
     ) %>%
     mutate(
       week_case_change = if_else(prev_week_case > 0, (diff_case) / prev_week_case, NA_real_),
-      week_case_change4 = if_else(prev_week_case > 0, (diff_case4) / prev_4week_case, NA_real_),
+      week_case_change4 = if_else(prev_4week_case > 0, (diff_case4) / prev_4week_case, NA_real_),
       week_death_change = if_else(prev_week_death > 0, (diff_death) / prev_week_death, NA_real_)
     ) %>%
     mutate(
