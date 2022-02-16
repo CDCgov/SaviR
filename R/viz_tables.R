@@ -319,29 +319,36 @@ table_10percentchange <- function(df, type = "Global", run_date = "Enter a date"
 #'
 #' @export
 
-table_10vaccinations <- function(df, vac_type = "Partial", type = "Global", run_date = "Enter a date") {
+table_10vaccinations <- function(df, vac_type = c("People", "Fully", "Booster"), type = "Global", run_date = "Enter a date") {
   if (type == "Global") {
-    if (vac_type == "Partial") {
+    if (vac_type == "People") {
       title_label <- gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Vaccination per 100 People", "</b>"))
-    } else {
+    } else if (vac_type == "Fully") {
       title_label <- gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Fully Vaccination per 100 People", "</b>"))
+    } else if (vac_type == "Booster") {
+      title_label <- gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Booster Vaccination per 100 People", "</b>"))
     }
     exclude_note <- "Countries with population size less than or equal to 1 million were excluded"
   } else {
-    if (vac_type == "Partial") {
+    if (vac_type == "People") {
       title_label <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest <br> Vaccination per 100 People", "</b>"))
-    } else {
+    } else if (vac_type == "Fully") {
       title_label <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest <br> Fully Vaccination per 100 People", "</b>"))
+    } else if (vac_type == "Booster") {
+      title_label <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest <br> Booster Vaccination per 100 People", "</b>"))
     }
     exclude_note <- "Countries with population size less than or equal to 100,000 were excluded"
   }
 
-  if (vac_type == "Partial") {
+  if (vac_type == "People") {
     cols_label1 <- gt::html("People Vaccinated <br> per 100 People")
     vax_palette <- c("#b1eeec", "#98d1cf", "#7eb3b2", "#659695", "#4c7877", "#335b5a", "#193d3d", "#002020")
-  } else {
+  } else if (vac_type == "Fully") {
     cols_label1 <- gt::html("People Fully Vaccinated <br> per 100 People")
     vax_palette <- c("#ccece6", "#afdacb", "#92c8b1", "#75b696", "#57a37c", "#3a9161", "#1d7f47", "#006d2c")
+  } else if (vac_type == "Booster") {
+    cols_label1 <- gt::html("Total Boosters <br> per 100 People")
+    vax_palette <- c("#DEC9E9", "#CCB6E0", "#BBA4D7", "#A991CE", "#977FC5", "#856CBC", "#745AB3", "#6247AA")
   }
 
   t <- gt::gt(df) %>%
@@ -391,7 +398,7 @@ table_10vaccinations <- function(df, vac_type = "Partial", type = "Global", run_
     ) %>%
     gt::tab_source_note(source_note = paste0("Data as of ", run_date))
 
-  if (vac_type == "Partial") {
+  if (vac_type == "People") {
     t <- gt::tab_footnote(t,
       footnote = "Number of people out of 100 who received at least one vaccine dose; does not represent percent of population fully vaccinated",
       locations = cells_column_labels(columns = c(value1))
