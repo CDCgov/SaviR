@@ -477,7 +477,7 @@ plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
 #'
 #' @export
 
-plot_vaxcoverage <- function(df, type = "partial", by_cat = "State Region") {
+plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18"), by_cat = "State Region") {
   if (by_cat == "WHO Region") {
     col_master <- who_aes
     df_c <- df %>% mutate(cat = factor(who_region, levels = who_aes$cat_values))
@@ -492,7 +492,7 @@ plot_vaxcoverage <- function(df, type = "partial", by_cat = "State Region") {
   category_color_labels <- col_master$cat_names
   category_color_values <- col_master$cat_colors
 
-  if (type == "partial") {
+  if (type == "People") {
     df_c <- df_c %>%
       group_by(cat) %>%
       mutate(
@@ -513,15 +513,15 @@ plot_vaxcoverage <- function(df, type = "partial", by_cat = "State Region") {
     - Countries are labeled such that within each group, labeled countries are those that are the top 3 ranking countries
       for people vaccinated per 100 and the top 3 ranking countries for total vaccine doses administered
     - Vaccine data are incomplete and data may be out of date"
-  } else {
+  } else if (type == "Fully") {
     df_c <- df_c %>%
       group_by(cat) %>%
       mutate(
-        rank_people = dense_rank(-people_fully_vaccinated_per_hundred),
+        rank_fully = dense_rank(-people_fully_vaccinated_per_hundred),
         rank_total = dense_rank(-total_vaccinations)
       ) %>%
       mutate(country_labels = case_when(
-        rank_people %in% 1:3 ~ country,
+        rank_fully %in% 1:3 ~ country,
         rank_total %in% 1:3 ~ country
       )) %>%
       ungroup()
@@ -532,6 +532,46 @@ plot_vaxcoverage <- function(df, type = "partial", by_cat = "State Region") {
     - Countries are labeled such that within each group, labeled countries are those that are the top 3 ranking countries
       for people fully vaccinated per 100 and the top 3 ranking countries for total vaccine doses administered
     - Vaccine data are incomplete and data may be out of date"
+  } else if (type == "Booster") {
+    df_c <- df_c %>%
+      group_by(cat) %>%
+      mutate(
+        rank_booster = dense_rank(-total_boosters_per_hundred),
+        rank_total = dense_rank(-total_vaccinations)
+      ) %>%
+      mutate(country_labels = case_when(
+        rank_booster %in% 1:3 ~ country,
+        rank_total %in% 1:3 ~ country
+      )) %>%
+      ungroup()
+    ptitle <- paste0("Total Boosters per 100 people by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
+    xlabel <- "Total Boosters per 100"
+    cap <- "Notes:
+    - Total vaccine doses administered: total doses given, does not represent number of total boosters
+    - Countries are labeled such that within each group, labeled countries are those that are the top 3 ranking countries
+      for total boosters per 100 and the top 3 ranking countries for total vaccine doses administered
+    - Vaccine data are incomplete and data may be out of date"
+  } else if (type == "Pop18") {
+    df_c <- df_c %>%
+      group_by(cat) %>%
+      mutate(
+        rank_pop18 = dense_rank(-people_vaccinated_per_hundred_18),
+        rank_total = dense_rank(-total_vaccinations)
+      ) %>%
+      mutate(country_labels = case_when(
+        rank_pop18 %in% 1:3 ~ country,
+        rank_total %in% 1:3 ~ country
+      )) %>%
+      ungroup()
+    ptitle <- paste0("People Vaccinated per 100 people in vaccine-eligible population by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
+    xlabel <- "People Vaccinated per 100"
+    cap <- "Notes:
+    -People Vaccinated per 100: number of people who received at least one vaccine dose; does not represent
+     percent of population fully vaccinated
+    -Total vaccine doses administered: total doses given, does not represent number of people vaccinated
+    -Countries are labeled such that within each WHO Region, labeled countries are those that are the top 3 ranking countries
+     for people vaccinated per 100 and the top 3 ranking countries for total vaccine doses administered
+    -Vaccine data are incomplete and data may be out of date"
   }
 
   my_pal_vax <- function(range = c(3, 25)) {
@@ -540,28 +580,32 @@ plot_vaxcoverage <- function(df, type = "partial", by_cat = "State Region") {
   }
 
   ggplot2::ggplot(df_c, aes(
-    x = if (type == "partial") {
+    x = if (type == "People") {
       people_vaccinated_per_hundred
-    } else {
+    } else if (type == "Fully") {
       people_fully_vaccinated_per_hundred
+    } else if (type == "Booster") {
+      total_boosters_per_hundred
+    } else if (type == "Pop18") {
+      people_vaccinated_per_hundred_18
     },
     y = cat
   )) +
     ggplot2::geom_point(aes(size = total_vaccinations, fill = cat),
-      shape = 21,
-      color = "gray60",
-      alpha = 0.8
+                        shape = 21,
+                        color = "gray60",
+                        alpha = 0.8
     ) +
     ggrepel::geom_text_repel(aes(label = country_labels, point.size = total_vaccinations),
-      color              = "gray25",
-      min.segment.length = 0,
-      max.overlaps       = Inf,
-      size               = 3,
-      force              = 0.7,
-      force_pull         = 0.7,
-      direction          = "both",
-      box.padding        = 0.4,
-      point.padding      = 0
+                             color              = "gray25",
+                             min.segment.length = 0,
+                             max.overlaps       = Inf,
+                             size               = 3,
+                             force              = 0.7,
+                             force_pull         = 0.7,
+                             direction          = "both",
+                             box.padding        = 0.4,
+                             point.padding      = 0
     ) +
     ggplot2::continuous_scale(
       aesthetics = c("size", "point.size"), scale_name = "size", palette = my_pal_vax(),
