@@ -209,7 +209,7 @@ map_trend <- function(df, region = "WHO Region") {
 #'
 #' @export
 
-map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "Fully", "Booster")) {
+map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "Fully", "Booster", "Pop18")) {
   if (length(unique(df$who_region)) == 1) {
     if (grepl("WHO", region, fixed = TRUE)) {
       if (df$who_region == "EURO") {
@@ -271,13 +271,26 @@ map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "
     map_template(df, cat_labs, cat_vals) +
       labs(
         title = "Total Boosters per 100 People",
-        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nRepresents percent of population fully vaccinated"),
+        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nNumber of people out of 100 who received booster dose; \ndoes not represent percent of population fully vaccinated"),
         caption = "Note:
          -Countries in white do not have data reported for booster
          -Vaccine data are incomplete and data may be out of date
          -Total boosters per 100 people represents total population (all ages)"
       ) +
       guides(fill = guide_legend(title = "Total \nBoosters \nper 100 \nPeople")) +
+      ggplot2::coord_sf(
+        xlim = bbox[c(1, 3)],
+        ylim = bbox[c(2, 4)]
+      )
+  } else if (vac_type == "Pop18") {
+    cat_vals <- c("#e6f3e8", "#a7efd9", "#15A8C9", "#137DB8", "#1151A7", "#0f2696", "#0a1a68", "#050d3a")
+    map_template(df, cat_labs, cat_vals) +
+      labs(
+        title = "People Vaccinated per 100 Eligible People",
+        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nNumber of eligible people out of 100 who received at least one vaccine dose; does not represent percent of \npopulation fully vaccinated"),
+        caption =  "Note: Eligible population represents adult population for ages >=18; some countries may be vaccinating ages 12+"
+      ) +
+      guides(fill = guide_legend(title = "People \nVaccinated \nper 100 \nEligible People")) +
       ggplot2::coord_sf(
         xlim = bbox[c(1, 3)],
         ylim = bbox[c(2, 4)]
