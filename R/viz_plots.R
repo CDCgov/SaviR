@@ -477,7 +477,7 @@ plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
 #'
 #' @export
 
-plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster"), by_cat = "State Region") {
+plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18"), by_cat = "State Region") {
   if (by_cat == "WHO Region") {
     col_master <- who_aes
     df_c <- df %>% mutate(cat = factor(who_region, levels = who_aes$cat_values))
@@ -551,6 +551,27 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster"), by_cat 
     - Countries are labeled such that within each group, labeled countries are those that are the top 3 ranking countries
       for total boosters per 100 and the top 3 ranking countries for total vaccine doses administered
     - Vaccine data are incomplete and data may be out of date"
+  } else if (type == "Pop18") {
+    df_c <- df_c %>%
+      group_by(cat) %>%
+      mutate(
+        rank_pop18 = dense_rank(-people_vaccinated_per_hundred_18),
+        rank_total = dense_rank(-total_vaccinations)
+      ) %>%
+      mutate(country_labels = case_when(
+        rank_pop18 %in% 1:3 ~ country,
+        rank_total %in% 1:3 ~ country
+      )) %>%
+      ungroup()
+    ptitle <- paste0("People Vaccinated per 100 people in vaccine-eligible population by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
+    xlabel <- "People Vaccinated per 100"
+    cap <- "Notes:
+    -People Vaccinated per 100: number of people who received at least one vaccine dose; does not represent
+     percent of population fully vaccinated
+    -Total vaccine doses administered: total doses given, does not represent number of people vaccinated
+    -Countries are labeled such that within each WHO Region, labeled countries are those that are the top 3 ranking countries
+     for people vaccinated per 100 and the top 3 ranking countries for total vaccine doses administered
+    -Vaccine data are incomplete and data may be out of date"
   }
 
   my_pal_vax <- function(range = c(3, 25)) {
@@ -565,6 +586,8 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster"), by_cat 
       people_fully_vaccinated_per_hundred
     } else if (type == "Booster") {
       total_boosters_per_hundred
+    } else if (type == "Pop18") {
+      people_vaccinated_per_hundred_18
     },
     y = cat
   )) +
