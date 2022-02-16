@@ -592,21 +592,8 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
     y = cat
   ))
 
-  if (type == "Booster") {
-    plot_out <- plot_out +
-    ggplot2::geom_point(aes(size = total_boosters, fill = cat),
-                        shape = 21,
-                        color = "gray60",
-                        alpha = 0.8
-    ) +
-    ggplot2::continuous_scale(
-      aesthetics = c("size", "point.size"), scale_name = "size", palette = my_pal_vax(),
-      labels = scales::comma, breaks = c(1000000, 50000000, 300000000, 750000000),
-      guide = guide_legend(override.aes = list(label = "")),
-      name = "Total booster \ndoses administered"
-    )
-  } else {
-    plot_out <- plot_out +
+  # TODO: Make sizing for total_boosters if type == "Booster"
+  plot_out <- plot_out +
     ggplot2::geom_point(aes(size = total_vaccinations, fill = cat),
                         shape = 21,
                         color = "gray60",
@@ -618,7 +605,7 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
       guide = guide_legend(override.aes = list(label = "")),
       name = "Total vaccine \ndoses administered"
     )
-  }
+
  plot_out <- plot_out +
     ggrepel::geom_text_repel(aes(label = country_labels, point.size = total_vaccinations),
                              color              = "gray25",
