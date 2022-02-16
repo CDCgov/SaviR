@@ -593,7 +593,7 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
   ))
 
   if (type == "Booster") {
-    plot_out +
+    plot_out <- plot_out +
     ggplot2::geom_point(aes(size = total_boosters, fill = cat),
                         shape = 21,
                         color = "gray60",
@@ -606,7 +606,7 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
       name = "Total booster \ndoses administered"
     )
   } else {
-    plot_out +
+    plot_out <- plot_out +
     ggplot2::geom_point(aes(size = total_vaccinations, fill = cat),
                         shape = 21,
                         color = "gray60",
