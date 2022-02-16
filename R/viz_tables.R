@@ -395,7 +395,7 @@ table_10vaccinations <- function(df, vac_type = c("People", "Fully", "Booster"),
 
     if (vac_type == "Booster") {
       t <- gt::tab_footnote(t,
-      footnote = "Total Boosters per 100 people represents total population (all ages)",
+      footnote = "Total Boosters per 100 people; does not represent number of people boosted",
       locations = cells_title()
       )
     } else {
