@@ -537,7 +537,7 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
       group_by(cat) %>%
       mutate(
         rank_booster = dense_rank(-total_boosters_per_hundred),
-        rank_total = dense_rank(-total_vaccinations)
+        rank_total = dense_rank(-total_boosters)
       ) %>%
       mutate(country_labels = case_when(
         rank_booster %in% 1:3 ~ country,
@@ -592,32 +592,67 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
     y = cat
   ))
 
-  # TODO: Make sizing for total_boosters if type == "Booster"
-  plot_out <- plot_out +
-    ggplot2::geom_point(aes(size = total_vaccinations, fill = cat),
-                        shape = 21,
-                        color = "gray60",
-                        alpha = 0.8
-    ) +
-    ggplot2::continuous_scale(
-      aesthetics = c("size", "point.size"), scale_name = "size", palette = my_pal_vax(),
-      labels = scales::comma, breaks = c(1000000, 50000000, 300000000, 750000000),
-      guide = guide_legend(override.aes = list(label = "")),
-      name = "Total vaccine \ndoses administered"
-    )
+  if (type == "Booster") {
+    plot_out <- plot_out +
+      ggplot2::geom_point(
+        aes(size = total_boosters, fill = cat),
+        shape = 21,
+        color = "gray60",
+        alpha = 0.8
+      ) +
+      ggplot2::continuous_scale(
+        aesthetics = c("size", "point.size"),
+        scale_name = "size",
+        palette = my_pal_vax(),
+        labels = scales::comma,
+        breaks = c(100000, 1000000, 50000000, 100000000),
+        guide = guide_legend(override.aes = list(label = "")),
+        name = "Total booster \ndoses administered"
+      ) +
+      ggrepel::geom_text_repel(
+        aes(label = country_labels, point.size = total_boosters),
+        color              = "gray25",
+        min.segment.length = 0,
+        max.overlaps       = Inf,
+        size               = 3,
+        force              = 0.7,
+        force_pull         = 0.7,
+        direction          = "both",
+        box.padding        = 0.4,
+        point.padding      = 0
+      )
+  } else {
+    plot_out <- plot_out +
+      ggplot2::geom_point(
+        aes(size = total_vaccinations, fill = cat),
+        shape = 21,
+        color = "gray60",
+        alpha = 0.8
+      ) +
+      ggplot2::continuous_scale(
+        aesthetics = c("size", "point.size"),
+        scale_name = "size",
+        palette = my_pal_vax(),
+        labels = scales::comma,
+        breaks = c(1000000, 50000000, 300000000, 750000000),
+        guide = guide_legend(override.aes = list(label = "")),
+        name = "Total vaccine \ndoses administered"
+      ) +
+      ggrepel::geom_text_repel(
+        aes(label = country_labels, point.size = total_vaccinations),
+        color              = "gray25",
+        min.segment.length = 0,
+        max.overlaps       = Inf,
+        size               = 3,
+        force              = 0.7,
+        force_pull         = 0.7,
+        direction          = "both",
+        box.padding        = 0.4,
+        point.padding      = 0
+      )
+  }
 
- plot_out <- plot_out +
-    ggrepel::geom_text_repel(aes(label = country_labels, point.size = total_vaccinations),
-                             color              = "gray25",
-                             min.segment.length = 0,
-                             max.overlaps       = Inf,
-                             size               = 3,
-                             force              = 0.7,
-                             force_pull         = 0.7,
-                             direction          = "both",
-                             box.padding        = 0.4,
-                             point.padding      = 0
-    ) +
+  plot_out <- plot_out +
     ggplot2::scale_fill_manual(
       name = by_cat,
       values = category_color_values,
