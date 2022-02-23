@@ -76,3 +76,65 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
+  write_shapefile:
+    needs: R-CMD-check
+    runs-on: ubuntu-20.04
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Mapshaper
+        run: |
+          npm install -g mapshaper topojson-server
+
+      - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: 'release'
+      - uses: r-lib/actions/setup-pandoc@master
+
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: devtools
+
+      - name: Query dependencies
+        run: |
+          install.packages('remotes')
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+        shell: Rscript {0}
+
+      - name: Cache R packages
+        if: runner.os != 'Windows'
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+
+      - name: Install dependencies
+        run: |
+          remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+
+      - name: Write out onetable
+        run: |
+          source("inst/write_shapefile.R")
+        shell: Rscript {0}
+
+      - Name: geoJSON to TopoJSON
+        run: |
+          geo2topo inst/extdata/onetable.geojson > inst/extdata/onetable.json
+          rm inst/extdata/onetable.json
+        shell: bash
+
+      - name: Archive JSON
+        uses: actions/upload-artifact@v2
+        with:
+          name: Shapefile
+          path: inst/extdata/onetable.json
+
