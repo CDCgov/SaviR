@@ -82,7 +82,7 @@ jobs:
       - name: geoJSON to TopoJSON
         run: |
           geo2topo inst/extdata/onetable.geojson > inst/extdata/onetable.json
-          rm inst/extdata/onetable.json
+          rm inst/extdata/onetable.geojson
         shell: bash
 
       - name: Archive JSON
