@@ -83,7 +83,7 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
-      
+
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
@@ -126,7 +126,7 @@ jobs:
           source("inst/write_shapefile.R")
         shell: Rscript {0}
 
-      - Name: geoJSON to TopoJSON
+      - name: geoJSON to TopoJSON
         run: |
           geo2topo inst/extdata/onetable.geojson > inst/extdata/onetable.json
           rm inst/extdata/onetable.json
