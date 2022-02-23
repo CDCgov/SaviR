@@ -77,7 +77,7 @@ jobs:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
   write_shapefile:
-    needs: R-CMD-check
+    # needs: R-CMD-check
     runs-on: ubuntu-20.04
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
