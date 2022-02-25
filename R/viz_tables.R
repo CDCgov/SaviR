@@ -114,6 +114,7 @@ table_countriesofconcern <- function(df, df_vax_man, country_list) {
     flextable::width(j = 1, 2.5, unit = "in") %>%
     flextable::hline(border = str_border) %>%
     flextable::vline(border = str_border) %>%
+    flextable::vline(border = str_border) %>%
     flextable::border_outer(border = str_border)
 }
 
@@ -440,12 +441,21 @@ table_10vaccinations <- function(df, vac_type = c("People", "Fully", "Booster"),
     gt::tab_footnote(
       footnote = exclude_note,
       locations = cells_title()
-    ) %>%
-    gt::tab_footnote(
-      footnote = "People vaccinated per 100 people represents total population (all ages)",
+    )
+
+    if (vac_type == "Booster") {
+      t <- gt::tab_footnote(t,
+      footnote = "Total Boosters per 100 people; does not represent number of people boosted",
       locations = cells_title()
-    ) %>%
-    gt::tab_source_note(source_note = paste0("Data as of ", run_date))
+      )
+    } else {
+      t <- gt::tab_footnote(t,
+        footnote = "People vaccinated per 100 people represents total population (all ages)",
+        locations = cells_title()
+      )
+    }
+
+    t <- gt::tab_source_note(t, source_note = paste0("Data as of ", run_date))
 
   if (vac_type == "People") {
     t <- gt::tab_footnote(t,

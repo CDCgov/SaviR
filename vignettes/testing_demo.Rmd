@@ -14,7 +14,7 @@ library(SaviR)
 library(dplyr)
 ```
 
-```{r}
+```{r, eval=FALSE}
 df_OWID <- read.csv("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/testing/covid-testing-all-observations.csv") %>%
   select(Entity,
     id = ISO.code,
@@ -24,7 +24,7 @@ df_OWID <- read.csv("https://raw.githubusercontent.com/owid/covid-19-data/master
   )
 ```
 
-```{r}
+```{r, eval=FALSE}
 df_FIND <- read.csv("https://raw.githubusercontent.com/dsbbfinddx/FINDCov19TrackerData/master/processed/data_all.csv") %>%
   filter(set == "country") %>%
   select(
@@ -36,7 +36,7 @@ df_FIND <- read.csv("https://raw.githubusercontent.com/dsbbfinddx/FINDCov19Track
 ```
 
 
-```{r}
+```{r, eval=FALSE}
 df <- onetable %>%
   right_join(get_covid_df(), by = "iso2code") %>%
   mutate(date = as.character(date)) %>%

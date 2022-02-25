@@ -271,9 +271,9 @@ map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "
     map_template(df, cat_labs, cat_vals) +
       labs(
         title = "Total Boosters per 100 People",
-        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nNumber of people out of 100 who received booster dose; \ndoes not represent percent of population fully vaccinated"),
+        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nNumber of boosters administered per 100 people; \ndoes not represent percent of population boosted"),
         caption = "Note:
-         -Countries in white do not have data reported for booster
+         -Countries in white do not have data reported for boosters
          -Vaccine data are incomplete and data may be out of date
          -Total boosters per 100 people represents total population (all ages)"
       ) +
