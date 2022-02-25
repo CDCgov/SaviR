@@ -64,11 +64,9 @@ country_coords_new <- country_coords %>%
   add_row(
     TYPE = NA_character_,
     ADMIN = "French Guiana",
-    ISO_A3 = "GUF",
-    iso3code = "GUF"
+    id = "GUF"
   ) %>%
-  left_join(select(onetable, id, geometry), by = c(iso3code = "id")) %>%
-
+  left_join(select(onetable, id, geometry), by = "id") %>%
   st_as_sf()
 
 country_coords <- country_coords_new
