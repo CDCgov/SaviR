@@ -50,9 +50,11 @@ table_countriesofconcern <- function(df, df_vax_man, country_list) {
 
   as.data.frame(
     t(
-      dplyr::filter(df, id %in% country_list) %>%
-        dplyr::filter(date == max(date)) %>%
-        dplyr::mutate(
+      filter(df, id %in% country_list) %>%
+        group_by(id) %>%
+        filter(date == max(date)) %>%
+        ungroup() %>%
+        mutate(
           Country = who_country,
           Date = date,
           `New Cases 7 Day Average\n(7 Day Average Case Incidence per 100,000)` = paste0(format(round(new_cases_7dav, 1), format = "f", big.mark = ",", drop0trailing = TRUE), "\n(", round(week_case_incidence, 2), ")"),
@@ -67,7 +69,7 @@ table_countriesofconcern <- function(df, df_vax_man, country_list) {
           `People Fully Vaccinated Per 100 People` = people_fully_vaccinated_per_hundred,
           `Total Vaccinations Per 100 People` = total_vaccinations_per_hundred
         ) %>%
-        dplyr::select(id, Country:`Total Vaccinations Per 100 People`) %>%
+        select(id, Country:`Total Vaccinations Per 100 People`) %>%
         left_join(vax_latest_dates, by = "id") %>%
         left_join(
           filter(df_vax_man, id %in% country_list) %>%
