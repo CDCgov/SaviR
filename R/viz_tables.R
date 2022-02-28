@@ -71,6 +71,8 @@ table_countriesofconcern <- function(df_risk, df_vaccinations, df_vaccinations_m
     flextable::bg(bg = "#D6D6D6", j = 1) %>%
     flextable::width(width = 1, unit = "in") %>%
     flextable::width(j = 1, 2.5, unit = "in") %>%
+    flextable::align(align = "center", part = "all") %>%
+    flextable::align(j = 1, align = "left", part = "all") %>%
     flextable::hline(border = str_border) %>%
     flextable::vline(border = str_border) %>%
     flextable::vline(border = str_border) %>%
