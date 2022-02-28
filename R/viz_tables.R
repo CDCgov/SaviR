@@ -114,6 +114,8 @@ table_countriesofconcern <- function(df, df_vax_man, country_list) {
     flextable::bg(bg = "#D6D6D6", j = 1) %>%
     flextable::width(width = 1, unit = "in") %>%
     flextable::width(j = 1, 2.5, unit = "in") %>%
+    flextable::align(align = "center", part = "all") %>%
+    flextable::align(j = 1, align = "left", part = "all") %>%
     flextable::hline(border = str_border) %>%
     flextable::vline(border = str_border) %>%
     flextable::vline(border = str_border) %>%
