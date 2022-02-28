@@ -478,6 +478,8 @@ plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
 #' @export
 
 plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18"), by_cat = "State Region") {
+  type <- match.arg(type)
+  
   if (by_cat == "WHO Region") {
     col_master <- who_aes
     df_c <- df %>% mutate(cat = factor(who_region, levels = who_aes$cat_values))

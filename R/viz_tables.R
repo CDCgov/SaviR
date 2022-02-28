@@ -374,6 +374,8 @@ table_10percentchange <- function(df, type = "Global", run_date = "Enter a date"
 #' @export
 
 table_10vaccinations <- function(df, vac_type = c("People", "Fully", "Booster"), type = "Global", run_date = "Enter a date") {
+  vac_type <- match.arg(vac_type)
+  
   if (type == "Global") {
     if (vac_type == "People") {
       title_label <- gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Vaccination per 100 People", "</b>"))
