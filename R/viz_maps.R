@@ -16,7 +16,7 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
   #   stop("Your category labels are of different lengths!")
   # }
 
-  if (category_color_labels == "None") {
+  if (length(category_color_labels) == 1 && category_color_labels == "None") {
     ggplot2::ggplot(df) + # Param
       ggplot2::geom_sf(
         data = country_coords, # Param
@@ -51,9 +51,8 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
         legend.title = ggplot2::element_text(size = 10, family = "Calibri"),
         legend.text = ggplot2::element_text(size = 8, family = "Calibri")
       )
-  }
-
-  ggplot2::ggplot(df) + # Param
+  } else {
+    ggplot2::ggplot(df) + # Param
     ggplot2::geom_sf(
       data = country_coords, # Param
       aes(geometry = geometry),
@@ -88,6 +87,9 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
       legend.title = ggplot2::element_text(size = 10, family = "Calibri"),
       legend.text = ggplot2::element_text(size = 8, family = "Calibri")
     )
+  }
+
+
 }
 
 
