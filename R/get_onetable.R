@@ -135,13 +135,14 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
 
   ## Add Geometries
   df_meta <- df_meta %>%
-    left_join(country_geometries, by = "id") # country_coords
+    left_join(country_geometries, by = "id")
 
   # Add "pretty" WHO region names
   df_meta <- df_meta %>%
     mutate(who_region_desc = who_region_lk[who_region])
 
-  df_meta <- select(df_meta, id, iso2code, state_region, who_region, who_region_desc, who_country, incomelevel_value, population = total, eighteenplus = `18+`, geometry)
+  df_meta <- select(df_meta, id, iso2code, state_region, who_region, who_region_desc, who_country, incomelevel_value, population = total, eighteenplus = `18+`, geometry) %>%
+    arrange(id)
 
   return(df_meta)
 }

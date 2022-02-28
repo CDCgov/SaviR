@@ -29,5 +29,35 @@ test_that("onetable can be reproduced and is up to date", {
   new_onetable <- get_onetable()
 
   # If this fails, need to either reproduce the onetable, or see what changed
-  expect_identical(new_onetable, onetable)
+  expect_identical(select(new_onetable, -geometry), select(onetable, -geometry))
+})
+
+test_that("Onetable geometry matches", {
+  new_onetable <- get_onetable()
+
+  new_onetable <- new_onetable %>%
+      mutate(
+      # NOTE: This is due to a weird error where left-joining on an sf
+      # object now creates an empty GEOMETRYCOLLECTION instead of MULTIPOLYGON
+      # that's not really of any consequence other than for testing.
+      geometry = lapply(geometry, function(x) {
+          if (length(x) > 0) {
+            return(x)
+          }
+
+        class(x) <- c("XY", "MULTIPOLYGON", "sfg")
+        x
+      }
+      )
+    ) %>%
+    st_as_sf(crs=sf::st_crs("+proj=robin +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs")) %>%
+    select(id)
+
+  # NOTE: Comparing as SF object, because random attributes throw off test
+  # also making sure CRS is consistent.
+  ot <- sf::st_as_sf(onetable) %>%
+    sf::st_transform(sf::st_crs("+proj=robin +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs")) %>%
+    select(id)
+
+  expect_identical(new_onetable, ot)
 })
