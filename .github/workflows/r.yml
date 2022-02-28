@@ -43,7 +43,7 @@ jobs:
           cache-version: 2
       - uses: r-lib/actions/check-r-package@v2
         with:
-          args: '--no-manual'
+          args: '"--no-manual"'
           error-on: '"error"'
       # - name: Upload check results
       #   if: failure()
