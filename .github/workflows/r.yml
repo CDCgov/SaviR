@@ -44,7 +44,7 @@ jobs:
       - uses: r-lib/actions/check-r-package@v2
         with:
           args: '--no-manual'
-          error-on: 'error'
+          error-on: '"error"'
       # - name: Upload check results
       #   if: failure()
       #   uses: actions/upload-artifact@main
