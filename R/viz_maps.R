@@ -38,18 +38,19 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
         drop = F,
         na.translate = T
       ) +
-      ggplot2::theme(
-        plot.title = ggplot2::element_text(size = 15, face = "bold", family = "Calibri"),
-        plot.subtitle = ggplot2::element_text(size = 10, family = "Calibri", margin = margin(0, 0, 5, 0)),
-        plot.caption = ggplot2::element_text(size = 8, family = "Calibri", hjust = 0),
-        plot.caption.position = "plot",
-        legend.position = c(0.01, 0.00),
-        legend.justification = c("left", "bottom"),
-        legend.box.just = "left",
-        legend.key.size = unit(0.5, "cm"),
-        legend.margin = ggplot2::margin(3, 3, 3, 3),
-        legend.title = ggplot2::element_text(size = 10, family = "Calibri"),
-        legend.text = ggplot2::element_text(size = 8, family = "Calibri")
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(size = 15, face = "bold", family = "Calibri"),
+      plot.subtitle = ggplot2::element_text(size = 8, family = "Calibri", margin = margin(0, 0, 5, 0)),
+      plot.caption = ggplot2::element_text(size = 6, family = "Calibri", hjust = 0, vjust = 2),
+      plot.caption.position = "plot",
+      legend.position = c(0.01, 0),
+      legend.justification = c("left", "bottom"),
+      legend.box.just = "left",
+      legend.key.size = unit(0.5, "cm"),
+      legend.margin = ggplot2::margin(2, 2, 2, 2),
+      legend.title = ggplot2::element_text(size = 8, family = "Calibri"),
+      legend.text = ggplot2::element_text(size = 6, family = "Calibri"),
+      legend.background = element_rect(fill = "white", colour = "white")
       )
   }
 
@@ -74,19 +75,19 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
       drop = F,
       labels = category_color_labels, # Param
       na.translate = T
-    ) +
     ggplot2::theme(
       plot.title = ggplot2::element_text(size = 15, face = "bold", family = "Calibri"),
-      plot.subtitle = ggplot2::element_text(size = 10, family = "Calibri", margin = margin(0, 0, 5, 0)),
-      plot.caption = ggplot2::element_text(size = 8, family = "Calibri", hjust = 0),
+      plot.subtitle = ggplot2::element_text(size = 8, family = "Calibri", margin = margin(0, 0, 5, 0)),
+      plot.caption = ggplot2::element_text(size = 6, family = "Calibri", hjust = 0, vjust = 2),
       plot.caption.position = "plot",
-      legend.position = c(0.01, 0.00),
+      legend.position = c(0.01, 0),
       legend.justification = c("left", "bottom"),
       legend.box.just = "left",
       legend.key.size = unit(0.5, "cm"),
-      legend.margin = ggplot2::margin(3, 3, 3, 3),
-      legend.title = ggplot2::element_text(size = 10, family = "Calibri"),
-      legend.text = ggplot2::element_text(size = 8, family = "Calibri")
+      legend.margin = ggplot2::margin(2, 2, 2, 2),
+      legend.title = ggplot2::element_text(size = 8, family = "Calibri"),
+      legend.text = ggplot2::element_text(size = 6, family = "Calibri"),
+      legend.background = element_rect(fill = "white", colour = "white")
     )
 }
 
