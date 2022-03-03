@@ -75,6 +75,7 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
       drop = F,
       labels = category_color_labels, # Param
       na.translate = T
+     ) +
     ggplot2::theme(
       plot.title = ggplot2::element_text(size = 15, face = "bold", family = "Calibri"),
       plot.subtitle = ggplot2::element_text(size = 8, family = "Calibri", margin = margin(0, 0, 5, 0)),
