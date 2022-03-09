@@ -38,18 +38,19 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
         drop = F,
         na.translate = T
       ) +
-      ggplot2::theme(
-        plot.title = ggplot2::element_text(size = 15, face = "bold", family = "Calibri"),
-        plot.subtitle = ggplot2::element_text(size = 10, family = "Calibri", margin = margin(0, 0, 5, 0)),
-        plot.caption = ggplot2::element_text(size = 8, family = "Calibri", hjust = 0),
-        plot.caption.position = "plot",
-        legend.position = c(0.01, 0.00),
-        legend.justification = c("left", "bottom"),
-        legend.box.just = "left",
-        legend.key.size = unit(0.5, "cm"),
-        legend.margin = ggplot2::margin(3, 3, 3, 3),
-        legend.title = ggplot2::element_text(size = 10, family = "Calibri"),
-        legend.text = ggplot2::element_text(size = 8, family = "Calibri")
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(size = 15, face = "bold", family = "Calibri"),
+      plot.subtitle = ggplot2::element_text(size = 8, family = "Calibri", margin = margin(0, 0, 5, 0)),
+      plot.caption = ggplot2::element_text(size = 6, family = "Calibri", hjust = 0, vjust = 2),
+      plot.caption.position = "plot",
+      legend.position = c(0.01, 0),
+      legend.justification = c("left", "bottom"),
+      legend.box.just = "left",
+      legend.key.size = unit(0.5, "cm"),
+      legend.margin = ggplot2::margin(2, 2, 2, 2),
+      legend.title = ggplot2::element_text(size = 8, family = "Calibri"),
+      legend.text = ggplot2::element_text(size = 6, family = "Calibri"),
+      legend.background = element_rect(fill = "white", colour = "white")
       )
   } else {
     ggplot2::ggplot(df) + # Param
@@ -73,19 +74,20 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
       drop = F,
       labels = category_color_labels, # Param
       na.translate = T
-    ) +
+     ) +
     ggplot2::theme(
       plot.title = ggplot2::element_text(size = 15, face = "bold", family = "Calibri"),
-      plot.subtitle = ggplot2::element_text(size = 10, family = "Calibri", margin = margin(0, 0, 5, 0)),
-      plot.caption = ggplot2::element_text(size = 8, family = "Calibri", hjust = 0),
+      plot.subtitle = ggplot2::element_text(size = 8, family = "Calibri", margin = margin(0, 0, 5, 0)),
+      plot.caption = ggplot2::element_text(size = 6, family = "Calibri", hjust = 0, vjust = 2),
       plot.caption.position = "plot",
-      legend.position = c(0.01, 0.00),
+      legend.position = c(0.01, 0),
       legend.justification = c("left", "bottom"),
       legend.box.just = "left",
       legend.key.size = unit(0.5, "cm"),
-      legend.margin = ggplot2::margin(3, 3, 3, 3),
-      legend.title = ggplot2::element_text(size = 10, family = "Calibri"),
-      legend.text = ggplot2::element_text(size = 8, family = "Calibri")
+      legend.margin = ggplot2::margin(2, 2, 2, 2),
+      legend.title = ggplot2::element_text(size = 8, family = "Calibri"),
+      legend.text = ggplot2::element_text(size = 6, family = "Calibri"),
+      legend.background = element_rect(fill = "white", colour = "white")
     )
   }
 
@@ -261,7 +263,8 @@ map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "
         caption = "Note:
        -Countries in white do not have data reported for fully vaccinated
        -Vaccine data are incomplete and data may be out of date
-       -People vaccinated per 100 people represents total population (all ages)"
+       -People vaccinated per 100 people represents total population (all ages)
+       -Fully vaccinated means a person has received all recommended doses in their primary series of COVID-19 vaccine"
       ) +
       guides(fill = guide_legend(title = "People \nFully \nVaccinated \nper 100 \nPeople")) +
       ggplot2::coord_sf(
