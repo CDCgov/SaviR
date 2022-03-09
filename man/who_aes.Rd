@@ -10,7 +10,15 @@ An object of class \code{data.frame} with 6 rows and 4 columns.
 \usage{
 who_aes
 }
+\value{
+\describe{
+\item{\code{cat_values}}{character plot legend values (which match directly to WHO region names)}
+\item{\code{cat_names}}{character plot legend names (which are displayed on the plot legend)}
+\item{\code{cat_colors}}{character Color mappings for each WHO region}
+\item{\code{cat_lines}}{character Line-styles for each WHO region}
+}
+}
 \description{
-Aesthetics for WHO regions
+Used internally in plotting functions to style plots with WHO-regions.
 }
 \keyword{datasets}

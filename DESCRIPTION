@@ -1,9 +1,14 @@
 Package: SaviR
 Type: Package
-Title: ITF Analytics
-Version: 0.1.0
-Author: Authors@R: person("Randy", "Yee", email = "pcx5@cdc.gov", role = c("aut", "cre"))
-Maintainer: Randy Yee <pcx5@cdc.gov>
+Title: ITF Situational Awareness and Visualization
+Version: 0.2.0
+Authors@R:  c(
+    person("Sean", "Browning", email = "sbrowning@cdc.gov", role = c("aut", "cre")),
+    person("Kimberly", "Wong", email = "nvj5@cdc.gov", role = "aut"),
+    person("Nartlada", "Chantharojwong", email = "nartlada@gmail.com", role = "aut"),
+    person("James", "Fuller", role = "aut"),
+    person("Dante", "Bugli", role = "ctb"),
+    person("Randy", "Yee", email = "pcx5@cdc.gov", role = "aut"))
 Description: Data access and management of open-source COVID data for the production of analytic datasets.
 License: Apache + file LICENSE
 Imports: 
@@ -25,6 +30,7 @@ Imports:
     RcppRoll,
     cachem,
     data.table,
+    openxlsx,
     magrittr,
     memoise,
     rgdal,
@@ -34,13 +40,17 @@ Imports:
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
+Roxygen: list(markdown = TRUE)
 Suggests: 
     rmarkdown,
+    htmltools,
     tidyr,
     webshot,
     knitr,
     vdiffr,
-    testthat (>= 3.0.0)
+    httr,
+    testthat (>= 3.0.0),
+    covr
 Config/testthat/edition: 3
 Depends: 
     R (>= 3.5.0)

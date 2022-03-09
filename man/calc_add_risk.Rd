@@ -7,7 +7,7 @@
 calc_add_risk(df)
 }
 \arguments{
-\item{df}{Dataframe with id (iso3), date, new_cases, new_deaths, cumulative_cases, cumulative_deaths, AND population.}
+\item{df}{Dataframe with id, date, new_cases, new_deaths, cumulative_cases, cumulative_deaths, AND population.}
 }
 \description{
 Calculate epi stats a generalized df input.
@@ -15,11 +15,10 @@ Calculate epi stats a generalized df input.
 \examples{
 \dontrun{
 df <- onetable \%>\%
-     right_join(get_covid_df() \%>\% select(-who_region), by = c("iso2code" = "country_code")) \%>\%
-     filter(!(country == "China" & source == "WHO"))
+  right_join(get_covid_df(), by = c("iso2code")) \%>\%
+  filter(!(country == "China" & source == "WHO"))
 
 calc_add_risk(df)
-
 }
 
 }

@@ -6,6 +6,18 @@
 \usage{
 get_vax_manufacturers()
 }
+\value{
+A data frame with 218(-ish) rows and 6 variables:
+
+\itemize{
+\item{\code{owid_country}}{  character English country name from OWID}
+\item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
+\item{\code{vaccines}}{  character list of vaccines administered in the country up to the current date.}
+\item{\code{last_observation_date}}{  date date of the last observation in OWID data.}
+\item{\code{source_name}}{  character name of OWID source for data collection.}
+\item{\code{source_website}}{  character web location of OWID source. It can be a standard URL if numbers are consistently reported on a given page; otherwise it will be the source for the last data point.}
+}
+}
 \description{
-Get vaccinations from OWID
+Get vaccination metadata from OWID
 }

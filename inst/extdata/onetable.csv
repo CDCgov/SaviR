@@ -1,0 +1,238 @@
+id,iso2code,state_region,who_region,who_region_desc,who_country,incomelevel_value,population,eighteenplus
+ABW,AW,NA,AMRO,Americas,Aruba,High income,107195,84384
+AFG,AF,South and Central Asia,EMRO,Eastern Mediterranean,Afghanistan,Low income,39835428,20507567
+AGO,AO,Sub-Saharan Africa,AFRO,Africa,Angola,Lower middle income,33933611,15968509
+ALB,AL,Europe and Eurasia,EURO,Europe,Albania,Upper middle income,2872934,2273605
+AND,AD,Europe and Eurasia,EURO,Europe,Andorra,High income,77354,NA
+ARE,AE,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,United Arab Emirates,High income,9991083,8252068.999999999
+ARG,AR,Western Hemisphere,AMRO,Americas,Argentina,Upper middle income,45605823,32399845
+ARM,AM,Europe and Eurasia,EURO,Europe,Armenia,Upper middle income,2968128,2243852
+ASM,AS,NA,WPRO,Western Pacific,American Samoa,Upper middle income,55103,NA
+ATG,AG,Western Hemisphere,AMRO,Americas,Antigua and Barbuda,High income,98728,73145
+AUS,AU,East Asia and the Pacific,WPRO,Western Pacific,Australia,High income,25788217,19867497
+AUT,AT,Europe and Eurasia,EURO,Europe,Austria,High income,9043072,7470540
+AZE,AZ,Europe and Eurasia,EURO,Europe,Azerbaijan,Upper middle income,10223344,7444476.000000001
+BDI,BI,Sub-Saharan Africa,AFRO,Africa,Burundi,Low income,12255429,5942602
+BEL,BE,Europe and Eurasia,EURO,Europe,Belgium,High income,11632334,9267131
+BEN,BJ,Sub-Saharan Africa,AFRO,Africa,Benin,Lower middle income,12451031,6437397
+BFA,BF,Sub-Saharan Africa,AFRO,Africa,Burkina Faso,Low income,21497097,10540124
+BGD,BD,South and Central Asia,SEARO,Southeast Asia,Bangladesh,Lower middle income,166303494,113308040.00000001
+BGR,BG,Europe and Eurasia,EURO,Europe,Bulgaria,Upper middle income,6896655,5681820
+BHR,BH,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Bahrain,High income,1748295,1375286
+BHS,BS,Western Hemisphere,AMRO,Americas,Bahamas,High income,396914,292972
+BIH,BA,Europe and Eurasia,EURO,Europe,Bosnia and Herzegovina,Upper middle income,3263459,2698625
+BLR,BY,Europe and Eurasia,EURO,Europe,Belarus,Upper middle income,9442867,7536043
+BLZ,BZ,Western Hemisphere,AMRO,Americas,Belize,Lower middle income,404915,264839
+BMU,BM,NA,AMRO,Americas,Bermuda,High income,62092,NA
+BOL,BO,Western Hemisphere,AMRO,Americas,Bolivia,Lower middle income,11832936,7617512
+BRA,BR,Western Hemisphere,AMRO,Americas,Brazil,Upper middle income,213993441,160832999
+BRB,BB,Western Hemisphere,AMRO,Americas,Barbados,High income,287708,228940
+BRN,BN,East Asia and the Pacific,WPRO,Western Pacific,Brunei Darussalam,High income,441532,325214
+BTN,BT,South and Central Asia,SEARO,Southeast Asia,Bhutan,Lower middle income,779900,547546
+BWA,BW,Sub-Saharan Africa,AFRO,Africa,Botswana,Upper middle income,2397240,1464869
+CAF,CF,Sub-Saharan Africa,AFRO,Africa,Central African Republic,Low income,4919987,2426346
+CAN,CA,Western Hemisphere,AMRO,Americas,Canada,High income,38067913,30879381
+CHE,CH,Europe and Eurasia,EURO,Europe,Switzerland,High income,8715494,7154966
+CHL,CL,Western Hemisphere,AMRO,Americas,Chile,High income,19212362,14820628
+CHN,CN,East Asia and the Pacific,WPRO,Western Pacific,China,Upper middle income,1444216102,1140663686
+CIV,CI,Sub-Saharan Africa,AFRO,Africa,Cote d'Ivoire,Lower middle income,27053629,14057569
+CMR,CM,Sub-Saharan Africa,AFRO,Africa,Cameroon,Lower middle income,27224262,14028700
+COD,CD,Sub-Saharan Africa,AFRO,Africa,Congo DR,Low income,92377986,44100058
+COG,CG,Sub-Saharan Africa,AFRO,Africa,Congo,Lower middle income,5657017,2970221
+COL,CO,Western Hemisphere,AMRO,Americas,Colombia,Upper middle income,51265841,37587127
+COM,KM,Sub-Saharan Africa,AFRO,Africa,Comoros,Lower middle income,888456,487896
+CPV,CV,Sub-Saharan Africa,AFRO,Africa,Cabo Verde,Lower middle income,561901,377024
+CRI,CR,Western Hemisphere,AMRO,Americas,Costa Rica,Upper middle income,5139053,3867431
+CUB,CU,Western Hemisphere,AMRO,Americas,Cuba,Upper middle income,11317498,9165506
+CUW,CW,NA,AMRO,Americas,Curaçao,High income,164796,128871.00000000001
+CYM,KY,NA,AMRO,Americas,Cayman Islands,High income,66498,NA
+CYP,CY,Europe and Eurasia,EURO,Europe,Cyprus,High income,1215588,972535
+CZE,CZ,Europe and Eurasia,EURO,Europe,Czechia,High income,10724553,8713363
+DEU,DE,Europe and Eurasia,EURO,Europe,Germany,High income,83900471,69730706
+DJI,DJ,Sub-Saharan Africa,EMRO,Eastern Mediterranean,Djibouti,Lower middle income,1002197,661804
+DMA,DM,Western Hemisphere,AMRO,Americas,Dominica,Upper middle income,72172,NA
+DNK,DK,Europe and Eurasia,EURO,Europe,Denmark,High income,5813302,4663492
+DOM,DO,Western Hemisphere,AMRO,Americas,Dominican Republic,Upper middle income,10953714,7401559
+DZA,DZ,Near East (Middle East and Northern Africa),AFRO,Africa,Algeria,Lower middle income,44616626,28916511
+ECU,EC,Western Hemisphere,AMRO,Americas,Ecuador,Upper middle income,17888474,12097047
+EGY,EG,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Egypt,Lower middle income,104258327,63632655
+ERI,ER,Sub-Saharan Africa,AFRO,Africa,Eritrea,Low income,3601462,1884165
+ESP,ES,Europe and Eurasia,EURO,Europe,Spain,High income,46745211,38690089
+EST,EE,Europe and Eurasia,EURO,Europe,Estonia,High income,1325188,1066085
+ETH,ET,Sub-Saharan Africa,AFRO,Africa,Ethiopia,Low income,117876226,63261612
+FIN,FI,Europe and Eurasia,EURO,Europe,Finland,High income,5548361,4498946
+FJI,FJ,East Asia and the Pacific,WPRO,Western Pacific,Fiji,Upper middle income,902899,595504
+FRA,FR,Europe and Eurasia,EURO,Europe,France,High income,65426177,51615974
+FRO,FO,NA,EURO,Europe,Faroe Islands,High income,49053,NA
+FSM,FM,East Asia and the Pacific,WPRO,Western Pacific,Micronesia,Lower middle income,116255,73383
+GAB,GA,Sub-Saharan Africa,AFRO,Africa,Gabon,Upper middle income,2278829,1304694
+GBR,GB,Europe and Eurasia,EURO,Europe,United Kingdom,High income,68207114,53930490
+GEO,GE,Europe and Eurasia,EURO,Europe,Georgia,Upper middle income,3979773,3038010
+GHA,GH,Sub-Saharan Africa,AFRO,Africa,Ghana,Lower middle income,31732128,18073230
+GIB,GI,NA,EURO,Europe,Gibraltar,High income,33691,NA
+GIN,GN,Sub-Saharan Africa,AFRO,Africa,Guinea,Low income,13497237,6784085
+GMB,GM,Sub-Saharan Africa,AFRO,Africa,Gambia,Low income,2486937,1233944
+GNB,GW,Sub-Saharan Africa,AFRO,Africa,Guinea-Bissau,Low income,2015490,1043284.0000000001
+GNQ,GQ,Sub-Saharan Africa,AFRO,Africa,Equatorial Guinea,Upper middle income,1449891,836991
+GRC,GR,Europe and Eurasia,EURO,Europe,Greece,High income,10370747,8658460
+GRD,GD,Western Hemisphere,AMRO,Americas,Grenada,Upper middle income,113015,81539
+GRL,GL,NA,EURO,Europe,Greenland,High income,56868,NA
+GTM,GT,Western Hemisphere,AMRO,Americas,Guatemala,Upper middle income,18249868,11081003
+GUM,GU,NA,WPRO,Western Pacific,Guam,High income,170184,121852
+GUY,GY,Western Hemisphere,AMRO,Americas,Guyana,Upper middle income,790329,530133
+HKG,HK,NA,WPRO,Western Pacific,Hong Kong,High income,7552800,6410583
+HND,HN,Western Hemisphere,AMRO,Americas,Honduras,Lower middle income,10062994,6411710
+HRV,HR,Europe and Eurasia,EURO,Europe,Croatia,High income,4081657,3372538
+HTI,HT,Western Hemisphere,AMRO,Americas,Haiti,Lower middle income,11541683,7138448
+HUN,HU,Europe and Eurasia,EURO,Europe,Hungary,High income,9634162,7950615
+IDN,ID,East Asia and the Pacific,SEARO,Southeast Asia,Indonesia,Lower middle income,276361788,191658284
+IMN,IM,NA,EURO,Europe,Isle of Man,High income,85410,NA
+IND,IN,South and Central Asia,SEARO,Southeast Asia,India,Lower middle income,1393409033,958174818
+IRL,IE,Europe and Eurasia,EURO,Europe,Ireland,High income,4982904,3763440
+IRN,IR,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Iran,Lower middle income,85028760,60471532
+IRQ,IQ,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Iraq,Upper middle income,41179351,23241285
+ISL,IS,Europe and Eurasia,EURO,Europe,Iceland,High income,343360,264299
+ISR,IL,Near East (Middle East and Northern Africa),EURO,Europe,Israel,High income,8789776,5937684
+ITA,IT,Europe and Eurasia,EURO,Europe,Italy,High income,60367471,50914814
+JAM,JM,Western Hemisphere,AMRO,Americas,Jamaica,Upper middle income,2973462,2147044
+JOR,JO,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Jordan,Upper middle income,10269022,6328859
+JPN,JP,East Asia and the Pacific,WPRO,Western Pacific,Japan,High income,126050796,107164335
+KAZ,KZ,South and Central Asia,EURO,Europe,Kazakhstan,Upper middle income,18994958,12686782
+KEN,KE,Sub-Saharan Africa,AFRO,Africa,Kenya,Lower middle income,54985702,30301812
+KGZ,KG,South and Central Asia,EURO,Europe,Kyrgyzstan,Lower middle income,6628347,4156078.9999999995
+KHM,KH,East Asia and the Pacific,WPRO,Western Pacific,Cambodia,Lower middle income,16946446,10842343
+KIR,KI,East Asia and the Pacific,WPRO,Western Pacific,Kiribati,Lower middle income,121388,71234
+KNA,KN,Western Hemisphere,AMRO,Americas,Saint Kitts and Nevis,High income,53546,NA
+KOR,KR,East Asia and the Pacific,WPRO,Western Pacific,Korea (South),High income,51305184,43613892
+KWT,KW,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Kuwait,High income,4328553,3255261
+LAO,LA,East Asia and the Pacific,WPRO,Western Pacific,Laos,Lower middle income,7379358,4612376
+LBN,LB,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Lebanon,Upper middle income,6769151,4782868
+LBR,LR,Sub-Saharan Africa,AFRO,Africa,Liberia,Low income,5180208,2757461
+LBY,LY,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Libya,Upper middle income,6958538,4701445
+LCA,LC,Western Hemisphere,AMRO,Americas,Saint Lucia,Upper middle income,184401,144420
+LIE,LI,Europe and Eurasia,EURO,Europe,Liechtenstein,High income,38254,NA
+LKA,LK,South and Central Asia,SEARO,Southeast Asia,Sri Lanka,Lower middle income,21497306,15444320
+LSO,LS,Sub-Saharan Africa,AFRO,Africa,Lesotho,Lower middle income,2159067,1336799
+LTU,LT,Europe and Eurasia,EURO,Europe,Lithuania,High income,2689862,2201558
+LUX,LU,Europe and Eurasia,EURO,Europe,Luxembourg,High income,634814,515575.00000000006
+LVA,LV,Europe and Eurasia,EURO,Europe,Latvia,High income,1866934,1497841
+MAC,MO,NA,WPRO,Western Pacific,Macau,High income,658391,548861
+MAF,MF,NA,AMRO,Americas,Saint Martin,High income,39239,NA
+MAR,MA,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Morocco,Lower middle income,37344787,25644565
+MCO,MC,Europe and Eurasia,EURO,Europe,Monaco,High income,39520,NA
+MDA,MD,Europe and Eurasia,EURO,Europe,Moldova,Upper middle income,4024025,3265562
+MDG,MG,Sub-Saharan Africa,AFRO,Africa,Madagascar,Low income,28427333,15227875
+MDV,MV,South and Central Asia,SEARO,Southeast Asia,Maldives,Upper middle income,543620,419732
+MEX,MX,Western Hemisphere,AMRO,Americas,Mexico,Upper middle income,130262220,90343542
+MHL,MH,East Asia and the Pacific,WPRO,Western Pacific,Marshall Islands,Upper middle income,59618,NA
+MKD,MK,Europe and Eurasia,EURO,Europe,North Macedonia,Upper middle income,2082661.9999999998,1674948
+MLI,ML,Sub-Saharan Africa,AFRO,Africa,Mali,Low income,20855724,9641735.999999998
+MLT,MT,Europe and Eurasia,EURO,Europe,Malta,High income,442790,366866
+MMR,MM,East Asia and the Pacific,SEARO,Southeast Asia,Burma,Lower middle income,54806014,38028432
+MNE,ME,Europe and Eurasia,EURO,Europe,Montenegro,Upper middle income,628051,491720
+MNG,MN,East Asia and the Pacific,WPRO,Western Pacific,Mongolia,Lower middle income,3329282,2149330
+MNP,MP,NA,WPRO,Western Pacific,Northern Mariana Islands,High income,57910,NA
+MOZ,MZ,Sub-Saharan Africa,AFRO,Africa,Mozambique,Low income,32163045,15824391
+MRT,MR,Sub-Saharan Africa,AFRO,Africa,Mauritania,Lower middle income,4775110,2591838
+MUS,MU,Sub-Saharan Africa,AFRO,Africa,Mauritius,Upper middle income,1273428,1010249
+MWI,MW,Sub-Saharan Africa,AFRO,Africa,Malawi,Low income,19647681,9895700
+MYS,MY,East Asia and the Pacific,WPRO,Western Pacific,Malaysia,Upper middle income,32776195,23606444
+"NAM","NA",Sub-Saharan Africa,AFRO,Africa,Namibia,Upper middle income,2587344,1485339
+NCL,NC,NA,WPRO,Western Pacific,New Caledonia,High income,288217,212714
+NER,NE,Sub-Saharan Africa,AFRO,Africa,Niger,Low income,25130810,10958405.999999998
+NGA,NG,Sub-Saharan Africa,AFRO,Africa,Nigeria,Lower middle income,211400704,105841979
+NIC,NI,Western Hemisphere,AMRO,Americas,Nicaragua,Lower middle income,6702379,4384121
+NLD,NL,Europe and Eurasia,EURO,Europe,Netherlands,High income,17173094,13907252
+NOR,NO,Europe and Eurasia,EURO,Europe,Norway,High income,5465629,4335476
+NPL,NP,South and Central Asia,SEARO,Southeast Asia,Nepal,Lower middle income,29674920,19497648
+NRU,NR,East Asia and the Pacific,WPRO,Western Pacific,Nauru,High income,10873,NA
+NZL,NZ,East Asia and the Pacific,WPRO,Western Pacific,New Zealand,High income,4860642,3737691
+OMN,OM,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Oman,High income,5223376,3877681
+PAK,PK,South and Central Asia,EMRO,Eastern Mediterranean,Pakistan,Lower middle income,225199929,133748111
+PAN,PA,Western Hemisphere,AMRO,Americas,Panama,Upper middle income,4381583,3014490.0000000005
+PER,PE,Western Hemisphere,AMRO,Americas,Peru,Upper middle income,33359415.999999996,23621467
+PHL,PH,East Asia and the Pacific,WPRO,Western Pacific,Philippines,Lower middle income,111046910,71885584
+PLW,PW,East Asia and the Pacific,WPRO,Western Pacific,Palau,High income,18174,NA
+PNG,PG,East Asia and the Pacific,WPRO,Western Pacific,Papua New Guinea,Lower middle income,9119005,5369546
+POL,PL,Europe and Eurasia,EURO,Europe,Poland,High income,37797000,30952598
+PRI,PR,NA,AMRO,Americas,Puerto Rico,High income,2828246,2286659
+PRK,KP,East Asia and the Pacific,SEARO,Southeast Asia,Korea (North),Low income,25887045,19693549
+PRT,PT,Europe and Eurasia,EURO,Europe,Portugal,High income,10167923,8550343
+PRY,PY,Western Hemisphere,AMRO,Americas,Paraguay,Upper middle income,7219641,4756226
+PSE,PS,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Palestinian Territory,Lower middle income,5222756,2916367
+PYF,PF,NA,WPRO,Western Pacific,French Polynesia,High income,282534,207248
+QAT,QA,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Qatar,High income,2930524,2462368
+ROU,RO,Europe and Eurasia,EURO,Europe,Romania,Upper middle income,19127772,15548710
+RUS,RU,Europe and Eurasia,EURO,Europe,Russia,Upper middle income,145912022,114438259
+RWA,RW,Sub-Saharan Africa,AFRO,Africa,Rwanda,Low income,13276517,7208063
+SAU,SA,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Saudi Arabia,High income,35340680,25255166
+SDN,SD,Sub-Saharan Africa,EMRO,Eastern Mediterranean,Sudan,Low income,44909351,24179389
+SEN,SN,Sub-Saharan Africa,AFRO,Africa,Senegal,Lower middle income,17196308,8792559
+SGP,SG,East Asia and the Pacific,WPRO,Western Pacific,Singapore,High income,5896684,5016588
+SLB,SB,East Asia and the Pacific,WPRO,Western Pacific,Solomon Islands,Lower middle income,703995,379418
+SLE,SL,Sub-Saharan Africa,AFRO,Africa,Sierra Leone,Low income,8141343,4332193
+SLV,SV,Western Hemisphere,AMRO,Americas,El Salvador,Lower middle income,6518500,4460545
+SMR,SM,Europe and Eurasia,EURO,Europe,San Marino,High income,34010,NA
+SOM,SO,Sub-Saharan Africa,EMRO,Eastern Mediterranean,Somalia,Low income,16359500,7680879
+SRB,RS,Europe and Eurasia,EURO,Europe,Serbia,Upper middle income,8697547,7069537
+SSD,SS,Sub-Saharan Africa,AFRO,Africa,South Sudan,Low income,11381377,5952777
+STP,ST,Sub-Saharan Africa,AFRO,Africa,Sao Tome and Principe,Lower middle income,223364,115090
+SUR,SR,Western Hemisphere,AMRO,Americas,Suriname,Upper middle income,591798,404952
+SVK,SK,Europe and Eurasia,EURO,Europe,Slovakia,High income,5460726,4448900
+SVN,SI,Europe and Eurasia,EURO,Europe,Slovenia,High income,2078723,1707076
+SWE,SE,Europe and Eurasia,EURO,Europe,Sweden,High income,10160159,8027876.999999999
+SWZ,SZ,Sub-Saharan Africa,AFRO,Africa,Eswatini,Lower middle income,1172369,657860
+SXM,SX,NA,AMRO,Americas,Sint Maarten,High income,43421,NA
+SYC,SC,Sub-Saharan Africa,AFRO,Africa,Seychelles,High income,98910,71397
+SYR,SY,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Syria,Low income,18275704,11695032
+TCA,TC,NA,AMRO,Americas,Turks and Caicos Islands,High income,39226,NA
+TCD,TD,Sub-Saharan Africa,AFRO,Africa,Chad,Low income,16914985,7908934
+TGO,TG,Sub-Saharan Africa,AFRO,Africa,Togo,Low income,8478242,4493855
+THA,TH,East Asia and the Pacific,SEARO,Southeast Asia,Thailand,Upper middle income,69950844,55997858
+TJK,TJ,South and Central Asia,EURO,Europe,Tajikistan,Lower middle income,9749625,5598433
+TKM,TM,South and Central Asia,EURO,Europe,Turkmenistan,Upper middle income,6117933,3947590
+TLS,TL,East Asia and the Pacific,SEARO,Southeast Asia,Timor-Leste,Lower middle income,1343875,758773
+TON,TO,East Asia and the Pacific,WPRO,Western Pacific,Tonga,Upper middle income,106759,63068
+TTO,TT,Western Hemisphere,AMRO,Americas,Trinidad and Tobago,High income,1403374,1069798
+TUN,TN,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Tunisia,Lower middle income,11935764,8566231
+TUR,TR,Europe and Eurasia,EURO,Europe,Turkey,Upper middle income,85042736,60933038
+TUV,TV,East Asia and the Pacific,WPRO,Western Pacific,Tuvalu,Upper middle income,11925,NA
+TWN,TW,East Asia and the Pacific,WPRO,Western Pacific,Taiwan,High income,23855008,20188993
+TZA,TZ,Sub-Saharan Africa,AFRO,Africa,Tanzania,Lower middle income,61498438,30721307
+UGA,UG,Sub-Saharan Africa,AFRO,Africa,Uganda,Low income,47123533,22285035
+UKR,UA,Europe and Eurasia,EURO,Europe,Ukraine,Lower middle income,43466822,35283949
+URY,UY,Western Hemisphere,AMRO,Americas,Uruguay,High income,3485152,2636586
+USA,US,US,AMRO,Americas,United States of America,High income,332915074,259393206
+UZB,UZ,South and Central Asia,EURO,Europe,Uzbekistan,Lower middle income,33935765,22605456
+VCT,VC,Western Hemisphere,AMRO,Americas,Saint Vincent and the Grenadines,Upper middle income,111269,82014
+VEN,VE,Western Hemisphere,AMRO,Americas,Venezuela,Not classified,28704947,19532657
+VGB,VG,NA,AMRO,Americas,British Virgin Islands,High income,30423,NA
+VIR,VI,NA,AMRO,Americas,"Virgin Islands, US",High income,104218,80324
+VNM,VN,East Asia and the Pacific,WPRO,Western Pacific,Viet Nam,Lower middle income,98168829,71432853.99999999
+VUT,VU,East Asia and the Pacific,WPRO,Western Pacific,Vanuatu,Lower middle income,314464,174869
+WSM,WS,East Asia and the Pacific,WPRO,Western Pacific,Samoa,Lower middle income,200144,113695.00000000001
+XKX,XK,NA,EURO,Europe,Kosovo,Upper middle income,1935259,NA
+YEM,YE,Near East (Middle East and Northern Africa),EMRO,Eastern Mediterranean,Yemen,Low income,30490639,16782912
+ZAF,ZA,Sub-Saharan Africa,AFRO,Africa,South Africa,Upper middle income,60041996,39806445
+ZMB,ZM,Sub-Saharan Africa,AFRO,Africa,Zambia,Lower middle income,18920657,9326364
+ZWE,ZW,Sub-Saharan Africa,AFRO,Africa,Zimbabwe,Lower middle income,15092171,7814779
+AIA,AI,NA,AMRO,Americas,Anguilla,NA,15125,NA
+BES,BQ,NA,AMRO,Americas,"Bonaire, Sint Eustatius, and Saba",NA,26445,NA
+COK,CK,NA,WPRO,Western Pacific,Cook Islands,NA,17572,NA
+FLK,FK,NA,AMRO,Americas,Falkland Islands,NA,3528,NA
+GUF,GF,NA,AMRO,Americas,French Guiana,NA,306450,191879
+GLP,GP,NA,AMRO,Americas,Guadeloupe,NA,400013,309490
+GGY,GG,NA,EURO,Europe,Guernsey,NA,67334,NA
+VAT,VA,Europe and Eurasia,EURO,Europe,Holy See,NA,812,NA
+JEY,JE,NA,EURO,Europe,Jersey,NA,101476,NA
+MTQ,MQ,NA,AMRO,Americas,Martinique,NA,374743,302372
+MYT,YT,NA,AFRO,Africa,Mayotte,NA,279507,153066
+MSR,MS,NA,AMRO,Americas,Montserrat,NA,4981,NA
+NIU,NU,NA,WPRO,Western Pacific,Niue,NA,1614,NA
+PCN,PN,NA,WPRO,Western Pacific,Pitcairn Islands,NA,50,NA
+REU,RE,NA,AFRO,Africa,Réunion,NA,901696,660778
+BLM,BL,NA,AMRO,Americas,Saint Barthélemy,NA,9909,NA
+SHN,SH,NA,AFRO,Africa,Saint Helena,NA,6095,NA
+SPM,PM,NA,AMRO,Americas,Saint Pierre and Miquelon,NA,5771,NA
+TKL,TK,NA,WPRO,Western Pacific,Tokelau,NA,1368,NA
+WLF,WF,NA,WPRO,Western Pacific,Wallis and Futuna,NA,11094,NA

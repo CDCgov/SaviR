@@ -4,12 +4,11 @@
 # SaviR <img src='logo/hex-SaviR.png' align = "right" height="200" />
 
 <!-- badges: start -->
+[![Codecov test
+coverage](https://codecov.io/gh/CDCgov/SaviR/branch/master/graph/badge.svg)](https://app.codecov.io/gh/CDCgov/SaviR?branch=master)
 <!-- badges: end -->
-
-## Overview
-
-The purpose of SaviR is to collect the functions needed to access and
-prepare various COVID data sources.
+## Overview The purpose of SaviR is to collect the
+functions needed to access and prepare various COVID data sources.
 
 This package is divided into two main sections: analytical datasets and
 data visualizations.
@@ -17,7 +16,7 @@ data visualizations.
 ## Installation
 
 You can install the released version of SaviR from
-[Github](https://github.com/randyyee/SaviR) with:
+[Github](https://github.com/CDCGov/SaviR) with:
 
 ``` r
 devtools::install_github("CDCgov/SaviR")
@@ -25,11 +24,11 @@ devtools::install_github("CDCgov/SaviR")
 
 ### COVAD - COVID Analytical Datasets
 
-| Metadata Functions   | Get Functions       | Calculation Functions | Production Functions |
-|----------------------|---------------------|-----------------------|----------------------|
-| get\_one\_table      | get\_covid\_sources | calc\_add\_risk       | prod\_sitrep         |
-| get\_country\_coords | get\_testing        |                       |                      |
-|                      | get\_vaccinations   |                       |                      |
+| Metadata Functions | Get Functions     | Calculation Functions | Production Functions |
+|--------------------|-------------------|-----------------------|----------------------|
+| get_one_table      | get_covid_sources | calc_add_risk         | prod_sitrep          |
+| get_country_coords | get_testing       |                       |                      |
+|                    | get_vaccinations  |                       |                      |
 
 -   Metadata is stored in this package and can be called:
 
@@ -44,15 +43,14 @@ IN DEVELOPMENT
 
 ### COVIS - COVID Visualizations
 
-| Plot Functions              | Map Functions     | Table Functions        |
-|-----------------------------|-------------------|------------------------|
-| plot\_epicurve              | map\_template     | table\_10mostcases     |
-| plot\_epicurve\_ind         | map\_burden       | table\_10mostincidence |
-| plot\_epicurve\_epidouble   | map\_trend        | table\_10percentchange |
-| plot\_epicurve\_dailydouble | map\_vaccinations | table\_10vaccinations  |
-| plot\_riskmatrix            |                   |                        |
-| plot\_vaxcoverage           |                   |                        |
-| plot\_vaxcurve              |                   |                        |
+| Plot Functions            | Map Functions    | Table Functions       |
+|---------------------------|------------------|-----------------------|
+| plot_epicurve             | map_template     | table_10mostcases     |
+| plot_epicurve_ind         | map_burden       | table_10mostincidence |
+| plot_epicurve_epidouble   | map_trend        | table_10percentchange |
+| plot_epicurve_dailydouble | map_vaccinations | table_10vaccinations  |
+| plot_riskmatrix           |                  |                       |
+| plot_vaxcoverage          |                  |                       |
 
 ## Public Domain Standard Notice
 

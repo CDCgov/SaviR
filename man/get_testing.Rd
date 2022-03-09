@@ -2,16 +2,29 @@
 % Please edit documentation in R/get_testing.R
 \name{get_testing}
 \alias{get_testing}
-\title{get_testing}
+\title{Get testing data from OWID or FIND}
 \usage{
 get_testing(analysis_date = Sys.Date() - 1L)
 }
+\arguments{
+\item{analysis_date}{(date default: Sys.Date() - 1L) Start date from which to choose OWID or FIND data}
+}
+\value{
+A data frame with n rows and 5 variables:
+\describe{
+\item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
+\item{\code{date}}{  date Date of testing observation}
+\item{\code{new_tests_smoothed_per_thousand}}{  double Tests / 1000 population (7d smooth)}
+\item{\code{new_tests_smoothed_per_thousand_14}}{  double Tests / 1000 population (14d smooth)}
+\item{\code{positive_rate}}{  double Test positivity rate (7d smooth)}
+}
+}
 \description{
-Subsets the full testing data set obtained via get_testing_long to have only one preferred source per country
-OUTPUT:
-- Function argument test_long is the output from get_testing_long()
-- Most recent 7-day average data points for new tests per 1K AND positivity rate for use in risk matrix plots by WHO region.
-- After accounting for flags, we pick OWID by default when both OWID and FIND are available in last X days
+Pulls testing data from either OWID or FIND sources based on a 7d testing / 1K and positivity rate.
+\itemize{
+\item Most recent 7-day average data points for new tests per 1K AND positivity rate for use in risk matrix plots by WHO region.
+\item After accounting for flags, we pick OWID by default when both OWID and FIND are available in last X days
+}
 }
 \examples{
 \dontrun{

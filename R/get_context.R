@@ -19,7 +19,7 @@
 #'   \item{\code{Location}}{  character}
 #'   \item{\code{Lat}}{  double}
 #'   \item{\code{Lon}}{  double}
-#'   \item{\code{CountryCode}}{  character}
+#'   \item{\code{iso2code}}{  character}
 #'   \item{\code{Adm1Code}}{  character}
 #'   \item{\code{GeoType}}{  character}
 #'   \item{\code{ContextualText}}{  character}
@@ -37,33 +37,37 @@
 #' }
 #'
 get_gdeltnews <- function(period = 14, start_date = Sys.Date() - 1) {
-  gdeltnews <- data.frame()
+  date_range <- seq(start_date - period, start_date, by = "day")
+  out <- vector("list", length = length(date_range))
+  names(out) <- date_range
 
-  for (d in seq(start_date - period, start_date, by = "day")) {
+  for (d in date_range) {
     message(zoo::as.Date(d))
-    tryCatch(
-      container <- jsonlite::stream_in(
-        gzcon(url(paste0(
-          "http://data.gdeltproject.org/blog/2020-coronavirus-narrative/live_onlinenewsgeo/",
-          stringr::str_remove_all(zoo::as.Date(d), "-"),
-          "-onlinenewsgeo.json.gz"
-        )))
-      ),
-      error = function(e) {
-        return(gdeltnews %>%
-          mutate(Date = sub("T.*", "", DateTime)) %>%
-          # select(-c(DateTime, URL, SharingImage, DomainCountryCode)) %>%
-          unique())
-      }
+
+    url_str <- paste0(
+      "http://data.gdeltproject.org/blog/2020-coronavirus-narrative/live_onlinenewsgeo/",
+      stringr::str_remove_all(zoo::as.Date(d), "-"),
+      "-onlinenewsgeo.json.gz"
     )
 
-    gdeltnews <- bind_rows(gdeltnews, container)
-    gc()
+    container <- try(
+      jsonlite::stream_in(gzcon(url(url_str))),
+      silent = TRUE
+    )
+
+    if (inherits(container, "try-error")) {
+      warning(as.character(container), immediate. = TRUE)
+      next
+    }
+
+    out[[d]] <- container
   }
 
-  out <- gdeltnews %>%
+  out <- bind_rows(out) %>%
+    rename(iso2code = CountryCode) %>%
     mutate(DateTime = as.POSIXct(DateTime)) %>%
-    distinct()
+    distinct() %>%
+    as_tibble()
 
   return(out)
 }

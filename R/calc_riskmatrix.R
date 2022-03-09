@@ -2,7 +2,7 @@
 
 #' @title calc_add_risk
 #' @description Calculate epi stats a generalized df input.
-#' @param df Dataframe with id (iso3), date, new_cases, new_deaths, cumulative_cases, cumulative_deaths, AND population.
+#' @param df Dataframe with id, date, new_cases, new_deaths, cumulative_cases, cumulative_deaths, AND population.
 #'
 
 #' @importFrom RcppRoll roll_mean
@@ -12,11 +12,10 @@
 #' @examples
 #' \dontrun{
 #' df <- onetable %>%
-#'      right_join(get_covid_df() %>% select(-who_region), by = c("iso2code" = "country_code")) %>%
-#'      filter(!(country == "China" & source == "WHO"))
-#' 
+#'   right_join(get_covid_df(), by = c("iso2code")) %>%
+#'   filter(!(country == "China" & source == "WHO"))
+#'
 #' calc_add_risk(df)
-#' 
 #' }
 #'
 calc_add_risk <- function(df) {

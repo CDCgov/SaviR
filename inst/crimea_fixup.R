@@ -92,5 +92,3 @@ country_coords_new <- country_coords %>%
 
 country_coords <- country_coords_new
 usethis::use_data(country_coords, overwrite = TRUE)
-
-st_write(country_coords, "inst/extdata/country_coords.geojson")

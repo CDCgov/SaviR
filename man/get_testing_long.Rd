@@ -4,22 +4,18 @@
 \alias{get_testing_long}
 \title{get_testing_long}
 \usage{
-get_testing_long(
- 
-    owid_all_source = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv",
- 
-    owid_test_source = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/testing/covid-testing-all-observations.csv",
- 
-    find_source = "https://raw.githubusercontent.com/dsbbfinddx/FINDCov19TrackerData/master/processed/data_all.csv",
- 
-    find_meta_source = "https://raw.githubusercontent.com/dsbbfinddx/FINDCov19TrackerData/master/processed/unit_info.csv",
-  find_maxgap = 31,
-  flag_test_increase = 5
-)
+get_testing_long(find_maxgap = 31, flag_test_increase = 5)
+}
+\arguments{
+\item{find_maxgap}{(numeric, default: 31) Gap between cumulative testing number to linearly interpolate}
+
+\item{flag_test_increase}{(numeric, default: 5) Flag for increase in interpolated cumulative tests}
+}
+\value{
+Longitudinal data frame with both FIND and OWID data sets with consistent definitions
 }
 \description{
 Download and combine full time series data related to testing as compiled by Our World in Data and FIND
-OUTPUT: Longitudinal data set with both FIND and OWID data sets with consistent definitions
 }
 \examples{
 \dontrun{
