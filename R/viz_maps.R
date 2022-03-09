@@ -261,7 +261,8 @@ map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "
         caption = "Note:
        -Countries in white do not have data reported for fully vaccinated
        -Vaccine data are incomplete and data may be out of date
-       -People vaccinated per 100 people represents total population (all ages)"
+       -People vaccinated per 100 people represents total population (all ages)
+       -Fully vaccinated means a person has received all recommended doses in their primary series of COVID-19 vaccine"
       ) +
       guides(fill = guide_legend(title = "People \nFully \nVaccinated \nper 100 \nPeople")) +
       ggplot2::coord_sf(
