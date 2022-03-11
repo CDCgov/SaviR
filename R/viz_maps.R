@@ -114,15 +114,17 @@ map_burden <- function(df, region = "WHO Region") {
   if (length(unique(df$who_region)) == 1) {
     if (grepl("WHO", region, fixed = TRUE)) {
       if (df$who_region == "EURO") {
-        bbox <- sf::st_bbox(c(xmin = -2500000, ymin = 2000000, xmax = 7000000, ymax = 8500000))
+        bbox <- sf::st_bbox(c(xmin = -1400000, ymin = 1500000, xmax = 6500000, ymax = 9500000))
       } else if (df$who_region == "AMRO") {
-        bbox <- sf::st_bbox(c(xmin = -10775454, ymin = -5900074, xmax = -3072374, ymax = 5318372))
+        bbox <- sf::st_bbox(c(xmin = -14300000, ymin = -5500074, xmax = -3872374, ymax = 5000000))
       } else if (df$who_region == "SEARO") {
-        bbox <- sf::st_bbox(c(xmin = 6284395, ymin = -1808021, xmax = 13315540, ymax = 3796098))
+        bbox <- sf::st_bbox(c(xmin = 6484395, ymin = -2008021, xmax = 12915540, ymax = 4596098))
       } else if (df$who_region == "EMRO") {
-        bbox <- sf::st_bbox(c(xmin = -2500688.1, ymin = -850026.8, xmax = 6918436.7, ymax = 6245846.3))
+        bbox <- sf::st_bbox(c(xmin = -1600000, ymin = -1800026.8, xmax = 6418436.7, ymax = 6245846.3))
       } else if (df$who_region == "AFRO") {
-        bbox <- sf::st_bbox(c(xmin = -1800000, ymin = -3900074, xmax = 4700000, ymax = 4018372))
+        bbox <- sf::st_bbox(c(xmin = -2400000, ymin = -4200074, xmax = 6000000, ymax = 4218372))
+      } else if (df$who_region == "WPRO") {
+        bbox <- sf::st_bbox(c(xmin = 5884395, ymin = -5308021, xmax = 16500000, ymax = 5396098))
       } else {
         bbox <- sf::st_bbox(sf::st_as_sf(df))
       }
@@ -169,15 +171,17 @@ map_trend <- function(df, region = "WHO Region") {
   if (length(unique(df$who_region)) == 1) {
     if (grepl("WHO", region, fixed = TRUE)) {
       if (df$who_region == "EURO") {
-        bbox <- sf::st_bbox(c(xmin = -2500000, ymin = 2000000, xmax = 7000000, ymax = 8500000))
+        bbox <- sf::st_bbox(c(xmin = -1400000, ymin = 1500000, xmax = 6500000, ymax = 9500000))
       } else if (df$who_region == "AMRO") {
-        bbox <- sf::st_bbox(c(xmin = -10775454, ymin = -5900074, xmax = -3072374, ymax = 5318372))
+        bbox <- sf::st_bbox(c(xmin = -14300000, ymin = -5500074, xmax = -3872374, ymax = 5000000))
       } else if (df$who_region == "SEARO") {
-        bbox <- sf::st_bbox(c(xmin = 6284395, ymin = -1808021, xmax = 13315540, ymax = 3796098))
+        bbox <- sf::st_bbox(c(xmin = 6484395, ymin = -2008021, xmax = 12915540, ymax = 4596098))
       } else if (df$who_region == "EMRO") {
-        bbox <- sf::st_bbox(c(xmin = -2500688.1, ymin = -850026.8, xmax = 6918436.7, ymax = 6245846.3))
+        bbox <- sf::st_bbox(c(xmin = -1600000, ymin = -1800026.8, xmax = 6418436.7, ymax = 6245846.3))
       } else if (df$who_region == "AFRO") {
-        bbox <- sf::st_bbox(c(xmin = -1800000, ymin = -3900074, xmax = 4700000, ymax = 4018372))
+        bbox <- sf::st_bbox(c(xmin = -2400000, ymin = -4200074, xmax = 6000000, ymax = 4218372))
+      } else if (df$who_region == "WPRO") {
+        bbox <- sf::st_bbox(c(xmin = 5884395, ymin = -5308021, xmax = 16500000, ymax = 5396098))
       } else {
         bbox <- sf::st_bbox(sf::st_as_sf(df))
       }
@@ -217,15 +221,17 @@ map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "
   if (length(unique(df$who_region)) == 1) {
     if (grepl("WHO", region, fixed = TRUE)) {
       if (df$who_region == "EURO") {
-        bbox <- sf::st_bbox(c(xmin = -2500000, ymin = 2000000, xmax = 7000000, ymax = 8500000))
+        bbox <- sf::st_bbox(c(xmin = -1400000, ymin = 1500000, xmax = 6500000, ymax = 9500000))
       } else if (df$who_region == "AMRO") {
-        bbox <- sf::st_bbox(c(xmin = -10775454, ymin = -5900074, xmax = -3072374, ymax = 5318372))
+        bbox <- sf::st_bbox(c(xmin = -14300000, ymin = -5500074, xmax = -3872374, ymax = 5000000))
       } else if (df$who_region == "SEARO") {
-        bbox <- sf::st_bbox(c(xmin = 6284395, ymin = -1808021, xmax = 13315540, ymax = 3796098))
+        bbox <- sf::st_bbox(c(xmin = 6484395, ymin = -2008021, xmax = 12915540, ymax = 4596098))
       } else if (df$who_region == "EMRO") {
-        bbox <- sf::st_bbox(c(xmin = -2500688.1, ymin = -850026.8, xmax = 6918436.7, ymax = 6245846.3))
+        bbox <- sf::st_bbox(c(xmin = -1600000, ymin = -1800026.8, xmax = 6418436.7, ymax = 6245846.3))
       } else if (df$who_region == "AFRO") {
-        bbox <- sf::st_bbox(c(xmin = -1800000, ymin = -3900074, xmax = 4700000, ymax = 4018372))
+        bbox <- sf::st_bbox(c(xmin = -2400000, ymin = -4200074, xmax = 6000000, ymax = 4218372))
+      } else if (df$who_region == "WPRO") {
+        bbox <- sf::st_bbox(c(xmin = 5884395, ymin = -5308021, xmax = 16500000, ymax = 5396098))
       } else {
         bbox <- sf::st_bbox(sf::st_as_sf(df))
       }
