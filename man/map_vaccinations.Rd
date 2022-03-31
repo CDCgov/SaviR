@@ -4,7 +4,11 @@
 \alias{map_vaccinations}
 \title{map_vaccinations}
 \usage{
-map_vaccinations(df, region = "WHO Region", vac_type = c("People", "Fully"))
+map_vaccinations(
+  df,
+  region = "WHO Region",
+  vac_type = c("People", "Fully", "Booster", "Pop18")
+)
 }
 \arguments{
 \item{df}{A dataframe with the following: region, country, date, people vaccinated per 100 AS 8-level factors (<3, 3-<10, 10-<20, 20-<30, 30-<40, 40-<60, 60-<70, 70+).}

@@ -6,7 +6,7 @@
 \usage{
 table_10vaccinations(
   df,
-  vac_type = "Partial",
+  vac_type = c("People", "Fully", "Booster"),
   type = "Global",
   run_date = "Enter a date"
 )

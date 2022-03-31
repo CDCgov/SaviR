@@ -4,7 +4,11 @@
 \alias{plot_vaxcoverage}
 \title{plot_vaxcoverage}
 \usage{
-plot_vaxcoverage(df, type = "partial", by_cat = "State Region")
+plot_vaxcoverage(
+  df,
+  type = c("People", "Fully", "Booster", "Pop18"),
+  by_cat = "State Region"
+)
 }
 \arguments{
 \item{df}{A dataframe with vaccination stats.}
