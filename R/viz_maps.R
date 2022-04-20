@@ -211,8 +211,10 @@ map_trend <- function(df, region = "WHO Region") {
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #' @title map_vaccinations
-#' @description Cross-sectional map: People vaccinated per 100 for each country or Fully vaccinated.
+#' @description Cross-sectional map: Visualizing global or regional vaccination metrics
 #' @param df A dataframe with the following: region, country, date, people vaccinated per 100 AS 8-level factors (<3, 3-<10, 10-<20, 20-<30, 30-<40, 40-<60, 60-<70, 70+).
+#' @param region (character) one of "WHO" or "State" based on what region type to highlight
+#' @param vac_type (character) one of "People", "Fully", "Booster", or "Pop18" based on vaccination metric being visualized
 
 #'
 #' @export
@@ -249,7 +251,7 @@ map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "
     map_template(df, cat_labs, cat_vals) +
       labs(
         title = "People Vaccinated per 100 People",
-        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nNumber of people out of 100 who received at least one vaccine dose; \ndoes not represent percent of population fully vaccinated"),
+        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nNumber of people out of 100 who received at least one vaccine dose; \ndoes not represent percent of population completing initial vaccination protocol"),
         caption = "Note:
        -Countries in white do not have data reported for total people vaccinated
        -Vaccine data are incomplete and data may be out of date
@@ -264,15 +266,15 @@ map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "
     cat_vals <- c("#ccece6", "#afdacb", "#92c8b1", "#75b696", "#57a37c", "#3a9161", "#1d7f47", "#006d2c")
     map_template(df, cat_labs, cat_vals) +
       labs(
-        title = "People Fully Vaccinated per 100 People",
-        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nRepresents percent of population fully vaccinated"),
+        title = "Persons Who Completed Initial Vaccination Protocol per 100 People",
+        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nRepresents percent of population with complete initial protocol"),
         caption = "Note:
-       -Countries in white do not have data reported for fully vaccinated
+       -Countries in white do not have data reported for completed initial protocol
        -Vaccine data are incomplete and data may be out of date
        -People vaccinated per 100 people represents total population (all ages)
-       -Fully vaccinated means a person has received all recommended doses in their primary series of COVID-19 vaccine"
+       -Completed initial protocol means a person has received all recommended doses in their primary series of COVID-19 vaccine"
       ) +
-      guides(fill = guide_legend(title = "People \nFully \nVaccinated \nper 100 \nPeople")) +
+      guides(fill = guide_legend(title = "People \nCompleting \nInitial Protocol \nper 100 \nPeople")) +
       ggplot2::coord_sf(
         xlim = bbox[c(1, 3)],
         ylim = bbox[c(2, 4)]
@@ -298,7 +300,7 @@ map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "
     map_template(df, cat_labs, cat_vals) +
       labs(
         title = "People Vaccinated per 100 Eligible People",
-        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nNumber of eligible people out of 100 who received at least one vaccine dose; does not represent percent of \npopulation fully vaccinated"),
+        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nNumber of eligible people out of 100 who received at least one vaccine dose; does not represent percent of \npopulation completing initial vaccine protocol"),
         caption =  "Note: Eligible population represents adult population for ages >=18; some countries may be vaccinating ages 12+"
       ) +
       guides(fill = guide_legend(title = "People \nVaccinated \nper 100 \nEligible People")) +

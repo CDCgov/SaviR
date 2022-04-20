@@ -12,7 +12,11 @@ map_vaccinations(
 }
 \arguments{
 \item{df}{A dataframe with the following: region, country, date, people vaccinated per 100 AS 8-level factors (<3, 3-<10, 10-<20, 20-<30, 30-<40, 40-<60, 60-<70, 70+).}
+
+\item{region}{(character) one of "WHO" or "State" based on what region type to highlight}
+
+\item{vac_type}{(character) one of "People", "Fully", "Booster", or "Pop18" based on vaccination metric being visualized}
 }
 \description{
-Cross-sectional map: People vaccinated per 100 for each country or Fully vaccinated.
+Cross-sectional map: Visualizing global or regional vaccination metrics
 }
