@@ -53,7 +53,7 @@ get_vax <- function() {
 #'   \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
 #'   \item{\code{total_doses_date}}{double Date of last update for total vaccine doses}
 #'   \item{\code{partial_date}}{double Date of last update for persons vaccinated}
-#'   \item{\code{fully_date}}{double Date of last update for persons fully vaccinated}
+#'   \item{\code{fully_date}}{double Date of last update for persons having completed initial protocol}
 #' }
 #' @seealso [get_vax()] for full vaccination data from the same source
 #' @export

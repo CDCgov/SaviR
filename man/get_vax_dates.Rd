@@ -13,7 +13,7 @@ a data frame with n rows and 5 columns
 \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
 \item{\code{total_doses_date}}{double Date of last update for total vaccine doses}
 \item{\code{partial_date}}{double Date of last update for persons vaccinated}
-\item{\code{fully_date}}{double Date of last update for persons fully vaccinated}
+\item{\code{fully_date}}{double Date of last update for persons having completed initial protocol}
 }
 }
 \description{
