@@ -66,7 +66,7 @@ table_countriesofconcern <- function(df, df_vax_man, country_list) {
           `Previous 7 Day Deaths` = scales::comma(round(prev_week_death)),
           `% Change in Deaths from Previous 7 Days` = scales::percent(percent_change_death, scale = 1, drop0trailing = TRUE),
           `People Vaccinated Per 100 People` = people_vaccinated_per_hundred,
-          `People Fully Vaccinated Per 100 People` = people_fully_vaccinated_per_hundred,
+          `People Who Completed Initial Protocol Per 100 People` = people_fully_vaccinated_per_hundred,
           `Total Vaccinations Per 100 People` = total_vaccinations_per_hundred
         ) %>%
         select(id, Country:`Total Vaccinations Per 100 People`) %>%
@@ -95,7 +95,7 @@ table_countriesofconcern <- function(df, df_vax_man, country_list) {
           `% Change in Deaths from Previous 7 Days`,
           `Most Recent Date for Vaccinations`,
           `People Vaccinated Per 100 People`,
-          `People Fully Vaccinated Per 100 People`,
+          `People Who Completed Initial Protocol Per 100 People`,
           `Total Vaccinations Per 100 People`,
           `Vaccines in Use`,
           `% Delta`
@@ -400,7 +400,7 @@ table_10vaccinations <- function(df, vac_type = c("People", "Fully", "Booster"),
     cols_label1 <- gt::html("People Vaccinated <br> per 100 People")
     vax_palette <- c("#b1eeec", "#98d1cf", "#7eb3b2", "#659695", "#4c7877", "#335b5a", "#193d3d", "#002020")
   } else if (vac_type == "Fully") {
-    cols_label1 <- gt::html("People Fully Vaccinated <br> per 100 People")
+    cols_label1 <- gt::html("People Who completed <br> initial vaccination protocol <br> per 100 People")
     vax_palette <- c("#ccece6", "#afdacb", "#92c8b1", "#75b696", "#57a37c", "#3a9161", "#1d7f47", "#006d2c")
   } else if (vac_type == "Booster") {
     cols_label1 <- gt::html("Total Boosters <br> per 100 People")
@@ -465,7 +465,7 @@ table_10vaccinations <- function(df, vac_type = c("People", "Fully", "Booster"),
 
   if (vac_type == "People") {
     t <- gt::tab_footnote(t,
-      footnote = "Number of people out of 100 who received at least one vaccine dose; does not represent percent of population fully vaccinated",
+      footnote = "Number of people out of 100 who received at least one vaccine dose; does not represent percent of population who completed initial protocol",
       locations = cells_column_labels(columns = c(value1))
     )
   }
