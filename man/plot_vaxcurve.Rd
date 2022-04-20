@@ -14,7 +14,7 @@ plot_vaxcurve(
 \arguments{
 \item{df}{A dataframe with the following: date, people_vaccinated_per_hundred or people_fully_vaccinated_per_hundred, and one of these columns for by_cat: who_region, state_region, or incomelevel_value.}
 
-\item{type}{= "partial" (default) for partial vaccinated or "full" for fully vaccinated}
+\item{type}{= "partial" (default) for partial vaccinated or "full" for completed initial protocol}
 
 \item{by_cat}{= "State Region" (default), "WHO Region" or "Income Level"}
 

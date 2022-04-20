@@ -13,11 +13,9 @@ plot_vaxcoverage_pop(
 \arguments{
 \item{df}{A dataframe with the following: date, people_vaccinated_per_hundred or people_fully_vaccinated_per_hundred, and one of these columns for by_cat: who_region, state_region, or incomelevel_value.}
 
-\item{type}{= "partial" (default) for partial vaccinated or "full" for fully vaccinated}
+\item{type}{(character) one of "People", "Fully", "Booster", or "Pop18" based on vaccination metric}
 
 \item{by_cat}{= "State Region" (default), "WHO Region" or "Income Level"}
-
-\item{countries}{= "All" (default) for all countries or "AMC/AU" for AMC/AU countries (n=100)}
 }
 \description{
 Visualize vaccine coverage by date of reporting and by WHO region(s), State region(s), or Income levels.
