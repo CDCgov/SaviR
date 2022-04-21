@@ -4,7 +4,7 @@
 \alias{table_countriesofconcern}
 \title{table_countriesofconcern}
 \usage{
-table_countriesofconcern(df, df_vax_man, country_list)
+table_countriesofconcern(df, df_vax_man, country_list, df_variant_pct = NULL)
 }
 \arguments{
 \item{df}{A dataframe with the following: id, who_country, date, new_cases, week_case_incidence, week_case, prev_week_case, percent_change_case,
@@ -13,13 +13,16 @@ new_deaths, week_death_incidence, week_death, prev_week_death, percent_change_de
 \item{df_vax_man}{A dataframe with the following: id, date, vaccines}
 
 \item{country_list}{(character) A vector of ISO 3166-1 alpha-3 country codes for countries to highlight}
+
+\item{df_variant_pct}{(optional) a dataframe with at least "id" (ISO 3166-1 alpha-3), and additional columns indicating \% of variants sequenced to add to bottom of table}
 }
 \description{
 Table for displaying stats for list of countries of concern.
 }
 \section{Notes}{
 
-\code{Most Recent Date for Vaccinations} column is computed internally via a call to \code{\link[=get_vax]{get_vax()}}
+\code{Most Recent Date for Vaccinations} column is computed internally via a call to \code{\link[=get_vax_dates]{get_vax_dates()}}
+If \code{df_variant_pct} is not provided, two columns for Delta and Omicron will be added to fill in manually
 }
 
 \examples{

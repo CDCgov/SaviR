@@ -6,14 +6,16 @@
 #' new_deaths, week_death_incidence, week_death, prev_week_death, percent_change_death, people_vaccinated_per_hundred, total_vaccinations_per_hundred
 #' @param df_vax_man A dataframe with the following: id, date, vaccines
 #' @param country_list (character) A vector of ISO 3166-1 alpha-3 country codes for countries to highlight
+#' @param df_variant_pct (optional) a dataframe with at least "id" (ISO 3166-1 alpha-3), and additional columns indicating % of variants sequenced to add to bottom of table
+#' 
 #' @import flextable
 #' @import officer
 #' @importFrom purrr set_names
 #' @importFrom tibble rownames_to_column
 #'
 #' @section Notes:
-#' \code{Most Recent Date for Vaccinations} column is computed internally via a call to [get_vax()]
-#'
+#' \code{Most Recent Date for Vaccinations} column is computed internally via a call to [get_vax_dates()]  
+#' If \code{df_variant_pct} is not provided, two columns for Delta and Omicron will be added to fill in manually
 #' @examples
 #' \dontrun{
 #' # Get case/death/vax data
@@ -38,7 +40,7 @@
 #' }
 #' @export
 
-table_countriesofconcern <- function(df, df_vax_man, country_list) {
+table_countriesofconcern <- function(df, df_vax_man, country_list, df_variant_pct = NULL) {
   str_border <- officer::fp_border(color = "#808080")
 
   # Pull latest dates for vaccine data
@@ -48,9 +50,18 @@ table_countriesofconcern <- function(df, df_vax_man, country_list) {
     group_by(id) %>%
     summarize(`Most Recent Date for Vaccinations` = max(date))
 
-  as.data.frame(
-    t(
-      filter(df, id %in% country_list) %>%
+  # Check that variant data was passed, and if not
+  # Add some blank data
+  if (is.null(df_variant_pct)) {
+    df_variant_pct <- tibble(
+      id = country_list,
+      `% Delta since January 1, 2022` = "Fill manually",
+      `% Omicron since January 1, 2022` = "Fill manually"
+    )
+  }
+
+  pivoted <- df %>%
+        filter(id %in% country_list) %>%
         group_by(id) %>%
         filter(date == max(date)) %>%
         ungroup() %>%
@@ -76,13 +87,13 @@ table_countriesofconcern <- function(df, df_vax_man, country_list) {
             group_by(id) %>%
             filter(last_observation_date == max(last_observation_date)) %>%
             mutate(
-              `Vaccines in Use` = vaccines,
-              `% Delta` = ""
+              `Vaccines in Use` = vaccines
             ) %>%
-            select(id, `Vaccines in Use`, `% Delta`),
+            select(id, `Vaccines in Use`),
           by = "id"
         ) %>%
         select(
+          id,
           Country,
           Date,
           `New Cases 7 Day Average\n(7 Day Average Case Incidence per 100,000)`,
@@ -97,15 +108,20 @@ table_countriesofconcern <- function(df, df_vax_man, country_list) {
           `People Vaccinated Per 100 People`,
           `People Fully Vaccinated Per 100 People`,
           `Total Vaccinations Per 100 People`,
-          `Vaccines in Use`,
-          `% Delta`
-        )
-    )
-  ) %>%
+          `Vaccines in Use`
+        ) %>%
+        left_join(df_variant_pct, by = "id") %>%
+        select(-id)
+
+  out <- as.data.frame(t(pivoted))
+
+  out <- out %>%
     tibble::rownames_to_column(" ") %>%
     purrr::set_names(.[1, ]) %>%
-    filter(Country != "Country") %>%
-    flextable::flextable() %>%
+    filter(Country != "Country")
+
+
+  flextable::flextable(out) %>%
     flextable::font(fontname = "Calibri", part = "all") %>%
     flextable::fontsize(size = 9, part = "all") %>%
     flextable::color(color = "white", part = "header") %>%
