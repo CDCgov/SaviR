@@ -7,11 +7,18 @@
 plot_vaxcoverage(
   df,
   type = c("People", "Fully", "Booster", "Pop18"),
-  by_cat = "State Region"
+  by_cat = "State Region",
+  plot = c("Vaccination", "Population")
 )
 }
 \arguments{
 \item{df}{A dataframe with vaccination stats.}
+
+\item{type}{= "People" (default) for people who received at least 1 does, "Fully" for people who completed the initial protocol, "Booster" for booster doses only, and "Pop18" for people people vaccinated in the vaccine eligible population}
+
+\item{by_cat}{= "State Region" (default), "WHO Region" or "Income Level"}
+
+\item{plot}{= "Vaccination" (default) to display bubble size based on total vaccine doses administered in each country, or "Population" to display plot bubble size based on population size of each country.}
 }
 \description{
 Plot vaccination coverage (partial or fully) by WHO region(s), State region(s), or Income levels.

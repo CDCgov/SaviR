@@ -474,12 +474,12 @@ plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
 #' @param df A dataframe with vaccination stats.
 #' @param type = "People" (default) for people who received at least 1 does, "Fully" for people who completed the initial protocol, "Booster" for booster doses only, and "Pop18" for people people vaccinated in the vaccine eligible population
 #' @param by_cat = "State Region" (default), "WHO Region" or "Income Level"
-#' @param plot = "Population" to display plot bubble size based on population size of each country, or "Vaccination" to display bubble size based on total vaccine doses administered in each country
+#' @param plot = "Vaccination" (default) to display bubble size based on total vaccine doses administered in each country, or "Population" to display plot bubble size based on population size of each country.
 
 #'
 #' @export
 
-plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18"), by_cat = "State Region", plot = c("Population", "Vaccination")) {
+plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18"), by_cat = "State Region", plot = c("Vaccination", "Population")) {
   type <- match.arg(type)
   plot <- match.arg(plot)
 
