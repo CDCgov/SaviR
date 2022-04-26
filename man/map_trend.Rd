@@ -4,12 +4,19 @@
 \alias{map_trend}
 \title{map_trend}
 \usage{
-map_trend(df, region = "WHO Region")
+map_trend(df, region = c("WHO Region", "State Region"))
 }
 \arguments{
-\item{df}{A dataframe with the following: region, country, date, percent_change as 6-level factors (0- <1, 1- <10, 10- <25, 25+).
-Input df SHOULD ONLY HAVE ONE DATE!}
+\item{df}{A dataframe with the following: region, country, date, percent_change as 6-level factors (0- <1, 1- <10, 10- <25, 25+).}
+
+\item{region}{one of "WHO Region" or "State Region"}
+}
+\value{
+Produces a map of trend (\% change in the past 7 days)
 }
 \description{
 Cross-sectional map: Average daily incidence for the past 7 days for each country.
+}
+\details{
+Input df SHOULD ONLY HAVE ONE DATE!
 }
