@@ -100,43 +100,46 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
 #' @title map_burden
 #' @description Cross-sectional map: Average daily incidence for the past 7 days for each country.
 #' @param df A dataframe with the following: region, country, date, incidence as 4-level factors (0- <1, 1- <10, 10- <25, 25+)
-#' Produces an epi curve, region stacked bar plot for each epi-week (Monday-Sunday).
+#' @param region one of "WHO Region" or "State Region"
+#' 
+#' @return 
+#' Produces a map of burden (incidence per 100,000)
+#' 
+#' @details 
 #' Input df SHOULD ONLY HAVE ONE DATE!
 
 #'
 #' @export
 
-map_burden <- function(df, region = "WHO Region") {
+map_burden <- function(df, region = c("WHO Region", "State Region")) {
+
+  region <- match.arg(region)
+  who_region <- unique(df$who_region)
+  who_regs <- length(who_region)
+
+  # If we pass more than one region, then we set the value to "None"
+  # So switch works correctly
+  if (who_regs > 1 || region == "State Region") {
+    who_region <- "None"
+  }
+
   if (length(unique(df$date)) > 1) {
     warning("Your dataframe has more than 1 date! This is a cross-sectional visualization!")
   }
 
-  if (length(unique(df$who_region)) == 1) {
-    if (grepl("WHO", region, fixed = TRUE)) {
-      if (df$who_region == "EURO") {
-        bbox <- sf::st_bbox(c(xmin = -1400000, ymin = 1500000, xmax = 6500000, ymax = 9500000))
-      } else if (df$who_region == "AMRO") {
-        bbox <- sf::st_bbox(c(xmin = -14300000, ymin = -5500074, xmax = -3872374, ymax = 5000000))
-      } else if (df$who_region == "SEARO") {
-        bbox <- sf::st_bbox(c(xmin = 6484395, ymin = -2008021, xmax = 12915540, ymax = 4596098))
-      } else if (df$who_region == "EMRO") {
-        bbox <- sf::st_bbox(c(xmin = -1600000, ymin = -1800026.8, xmax = 6418436.7, ymax = 6245846.3))
-      } else if (df$who_region == "AFRO") {
-        bbox <- sf::st_bbox(c(xmin = -2400000, ymin = -4200074, xmax = 6000000, ymax = 4218372))
-      } else if (df$who_region == "WPRO") {
-        bbox <- sf::st_bbox(c(xmin = 5884395, ymin = -5308021, xmax = 16500000, ymax = 5396098))
-      } else {
-        bbox <- sf::st_bbox(sf::st_as_sf(df))
-      }
-    } else if (grepl("State", region, fixed = TRUE)) {
-      bbox <- sf::st_bbox(sf::st_as_sf(df))
-    }
-    subt <- paste0("Average daily incidence over the past 7 days per 100,000 \npopulation ", str_squish(format(max(df$date), "%B %e, %Y")))
-  } else {
-    bbox <- sf::st_bbox(sf::st_as_sf(df))
-    subt <- paste0("Average daily incidence over the past 7 days per 100,000 population ", str_squish(format(max(df$date), "%B %e, %Y")))
-  }
 
+  bbox <- switch(who_region,
+    EURO = sf::st_bbox(c(xmin = -1400000, ymin = 1500000, xmax = 6500000, ymax = 9500000)),
+    AMRO = sf::st_bbox(c(xmin = -14300000, ymin = -5500074, xmax = -3872374, ymax = 5000000)),
+    SEARO = sf::st_bbox(c(xmin = 6484395, ymin = -2008021, xmax = 12915540, ymax = 4596098)),
+    EMRO = sf::st_bbox(c(xmin = -1600000, ymin = -1800026.8, xmax = 6418436.7, ymax = 6245846.3)),
+    AFRO = sf::st_bbox(c(xmin = -2400000, ymin = -4200074, xmax = 6000000, ymax = 4218372)),
+    WPRO = sf::st_bbox(c(xmin = 5884395, ymin = -5308021, xmax = 16500000, ymax = 5396098)),
+    sf::st_bbox(sf::st_as_sf(df))
+  )
+
+
+  subt <- paste0("Average daily incidence over the past 7 days per 100,000 population ", str_squish(format(max(df$date), "%B %e, %Y")))
   cat_labs <- c("0- <1", "1- <10", "10- <25", "25+")
   cat_vals <- c("#f1e5a1", "#e7b351", "#d26230", "#aa001e")
 
