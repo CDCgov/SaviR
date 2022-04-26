@@ -6,12 +6,19 @@
 \usage{
 map_vaccinations(
   df,
-  region = "WHO Region",
+  region = c("WHO Region", "State Region"),
   vac_type = c("People", "Fully", "Booster", "Pop18")
 )
 }
 \arguments{
 \item{df}{A dataframe with the following: region, country, date, people vaccinated per 100 AS 8-level factors (<3, 3-<10, 10-<20, 20-<30, 30-<40, 40-<60, 60-<70, 70+).}
+
+\item{region}{one of "WHO Region" or "State Region"}
+
+\item{vac_type}{one of "People", "Fully", "Booster", or "Pop18" specifying the vaccine metric desired}
+}
+\value{
+Produces a map of vaccination coverage by country
 }
 \description{
 Cross-sectional map: People vaccinated per 100 for each country or Fully vaccinated.

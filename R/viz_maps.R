@@ -219,34 +219,42 @@ map_trend <- function(df, region = c("WHO Region", "State Region")) {
 #' @title map_vaccinations
 #' @description Cross-sectional map: People vaccinated per 100 for each country or Fully vaccinated.
 #' @param df A dataframe with the following: region, country, date, people vaccinated per 100 AS 8-level factors (<3, 3-<10, 10-<20, 20-<30, 30-<40, 40-<60, 60-<70, 70+).
-
+#' @param region one of "WHO Region" or "State Region"
+#' @param vac_type one of "People", "Fully", "Booster", or "Pop18" specifying the vaccine metric desired
+#' 
+#' @return 
+#' Produces a map of vaccination coverage by country
+#' 
 #'
 #' @export
 
-map_vaccinations <- function(df, region = "WHO Region", vac_type = c("People", "Fully", "Booster", "Pop18")) {
-  if (length(unique(df$who_region)) == 1) {
-    if (grepl("WHO", region, fixed = TRUE)) {
-      if (df$who_region == "EURO") {
-        bbox <- sf::st_bbox(c(xmin = -1400000, ymin = 1500000, xmax = 6500000, ymax = 9500000))
-      } else if (df$who_region == "AMRO") {
-        bbox <- sf::st_bbox(c(xmin = -14300000, ymin = -5500074, xmax = -3872374, ymax = 5000000))
-      } else if (df$who_region == "SEARO") {
-        bbox <- sf::st_bbox(c(xmin = 6484395, ymin = -2008021, xmax = 12915540, ymax = 4596098))
-      } else if (df$who_region == "EMRO") {
-        bbox <- sf::st_bbox(c(xmin = -1600000, ymin = -1800026.8, xmax = 6418436.7, ymax = 6245846.3))
-      } else if (df$who_region == "AFRO") {
-        bbox <- sf::st_bbox(c(xmin = -2400000, ymin = -4200074, xmax = 6000000, ymax = 4218372))
-      } else if (df$who_region == "WPRO") {
-        bbox <- sf::st_bbox(c(xmin = 5884395, ymin = -5308021, xmax = 16500000, ymax = 5396098))
-      } else {
-        bbox <- sf::st_bbox(sf::st_as_sf(df))
-      }
-    } else if (grepl("State", region, fixed = TRUE)) {
-      bbox <- sf::st_bbox(sf::st_as_sf(df))
-    }
-  } else {
-    bbox <- sf::st_bbox(sf::st_as_sf(df))
+map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_type = c("People", "Fully", "Booster", "Pop18")) {
+
+  region <- match.arg(region)
+  vac_type <- match.arg(vac_type)
+  
+  who_region <- unique(df$who_region)
+  who_regs <- length(who_region)
+
+  # If we pass more than one region, then we set the value to "None"
+  # So switch works correctly
+  if (who_regs > 1 || region == "State Region") {
+    who_region <- "None"
   }
+
+  if (length(unique(df$date)) > 1) {
+    warning("Your dataframe has more than 1 date! This is a cross-sectional visualization!")
+  }
+
+  bbox <- switch(who_region,
+    EURO = sf::st_bbox(c(xmin = -1400000, ymin = 1500000, xmax = 6500000, ymax = 9500000)),
+    AMRO = sf::st_bbox(c(xmin = -14300000, ymin = -5500074, xmax = -3872374, ymax = 5000000)),
+    SEARO = sf::st_bbox(c(xmin = 6484395, ymin = -2008021, xmax = 12915540, ymax = 4596098)),
+    EMRO = sf::st_bbox(c(xmin = -1600000, ymin = -1800026.8, xmax = 6418436.7, ymax = 6245846.3)),
+    AFRO = sf::st_bbox(c(xmin = -2400000, ymin = -4200074, xmax = 6000000, ymax = 4218372)),
+    WPRO = sf::st_bbox(c(xmin = 5884395, ymin = -5308021, xmax = 16500000, ymax = 5396098)),
+    sf::st_bbox(sf::st_as_sf(df))
+  )
 
   cat_labs <- c("<3", "3- <10", "10- <20", "20- <30", "30- <40", "40- <60", "60- <70", "70+")
 
