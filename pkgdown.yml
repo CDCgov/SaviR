@@ -1,9 +1,9 @@
 pandoc: 2.7.3
-pkgdown: 2.0.2
+pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
   prod_sitrep: prod_sitrep.html
   savir_version_0.2_api_changes: savir_version_0.2_api_changes.html
   testing_demo: testing_demo.html
-last_built: 2022-04-01T00:28Z
+last_built: 2022-04-26T17:05Z
 
