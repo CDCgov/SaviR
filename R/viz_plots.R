@@ -511,13 +511,12 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
         rank_pop %in% 1:3 ~ country
       )) %>%
       ungroup()
-    ptitle <- paste0("People Vaccinated per 100 people by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
-    xlabel <- "People Vaccinated per 100"
+    ptitle <- "People Vaccinated With at Least One Dose (per 100 people)"
+    psubtitle <- paste0("Grouped by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
+    xlabel <- "Vaccinated with at least one dose (per 100 people)"
     cap <- "Notes:
-    - People Vaccinated per 100: number of people who received at least one vaccine dose; does not represent
-      percent of population who completed inital vaccination protocol
     - Countries are labeled such that within each group, labeled countries are those that are the top 3 and bottom 3 ranking countries
-    for people vaccinated per 100 and top 3 countries by population size
+    for people vaccinated with at least one dose per 100 people and top 3 countries by population size
     - Vaccine data are incomplete and data may be out of date"
   } else if (type == "Fully") {
     df_c <- df_c %>%
@@ -533,12 +532,12 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
         rank_pop %in% 1:3 ~ country
       )) %>%
       ungroup()
-    ptitle <- paste0("People Fully Vaccinated per 100 people by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
-    xlabel <- "People Fully Vaccinated per 100"
+    ptitle <- "People Completed Primary Vaccination Series (per 100 people)"
+    psubtitle <- paste0("Grouped by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
+    xlabel <- "People completed primary vaccination series (per 100 people)"
     cap <- "Notes:
-    -  People Fully Vaccinated per 100: number of people who completed the initial vaccination protocol
     -  Countries are labeled such that within each group, labeled countries are those that are the top 3 and bottom 3 ranking countries
-    for people fully vaccinated per 100 and top 3 countries by population size
+    for people completed primary vaccination series per 100 people and top 3 countries by population size
     - Vaccine data are incomplete and data may be out of date"
   } else if (type == "Booster") {
     df_c <- df_c %>%
@@ -552,8 +551,9 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
         rank_total %in% 1:3 ~ country
       )) %>%
       ungroup()
-    ptitle <- paste0("Total Boosters per 100 people by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
-    xlabel <- "Total Boosters per 100"
+    ptitle <- "Total Booster Doses (per 100 people)"
+    psubtitle <- paste0("Grouped by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
+    xlabel <- "Total booster doses (per 100 people)"
     cap <- "Notes:
     - Total booster doses administered: total doses given, does not represent number of people boosted
     - Countries are labeled such that within each group, labeled countries are those that are the top 3 ranking countries for total boosters per 100 and the top 3 ranking countries for total booster doses administered
@@ -570,11 +570,10 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
         rank_total %in% 1:3 ~ country
       )) %>%
       ungroup()
-    ptitle <- paste0("People Vaccinated per 100 people in vaccine-eligible population by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
-    xlabel <- "People Vaccinated per 100"
+    ptitle <- "People Completed Primary Vaccination Series (per 100 people) Among Vaccine-Eligible Population"
+    psubtitle <- paste0("Grouped by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
+    xlabel <- "People completed primary vaccination series (per 100 people)"
     cap <- "Notes:
-    -People Vaccinated per 100: number of people who received at least one vaccine dose; does not represent
-     percent of population fully vaccinated
     -Total vaccine doses administered: total doses given, does not represent number of people vaccinated
     -Countries are labeled such that within each WHO Region, labeled countries are those that are the top 3 ranking countries
      for people vaccinated per 100 and the top 3 ranking countries for total vaccine doses administered
@@ -704,6 +703,7 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
     ggplot2::theme_bw() +
     ggplot2::labs(
       title = ptitle,
+      subtitle = psubtitle,
       caption = cap,
       legend.title = element_text(size = 10, face = "bold", family = "Calibri")
     ) +
