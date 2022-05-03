@@ -969,7 +969,7 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
   category_color_values <- col_master$cat_colors
   category_line_values <- col_master$cat_lines
   if (type == "full") {
-    gtitle <- "People fully vaccinated per 100 people"
+    gtitle <- "People that completed primary vaccination series per 100 people"
   } else {
     gtitle <- "People with at least one vaccine dose per 100 people"
   }
@@ -999,7 +999,7 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
     ) +
     ggplot2::xlab("Date of Reporting") +
     ggplot2::ylab(if (type == "full") {
-      "People fully vaccinated per 100"
+      "People that completed primary vaccination series per 100"
     } else {
       "People vaccinated with at least one dose per 100"
     }) +
