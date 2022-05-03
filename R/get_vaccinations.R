@@ -51,9 +51,10 @@ get_vax <- function() {
 #' \describe{
 #'   \item{\code{owid_country}}{  character English country name from OWID (may not match WHO country name)}
 #'   \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
-#'   \item{\code{total_doses_date}}{double Date of last update for total vaccine doses}
-#'   \item{\code{partial_date}}{double Date of last update for persons vaccinated}
-#'   \item{\code{fully_date}}{double Date of last update for persons fully vaccinated}
+#'   \item{\code{total_doses_date}}{Date Date of last update for total vaccine doses}
+#'   \item{\code{partial_date}}{Date Date of last update for persons vaccinated}
+#'   \item{\code{fully_date}}{Date Date of last update for persons that completed primary vaccination series}
+#'   \item{\code{booster_date}}{Date Date of last update for persons boosted}
 #' }
 #' @seealso [get_vax()] for full vaccination data from the same source
 #' @export
@@ -85,11 +86,18 @@ get_vax_dates <- function() {
     summarize(fully_date = max(date)) %>%
     ungroup()
 
+  booster_dates <- df %>%
+    filter(!is.na(total_boosters_per_hundred)) %>%
+    group_by(id) %>%
+    summarize(booster_date = max(date)) %>%
+    ungroup()
+
   out <- df %>%
     distinct(owid_country, id) %>%
     full_join(total_dates, by = "id") %>%
     full_join(partial_dates, by = "id") %>%
-    full_join(fully_dates, by = "id")
+    full_join(fully_dates, by = "id") %>%
+    full_join(booster_dates, by = "id")
 
   return(out)
 }
