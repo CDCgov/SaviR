@@ -278,13 +278,13 @@ map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_t
     cat_vals <- c("#ccece6", "#afdacb", "#92c8b1", "#75b696", "#57a37c", "#3a9161", "#1d7f47", "#006d2c")
     map_template(df, cat_labs, cat_vals) +
       labs(
-        title = "People Fully Vaccinated per 100 People",
-        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nRepresents percent of population fully vaccinated"),
+        title = "People that completed primary vaccination series per 100 People",
+        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nRepresents percent of population that completed primary vaccination series"),
         caption = "Note:
-       -Countries in white do not have data reported for fully vaccinated
+       -Countries in white do not have data reported for completed primary vaccination series
        -Vaccine data are incomplete and data may be out of date
        -People vaccinated per 100 people represents total population (all ages)
-       -Fully vaccinated means a person has received all recommended doses in their primary series of COVID-19 vaccine"
+       -Completed primary vaccination series means a person has received all recommended doses in their primary series of COVID-19 vaccine"
       ) +
       guides(fill = guide_legend(title = "People \nFully \nVaccinated \nper 100 \nPeople")) +
       ggplot2::coord_sf(
