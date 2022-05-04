@@ -278,8 +278,8 @@ map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_t
     cat_vals <- c("#ccece6", "#afdacb", "#92c8b1", "#75b696", "#57a37c", "#3a9161", "#1d7f47", "#006d2c")
     map_template(df, cat_labs, cat_vals) +
       labs(
-        title = "People that completed primary vaccination series per 100 People",
-        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nRepresents percent of population that completed primary vaccination series"),
+        title = "People Who Completed Primary Vaccination Series per 100 People",
+        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nRepresents percent of population who completed primary vaccination series"),
         caption = "Note:
        -Countries in white do not have data reported for completed primary vaccination series
        -Vaccine data are incomplete and data may be out of date

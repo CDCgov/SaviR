@@ -532,12 +532,12 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
         rank_pop %in% 1:3 ~ country
       )) %>%
       ungroup()
-    ptitle <- "People Completed Primary Vaccination Series (per 100 people)"
+    ptitle <- "People Who Completed Primary Vaccination Series (per 100 people)"
     psubtitle <- paste0("Grouped by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
-    xlabel <- "People completed primary vaccination series (per 100 people)"
+    xlabel <- "People who completed primary vaccination series (per 100 people)"
     cap <- "Notes:
     -  Countries are labeled such that within each group, labeled countries are those that are the top 3 and bottom 3 ranking countries
-    for people completed primary vaccination series per 100 people and top 3 countries by population size
+    for people who completed primary vaccination series per 100 people and top 3 countries by population size
     - Vaccine data are incomplete and data may be out of date"
   } else if (type == "Booster") {
     df_c <- df_c %>%
@@ -776,7 +776,7 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
   category_color_values <- col_master$cat_colors
   category_line_values <- col_master$cat_lines
   if (type == "full") {
-    gtitle <- "People that completed primary vaccination series per 100 people"
+    gtitle <- "People who completed primary vaccination series per 100 people"
   } else {
     gtitle <- "People with at least one vaccine dose per 100 people"
   }
@@ -806,7 +806,7 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
     ) +
     ggplot2::xlab("Date of Reporting") +
     ggplot2::ylab(if (type == "full") {
-      "People that completed primary vaccination series per 100"
+      "People who completed primary vaccination series per 100"
     } else {
       "People vaccinated with at least one dose per 100"
     }) +
