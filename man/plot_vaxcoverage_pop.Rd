@@ -22,3 +22,6 @@ plot_vaxcoverage_pop(
 \description{
 Visualize vaccine coverage by date of reporting and by WHO region(s), State region(s), or Income levels.
 }
+\details{
+NOTE: Deprecated in favor of just using plot_vaxcoverage
+}
