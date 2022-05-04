@@ -286,7 +286,7 @@ map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_t
        -People vaccinated per 100 people represents total population (all ages)
        -Completed primary vaccination series means a person has received all recommended doses in their primary series of COVID-19 vaccine"
       ) +
-      guides(fill = guide_legend(title = "People \nFully \nVaccinated \nper 100 \nPeople")) +
+      guides(fill = guide_legend(title = "People Who \nCompleted Primary \nVaccination Series \nper 100 People")) +
       ggplot2::coord_sf(
         xlim = bbox[c(1, 3)],
         ylim = bbox[c(2, 4)]
