@@ -511,7 +511,7 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
         rank_pop %in% 1:3 ~ country
       )) %>%
       ungroup()
-    ptitle <- "People Vaccinated With at Least One Dose per 100 people"
+    ptitle <- "People Vaccinated With at Least One Dose per 100 People"
     psubtitle <- paste0("Grouped by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
     xlabel <- "Vaccinated with at least one dose (per 100 people)"
     cap <- "Notes:
@@ -532,7 +532,7 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
         rank_pop %in% 1:3 ~ country
       )) %>%
       ungroup()
-    ptitle <- "People Who Completed Primary Vaccination Series per 100 people"
+    ptitle <- "People Who Completed Primary Vaccination Series per 100 People"
     psubtitle <- paste0("Grouped by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
     xlabel <- "People who completed primary vaccination series (per 100 people)"
     cap <- "Notes:
@@ -551,7 +551,7 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
         rank_total %in% 1:3 ~ country
       )) %>%
       ungroup()
-    ptitle <- "Total Booster Doses per 100 people"
+    ptitle <- "Total Booster Doses per 100 People"
     psubtitle <- paste0("Grouped by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
     xlabel <- "Total booster doses (per 100 people)"
     cap <- "Notes:
@@ -570,7 +570,7 @@ plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18")
         rank_total %in% 1:3 ~ country
       )) %>%
       ungroup()
-    ptitle <- "People Completed Primary Vaccination Series per 100 people Among Vaccine-Eligible Population"
+    ptitle <- "People Completed Primary Vaccination Series per 100 People Among Vaccine-Eligible Population"
     psubtitle <- paste0("Grouped by ", by_cat, ", ", format(max(df$date), "%B %d, %Y"))
     xlabel <- "People completed primary vaccination series (per 100 people)"
     cap <- "Notes:
