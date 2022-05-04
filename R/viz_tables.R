@@ -396,7 +396,7 @@ table_10vaccinations <- function(df, vac_type = c("People", "Fully", "Booster"),
     if (vac_type == "People") {
       title_label <- gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Vaccination per 100 People", "</b>"))
     } else if (vac_type == "Fully") {
-      title_label <- gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Proportion of People who completed primary vaccination series <br> per 100 People", "</b>"))
+      title_label <- gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Proportion of People Who Completed Primary Vaccination Series <br> per 100 People", "</b>"))
     } else if (vac_type == "Booster") {
       title_label <- gt::html(paste0("<b>Top 10 Countries/ Areas with Highest <br> Booster Vaccination per 100 People", "</b>"))
     }
@@ -405,7 +405,7 @@ table_10vaccinations <- function(df, vac_type = c("People", "Fully", "Booster"),
     if (vac_type == "People") {
       title_label <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest <br> Vaccination per 100 People", "</b>"))
     } else if (vac_type == "Fully") {
-      title_label <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest <br> Proportion of People who completed primary vaccination series <br> per 100 People", "</b>"))
+      title_label <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest <br> Proportion of People Who Completed Primary Vaccination Series <br> per 100 People", "</b>"))
     } else if (vac_type == "Booster") {
       title_label <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest <br> Booster Vaccination per 100 People", "</b>"))
     }
