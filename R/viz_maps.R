@@ -101,11 +101,11 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
 #' @description Cross-sectional map: Average daily incidence for the past 7 days for each country.
 #' @param df A dataframe with the following: region, country, date, incidence as 4-level factors (0- <1, 1- <10, 10- <25, 25+)
 #' @param region one of "WHO Region" or "State Region"
-#' 
-#' @return 
+#'
+#' @return
 #' Produces a map of burden (incidence per 100,000)
-#' 
-#' @details 
+#'
+#' @details
 #' Input df SHOULD ONLY HAVE ONE DATE!
 
 #'
@@ -162,18 +162,18 @@ map_burden <- function(df, region = c("WHO Region", "State Region")) {
 #' @description Cross-sectional map: Average daily incidence for the past 7 days for each country.
 #' @param df A dataframe with the following: region, country, date, percent_change as 6-level factors (0- <1, 1- <10, 10- <25, 25+).
 #' @param region one of "WHO Region" or "State Region"
-#' 
-#' @return 
+#'
+#' @return
 #' Produces a map of trend (% change in the past 7 days)
-#' 
-#' @details 
+#'
+#' @details
 #' Input df SHOULD ONLY HAVE ONE DATE!
 
 #'
 #' @export
 
 map_trend <- function(df, region = c("WHO Region", "State Region")) {
-  
+
   region <- match.arg(region)
   who_region <- unique(df$who_region)
   who_regs <- length(who_region)
@@ -221,10 +221,10 @@ map_trend <- function(df, region = c("WHO Region", "State Region")) {
 #' @param df A dataframe with the following: region, country, date, people vaccinated per 100 AS 8-level factors (<3, 3-<10, 10-<20, 20-<30, 30-<40, 40-<60, 60-<70, 70+).
 #' @param region one of "WHO Region" or "State Region"
 #' @param vac_type one of "People", "Fully", "Booster", or "Pop18" specifying the vaccine metric desired
-#' 
-#' @return 
+#'
+#' @return
 #' Produces a map of vaccination coverage by country
-#' 
+#'
 #'
 #' @export
 
@@ -232,7 +232,7 @@ map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_t
 
   region <- match.arg(region)
   vac_type <- match.arg(vac_type)
-  
+
   who_region <- unique(df$who_region)
   who_regs <- length(who_region)
 
@@ -262,8 +262,8 @@ map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_t
     cat_vals <- c("#b1eeec", "#98d1cf", "#7eb3b2", "#659695", "#4c7877", "#335b5a", "#193d3d", "#002020")
     map_template(df, cat_labs, cat_vals) +
       labs(
-        title = "People Vaccinated per 100 People",
-        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nNumber of people out of 100 who received at least one vaccine dose; \ndoes not represent percent of population fully vaccinated"),
+        title = "People Who Received at Least One Vaccine Dose per 100 People",
+        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nNumber of people out of 100 who received at least one vaccine dose; \ndoes not represent percent of population who completed primary vaccination series"),
         caption = "Note:
        -Countries in white do not have data reported for total people vaccinated
        -Vaccine data are incomplete and data may be out of date
@@ -312,7 +312,7 @@ map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_t
     map_template(df, cat_labs, cat_vals) +
       labs(
         title = "People Vaccinated per 100 Eligible People",
-        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nNumber of eligible people out of 100 who received at least one vaccine dose; does not represent percent of \npopulation fully vaccinated"),
+        subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nNumber of eligible people out of 100 who received at least one vaccine dose; does not represent percent of \npopulation who completed primary vaccination series"),
         caption =  "Note: Eligible population represents adult population for ages >=18; some countries may be vaccinating ages 12+"
       ) +
       guides(fill = guide_legend(title = "People \nVaccinated \nper 100 \nEligible People")) +
