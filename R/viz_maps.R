@@ -128,7 +128,7 @@ map_burden <- function(df, region = c("WHO Region", "State Region")) {
   }
 
 
-  bbox <- bbox_fun(who_region)
+  bbox <- bbox_fun(who_region, df)
 
 
   subt <- paste0("Average daily incidence over the past 7 days per 100,000 population ", str_squish(format(max(df$date), "%B %e, %Y")))
@@ -180,7 +180,7 @@ map_trend <- function(df, region = c("WHO Region", "State Region")) {
     warning("Your dataframe has more than 1 date! This is a cross-sectional visualization!")
   }
 
-  bbox <- bbox_fun(who_region)
+  bbox <- bbox_fun(who_region, df)
 
   cat_labs <- c(">=50% decrease", "0 - <50% decrease", ">0 - <=50% increase", ">50 - <=100% increase", ">100 - <=200% increase", ">200% increase")
   cat_vals <- c("#1f9fa9", "#c0ebec", "#e57e51", "#d26230", "#c92929", "#7c0316")
@@ -230,7 +230,7 @@ map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_t
     warning("Your dataframe has more than 1 date! This is a cross-sectional visualization!")
   }
 
-  bbox <- bbox_fun(who_region)
+  bbox <- bbox_fun(who_region, df)
 
   cat_labs <- c("<3", "3- <10", "10- <20", "20- <30", "30- <40", "40- <60", "60- <70", "70+")
 
@@ -303,7 +303,7 @@ map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_t
 }
 
 #' @keywords internal
-bbox_fun <- function(who_region) {
+bbox_fun <- function(who_region, df) {
 
   switch(who_region,
                EURO = sf::st_bbox(c(xmin = -1400000, ymin = 1500000, xmax = 6500000, ymax = 8200000)),
