@@ -50,7 +50,7 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
       legend.margin = ggplot2::margin(2, 2, 2, 2),
       legend.title = ggplot2::element_text(size = 8, family = "Calibri"),
       legend.text = ggplot2::element_text(size = 6, family = "Calibri"),
-      legend.background = element_rect(fill = "white", colour = "white")
+      legend.background = element_rect(fill = scales::alpha("white", 0.5), colour = "white")
       )
   } else {
     ggplot2::ggplot(df) + # Param
@@ -87,7 +87,7 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
       legend.margin = ggplot2::margin(2, 2, 2, 2),
       legend.title = ggplot2::element_text(size = 8, family = "Calibri"),
       legend.text = ggplot2::element_text(size = 6, family = "Calibri"),
-      legend.background = element_rect(fill = "white", colour = "white")
+      legend.background = element_rect(fill = scales::alpha("white", 0.5), colour = "white")
     )
   }
 
@@ -256,7 +256,7 @@ map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_t
     cat_vals <- c("#ccece6", "#afdacb", "#92c8b1", "#75b696", "#57a37c", "#3a9161", "#1d7f47", "#006d2c")
     map_template(df, cat_labs, cat_vals) +
       labs(
-        title = "People Who Completed Primary Vaccination \nSeries per 100 People",
+        title = "People Who Completed Primary Vaccination Series \nper 100 People",
         subtitle = paste0("Data as of ", format(max(df$date), "%B %d, %Y"), "\nRepresents percent of population who completed primary vaccination series"),
         caption = "Note:
        -Countries in white do not have data reported for completed primary vaccination series
@@ -268,8 +268,7 @@ map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_t
       ggplot2::coord_sf(
         xlim = bbox[c(1, 3)],
         ylim = bbox[c(2, 4)]
-      ) +
-      theme(legend.background = element_rect(fill = scales::alpha("white", 0.5)))
+      )
   } else if (vac_type == "Booster") {
     cat_vals <- c("#DEC9E9", "#CCB6E0", "#BBA4D7", "#A991CE", "#977FC5", "#856CBC", "#745AB3", "#6247AA")
     map_template(df, cat_labs, cat_vals) +
@@ -302,16 +301,3 @@ map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_t
   }
 }
 
-#' @keywords internal
-bbox_fun <- function(who_region, df) {
-
-  switch(who_region,
-               EURO = sf::st_bbox(c(xmin = -1400000, ymin = 1500000, xmax = 6500000, ymax = 8200000)),
-               AMRO = sf::st_bbox(c(xmin = -14300000, ymin = -5500074, xmax = -3872374, ymax = 5000000)),
-               SEARO = sf::st_bbox(c(xmin = 6484395, ymin = -2008021, xmax = 12915540, ymax = 4596098)),
-               EMRO = sf::st_bbox(c(xmin = -1600000, ymin = -1800026.8, xmax = 6418436.7, ymax = 6245846.3)),
-               AFRO = sf::st_bbox(c(xmin = -2400000, ymin = -4200074, xmax = 6000000, ymax = 4218372)),
-               WPRO = sf::st_bbox(c(xmin = 5884395, ymin = -5308021, xmax = 16500000, ymax = 5396098)),
-               sf::st_bbox(sf::st_as_sf(df))
-        )
-}
