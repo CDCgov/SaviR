@@ -131,7 +131,7 @@ map_burden <- function(df, region = c("WHO Region", "State Region")) {
   bbox <- bbox_fun(who_region, df)
 
 
-  subt <- paste0("Average daily incidence over the past 7 days per 100,000 population ", str_squish(format(max(df$date), "%B %e, %Y")))
+  subt <- paste0("Average daily incidence over the past 7 days per 100,000 population as of", str_squish(format(max(df$date), "%B %e, %Y")))
   cat_labs <- c("0- <1", "1- <10", "10- <25", "25+")
   cat_vals <- c("#f1e5a1", "#e7b351", "#d26230", "#aa001e")
 
