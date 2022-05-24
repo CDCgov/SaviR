@@ -16,6 +16,7 @@ Imports:
     ggplot2,
     flextable,
     ggrepel,
+    janitor,
     gt,
     lubridate,
     officer,
