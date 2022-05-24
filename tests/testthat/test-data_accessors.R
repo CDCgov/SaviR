@@ -56,3 +56,26 @@ test_that("GDELT News accessor returns data", {
   # Should have 16 columns per spec
   expect_equal(dims[2], 16)
 })
+
+test_that("COVID hospitalization functions return data from both sources", {
+  df <- get_hospdata_long()
+  df_wide <- get_hospdata_wide(df)
+  df_latest_long <- get_hospdata_latest(df)
+
+  # Should have at least 1 row
+  expect_gt(nrow(df), 0)
+
+  # Should have two sources (ECDC and OWID)
+  expect_equal(length(unique(df$source)), 2)
+
+  # Should have at least 1 row and 14 cols (df_wide with both sources)
+  expect_gt(nrow(df_wide), 0)
+  expect_equal(ncol(df_wide), 13)
+
+  # check latest only returns max one date per country, source, indicator combo
+  check_n <-
+    df_latest_long %>%
+    count(indicator, source, id) %>%
+    count(n, name = "new_name")
+  expect_equal(check_n$n, 1)
+})

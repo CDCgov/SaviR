@@ -7,9 +7,7 @@
 #' See [here](https://github.com/owid/covid-19-data/blob/master/public/data/hospitalizations/locations.csv) for
 #' more information on where OWID hospitalization data comes from by country. See [this
 #' document](https://www.ecdc.europa.eu/sites/default/files/documents/2021-01-13_Variable_Dictionary_and_Disclaimer_hosp_icu_all_data.pdf)
-#' for more details on the ECDC data. Note that when data is missing for a given date,
-#' if there is a non-missing value for that indicator-source-country combination within
-#' the previous 14 days, that value is carried forward.
+#' for more details on the ECDC data.
 #'
 #' @return A data frame with n rows and 5 columns:
 #'
@@ -26,6 +24,10 @@
 #'       \item{source}{character, ECDC or OWID, see details for more information.}
 #'       \item{date}{date of observation}
 #'       \item{value}{value of observation for each indicator}
+#'       \item{carry_fwd_value}{when data is missing for a given date,
+#'             if there is a non-missing value for that indicator-source-country
+#'             combination within the previous 14 days, this column is that value
+#'             carried forward.}
 #' }
 #' @export
 #'
@@ -76,7 +78,8 @@ get_hospdata_long <- function() {
 
 #' Get hospital data in a wide format where indicators are columns
 #'
-#' @param hospdata_long
+#' @param hospdata_long the hospital data in long format as generated
+#'  by \code{\link{get_hospdata_long}}.
 #' @param preferred_source character or character vector, either "OWID",
 #'  "ECDC", or c("OWID", "ECDC") for both). Defaults to keeping both sources.
 #'
@@ -115,6 +118,7 @@ get_hospdata_wide <- function(hospdata_long,
   hospdata_wide <-
     hospdata_long %>%
     filter(source %in% preferred_source) %>%
+    select(-carry_fwd_value) %>%
     tidyr::pivot_wider(names_from = indicator, values_from = value) %>%
     janitor::clean_names()
 
@@ -123,31 +127,30 @@ get_hospdata_wide <- function(hospdata_long,
 
 #' Get latest hospitalization data by country, indicator, and data source
 #'
-#' @param hospdata either the hospital data in long or wide format as generated
-#'  by \code{\link{get_hospdata_long}} or \code{\link{get_hospdata_wide}}.
 #' @inheritParams get_hospdata_wide
 #'
-#' @return Either of the same output as \code{\link{get_hospdata_long}} or
-#'  \code{\link{get_hospdata_wide}} depending on the input parameter `hospdata`, except with one
+#' @return The same output as \code{\link{get_hospdata_long}}, except with one
 #'  row per country, indicator, and data source for the data from the most recent date
-#'  (so dates may vary by country and source).
+#'  (so dates may vary by country, source, and indicator), and no column for `carry_fwd_value`.
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #'   hospdata_long <- get_hospdata_long()
-#'   hospdata_latest <- get_hospdata_latest(hospdata, preferred_source = "OWID")
+#'   hospdata_latest <- get_hospdata_latest(hospdata_long, preferred_source = "OWID")
 #'   head(hospdata_latest)
 #' }
-get_hospdata_latest <- function(hospdata,
+get_hospdata_latest <- function(hospdata_long,
                                 preferred_source = c("OWID", "ECDC")) {
 
   preferred_source <- match.arg(preferred_source, several.ok = TRUE)
 
   hospdata_latest <-
-    hospdata %>%
+    hospdata_long %>%
     group_by(id, indicator, source) %>%
-    filter(!is.na(value), source %in% preferred_source) %>%
+    select(-carry_fwd_value) %>%
+    filter(!is.na(value),
+           source %in% preferred_source) %>%
     arrange(date) %>%
     slice_max(order_by = date, n = 1) %>%
     ungroup()

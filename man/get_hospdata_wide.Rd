@@ -7,6 +7,9 @@
 get_hospdata_wide(hospdata_long, preferred_source = c("OWID", "ECDC"))
 }
 \arguments{
+\item{hospdata_long}{the hospital data in long format as generated
+by \code{\link{get_hospdata_long}}.}
+
 \item{preferred_source}{character or character vector, either "OWID",
 "ECDC", or c("OWID", "ECDC") for both). Defaults to keeping both sources.}
 }

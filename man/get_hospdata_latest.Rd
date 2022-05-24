@@ -4,20 +4,19 @@
 \alias{get_hospdata_latest}
 \title{Get latest hospitalization data by country, indicator, and data source}
 \usage{
-get_hospdata_latest(hospdata, preferred_source = c("OWID", "ECDC"))
+get_hospdata_latest(hospdata_long, preferred_source = c("OWID", "ECDC"))
 }
 \arguments{
-\item{hospdata}{either the hospital data in long or wide format as generated
-by \code{\link{get_hospdata_long}} or \code{\link{get_hospdata_wide}}.}
+\item{hospdata_long}{the hospital data in long format as generated
+by \code{\link{get_hospdata_long}}.}
 
 \item{preferred_source}{character or character vector, either "OWID",
 "ECDC", or c("OWID", "ECDC") for both). Defaults to keeping both sources.}
 }
 \value{
-Either of the same output as \code{\link{get_hospdata_long}} or
-\code{\link{get_hospdata_wide}} depending on the input parameter \code{hospdata}, except with one
+The same output as \code{\link{get_hospdata_long}}, except with one
 row per country, indicator, and data source for the data from the most recent date
-(so dates may vary by country and source).
+(so dates may vary by country, source, and indicator).
 }
 \description{
 Get latest hospitalization data by country, indicator, and data source
@@ -25,7 +24,7 @@ Get latest hospitalization data by country, indicator, and data source
 \examples{
 \dontrun{
   hospdata_long <- get_hospdata_long()
-  hospdata_latest <- get_hospdata_latest(hospdata, preferred_source = "OWID")
+  hospdata_latest <- get_hospdata_latest(hospdata_long, preferred_source = "OWID")
   head(hospdata_latest)
 }
 }

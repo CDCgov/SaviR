@@ -22,6 +22,10 @@ on each metric.}
 \item{source}{character, ECDC or OWID, see details for more information.}
 \item{date}{date of observation}
 \item{value}{value of observation for each indicator}
+\item{carry_fwd_value}{when data is missing for a given date,
+if there is a non-missing value for that indicator-source-country
+combination within the previous 14 days, this column is that value
+carried forward.}
 }
 }
 \description{
