@@ -119,8 +119,8 @@ get_hospdata_wide <- function(hospdata_long,
     hospdata_long %>%
     filter(source %in% preferred_source) %>%
     select(-carry_fwd_value) %>%
-    tidyr::pivot_wider(names_from = indicator, values_from = value) %>%
-    janitor::clean_names()
+    tidyr::pivot_wider(names_from = indicator, values_from = value,
+                       names_glue = "{gsub(' ', '_',  tolower(indicator))}")
 
   return(hospdata_wide)
 }
