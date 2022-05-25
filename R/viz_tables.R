@@ -172,7 +172,7 @@ table_10mostcases <- function(df, type = "Global", run_date = "Enter a date") {
       columns = c(value2),
       decimals = 1
     ) %>%
-        fmt_missing(
+    gt::sub_missing(
       columns = c(value1, value2),
       missing_text = "-"
     ) %>%
@@ -248,7 +248,7 @@ table_10incidence <- function(df, type = "Global", run_date = "Enter a date") {
       sep_mark = ",",
       decimals = 1
     ) %>%
-        fmt_missing(
+    gt::sub_missing(
       columns = c(value1, value2),
       missing_text = "-"
     ) %>%
@@ -328,7 +328,7 @@ table_10percentchange <- function(df, type = "Global", run_date = "Enter a date"
       value1 = gt::html("% Change<br>Last Week"),
       value2 = gt::html("% Change<br> 4 Weeks")
     ) %>%
-      fmt_missing(
+    gt::sub_missing(
       columns = c(value1, value2),
       missing_text = "-"
     ) %>%
