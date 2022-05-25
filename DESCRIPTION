@@ -16,7 +16,7 @@ Imports:
     ggplot2,
     flextable,
     ggrepel,
-    gt,
+    gt (>= 0.6.0),
     lubridate,
     officer,
     passport,
