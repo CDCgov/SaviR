@@ -56,3 +56,34 @@ test_that("GDELT News accessor returns data", {
   # Should have 16 columns per spec
   expect_equal(dims[2], 16)
 })
+
+test_that("COVID hospitalization functions returns expected indicators from both sources", {
+
+  df <- get_hospdata()
+
+  # Should have at least 1 row
+  expect_gt(nrow(df), 0)
+
+  # Should have two sources (ECDC and OWID)
+  expect_equal(length(unique(df$source)), 2)
+
+  # interaction(source, indicator) should match this vector
+  test_cols <- c("Daily hospital occupancy.ECDC",
+                 "Daily ICU occupancy.ECDC",
+                 "Weekly new hospital admissions per 100k.ECDC",
+                 "Weekly new ICU admissions per 100k.ECDC",
+                 "Daily hospital occupancy.OWID",
+                 "Daily hospital occupancy per million.OWID",
+                 "Daily ICU occupancy.OWID",
+                 "Daily ICU occupancy per million.OWID",
+                 "Weekly new hospital admissions.OWID",
+                 "Weekly new hospital admissions per million.OWID",
+                 "Weekly new ICU admissions.OWID",
+                 "Weekly new ICU admissions per million.OWID")
+
+  # will error if indicators change in either source
+  expect_setequal(levels(interaction(df$indicator, df$source, drop = TRUE)),
+                  test_cols)
+
+
+})
