@@ -34,6 +34,9 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/bbox_fun.html</loc>
+  </url>
+  <url>
     <loc>/reference/calc_add_risk.html</loc>
   </url>
   <url>
@@ -59,6 +62,9 @@
   </url>
   <url>
     <loc>/reference/get_gdeltnews.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_hospdata.html</loc>
   </url>
   <url>
     <loc>/reference/get_onetable.html</loc>
