@@ -57,11 +57,9 @@ test_that("GDELT News accessor returns data", {
   expect_equal(dims[2], 16)
 })
 
-test_that("COVID hospitalization functions return data from both sources", {
+test_that("COVID hospitalization functions returns expected indicators from both sources", {
 
-  df <- get_hospdata_long()
-  df_wide <- get_hospdata_wide(df)
-  df_latest_long <- get_hospdata_latest(df)
+  df <- get_hospdata()
 
   # Should have at least 1 row
   expect_gt(nrow(df), 0)
@@ -69,28 +67,23 @@ test_that("COVID hospitalization functions return data from both sources", {
   # Should have two sources (ECDC and OWID)
   expect_equal(length(unique(df$source)), 2)
 
-  # Should have at least 1 row and 13 cols (df_wide with both sources)
-  expect_gt(nrow(df_wide), 0)
-  expect_equal(ncol(df_wide), 13)
+  # interaction(source, indicator) should match this vector
+  test_cols <- c("Daily hospital occupancy.ECDC",
+                 "Daily ICU occupancy.ECDC",
+                 "Weekly new hospital admissions per 100k.ECDC",
+                 "Weekly new ICU admissions per 100k.ECDC",
+                 "Daily hospital occupancy.OWID",
+                 "Daily hospital occupancy per million.OWID",
+                 "Daily ICU occupancy.OWID",
+                 "Daily ICU occupancy per million.OWID",
+                 "Weekly new hospital admissions.OWID",
+                 "Weekly new hospital admissions per million.OWID",
+                 "Weekly new ICU admissions.OWID",
+                 "Weekly new ICU admissions per million.OWID")
 
-  # indicators should match names listed here
-  test_cols <- c("id", "source", "date", "daily_icu_occupancy",
-                 "daily_icu_occupancy_per_million", "daily_hospital_occupancy",
-                 "daily_hospital_occupancy_per_million",
-                 "weekly_new_hospital_admissions",
-                 "weekly_new_hospital_admissions_per_100k",
-                 "weekly_new_hospital_admissions_per_million",
-                 "weekly_new_icu_admissions",
-                 "weekly_new_icu_admissions_per_million",
-                 "weekly_new_icu_admissions_per_100k")
+  # will error if indicators change in either source
+  expect_setequal(levels(interaction(df$indicator, df$source, drop = TRUE)),
+                  test_cols)
 
-  # will error if indicators change in either source (or if some reason other cols missing)
-  expect_setequal(colnames(df_wide), test_cols)
 
-  # check latest only returns max one date per country, source, indicator combo
-  check_n <-
-    df_latest_long %>%
-    count(indicator, source, id) %>%
-    count(n, name = "new_name")
-  expect_equal(check_n$n, 1)
 })

@@ -1,7 +1,7 @@
 
 #' Get hospitalization data from both OWID and ECDC
 #'
-#' Data are pulled in from both [OWID](https://github.com/owid/covid-19-data/tree/master/public/data/hospitalizations) and ECDC.
+#' Data are pulled in from both [OWID](https://github.com/owid/covid-19-data/tree/master/public/data/hospitalizations)
 #' and [ECDC](https://www.ecdc.europa.eu/en/publications-data/download-data-hospital-and-icu-admission-rates-and-current-occupancy-covid-19)
 #' for countries in the EU/EAA.
 #' See [here](https://github.com/owid/covid-19-data/blob/master/public/data/hospitalizations/locations.csv) for
@@ -13,14 +13,20 @@
 #'
 #' \describe{
 #'       \item{id}{character, ISO 3166-1 alpha-3 country code}
-#'       \item{indicator}{character, one of: "Daily hospital occupancy",
-#'       "Daily ICU occupancy", "Weekly new hospital admissions per 100k",
-#'       "Weekly new ICU admissions per 100k", "Daily ICU occupancy",
-#'       "Daily ICU occupancy per million", "Daily hospital occupancy",
-#'       "Daily hospital occupancy per million", "Weekly new hospital admissions",
-#'       "Weekly new hospital admissions per million", "Weekly new ICU admissions",
-#'       "Weekly new ICU admissions per million". See \code{\link{get_hospdata_wide}} for more details
-#'       on each metric.}
+#'       \item{indicator}{character, one of:
+#'         \itemize{
+#'             \item "Daily ICU occupancy" (OWID & ECDC)
+#'             \item "Daily ICU occupancy per million" (OWID)
+#'             \item "Daily hospital occupancy" (OWID & ECDC)
+#'             \item "Daily hospital occupancy per million" (OWID)
+#'             \item "Weekly new hospital admissions" (OWID)
+#'             \item "Weekly new hospital admissions per 100k" (ECDC)
+#'             \item "Weekly new hospital admissions per million" (OWID)
+#'             \item "Weekly new ICU admissions" (OWID)
+#'             \item "Weekly new ICU admissions per million" (OWID)
+#'             \item "Weekly new ICU admissions per 100k" (ECDC)
+#'            }
+#'       }
 #'       \item{source}{character, ECDC or OWID, see details for more information.}
 #'       \item{date}{date of observation}
 #'       \item{value}{value of observation for each indicator}
@@ -33,9 +39,30 @@
 #'
 #' @examples
 #' \dontrun{
-#'   hospdata_long <- get_hospdata_long()
+#'
+#'   # get the full hospital data
+#'   hospdata <- get_hospdata()
+#'
+#'   # get the most recent non-missing data for each indicator by country
+#'   # for a specific source
+#'   hospdata %>%
+#'     group_by(id, indicator, source) %>%
+#'     select(-carry_fwd_value) %>%
+#'     filter(!is.na(value),
+#'            source %in% "OWID") %>%
+#'     arrange(date) %>%
+#'     slice_max(order_by = date, n = 1) %>%
+#'     ungroup()
+#'
+#'   # to get in a wide format with indicators as columns
+#'   hospdata %>%
+#'     filter(source %in% "ECDC") %>%
+#'     select(-carry_fwd_value) %>%
+#'     tidyr::pivot_wider(names_from = indicator,
+#'                        values_from = value)
 #' }
-get_hospdata_long <- function() {
+#'
+get_hospdata <- function() {
 
   # read in data
   owid_data <-
@@ -62,7 +89,7 @@ get_hospdata_long <- function() {
   )
 
   # complete by date grouped within country/indicator/source
-  hospdata_long <-
+  hospdata <-
     hospdata %>%
     mutate(date = lubridate::ymd(date)) %>%
     group_by(iso_code, indicator, source) %>% # for each indicator & source
@@ -73,87 +100,5 @@ get_hospdata_long <- function() {
     rename(id = iso_code)
 
 
-  return(hospdata_long)
-}
-
-#' Get hospital data in a wide format where indicators are columns
-#'
-#' @param hospdata_long the hospital data in long format as generated
-#'  by \code{\link{get_hospdata_long}}.
-#' @param preferred_source character or character vector, either "OWID",
-#'  "ECDC", or c("OWID", "ECDC") for both). Defaults to keeping both sources.
-#'
-#' @return
-#' A data frame with n rows and up to 13 columns:
-#'
-#' \describe{
-#'       \item{id}{character, ISO 3166-1 alpha-3 country code}
-#'       \item{source}{character, ECDC or OWID, see details for more information.}
-#'       \item{date}{date of observation}
-#'       \item{daily_icu_occupancy}{OWID & ECDC: Number of COVID-19 patients in ICU on a given day}
-#'       \item{daily_icu_occupancy_per_million}{OWID: daily_icu_occupancy per million people}
-#'       \item{daily_hospital_occupancy}{OWID & ECDC: Number of COVID-19 patients in hospital on a given day}
-#'       \item{daily_hospital_occupancy_per_million}{OWID: daily_hospital_occupancy per million people}
-#'       \item{weekly_new_hospital_admissions}{OWID & ECDC: Number of COVID-19 patients newly admitted
-#'             to hospitals in a given week}
-#'       \item{weekly_new_hospital_admissions_per_100k}{ECDC: weekly_new_hospital_admissions from ECDC per 100,000 persons}
-#'       \item{weekly_new_hospital_admissions_per_million}{OWID: weekly_new_hospital_admissions from OWID per million people}
-#'       \item{weekly_new_icu_admissions}{OWID & ECDC: Number of COVID-19 patients newly admitted to ICU in a given week}
-#'       \item{weekly_new_icu_admissions_per_million}{OWID: Weekly_new_icu_admissions from OWID per million people}
-#'       \item{weekly_new_icu_admissions_per_100k}{ECDC: weekly_new_icu_admissions from ECDC per 100,000 persons}
-#' }
-#'
-#' @export
-#'
-#' @examples
-#' \dontrun{
-#'  hospdata_long <- get_hospdata_long()
-#'  hospdata_wide <- get_hospdata_wide(hospdata_long, preferred_source = "OWID")
-#' }
-#'
-get_hospdata_wide <- function(hospdata_long,
-                              preferred_source = c("OWID", "ECDC")) {
-  preferred_source <- match.arg(preferred_source, several.ok = TRUE)
-
-  hospdata_wide <-
-    hospdata_long %>%
-    filter(source %in% preferred_source) %>%
-    select(-carry_fwd_value) %>%
-    tidyr::pivot_wider(names_from = indicator, values_from = value,
-                       names_glue = "{gsub(' ', '_',  tolower(indicator))}")
-
-  return(hospdata_wide)
-}
-
-#' Get latest hospitalization data by country, indicator, and data source
-#'
-#' @inheritParams get_hospdata_wide
-#'
-#' @return The same output as \code{\link{get_hospdata_long}}, except with one
-#'  row per country, indicator, and data source for the data from the most recent date
-#'  (so dates may vary by country, source, and indicator), and no column for `carry_fwd_value`.
-#' @export
-#'
-#' @examples
-#' \dontrun{
-#'   hospdata_long <- get_hospdata_long()
-#'   hospdata_latest <- get_hospdata_latest(hospdata_long, preferred_source = "OWID")
-#'   head(hospdata_latest)
-#' }
-get_hospdata_latest <- function(hospdata_long,
-                                preferred_source = c("OWID", "ECDC")) {
-
-  preferred_source <- match.arg(preferred_source, several.ok = TRUE)
-
-  hospdata_latest <-
-    hospdata_long %>%
-    group_by(id, indicator, source) %>%
-    select(-carry_fwd_value) %>%
-    filter(!is.na(value),
-           source %in% preferred_source) %>%
-    arrange(date) %>%
-    slice_max(order_by = date, n = 1) %>%
-    ungroup()
-
-  return(hospdata_latest)
+  return(hospdata)
 }
