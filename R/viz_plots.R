@@ -834,7 +834,7 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
       axis.text = element_text(size = 10, family = "Calibri"),
       legend.title = element_text(size = 12, family = "Calibri", face = "bold"),
       legend.text = element_text(size = 8, family = "Calibri"),
-      legend.position = c(0.2, 0.7)
+      legend.position = c(0.15, 0.75)
     )
 
   if (type == "full") {
