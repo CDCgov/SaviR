@@ -16,6 +16,7 @@ NULL
   get_gdeltnews <<- memoise::memoise(get_gdeltnews, cache = cache)
   get_vax <<- memoise::memoise(get_vax, cache = cache)
   get_vax_manufacturers <<- memoise::memoise(get_vax_manufacturers, cache = cache)
+  get_vax_by_type <<- memoise::memoise(get_vax_by_type, cache = cache)
 
   invisible()
 }

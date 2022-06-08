@@ -117,7 +117,6 @@ get_vax_dates <- function() {
 #'   \item{\code{source_name}}{  character name of OWID source for data collection.}
 #'   \item{\code{source_website}}{  character web location of OWID source. It can be a standard URL if numbers are consistently reported on a given page; otherwise it will be the source for the last data point.}
 #' }
-
 #'
 #' @export
 #'
@@ -131,4 +130,46 @@ get_vax_manufacturers <- function() {
     mutate(owid_country = recode(owid_country, !!!owid_lk))
 
   return(df)
+}
+
+#' Get data on count of vaccinations by vaccine manufacturer from OWID
+#'
+#' Returns number of vaccination doses delivered by manufacturer. Note that data
+#' are not a daily time series but are reported intermittently by countries.
+#' Data are pulled in from [OWID](https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations).
+#' Only a subset of countries have this data available, and information on which
+#' countries and the associated source of data can be found [here](https://github.com/owid/covid-19-data/blob/master/public/data/vaccinations/locations-manufacturer.csv).
+#'
+#' @return a data frame with n rows and 6 columns
+#' \describe{
+#'   \item{\code{owid_country}}{character, English country name from OWID (may not match WHO country name)}
+#'   \item{\code{id}}{character, ISO 3166-1 alpha-3 country code}
+#'   \item{\code{date}}{date, Date of observation}
+#'   \item{\code{vaccine}}{character, vaccine manufacturer}
+#'   \item{\code{total_vaccinations}}{integer, cumulative number of vaccinations for a given date}
+#'   \item{\code{new_vaccinations}}{integer, new vaccinations for a given date interval,
+#'                                  note that this is not actually daily, but depends on the cadence
+#'                                  of reporting}
+#' }
+#' @export
+#'
+get_vax_by_type <- function() {
+
+  df <-
+    fread(datasource_lk$owid_vax_by_type, stringsAsFactors = FALSE,
+          check.names = FALSE) %>%
+    filter(!location %in% c("European Union", "Wales", "Scotland", ""),
+           !is.na(location)) %>%
+    arrange(date) %>%
+    group_by(location, vaccine) %>%
+    mutate(new_vaccinations =
+             case_when(is.na(lag(total_vaccinations)) ~ total_vaccinations,
+                       TRUE ~ total_vaccinations - lag(total_vaccinations))) %>%
+    ungroup() %>%
+    mutate(id = passport::parse_country(location, to = "iso3c")) %>%
+    select(owid_country = location, id, date, vaccine, total_vaccinations,
+           new_vaccinations)
+
+  return(df)
+
 }

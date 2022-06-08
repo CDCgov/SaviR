@@ -14,6 +14,15 @@ test_that("COVID Vaccination Manufacturer Data is accessible from OWID", {
   expect_equal(ncol(df), 6)
 })
 
+test_that("Data on count of vaccinations by manufacturer is accessible from OWID", {
+
+  df <- get_vax_by_type()
+
+  # Should return at least one row, and 6 cols per spec
+  expect_gte(nrow(df), 0)
+  expect_equal(ncol(df), 6)
+})
+
 test_that("COVID Vaccination latest dates are accessible", {
   df <- get_vax_dates()
 
