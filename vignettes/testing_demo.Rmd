@@ -50,7 +50,7 @@ testing_processed <- get_testing()
 testing_processed
 ```
 
-`get_testing()` uses the SaviR functions `get_testing_long()` and `get_preferred_testpos7` 
+`get_testing()` uses the SaviR functions `get_testing_long()` and `get_preferred_testpos7()` 
 under the hood. This means that the preferred source is selected based on flags applied to 
 test numbers and test positivity.
 
@@ -77,7 +77,8 @@ You can also change the date lookback over which the flags are applied using the
 argument `last_X_days` and change the maximum date for which to return data using 
 `analysis_date`:
 ```{r}
-get_preferred_testpos7(testing_long, last_X_days = 10, analysis_date = as.Date("2021-03-01"))
+preferred_source_custom <-
+  get_preferred_testpos7(testing_long, last_X_days = 10, analysis_date = as.Date("2021-03-01"))
 ```
 
 To filter `testing_long` to the data from the preferred source for the most recent 7 days of
@@ -136,6 +137,9 @@ preferred_timeseries %>%
 
 ```
 
+There are some countries with switching between data sets and some countries where data either 
+is missing or both data sources failed the quality flags.
+
 Looking at flags over time (focusing on the flags used in `get_preferred_testpos7`:
 ```{r}
 test_flags_recent <-
@@ -155,98 +159,27 @@ test_flags_recent %>%
   facet_grid(data_source ~ name)
 ```
 
-Looking at flags over time & by country (in these plots white indicates missing):
-```{r, fig.width = 10, fig.height = 6}
+Overall few days and countries fail the quality flags for either dataset (and no
+failures for the flag on 7 day cases).
+
+Looking at flags over time & by country (in these plots white indicates missing
+and grey indicates an NA value):
+```{r, fig.width = 6, fig.height = 12, results=FALSE}
 c("FLAG_increase_tests_7day", "FLAG_negative_tests_7day") %>%
   purrr::set_names() %>%
   purrr::map(
       ~test_flags_recent %>% 
         filter(name %in% .x, !is.na(who_region)) %>%
-        ggplot(aes(y = date, x = id, fill = factor(value))) +
+        ggplot(aes(x = date, y = who_country, fill = factor(value))) +
         geom_tile() +
         scale_fill_brewer(palette = "Dark2", labels = c("Passed", "Failed"), 
                           na.value = "darkgrey", name = "Quality flag") +
-        labs(x = "Country", y = "Date") +
-        facet_grid(data_source ~ who_region, scales = "free_x", space = "free_x") +
-        theme(axis.text.x = element_text(angle = 45, size = 8, hjust = 1))
+        labs(x = "Country", y = "Date", 
+             title = .x) +
+        facet_grid(who_region ~ data_source, scales = "free_y", space = "free_y") +
+        theme(axis.text.y = element_text(size = 8))
   )
 ```
-
-## Checking functions to make sure they return the data even when OWID switches off
-
-Checking functions to make sure they return data even when OWID data stops being
-updated:
-```{r}
-# same as function in pkg except passing through testing_long
-get_testing_mod <- function (testing_long,
-                             analysis_date = Sys.Date() - 1L) {
-    preferred <- get_preferred_testpos7(testing_long, last_X_days = 14, 
-        analysis_date = analysis_date)
-    preferred_long <- testing_long %>% left_join(preferred %>% 
-        select(id, preferred_source), by = "id") %>% filter(data_source == 
-        preferred_source)
-    preferred_long_locf <- 
-      preferred_long %>%
-        group_by(id) %>%
-        arrange(date) %>%
-        mutate(new_tests_smoothed_per_thousand = zoo::na.locf(new_tests_daily7_per_1k,
-          na.rm = F, maxgap = 14
-        ), new_tests_smoothed_per_thousand_14 = zoo::na.locf(new_tests_daily14_per_1k,
-          na.rm = F, maxgap = 14
-        ), positive_rate = zoo::na.locf(positive_rate_7day,
-          na.rm = F, maxgap = 14
-        )) %>%
-        ungroup(.) %>%
-        select(
-          id,
-          date, new_tests_smoothed_per_thousand, new_tests_smoothed_per_thousand_14,
-          positive_rate, data_source
-        )
-    return(preferred_long_locf)
-}
-
-# seems to work with just the 
-check_test <-
-  testing_long %>%
-  filter(data_source == "FIND" | (data_source == "OWID" & date <= "2022-06-01")) %>%
-  get_testing_mod() 
-
-check_test %>%
-  ggplot(aes(x = date, y = id, fill = new_tests_smoothed_per_thousand)) +
-  geom_tile()
-
-check_test %>%
-  ggplot(aes(x = date, y = id, fill = data_source)) +
-  geom_tile()
-```
-
-
-And with other sequence of functions:
-```{r}
-preferred_source <- 
-  get_preferred_testpos7(
-    testing_long %>%
-    filter(data_source == "FIND" | (data_source == "OWID" & date <= "2022-06-01"))
-  )
-preferred_source
-```
-
-Or just using test numbers over the past 14 days:
-```{r}
-get_preferred_tests14(
-  testing_long %>%
-    filter(data_source == "FIND" | (data_source == "OWID" & date <= "2022-06-01"))
-)
-```
-
-```{r}
-testing_long %>%
-  filter(data_source == "FIND" | (data_source == "OWID" & date <= "2022-06-01")) %>%
-  left_join(preferred_source %>% 
-            select(id, preferred_source), by = "id") %>%
-  filter(data_source == preferred_source)
-```
-
 
 ## Summary of testing data processing
 
@@ -465,3 +398,80 @@ and based on the corrected values.
 SaviR functions work from the **original** values that FIND reports, and we use 
 the same quality flags, summarized test metrics, and linear interpolation as 
 with OWID (using a maximum gaps of 31 days). 
+
+## Appendix: checking functions to make sure they return the data even when OWID switches off
+
+Checking functions to make sure they return data even when OWID data stops being
+updated:
+```{r}
+# same as function in pkg except passing through testing_long
+get_testing_mod <- function (testing_long,
+                             analysis_date = Sys.Date() - 1L) {
+    preferred <- get_preferred_testpos7(testing_long, last_X_days = 14, 
+        analysis_date = analysis_date)
+    preferred_long <- testing_long %>% left_join(preferred %>% 
+        select(id, preferred_source), by = "id") %>% filter(data_source == 
+        preferred_source)
+    preferred_long_locf <- 
+      preferred_long %>%
+        group_by(id) %>%
+        arrange(date) %>%
+        mutate(new_tests_smoothed_per_thousand = zoo::na.locf(new_tests_daily7_per_1k,
+          na.rm = F, maxgap = 14
+        ), new_tests_smoothed_per_thousand_14 = zoo::na.locf(new_tests_daily14_per_1k,
+          na.rm = F, maxgap = 14
+        ), positive_rate = zoo::na.locf(positive_rate_7day,
+          na.rm = F, maxgap = 14
+        )) %>%
+        ungroup(.) %>%
+        select(
+          id,
+          date, new_tests_smoothed_per_thousand, new_tests_smoothed_per_thousand_14,
+          positive_rate, data_source
+        )
+    return(preferred_long_locf)
+}
+
+# seems to work with just the 
+check_test <-
+  testing_long %>%
+  filter(data_source == "FIND" | (data_source == "OWID" & date <= "2022-06-01")) %>%
+  get_testing_mod() 
+
+check_test %>%
+  ggplot(aes(x = date, y = id, fill = new_tests_smoothed_per_thousand)) +
+  geom_tile()
+
+check_test %>%
+  ggplot(aes(x = date, y = id, fill = data_source)) +
+  geom_tile()
+```
+
+
+And with other sequence of functions:
+```{r}
+preferred_source <- 
+  get_preferred_testpos7(
+    testing_long %>%
+    filter(data_source == "FIND" | (data_source == "OWID" & date <= "2022-06-01"))
+  )
+preferred_source
+```
+
+Or just using test numbers over the past 14 days:
+```{r}
+get_preferred_tests14(
+  testing_long %>%
+    filter(data_source == "FIND" | (data_source == "OWID" & date <= "2022-06-01"))
+)
+```
+
+```{r}
+testing_long %>%
+  filter(data_source == "FIND" | (data_source == "OWID" & date <= "2022-06-01")) %>%
+  left_join(preferred_source %>% 
+            select(id, preferred_source), by = "id") %>%
+  filter(data_source == preferred_source)
+```
+
+
