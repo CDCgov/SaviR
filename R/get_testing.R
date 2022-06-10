@@ -91,7 +91,7 @@ get_owid_testing_long <- function(find_maxgap = 31, flag_test_increase = 5) {
       )
     ) %>%
     select(-posrate_definition_old)
-  
+
   #### Clean OWID ####
   owid_countries <- full_OWID_tests %>%
     # Note -- some countries don't report cumulative, but instead have daily new test
@@ -166,7 +166,7 @@ get_owid_testing_long <- function(find_maxgap = 31, flag_test_increase = 5) {
       positive_rate_7day_prev = lag(positive_rate, 7)
     ) %>%
     ungroup()
-  
+
   owid_longdata <- left_join(owid_data, owid_meta, by = "id") %>%
     mutate(
       # When positivity rate is directly calculated from source, ignore the flag
@@ -314,9 +314,10 @@ get_find_testing_long <- function(find_maxgap = 31, flag_test_increase = 5) {
       tests_units:posrate_definition, cumtest_available
     ) %>%
     arrange(id, date)
-  
+
   return(find_longdata)
 }
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #' @title get_preferred_tests14
