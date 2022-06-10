@@ -184,36 +184,29 @@ c("FLAG_increase_tests_7day", "FLAG_negative_tests_7day") %>%
 ## Summary of testing data processing
 
 - For each data source, we do the following:
-
-    + OWID linearly interpolates the cumulative number of tests to date and
-    calculates new daily tests based on this interpolated number (with 
-    a few countries being exceptions where cumulative tests are 
-    not reported but OWID does obtain daily new tests) and a 7-day average 
-    of new daily tests is calculated from this. The short-term test positivity rate is in 
-    most cases based on the ratio of 7-day average of new daily cases (from JHU) 
-    divided by the 7-day average of new daily tests. For a handful of countries. 
-    OWID is able to get the test positivity rate directly from the same source as 
-    number of tests, and we use this pre-computed value for the positivity rate in 
-    these cases as it may be more reliable. Note they changed their 
-    algorithm in Jan 2022 to take any number of days between observations for interpolation, see 
-    [here](https://github.com/owid/covid-19-data/blob/master/scripts/scripts/testing/smoother.R). 
     
-    + For FIND we manually interpolate the cumulative number of tests, new daily tests
-    and the 7-day average of new daily tests to match the OWID outputs.
-    FIND scrapes websites and testing data sources once daily for a given date, 
+    + We interpolate the cumulative number of tests, and calculate the new daily tests
+    and the 7-day average of new daily tests based on this interpolated metric.
+    
+    + The maximum number of days we allow between two 
+    cumulative testing values for interpolation is 31 days(note that this can be 
+    changed by the param `find_maxgap` in `get_testing_long). Test positivity is 
+    based on the ratio of 7-day average of new daily cases (from JHU) to 7-day 
+    average of new daily tests. 
+    
+    + FIND scrapes websites and testing data sources once daily for a given date, 
     thus if the original source does not update, the scraped value is the same. 
     To be precise, if a the scraped cumulative test number has not changed on 
     subsequent days, we interpret this as no update to the number of tests (that 
     is, the original value from FIND provided for "new tests" is 0). To interpolate
-    in a manner consistent with OWID, we first only consider an update to have
+    in a consistent manner across the two datasets, we first only consider an update to have
     occurred if the cumulative testing number has actually changed. So if the 
     values are recorded as 90, 100, 100, 100, 100, 200 for Sunday through Friday,
     respectively, the interpolated series would be 90, 100, 125, 150, 175, 200. 
-    The maximum number of days we allow between two 
-    cumulative testing values is 31 days(note that this can be changed by the param 
-    `find_maxgap` in `get_testing_long). Test positivity is based on the ratio 
-    of 7-day average of new daily cases (from JHU) to 7-day average of new daily 
-    tests. 
+
+    + For a handful of countries,OWID is able to get the test positivity rate 
+    directly from the same source as number of tests, and we use this pre-computed 
+    value for the positivity rate in these cases as it may be more reliable. 
     
 - For each data source, we extract the **most recent available data point in the 
 past 14 days** for the 7-day average of new daily tests per 1000 and the test 
@@ -326,18 +319,6 @@ daily figures, which is then averaged over a rolling 7-day window"*
     2021/08/09 and 2021/08/16 was assumed to add (1,910,033 - 1,875,579)/7 = 4,922 
     tests on the previous day's total. The *new tests (smoothed 7-day average)* 
     is then based on these values -- for example, for 2021/08/16, the value is 4,922 tests. 
-    
-- For the test positivity (number of cases divided by number of tests), the **source 
-of the calculation can vary**. For example, for Argentina, OWID's website states: 
-*"Positive rate: collected directly from the source. This means that the number 
-of cases that can be deduced based on the number of tests and the positivity rate, 
-is not necessarily equal to the number of cases visible in the rest of our 
-COVID-19 data, which we import from Johns Hopkins University."*. For Australia, 
-*"Positive rate: calculated by Our World in Data as the 7-day rolling average of 
-daily cases, divided by the 7-day rolling average of daily tests."* Their source 
-for cases is JHU.
-
-- Finally, note the maximum gap between days is 31 days: see [here](https://github.com/owid/covid-19-data/blob/master/scripts/scripts/testing/smoother.R). 
 
 ### FIND
 
