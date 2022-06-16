@@ -16,6 +16,8 @@ The purpose of the SaviR package is to collate data from various publicly availa
 * [**Johns Hopkins University (JHU)**](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series) - COVID-19 Cases and Deaths (China, Taiwan, Hong Kong, and Macua data are disaggregated)   
 * [**Our World In Data (OWID)**](https://github.com/owid/covid-19-data/tree/master/public/data) - COVID-19 Vaccines, Tests, and Hospitalizations  
 * [**United Nations**](https://population.un.org/wpp/Download/Standard/Population/) - Population Estimates
+* [**World Bank**](http://api.worldbank.org/v2/country?format=json&per_page=300) - Country Income Classifications
+
 
 *Note: Please refer to original data sources to ensure data accuracy as data models could have changed*
 
