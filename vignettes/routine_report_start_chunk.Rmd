@@ -1,0 +1,69 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+```{r knitr_chunk_options}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE
+)
+```
+
+```{r minimal package and global setup}
+# A minimal set of libraries needed for virtually all analyses
+# Your script should add to this list.
+library(SaviR)
+library(dplyr)
+library(tidyr)
+library(here)
+library(lubridate)
+library(sf)
+library(readxl)
+library(AzureStor)
+
+# ---- Dates / Time stamps -----------------
+run_time <- Sys.time()
+run_date <- as.Date(run_time)
+
+# Sunday of the current week
+run_week_start <- floor_date(run_date, "week", week_start = 7)
+
+# --- File paths -------------------------------------
+routine_reports_root <- here()
+
+
+# --- Variant data connection ----------------------
+token <- AzureRMR::get_azure_token("https://storage.azure.com",
+  tenant = Sys.getenv("AZURE_TENANT_ID"),
+  app = Sys.getenv("AZURE_APP_ID"),
+  password = Sys.getenv("AZURE_APP_SECRET")
+)
+
+con <- storage_container("https://edavsynapsedatalake.dfs.core.windows.net/ddphsis-cgh/", token=token)
+```
+
+```{r Full SAVI Data Load}
+# Cases/Deaths/Vax from only WHO source
+df_who <- get_combined_table("WHO")
+
+# Cases/Deaths/Vax from WHO + JHU for HK, Macau, Taiwan, and China
+df_both <- get_combined_table("Both")
+
+# Hospitalization data - to be added
+
+# Testing data
+df_testing <- get_testing_long()
+
+# Create vaccination manufactuere data set
+df_vax_man <- left_join(onetable, get_vax_manufacturers(), by = "id")
+
+# Date that vaccine metrics were last updated
+df_vax_dates <- get_vax_dates()
+
+# Variant data
+df_metadata<- storage_read_csv(con, "DGHT/ITF-SAVI/Sequencing/Outputs/metadata_allcountries.csv", show_col_types = FALSE)
+ 
+```
+
