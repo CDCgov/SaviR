@@ -7,12 +7,22 @@ output: github_document
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/CDCgov/SaviR/branch/master/graph/badge.svg)](https://app.codecov.io/gh/CDCgov/SaviR?branch=master)
 <!-- badges: end -->
+
 ## Overview
-The purpose of SaviR is to collect the functions needed to access and prepare various COVID data sources.
+The purpose of the SaviR package is to collate data from various publicly available Coronavirus 2019 (COVID-19) data sources for analysis and visualization. This package is divided into two main sections: COVID Analytical Datasets (COVAD) and COVID Data Visualizations (COVIS).
 
-This package is divided into two main sections: analytical datasets and data visualizations.
+### Data Sources
+* [**World Health Organization (WHO)**](https://covid19.who.int/) - COVID-19 Cases and Deaths (China data includes Taiwan, Hong Kong, and Macua data)  
+* [**Johns Hopkins University (JHU)**](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series) - COVID-19 Cases and Deaths (China, Taiwan, Hong Kong, and Macua data are disaggregated)   
+* [**Our World In Data (OWID)**](https://github.com/owid/covid-19-data/tree/master/public/data) - COVID-19 Vaccines, Tests, and Hospitalizations  
+* [**United Nations**](https://population.un.org/wpp/Download/Standard/Population/) - Population Estimates
+* [**World Bank**](http://api.worldbank.org/v2/country?format=json&per_page=300) - Country Income Classifications
 
-## Installation
+
+*Note: Please refer to original data sources to ensure data accuracy as data models could have changed*
+
+
+## Installation and Package Load
 
 You can install the released version of SaviR from [Github](https://github.com/CDCGov/SaviR) with:
 
@@ -20,13 +30,20 @@ You can install the released version of SaviR from [Github](https://github.com/C
 devtools::install_github("CDCgov/SaviR")
 ```
 
-### COVAD - COVID Analytical Datasets
+You can also use the code above to update your SaviR package as needed. When loading SaviR, be sure to load in this package *last*.
 
-| Metadata Functions | Get Functions      | Calculation Functions | Production Functions |
-|--------------------|--------------------|-----------------------|----------------------|
-| get_one_table      | get_covid_sources  | calc_add_risk         | prod_sitrep          |
-| get_country_coords | get_testing        |                       |                      |
-|                    | get_vaccinations   |                       |                      |
+### COVAD - COVID Analytical Datasets 
+
+| Metadata Functions    | Get Functions      | Calculation Functions |
+|-----------------------|--------------------|-----------------------|
+| get_onetable          | get_combined_table | calc_add_risk         |
+| get_country_coords    | get_covid_sources  | calc_vax_carryforward |
+| get_vax_dates         | get_testing        |                       | 
+| get_vax_manufacturers | get_testing_long   |                       |
+|                       | get_vax            |                       |
+|                       | get_vax_by_type    |                       |
+|                       | get_hospdata       |                       |
+|                       | get_gdeltnews      |                       |
 
 * Metadata is stored in this package and can be called:
 
@@ -35,20 +52,19 @@ metadata <- onetable
 country_coordinates <- country_coords  
 ```
 
-### COVAC - COVID Analytical Checks
-
-IN DEVELOPMENT  
-
 ### COVIS - COVID Visualizations
 
-| Plot Functions            | Map Functions    | Table Functions       |
-|---------------------------|------------------|-----------------------|
-| plot_epicurve             | map_template     | table_10mostcases     |
-| plot_epicurve_ind         | map_burden       | table_10mostincidence |
-| plot_epicurve_epidouble   | map_trend        | table_10percentchange |
-| plot_epicurve_dailydouble | map_vaccinations | table_10vaccinations  |
-| plot_riskmatrix           |                  |                       |
-| plot_vaxcoverage          |                  |                       |
+| Plot Functions            | Map Functions    | Table Functions          |
+|---------------------------|------------------|--------------------------|
+| plot_epicurve             | map_template     | table_10mostcases        |
+| plot_epicurve_ind         | map_burden       | table_10incidence        |
+| plot_epicurve_epidouble   | map_trend        | table_10percentchange    |
+| plot_epicurve_dailydouble | map_vaccinations | table_10vaccinations     |
+| plot_riskmatrix           |                  | table_countriesofconcern |
+| plot_vaxcoverage          |                  |                          |
+| plot_vaxcoverage_pop      |                  |                          |
+| plot_vaxcurve             |                  |                          |
+
 
 ## Public Domain Standard Notice
 This repository constitutes a work of the United States Government and is not subject to domestic copyright protection under 17 USC § 105. This repository is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the CC0 1.0 Universal public domain dedication. All contributions to this repository will be released under the CC0 dedication. By submitting a pull request you are agreeing to comply with this waiver of copyright interest.
