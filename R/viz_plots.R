@@ -479,14 +479,14 @@ plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
 #'
 #' @export
 
-plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18"), by_cat = "State Region", plot = c("Vaccination", "Population")) {
+plot_vaxcoverage <- function(df, type = c("People", "Fully", "Booster", "Pop18"), by_cat = "Department of State Region", plot = c("Vaccination", "Population")) {
   type <- match.arg(type)
   plot <- match.arg(plot)
 
   if (by_cat == "WHO Region") {
     col_master <- who_aes
     df_c <- df %>% mutate(cat = factor(who_region, levels = who_aes$cat_values))
-  } else if (by_cat == "State Region") {
+  } else if (by_cat == "Department of State Region") {
     col_master <- state_aes
     df_c <- df %>% replace_na(list(state_region = 'None-state')) %>% mutate(cat = factor(state_region, levels = col_master$cat_values))
   } else if (by_cat == "Income Level") {
