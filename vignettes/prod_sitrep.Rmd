@@ -43,8 +43,12 @@ After installing SaviR, you are ready to use the following functions to read in 
 This snippet produces the master df with all the variables required for all of the following graphics.  
 
 ```{r}
-df_who <- get_combined_table("WHO")
-df_both <- get_combined_table("Both")
+# Load in data to create visuals
+df_who <- get_combined_table("WHO") # China includes Taiwan, Hong Kong, and Macau data
+df_both <- get_combined_table("Both") # China, Taiwan, Hong Kong, and Macau data disaggregated
+
+# Data for visuals are typically as of Sunday of the current week
+sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
 ```
 
 ## Plots {.tabset}
