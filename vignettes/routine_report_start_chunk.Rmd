@@ -1,8 +1,12 @@
 ---
-output:
-  word_document: default
-  html_document: default
+title: "Routine Report Starting Chunk"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Routine Report Starting Chunk}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
+
 ```{r knitr_chunk_options}
 knitr::opts_chunk$set(
   warning = FALSE,
