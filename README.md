@@ -31,6 +31,9 @@ Analytical Datasets (COVAD) and COVID Data Visualizations (COVIS).
 -   [**United
     Nations**](https://population.un.org/wpp/Download/Standard/Population/) -
     Population Estimates
+-   [**World
+    Bank**](http://api.worldbank.org/v2/country?format=json&per_page=300) -
+    Country Income Classifications
 
 *Note: Please refer to original data sources to ensure data accuracy as
 data models could have changed*
@@ -45,20 +48,20 @@ devtools::install_github("CDCgov/SaviR")
 ```
 
 You can also use the code above to update your SaviR package as needed.
-When loading SaviR, load the package *last*
+When loading SaviR, be sure to load in this package *last*.
 
 ### COVAD - COVID Analytical Datasets
 
-| Metadata Functions    | Get Functions      | Calculation Functions |
-|-----------------------|--------------------|-----------------------|
-| get_onetable          | get_combined_table | calc_add_risk         |
-| get_country_coords    | get_covid_sources  | calc_vax_carryforward |
-| get_vax_dates         | get_testing        |                       |
-| get_vax_manufacturers | get_testing_long   |                       |
-|                       | get_vax            |                       |
-|                       | get_vax_by_type    |                       |
-|                       | get_hospdata       |                       |
-|                       | get_gdeltnews      |                       |
+| Metadata Functions      | Get Functions        | Calculation Functions   |
+|-------------------------|----------------------|-------------------------|
+| get\_onetable           | get\_combined\_table | calc\_add\_risk         |
+| get\_country\_coords    | get\_covid\_sources  | calc\_vax\_carryforward |
+| get\_vax\_dates         | get\_testing         |                         |
+| get\_vax\_manufacturers | get\_testing\_long   |                         |
+|                         | get\_vax             |                         |
+|                         | get\_vax\_by\_type   |                         |
+|                         | get\_hospdata        |                         |
+|                         | get\_gdeltnews       |                         |
 
 -   Metadata is stored in this package and can be called:
 
@@ -69,16 +72,16 @@ country_coordinates <- country_coords
 
 ### COVIS - COVID Visualizations
 
-| Plot Functions            | Map Functions    | Table Functions          |
-|---------------------------|------------------|--------------------------|
-| plot_epicurve             | map_template     | table_10mostcases        |
-| plot_epicurve_ind         | map_burden       | table_10incidence        |
-| plot_epicurve_epidouble   | map_trend        | table_10percentchange    |
-| plot_epicurve_dailydouble | map_vaccinations | table_10vaccinations     |
-| plot_riskmatrix           |                  | table_countriesofconcern |
-| plot_vaxcoverage          |                  |                          |
-| plot_vaxcoverage_pop      |                  |                          |
-| plot_vaxcurve             |                  |                          |
+| Plot Functions              | Map Functions     | Table Functions           |
+|-----------------------------|-------------------|---------------------------|
+| plot\_epicurve              | map\_template     | table\_10mostcases        |
+| plot\_epicurve\_ind         | map\_burden       | table\_10incidence        |
+| plot\_epicurve\_epidouble   | map\_trend        | table\_10percentchange    |
+| plot\_epicurve\_dailydouble | map\_vaccinations | table\_10vaccinations     |
+| plot\_riskmatrix            |                   | table\_countriesofconcern |
+| plot\_vaxcoverage           |                   |                           |
+| plot\_vaxcoverage\_pop      |                   |                           |
+| plot\_vaxcurve              |                   |                           |
 
 ## Public Domain Standard Notice
 
