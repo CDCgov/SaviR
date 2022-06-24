@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# SaviR <img src='logo/hex-SaviR.png' align = "right" height="200" />
+# SaviR <img src='man/figures/hex-SaviR.png' align = "right" height="200" />
 
 <!-- badges: start -->
 
