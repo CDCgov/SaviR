@@ -38,6 +38,9 @@ run_week_start <- floor_date(run_date, "week", week_start = 7)
 routine_reports_root <- here()
 
 
+```
+
+```{r sequencing-data, eval = FALSE}
 # --- Variant data connection ----------------------
 token <- AzureRMR::get_azure_token("https://storage.azure.com",
   tenant = Sys.getenv("AZURE_TENANT_ID"),
@@ -66,6 +69,9 @@ df_vax_man <- left_join(onetable, get_vax_manufacturers(), by = "id")
 # Date that vaccine metrics were last updated
 df_vax_dates <- get_vax_dates()
 
+```
+
+```{r sequencing-data-read-in, eval = FALSE}
 # Variant data
 df_metadata<- storage_read_csv(con, "DGHT/ITF-SAVI/Sequencing/Outputs/metadata_allcountries.csv", show_col_types = FALSE)
  
