@@ -17,13 +17,12 @@
 #' Population figures for Guernsey, Jersey, Pitcairn Islands, and Kosovo augmented from CIA World Factbook.
 #'
 #' @section Sources:
-#' \itemize{
-#'   \item{https://population.un.org/wpp/Download/Files/4_Metadata/WPP2019_F01_LOCATIONS.XLSX}{}
-#'   \item{https://population.un.org/wpp/Download/Files/1_Indicators\%20(Standard)/EXCEL_FILES/1_Population/WPP2019_POP_F08_1_TOTAL_POPULATION_BY_BROAD_AGE_GROUP_BOTH_SEXES.xlsx}{}
-#'   \item{https://population.un.org/wpp/Download/Files/1_Indicators\%20(Standard)/EXCEL_FILES/1_Population/WPP2019_POP_F01_1_TOTAL_POPULATION_BOTH_SEXES.xlsx}{}
-#'   \item{https://worldbank.org}{}
-#' }
+#'   * https://population.un.org/wpp/Download/Files/4_Metadata/WPP2019_F01_LOCATIONS.XLSX
+#'   * https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/EXCEL_FILES/1_Population/WPP2019_POP_F08_1_TOTAL_POPULATION_BY_BROAD_AGE_GROUP_BOTH_SEXES.xlsx
+#'   * https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/EXCEL_FILES/1_Population/WPP2019_POP_F01_1_TOTAL_POPULATION_BOTH_SEXES.xlsx
+#'   * https://worldbank.org
 #'
+#' @md
 "onetable"
 
 #' @title OWID Testing Metadata
