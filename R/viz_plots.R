@@ -97,13 +97,13 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
     ) +
     ggplot2::theme_classic() +
     ggplot2::theme(
-      plot.title = ggplot2::element_text(size = 17, face = "bold", family = "Calibri"),
+      plot.title = ggplot2::element_text(size = 17, face = "bold", family = "Arial"),
       plot.margin = unit(c(5.5, 11, 5.5, 5.5), "points"),
-      axis.text.x = ggplot2::element_text(size = 9, family = "Calibri", angle = 45, hjust = 1),
-      axis.text.y = ggplot2::element_text(size = 10, family = "Calibri"),
-      axis.title = ggplot2::element_text(size = 12, family = "Calibri"),
-      legend.title = ggplot2::element_text(size = 12, face = "bold", family = "Calibri"),
-      legend.text = ggplot2::element_text(size = 9, family = "Calibri"),
+      axis.text.x = ggplot2::element_text(size = 9, family = "Arial", angle = 45, hjust = 1),
+      axis.text.y = ggplot2::element_text(size = 10, family = "Arial"),
+      axis.title = ggplot2::element_text(size = 12, family = "Arial"),
+      legend.title = ggplot2::element_text(size = 12, face = "bold", family = "Arial"),
+      legend.text = ggplot2::element_text(size = 9, family = "Arial"),
       legend.key.size = unit(0.5, "cm")
     ) +
     ggplot2::guides(fill = ggplot2::guide_legend(overide.aex = list(size = 9)))
@@ -201,11 +201,11 @@ plot_epicurve_ind <- function(df, type = "cases", incidence = T) {
         subtitle = paste0(format(min(df$date, na.rm = T), "%B %d, %Y"), " - ", format(max(df$date, na.rm = T), "%B %d, %Y"))
       ) +
       ggplot2::theme(
-        plot.title = ggplot2::element_text(size = 14, face = "bold", family = "Calibri"),
-        axis.text = ggplot2::element_text(size = 10, family = "Calibri"),
-        axis.title = ggplot2::element_text(size = 12, family = "Calibri"),
-        legend.title = ggplot2::element_text(size = 12, face = "bold", family = "Calibri"),
-        legend.text = ggplot2::element_text(size = 9, family = "Calibri")
+        plot.title = ggplot2::element_text(size = 14, face = "bold", family = "Arial"),
+        axis.text = ggplot2::element_text(size = 10, family = "Arial"),
+        axis.title = ggplot2::element_text(size = 12, family = "Arial"),
+        legend.title = ggplot2::element_text(size = 12, face = "bold", family = "Arial"),
+        legend.text = ggplot2::element_text(size = 9, family = "Arial")
       )
   } else {
     df %>%
@@ -251,11 +251,11 @@ plot_epicurve_ind <- function(df, type = "cases", incidence = T) {
         subtitle = paste0(format(min(df$date, na.rm = T), "%B %d, %Y"), " - ", format(max(df$date, na.rm = T), "%B %d, %Y"))
       ) +
       ggplot2::theme(
-        plot.title = ggplot2::element_text(size = 14, face = "bold", family = "Calibri"),
-        axis.text = ggplot2::element_text(size = 8, family = "Calibri"),
-        axis.title = ggplot2::element_text(size = 10, family = "Calibri"),
-        legend.title = ggplot2::element_text(size = 12, face = "bold", family = "Calibri"),
-        legend.text = ggplot2::element_text(size = 9, family = "Calibri")
+        plot.title = ggplot2::element_text(size = 14, face = "bold", family = "Arial"),
+        axis.text = ggplot2::element_text(size = 8, family = "Arial"),
+        axis.title = ggplot2::element_text(size = 10, family = "Arial"),
+        legend.title = ggplot2::element_text(size = 12, face = "bold", family = "Arial"),
+        legend.text = ggplot2::element_text(size = 9, family = "Arial")
       )
   }
 }
@@ -309,13 +309,13 @@ plot_epicurve_epidouble <- function(df) {
       subtitle = paste0("Week of:", format(min(df$weekdate, na.rm = T), "%B %d, %Y"), " - ", format(max(df$weekdate, na.rm = T), "%B %d, %Y"))
     ) +
     ggplot2::theme(
-      plot.title = ggplot2::element_text(size = 16, face = "bold", family = "Calibri"),
-      axis.text = ggplot2::element_text(size = 14, family = "Calibri"),
-      axis.title = ggplot2::element_text(size = 14, family = "Calibri"),
+      plot.title = ggplot2::element_text(size = 16, face = "bold", family = "Arial"),
+      axis.text = ggplot2::element_text(size = 14, family = "Arial"),
+      axis.title = ggplot2::element_text(size = 14, family = "Arial"),
       legend.position = "top",
       legend.key = element_blank(),
       legend.title = ggplot2::element_blank(),
-      legend.text = ggplot2::element_text(size = 12, family = "Calibri")
+      legend.text = ggplot2::element_text(size = 12, family = "Arial")
     ) +
     ggplot2::guides(color = ggplot2::guide_legend(override.aes = list(fill = c("lightblue", NA))))
 }
@@ -365,13 +365,13 @@ plot_epicurve_dailydouble <- function(df) {
       subtitle = paste0("Week of:", format(min(df$weekdate, na.rm = T), "%B %d, %Y"), " - ", format(max(df$weekdate, na.rm = T), "%B %d, %Y"))
     ) +
     ggplot2::theme(
-      plot.title = ggplot2::element_text(size = 16, face = "bold", family = "Calibri"),
-      axis.text = ggplot2::element_text(size = 14, family = "Calibri"),
-      axis.title = ggplot2::element_text(size = 14, family = "Calibri"),
+      plot.title = ggplot2::element_text(size = 16, face = "bold", family = "Arial"),
+      axis.text = ggplot2::element_text(size = 14, family = "Arial"),
+      axis.title = ggplot2::element_text(size = 14, family = "Arial"),
       legend.position = "top",
       legend.key = element_blank(),
       legend.title = ggplot2::element_blank(),
-      legend.text = ggplot2::element_text(size = 12, family = "Calibri")
+      legend.text = ggplot2::element_text(size = 12, family = "Arial")
     ) +
     ggplot2::guides(color = ggplot2::guide_legend(override.aes = list(fill = c("lightblue", NA))))
 }
@@ -430,14 +430,14 @@ plot_riskmatrix <- function(df, region = "WHO Region", v = T, h = T) {
     ggplot2::annotate(geom = "text", x = -133, y = 25.7, label = "25.0+ per 100k", color = "red3", size = 3) +
     ggplot2::theme_classic() +
     ggplot2::theme(
-      axis.text = element_text(size = 8, family = "Calibri"),
-      axis.title = element_text(size = 10, family = "Calibri"),
-      legend.text = element_text(size = 7, family = "Calibri"),
-      legend.title = element_text(size = 9, family = "Calibri"),
-      plot.title = element_text(size = 16, face = "bold", family = "Calibri"),
-      plot.subtitle = element_text(size = 11, family = "Calibri"),
+      axis.text = element_text(size = 8, family = "Arial"),
+      axis.title = element_text(size = 10, family = "Arial"),
+      legend.text = element_text(size = 7, family = "Arial"),
+      legend.title = element_text(size = 9, family = "Arial"),
+      plot.title = element_text(size = 16, face = "bold", family = "Arial"),
+      plot.subtitle = element_text(size = 11, family = "Arial"),
       plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm"),
-      plot.caption = element_text(hjust = 0, size = 11, family = "Calibri")
+      plot.caption = element_text(hjust = 0, size = 11, family = "Arial")
     ) +
     ggplot2::labs(
       title = "Burden and Recent Trends",
@@ -712,12 +712,12 @@ plot_vaxcoverage <- function(
       title = ptitle,
       subtitle = psubtitle,
       caption = cap,
-      legend.title = element_text(size = 10, face = "bold", family = "Calibri")
+      legend.title = element_text(size = 10, face = "bold", family = "Arial")
     ) +
     ggplot2::theme(
-      plot.title = element_text(size = 14, face = "bold", family = "Calibri"),
-      axis.title = element_text(size = 12, family = "Calibri"),
-      plot.caption = element_text(hjust = 0, size = 12, family = "Calibri")
+      plot.title = element_text(size = 14, face = "bold", family = "Arial"),
+      axis.title = element_text(size = 12, family = "Arial"),
+      plot.caption = element_text(hjust = 0, size = 12, family = "Arial")
     )
 
   return(plot_out)
@@ -833,14 +833,14 @@ plot_vaxcurve <- function(df, type = "partial", by_cat = "Dept. of State Region"
     ) +
     ggplot2::theme_classic() +
     ggplot2::theme(
-      plot.title = element_text(size = 15, family = "Calibri", face = "bold"),
-      plot.subtitle = element_text(size = 14, family = "Calibri", face = "bold", margin = margin(0, 0, 10, 0)),
+      plot.title = element_text(size = 15, family = "Arial", face = "bold"),
+      plot.subtitle = element_text(size = 14, family = "Arial", face = "bold", margin = margin(0, 0, 10, 0)),
       plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm"),
-      axis.title.x = element_text(size = 12, family = "Calibri", margin = margin(10, 0, 0, 0)),
-      axis.title.y = element_text(size = 12, family = "Calibri", margin = margin(0, 10, 0, 0)),
-      axis.text = element_text(size = 10, family = "Calibri"),
-      legend.title = element_text(size = 12, family = "Calibri", face = "bold"),
-      legend.text = element_text(size = 8, family = "Calibri"),
+      axis.title.x = element_text(size = 12, family = "Arial", margin = margin(10, 0, 0, 0)),
+      axis.title.y = element_text(size = 12, family = "Arial", margin = margin(0, 10, 0, 0)),
+      axis.text = element_text(size = 10, family = "Arial"),
+      legend.title = element_text(size = 12, family = "Arial", face = "bold"),
+      legend.text = element_text(size = 8, family = "Arial"),
       legend.position = c(0.15, 0.75)
     )
 
