@@ -53,6 +53,14 @@ df_both <- get_combined_table("Both") # China, Taiwan, Hong Kong, and Macau data
 sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
 ```
 
+```{r date-fix, echo = FALSE, include = FALSE}
+# Roll back to Friday as a contingency for data not being
+# available Monday Morning
+if (weekdays(Sys.Date()) == "Monday") {
+  sunday_date <- sunday_date - 2L
+}
+```
+
 ## Plots {.tabset}
 
 ### Epicurves
