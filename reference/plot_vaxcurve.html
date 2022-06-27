@@ -24,7 +24,8 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/prod_sitrep.html">SitRep Production</a>
+    <a class="dropdown-item" href="../articles/prod_sitrep.html">COVID Visualizations (COVIS)</a>
+    <a class="dropdown-item" href="../articles/routine_report_start_chunk.html">Routine Report Starting Chunk</a>
     <a class="dropdown-item" href="../articles/savir_version_0.2_api_changes.html">SaviR Version 0.2 API Changes</a>
     <a class="dropdown-item" href="../articles/testing_demo.html">Testing Demo</a>
   </div>
@@ -68,12 +69,19 @@
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>df</dt>
 <dd><p>A dataframe with the following: date, people_vaccinated_per_hundred or people_fully_vaccinated_per_hundred, and one of these columns for by_cat: who_region, state_region, or incomelevel_value.</p></dd>
+
+
 <dt>type</dt>
 <dd><p>= "partial" (default) for partial vaccinated or "full" for fully vaccinated</p></dd>
+
+
 <dt>by_cat</dt>
 <dd><p>= "State Region" (default), "WHO Region" or "Income Level"</p></dd>
+
+
 <dt>countries</dt>
 <dd><p>= "All" (default) for all countries or "AMC/AU" for AMC/AU countries (n=100)</p></dd>
+
 </dl></div>
 
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -85,7 +93,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>

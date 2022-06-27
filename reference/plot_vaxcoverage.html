@@ -24,7 +24,8 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/prod_sitrep.html">SitRep Production</a>
+    <a class="dropdown-item" href="../articles/prod_sitrep.html">COVID Visualizations (COVIS)</a>
+    <a class="dropdown-item" href="../articles/routine_report_start_chunk.html">Routine Report Starting Chunk</a>
     <a class="dropdown-item" href="../articles/savir_version_0.2_api_changes.html">SaviR Version 0.2 API Changes</a>
     <a class="dropdown-item" href="../articles/testing_demo.html">Testing Demo</a>
   </div>
@@ -59,7 +60,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">plot_vaxcoverage</span><span class="op">(</span>
   <span class="va">df</span>,
   type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"People"</span>, <span class="st">"Fully"</span>, <span class="st">"Booster"</span>, <span class="st">"Pop18"</span><span class="op">)</span>,
-  by_cat <span class="op">=</span> <span class="st">"State Region"</span>,
+  by_cat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"State Region"</span>, <span class="st">"WHO Region"</span>, <span class="st">"Income Level"</span><span class="op">)</span>,
   plot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Vaccination"</span>, <span class="st">"Population"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -68,12 +69,19 @@
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>df</dt>
 <dd><p>A dataframe with vaccination stats.</p></dd>
+
+
 <dt>type</dt>
 <dd><p>= "People" (default) for people who received at least 1 does, "Fully" for people who completed the initial protocol, "Booster" for booster doses only, and "Pop18" for people people vaccinated in the vaccine eligible population</p></dd>
+
+
 <dt>by_cat</dt>
 <dd><p>= "State Region" (default), "WHO Region" or "Income Level"</p></dd>
+
+
 <dt>plot</dt>
 <dd><p>= "Vaccination" (default) to display bubble size based on total vaccine doses administered in each country, or "Population" to display plot bubble size based on population size of each country.</p></dd>
+
 </dl></div>
 
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -85,7 +93,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>

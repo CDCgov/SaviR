@@ -41,7 +41,8 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/prod_sitrep.html">SitRep Production</a>
+    <a class="dropdown-item" href="articles/prod_sitrep.html">COVID Visualizations (COVIS)</a>
+    <a class="dropdown-item" href="articles/routine_report_start_chunk.html">Routine Report Starting Chunk</a>
     <a class="dropdown-item" href="articles/savir_version_0.2_api_changes.html">SaviR Version 0.2 API Changes</a>
     <a class="dropdown-item" href="articles/testing_demo.html">Testing Demo</a>
   </div>
@@ -66,16 +67,41 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="savir-">SaviR <img src="logo/hex-SaviR.png" align="right" height="200"><a class="anchor" aria-label="anchor" href="#savir-"></a>
+<div class="page-header"><h1 id="savir-">SaviR <img src="reference/figures/hex-SaviR.png" align="right" height="200"><a class="anchor" aria-label="anchor" href="#savir-"></a>
 </h1></div>
 <!-- badges: start -->
-<p>This package is divided into two main sections: analytical datasets and data visualizations.</p>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p>The purpose of the SaviR package is to collate data from various publicly available Coronavirus 2019 (COVID-19) data sources for analysis and visualization. This package is divided into two main sections: COVID Analytical Datasets (COVAD) and COVID Data Visualizations (COVIS).</p>
+<div class="section level3">
+<h3 id="data-sources">Data Sources<a class="anchor" aria-label="anchor" href="#data-sources"></a>
+</h3>
+<ul>
+<li>
+<a href="https://covid19.who.int/" class="external-link"><strong>World Health Organization (WHO)</strong></a> - COVID-19 Cases and Deaths (China data includes Taiwan, Hong Kong, and Macua data)<br>
+</li>
+<li>
+<a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series" class="external-link"><strong>Johns Hopkins University (JHU)</strong></a> - COVID-19 Cases and Deaths (China, Taiwan, Hong Kong, and Macua data are disaggregated)<br>
+</li>
+<li>
+<a href="https://github.com/owid/covid-19-data/tree/master/public/data" class="external-link"><strong>Our World In Data (OWID)</strong></a> - COVID-19 Vaccines, Tests, and Hospitalizations<br>
+</li>
+<li>
+<a href="https://population.un.org/wpp/Download/Standard/Population/" class="external-link"><strong>United Nations</strong></a> - Population Estimates</li>
+<li>
+<a href="http://api.worldbank.org/v2/country?format=json&amp;per_page=300" class="external-link"><strong>World Bank</strong></a> - Country Income Classifications</li>
+</ul>
+<p><em>Note: Please refer to original data sources to ensure data accuracy as data models could have changed</em></p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="installation-and-package-load">Installation and Package Load<a class="anchor" aria-label="anchor" href="#installation-and-package-load"></a>
 </h2>
 <p>You can install the released version of SaviR from <a href="https://github.com/CDCGov/SaviR" class="external-link">Github</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"CDCgov/SaviR"</span><span class="op">)</span></code></pre></div>
+<p>You can also use the code above to update your SaviR package as needed. When loading SaviR, be sure to load in this package <em>last</em>.</p>
 <div class="section level3">
 <h3 id="covad---covid-analytical-datasets">COVAD - COVID Analytical Datasets<a class="anchor" aria-label="anchor" href="#covad---covid-analytical-datasets"></a>
 </h3>
@@ -84,25 +110,46 @@
 <th>Metadata Functions</th>
 <th>Get Functions</th>
 <th>Calculation Functions</th>
-<th>Production Functions</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>get_one_table</td>
-<td>get_covid_sources</td>
+<td>get_onetable</td>
+<td>get_combined_table</td>
 <td>calc_add_risk</td>
-<td>prod_sitrep</td>
 </tr>
 <tr class="even">
 <td>get_country_coords</td>
+<td>get_covid_sources</td>
+<td>calc_vax_carryforward</td>
+</tr>
+<tr class="odd">
+<td>get_vax_dates</td>
 <td>get_testing</td>
 <td></td>
+</tr>
+<tr class="even">
+<td>get_vax_manufacturers</td>
+<td>get_testing_long</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>get_vaccinations</td>
+<td>get_vax</td>
 <td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>get_vax_by_type</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>get_hospdata</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>get_gdeltnews</td>
 <td></td>
 </tr>
 </tbody>
@@ -111,11 +158,6 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metadata</span> <span class="op">&lt;-</span> <span class="va">onetable</span>  
 <span class="va">country_coordinates</span> <span class="op">&lt;-</span> <span class="va">country_coords</span>  </code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="covac---covid-analytical-checks">COVAC - COVID Analytical Checks<a class="anchor" aria-label="anchor" href="#covac---covid-analytical-checks"></a>
-</h3>
-<p>IN DEVELOPMENT</p>
 </div>
 <div class="section level3">
 <h3 id="covis---covid-visualizations">COVIS - COVID Visualizations<a class="anchor" aria-label="anchor" href="#covis---covid-visualizations"></a>
@@ -135,7 +177,7 @@
 <tr class="even">
 <td>plot_epicurve_ind</td>
 <td>map_burden</td>
-<td>table_10mostincidence</td>
+<td>table_10incidence</td>
 </tr>
 <tr class="odd">
 <td>plot_epicurve_epidouble</td>
@@ -150,10 +192,20 @@
 <tr class="odd">
 <td>plot_riskmatrix</td>
 <td></td>
-<td></td>
+<td>table_countriesofconcern</td>
 </tr>
 <tr class="even">
 <td>plot_vaxcoverage</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>plot_vaxcoverage_pop</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>plot_vaxcurve</td>
 <td></td>
 <td></td>
 </tr>
@@ -252,7 +304,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer>

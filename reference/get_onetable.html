@@ -28,7 +28,8 @@ Note: state regions is handled externally in a CSV file.'><!-- mathjax --><scrip
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/prod_sitrep.html">SitRep Production</a>
+    <a class="dropdown-item" href="../articles/prod_sitrep.html">COVID Visualizations (COVIS)</a>
+    <a class="dropdown-item" href="../articles/routine_report_start_chunk.html">Routine Report Starting Chunk</a>
     <a class="dropdown-item" href="../articles/savir_version_0.2_api_changes.html">SaviR Version 0.2 API Changes</a>
     <a class="dropdown-item" href="../articles/testing_demo.html">Testing Demo</a>
   </div>
@@ -73,14 +74,21 @@ Output is available through the package as "onetable," but this function can be 
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>usaid_metadata_file</dt>
 <dd><p>(character, optional) A file path to the file containing State Department regions. Expects at least two columns, "iso_alpha3", "state_region"</p></dd>
+
+
 <dt>vintage</dt>
 <dd><p>(numeric, default: 2021) The year of population projections to use from UN data</p></dd>
+
+
 <dt>country_geometries</dt>
 <dd><p>(data.frame, default: country_coords) a data.frame/sfc with at least two columns: "iso3code", "geometry"</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>a data.frame of 238 rows and 10 columns</p>
+    
+
+<p>a data.frame of 238 rows and 10 columns</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
@@ -114,7 +122,7 @@ Output is available through the package as "onetable," but this function can be 
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>
