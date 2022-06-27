@@ -11,7 +11,8 @@ vignette: >
 knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
-  echo = FALSE
+  echo = FALSE,
+  eval = FALSE
 )
 ```
 
@@ -24,7 +25,6 @@ library(tidyr)
 library(here)
 library(lubridate)
 library(sf)
-library(readxl)
 library(AzureStor)
 
 # ---- Dates / Time stamps -----------------
