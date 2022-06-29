@@ -1,6 +1,6 @@
 #' @title Onetable
 #' @description A centralized metadata table containing all country ids, categories, and population counts
-#' @format A data frame with 237 rows and 10 variables:
+#' @format A data frame with 237 rows and 10 columns, including:
 #' \itemize{
 #'   \item{\code{id}}{character ISO 3166-1 alpha-3 country code}
 #'   \item{\code{iso2code}}{character ISO 3166-1 alpha-2 country code}
@@ -26,10 +26,10 @@
 #'
 "onetable"
 
-#' @title OWID Testing Metadata
+#' @title Our World in Data (OWID) Testing Metadata
 #' @describeIn get_owid_testing_meta Saved dataset
 #' @description A metadata table used within [get_testing()] to determine how country testing data is computed.
-#' @format A data frame with 141 rows and 5 variables:
+#' @format A data frame with 141 rows and 5 columns, including:
 #' \itemize{
 #'   \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
 #'   \item{\code{test_definition}}{  character Description of OWID testing definition}
@@ -41,17 +41,17 @@
 
 #' @title Country Coordinates
 #' @description A saved shapefile of the world for use in onetable, and for mapping.
-#' 
+#'
 #' @format A simple feature collection with 172 features and 4 variables:
 #' \describe{
 #'   \item{\code{TYPE}}{  character Entity type}
-#'   \item{\code{ADMIN}}{  character English country name} 
+#'   \item{\code{ADMIN}}{  character English country name}
 #'   \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
 #'   \item{\code{geometry}}{  list List of simple features for mapping}
 #'}
-#' @details 
+#' @details
 #' Projected using CRS: "+proj=robin +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
-#' 
+#'
 #' Northern Cyprus, Antarctica, and Fiji are removed
 #' @seealso [get_country_coords()] for generation
 "country_coords"

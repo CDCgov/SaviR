@@ -1,15 +1,15 @@
 
 #' Get hospitalization data from both OWID and ECDC
 #'
-#' Data are pulled in from both [OWID](https://github.com/owid/covid-19-data/tree/master/public/data/hospitalizations)
-#' and [ECDC](https://www.ecdc.europa.eu/en/publications-data/download-data-hospital-and-icu-admission-rates-and-current-occupancy-covid-19)
-#' for countries in the EU/EAA.
+#' Data are pulled in from both [Our World in Data (OWID)](https://github.com/owid/covid-19-data/tree/master/public/data/hospitalizations)
+#' and [European Centre for Disease Prevention and Control(ECDC)](https://www.ecdc.europa.eu/en/publications-data/download-data-hospital-and-icu-admission-rates-and-current-occupancy-covid-19)
+#' for countries in the European Union/European Economic Area(EU/EEA).
 #' See [here](https://github.com/owid/covid-19-data/blob/master/public/data/hospitalizations/locations.csv) for
 #' more information on where OWID hospitalization data comes from by country. See [this
 #' document](https://www.ecdc.europa.eu/sites/default/files/documents/2021-01-13_Variable_Dictionary_and_Disclaimer_hosp_icu_all_data.pdf)
 #' for more details on the ECDC data.
 #'
-#' @return A data frame with n rows and 5 columns:
+#' @return Returns a data frame with n rows and 6 columns, including:
 #'
 #' \describe{
 #'       \item{id}{character, ISO 3166-1 alpha-3 country code}
