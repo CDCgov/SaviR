@@ -1,5 +1,5 @@
 #' @title get_owid_meta
-#' @description To scrape the OWID coronavirus testing website for data related to the source and definitions of their testing data by country
+#' @description To scrape the OWID coronavirus testing website for data related to the source and definitions of their testing data by country. Note that OWID testing data will no longer be updated from 23 June 2022 on.
 
 #' @return Data set of scraped information related to data definitions and sources by country
 
