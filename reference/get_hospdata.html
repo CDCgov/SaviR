@@ -72,7 +72,7 @@ for more details on the ECDC data.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_hospdata</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_hospdata</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -118,30 +118,30 @@ carried forward.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># get the full hospital data</span></span>
-<span class="r-in">  <span class="va">hospdata</span> <span class="op">&lt;-</span> <span class="fu">get_hospdata</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># get the most recent non-missing data for each indicator by country</span></span>
-<span class="r-in">  <span class="co"># for a specific source</span></span>
-<span class="r-in">  <span class="va">hospdata</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">    <span class="fu">group_by</span><span class="op">(</span><span class="va">id</span>, <span class="va">indicator</span>, <span class="va">source</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">    <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">carry_fwd_value</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span>,</span>
-<span class="r-in">           <span class="va">source</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="st">"OWID"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">    <span class="fu">arrange</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">    <span class="fu">slice_max</span><span class="op">(</span>order_by <span class="op">=</span> <span class="va">date</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">    <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># to get in a wide format with indicators as columns</span></span>
-<span class="r-in">  <span class="va">hospdata</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="st">"ECDC"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">    <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">carry_fwd_value</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">    <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">indicator</span>,</span>
-<span class="r-in">                       values_from <span class="op">=</span> <span class="va">value</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># get the full hospital data</span></span></span>
+<span class="r-in"><span>  <span class="va">hospdata</span> <span class="op">&lt;-</span> <span class="fu">get_hospdata</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># get the most recent non-missing data for each indicator by country</span></span></span>
+<span class="r-in"><span>  <span class="co"># for a specific source</span></span></span>
+<span class="r-in"><span>  <span class="va">hospdata</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">id</span>, <span class="va">indicator</span>, <span class="va">source</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>    <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">carry_fwd_value</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>           <span class="va">source</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="st">"OWID"</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>    <span class="fu">arrange</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>    <span class="fu">slice_max</span><span class="op">(</span>order_by <span class="op">=</span> <span class="va">date</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>    <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># to get in a wide format with indicators as columns</span></span></span>
+<span class="r-in"><span>  <span class="va">hospdata</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="st">"ECDC"</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>    <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">carry_fwd_value</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>    <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">indicator</span>,</span></span>
+<span class="r-in"><span>                       values_from <span class="op">=</span> <span class="va">value</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

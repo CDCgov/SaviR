@@ -83,32 +83,32 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df_OWID</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/testing/covid-testing-all-observations.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">Entity</span>,
-    id <span class="op">=</span> <span class="va">ISO.code</span>,
-    date <span class="op">=</span> <span class="va">Date</span>,
-    new_tests_OWID <span class="op">=</span> <span class="va">Daily.change.in.cumulative.total</span>,
-    cum_tests_OWID <span class="op">=</span> <span class="va">Cumulative.total</span>
-  <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df_OWID</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/testing/covid-testing-all-observations.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">Entity</span>,</span>
+<span>    id <span class="op">=</span> <span class="va">ISO.code</span>,</span>
+<span>    date <span class="op">=</span> <span class="va">Date</span>,</span>
+<span>    new_tests_OWID <span class="op">=</span> <span class="va">Daily.change.in.cumulative.total</span>,</span>
+<span>    cum_tests_OWID <span class="op">=</span> <span class="va">Cumulative.total</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df_FIND</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/dsbbfinddx/FINDCov19TrackerData/master/processed/data_all.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">set</span> <span class="op">==</span> <span class="st">"country"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span>
-    id <span class="op">=</span> <span class="va">unit</span>,
-    date <span class="op">=</span> <span class="va">time</span>,
-    new_tests_FIND <span class="op">=</span> <span class="va">new_tests_orig</span>,
-    cum_tests_FIND <span class="op">=</span> <span class="va">cum_tests_orig</span>
-  <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df_FIND</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/dsbbfinddx/FINDCov19TrackerData/master/processed/data_all.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">set</span> <span class="op">==</span> <span class="st">"country"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span></span>
+<span>    id <span class="op">=</span> <span class="va">unit</span>,</span>
+<span>    date <span class="op">=</span> <span class="va">time</span>,</span>
+<span>    new_tests_FIND <span class="op">=</span> <span class="va">new_tests_orig</span>,</span>
+<span>    cum_tests_FIND <span class="op">=</span> <span class="va">cum_tests_orig</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">onetable</span> <span class="op">%&gt;%</span>
-  <span class="fu">right_join</span><span class="op">(</span><span class="fu"><a href="../reference/get_covid_df.html">get_covid_df</a></span><span class="op">(</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"iso2code"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">left_join</span><span class="op">(</span><span class="va">df_OWID</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"date"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">left_join</span><span class="op">(</span><span class="va">df_FIND</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"date"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>new_tests <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">new_tests_OWID</span><span class="op">)</span> <span class="op">~</span> <span class="va">new_tests_FIND</span>,
-    <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">new_tests_OWID</span>
-  <span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">onetable</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">right_join</span><span class="op">(</span><span class="fu"><a href="../reference/get_covid_df.html">get_covid_df</a></span><span class="op">(</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"iso2code"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">df_OWID</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"date"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">df_FIND</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"date"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>new_tests <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">new_tests_OWID</span><span class="op">)</span> <span class="op">~</span> <span class="va">new_tests_FIND</span>,</span>
+<span>    <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">new_tests_OWID</span></span>
+<span>  <span class="op">)</span><span class="op">)</span></span></code></pre></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
 </div>
