@@ -7,7 +7,7 @@
 get_covid_df()
 }
 \value{
-A data frame with n rows and 8 variables:
+Returns a data frame with n rows and 8 columns, including:
 \itemize{
 \item{\code{date}}{  date Date of observation}
 \item{\code{iso2code}}{  character ISO 3166-1 alpha-2 country code}
@@ -23,5 +23,5 @@ A data frame with n rows and 8 variables:
 Get and prepare COVID data.
 
 Pull in current case and death counts from WHO source.
-For Hong Kong, Macau, and Taiwan, we pull from John Hopkins source.
+For disaggregated China, Taiwan, Hong Kong, and Macau data we pull from John Hopkins source.
 }

@@ -12,10 +12,10 @@ get_testing_long(find_maxgap = 31, flag_test_increase = 5)
 \item{flag_test_increase}{(numeric, default: 5) Flag for increase in interpolated cumulative tests}
 }
 \value{
-Longitudinal data frame with both FIND and OWID data sets with consistent definitions
+Returns a longitudinal data frame with both FIND and OWID data sets with consistent definitions with n rows and 38 columns.
 }
 \description{
-Download and combine full time series data related to testing as compiled by Our World in Data and FIND
+Download and combine full time series data related to testing as compiled by Our World in Data (OWID) and FIND. Note that OWID testing data will no longer be updated from 23 June 2022 on.
 }
 \examples{
 \dontrun{

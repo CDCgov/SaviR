@@ -7,7 +7,7 @@
 get_vax_by_type()
 }
 \value{
-a data frame with n rows and 6 columns
+Returns a data frame with n rows and 6 columns, including:
 \describe{
 \item{\code{owid_country}}{character, English country name from OWID (may not match WHO country name)}
 \item{\code{id}}{character, ISO 3166-1 alpha-3 country code}

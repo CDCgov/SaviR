@@ -7,7 +7,7 @@
 get_vax()
 }
 \value{
-A data frame with n rows and 17 variables:
+Returns a data frame with n rows and 17 columns, including:
 
 \describe{
 \item{\code{owid_country}}{  character English country name from OWID}
@@ -30,6 +30,6 @@ A data frame with n rows and 17 variables:
 }
 }
 \description{
-Get vaccination data from OWID
+Get vaccination data from Our World in Data. (OWID)
 Note that all cumulative totals are all carried forward if NA on a given day.
 }

@@ -11,20 +11,31 @@ get_onetable(
 )
 }
 \arguments{
-\item{usaid_metadata_file}{(character, optional) A file path to the file containing State Department regions. Expects at least two columns, \link{"iso_alpha3", "state_region"}}
+\item{usaid_metadata_file}{(character, optional) A file path to the file containing DoS regions. Expects at least two columns, \link{"iso_alpha3", "state_region"}}
 
 \item{vintage}{(numeric, default: 2021) The year of population projections to use from UN data}
 
 \item{country_geometries}{(data.frame, default: country_coords) a data.frame/sfc with at least two columns: \link{"iso3code", "geometry"}}
 }
 \value{
-a data.frame of 238 rows and 10 columns
+Returns a df of 238 rows and 10 columns, including:
+#' \itemize{
+\item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
+\item{\code{iso2code}}{  character ISO 3166-1 alpha-2 country code}
+\item{\code{state_region}}{  character Department of State Region}
+\item{\code{who_region}}{  character World Health Organization (WHO) Region acronym}
+\item{\code{who_region_desc}}{  character WHO Region}
+\item{\code{who_country}}{  character WHO english country name}
+\item{\code{incomelevel}}{  character Income Level}
+\item{\code{population}}{  numeric Total population}
+\item{\code{eighteenplus}}{  numeric Population age 18 years or older}
+\item{\code{geometry}}{  sfc_GEOMETRY Geometry}
 }
 \description{
 One table to rule them all and in keys bind them!
 Output is available through the package as "onetable," but this function can be used to recreate this dataset.
 
-Note: state regions is handled externally in a CSV file.
+Note: Department of State (DoS) regions are handled externally in a CSV file.
 }
 \section{Note}{
 
