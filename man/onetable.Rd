@@ -5,7 +5,7 @@
 \alias{onetable}
 \title{Onetable}
 \format{
-A data frame with 237 rows and 10 variables:
+A data frame with 237 rows and 10 columns, including:
 \itemize{
 \item{\code{id}}{character ISO 3166-1 alpha-3 country code}
 \item{\code{iso2code}}{character ISO 3166-1 alpha-2 country code}

@@ -7,7 +7,7 @@
 get_vax_manufacturers()
 }
 \value{
-A data frame with 218(-ish) rows and 6 variables:
+Returns a data frame with 218(-ish) rows and 6 columns, including:
 
 \itemize{
 \item{\code{owid_country}}{  character English country name from OWID}
@@ -19,5 +19,5 @@ A data frame with 218(-ish) rows and 6 variables:
 }
 }
 \description{
-Get vaccination metadata from OWID
+Get vaccination metadata from Our World in Data (OWID)
 }
