@@ -122,7 +122,7 @@ table_countriesofconcern <- function(df, df_vax_man, country_list, df_variant_pc
 
 
   flextable::flextable(out) %>%
-    flextable::font(fontname = "Calibri", part = "all") %>%
+    flextable::font(fontname = "Arial", part = "all") %>%
     flextable::fontsize(size = 9, part = "all") %>%
     flextable::color(color = "white", part = "header") %>%
     flextable::bold(bold = TRUE, part = "header") %>%

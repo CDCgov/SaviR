@@ -39,17 +39,17 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
         na.translate = T
       ) +
     ggplot2::theme(
-      plot.title = ggplot2::element_text(size = 15, face = "bold", family = "Calibri"),
-      plot.subtitle = ggplot2::element_text(size = 8, family = "Calibri", margin = margin(0, 0, 5, 0)),
-      plot.caption = ggplot2::element_text(size = 6, family = "Calibri", hjust = 0, vjust = 2),
+      plot.title = ggplot2::element_text(size = 15, face = "bold", family = "Arial"),
+      plot.subtitle = ggplot2::element_text(size = 8, family = "Arial", margin = margin(0, 0, 5, 0)),
+      plot.caption = ggplot2::element_text(size = 6, family = "Arial", hjust = 0, vjust = 2),
       plot.caption.position = "plot",
       legend.position = c(0.01, 0),
       legend.justification = c("left", "bottom"),
       legend.box.just = "left",
       legend.key.size = unit(0.5, "cm"),
       legend.margin = ggplot2::margin(2, 2, 2, 2),
-      legend.title = ggplot2::element_text(size = 8, family = "Calibri"),
-      legend.text = ggplot2::element_text(size = 6, family = "Calibri"),
+      legend.title = ggplot2::element_text(size = 8, family = "Arial"),
+      legend.text = ggplot2::element_text(size = 6, family = "Arial"),
       legend.background = element_rect(fill = scales::alpha("white", 0.5), colour = "white")
       )
   } else {
@@ -76,17 +76,17 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
       na.translate = T
      ) +
     ggplot2::theme(
-      plot.title = ggplot2::element_text(size = 15, face = "bold", family = "Calibri"),
-      plot.subtitle = ggplot2::element_text(size = 8, family = "Calibri", margin = margin(0, 0, 5, 0)),
-      plot.caption = ggplot2::element_text(size = 6, family = "Calibri", hjust = 0, vjust = 2),
+      plot.title = ggplot2::element_text(size = 15, face = "bold", family = "Arial"),
+      plot.subtitle = ggplot2::element_text(size = 8, family = "Arial", margin = margin(0, 0, 5, 0)),
+      plot.caption = ggplot2::element_text(size = 6, family = "Arial", hjust = 0, vjust = 2),
       plot.caption.position = "plot",
       legend.position = c(0.01, 0),
       legend.justification = c("left", "bottom"),
       legend.box.just = "left",
       legend.key.size = unit(0.5, "cm"),
       legend.margin = ggplot2::margin(2, 2, 2, 2),
-      legend.title = ggplot2::element_text(size = 8, family = "Calibri"),
-      legend.text = ggplot2::element_text(size = 6, family = "Calibri"),
+      legend.title = ggplot2::element_text(size = 8, family = "Arial"),
+      legend.text = ggplot2::element_text(size = 6, family = "Arial"),
       legend.background = element_rect(fill = scales::alpha("white", 0.5), colour = "white")
     )
   }
