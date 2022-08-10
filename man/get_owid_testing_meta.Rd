@@ -4,9 +4,9 @@
 \name{owid_testing_meta}
 \alias{owid_testing_meta}
 \alias{get_owid_testing_meta}
-\title{OWID Testing Metadata}
+\title{Our World in Data (OWID) Testing Metadata}
 \format{
-A data frame with 141 rows and 5 variables:
+A data frame with 141 rows and 5 columns, including:
 \itemize{
 \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
 \item{\code{test_definition}}{  character Description of OWID testing definition}
@@ -26,7 +26,7 @@ Data set of scraped information related to data definitions and sources by count
 \description{
 A metadata table used within \code{\link[=get_testing]{get_testing()}} to determine how country testing data is computed.
 
-To scrape the OWID coronavirus testing website for data related to the source and definitions of their testing data by country
+To scrape the OWID coronavirus testing website for data related to the source and definitions of their testing data by country. Note that OWID testing data will no longer be updated from 23 June 2022 on.
 }
 \section{Functions}{
 \itemize{

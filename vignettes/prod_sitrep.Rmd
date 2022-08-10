@@ -1,8 +1,8 @@
 ---
-title: "SitRep Production"
+title: "COVID Visualizations (COVIS)"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{SitRep Production}
+  %\VignetteIndexEntry{COVID Visualizations (COVIS)}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -12,7 +12,9 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE,
   message = FALSE,
-  comment = "#>"
+  comment = "#>",
+  dev = "png",
+  dev.opts = list(type = "cairo-png")
 )
 
 # phantomjs is needed to save/render images in this document
@@ -30,20 +32,33 @@ library(gt)
 
 sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
 ```
+After installing SaviR, you are ready to use the following functions to read in the data and create visualizations. There are functions to create plots, maps, or tables by World Health Organization (WHO) Region, Department of State (DoS) Region, or globally.
 
 ## Data: The Frankenstein Dataset  
 
-`onetable` - stored metadata with iso2 and iso3 codes, country names, WHO/State/WorldBank regions, and UN population estimates  
-`get_covid_df()` - COVID dataframe from WHO and appended with select JHU obs  
-`calc_add_risk()` - Add risk matrix calculations to dataframe  
-`get_vax()` - Get vaccination data from OWID  
-`get_combined_table(type=c("WHO", "Both"), geometry=FALSE)` - Combine all of the above into one large dataframe, optionally add geometry
+`onetable` - stored metadata with iso2 and iso3 codes, country names, WHO/DoS/World Bank regions, and UN population estimates  
+`get_covid_df()` - COVID dataframe from WHO and appended with select Johns Hopkins University (JHU) observations  
+`calc_add_risk()` - Add risk matrix calculations to dataframe (df)  
+`get_vax()` - Get vaccination data from Our World In Data (OWID)  
+`get_combined_table(type=c("WHO", "Both"), geometry=FALSE)` - Combine all of the above into one large df, optionally add geometry
 
-This snippet produces the master dataframe with all the variables required for all of the sitrep graphics.  
+This snippet produces the master df with all the variables required for all of the following graphics.  
 
 ```{r}
-df_who <- get_combined_table("WHO")
-df_both <- get_combined_table("Both")
+# Load in data to create visuals
+df_who <- get_combined_table("WHO") # China includes Taiwan, Hong Kong, and Macau data
+df_both <- get_combined_table("Both") # China, Taiwan, Hong Kong, and Macau data disaggregated
+
+# Data for visuals are typically as of Sunday of the current week
+sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
+```
+
+```{r date-fix, echo = FALSE, include = FALSE}
+# Roll back to Friday as a contingency for data not being
+# available Monday Morning
+if (weekdays(Sys.Date()) == "Monday") {
+  sunday_date <- sunday_date - 2L
+}
 ```
 
 ## Plots {.tabset}
@@ -52,16 +67,24 @@ df_both <- get_combined_table("Both")
 
 `plot_epicurve(df, transparent = T)`  
   
-The "plot_epicurve" function should take in the df with only WHO observations in order to match the same curve on the who.int dashboard. The individual epicurves for each region can be run simply by filtering for one region in the dataframe. The function will detect that the region column has only one region and will produce the epicurve accordingly.  
+When creating epi curves for the WHO regions, the "plot_epicurve" function should take in the df with only "WHO" observations in order to match the same curve on the [WHO Coronavirus Dashboard](https://covid19.who.int/). The individual epi curves for each region can be run simply by filtering for one WHO region in the df. The function will detect that the region column has only one region and will produce the epi curve accordingly.  
+
+When creating epi curves for the DoS regions, the plot_epicurve function should take in the df with "Both" observations. Similarly to the WHO epi curves, individual epi curves can also be produce by filtering to one DoS region.
 
 ```{r, fig.width = 13, fig.height = 7}
-# Global
+# Epi Curves for WHO -- Global
 epi_curve_global <- plot_epicurve(df_who, transparent = T)
 
 
 epi_curve_global
 
 plot_epicurve(df_who, transparent = F)
+
+# Epi Curves for DoS -- Global
+state_epi_curve <- plot_epicurve(filter(df_both, date <= sunday_date), 
+                                 type = "cases", 
+                                 by_cat = "State Region")
+state_epi_curve
 ```
 
 ```{r, fig.width = 9, fig.height = 2.5}
@@ -72,6 +95,9 @@ for (r in unique(na.omit(df_who$who_region))) {
 
   print(epi_curve_regional)
 }
+
+# epi_curve_regional <- plot_epicurve(filter(df_who, who_region == 'AMRO'), transparent = F) ##change who_region to region of interest.
+# print(epi_curve_regional)
 ```
 
 ### Risk Matrix (Global Only)
@@ -132,9 +158,9 @@ df_both_mapping <- df_both %>%
 
 `map_burden(df)`  
 
-The "map_burden" function requires a result column where weekly average incidence is converted into factors using "cut". The dataframe normally used is WHO appended with JHU and filtered for the report date. The region maps can also be produced by simply filtering the input dataframe for the specific region. Again the function will detect the number of regions provided and will act accordingly.  
+The "map_burden" function requires a result column where weekly average incidence is converted into factors using "cut". The df normally used is WHO appended with JHU and filtered for the report date. The region maps can also be produced by simply filtering the input df for the specific region. Again the function will detect the number of regions provided and will act accordingly.  
 
-```{r, fig.width = 9, fig.height = 2.5}
+```{r, fig.width = 9, fig.height = 4}
 burden_map_global <- df_both_mapping %>%
   mutate(result = cut(week_case_incidence, breaks = c(-0.1, 1, 10, 25, Inf))) %>%
   map_burden()
@@ -157,7 +183,7 @@ for (r in unique(na.omit(df_both$who_region))) {
   
 `map_trend(df)`
   
-The "map_trend" function requires a result column where weekly percent change is converted into factors using "cut". The dataframe normally used is WHO appended with JHU and filtered for the report date. The region maps can also be produced by simply filtering the input dataframe for the specific region. Again the function will detect the number of regions provided and will act accordingly.  
+The "map_trend" function requires a result column where weekly percent change is converted into factors using "cut". The df normally used is WHO appended with JHU and filtered for the report date. The region maps can also be produced by simply filtering the input df for the specific region. Again the function will detect the number of regions provided and will act accordingly.  
   
 ```{r, fig.width = 7.5, fig.height = 4.2}
 trend_map_global <- df_both_mapping %>%
@@ -281,7 +307,7 @@ for (r in unique(na.omit(df_both$who_region))) {
 
 `table_10vaccinations(df, type = c("Global", "Region"), run_date)`
 
-The "table_10vaccinations" function takes looks for a country, value1 (people vaccinated per hundred), and a value2 (daily vaccinations per hundred) column. Note as vaccination reporting has gaps, the dataframe must be sliced by country and the most recent date with people_vaccinated_per_hundred value (if there is one). 
+The "table_10vaccinations" function takes looks for a country, value1 (people vaccinated per hundred), and a value2 (daily vaccinations per hundred) column. Note as vaccination reporting has gaps, the df must be sliced by country and the most recent date with people_vaccinated_per_hundred value (if there is one). 
 
 ```{r}
 df_both %>%

@@ -5,7 +5,7 @@
 \alias{onetable}
 \title{Onetable}
 \format{
-A data frame with 237 rows and 10 variables:
+A data frame with 237 rows and 10 columns, including:
 \itemize{
 \item{\code{id}}{character ISO 3166-1 alpha-3 country code}
 \item{\code{iso2code}}{character ISO 3166-1 alpha-2 country code}
@@ -33,10 +33,10 @@ Population figures for Guernsey, Jersey, Pitcairn Islands, and Kosovo augmented 
 \section{Sources}{
 
 \itemize{
-\item{https://population.un.org/wpp/Download/Files/4_Metadata/WPP2019_F01_LOCATIONS.XLSX}{}
-\item{https://population.un.org/wpp/Download/Files/1_Indicators\\%20(Standard)/EXCEL_FILES/1_Population/WPP2019_POP_F08_1_TOTAL_POPULATION_BY_BROAD_AGE_GROUP_BOTH_SEXES.xlsx}{}
-\item{https://population.un.org/wpp/Download/Files/1_Indicators\\%20(Standard)/EXCEL_FILES/1_Population/WPP2019_POP_F01_1_TOTAL_POPULATION_BOTH_SEXES.xlsx}{}
-\item{https://worldbank.org}{}
+\item https://population.un.org/wpp/Download/Files/4_Metadata/WPP2019_F01_LOCATIONS.XLSX
+\item https://population.un.org/wpp/Download/Files/1_Indicators\%20(Standard)/EXCEL_FILES/1_Population/WPP2019_POP_F08_1_TOTAL_POPULATION_BY_BROAD_AGE_GROUP_BOTH_SEXES.xlsx
+\item https://population.un.org/wpp/Download/Files/1_Indicators\%20(Standard)/EXCEL_FILES/1_Population/WPP2019_POP_F01_1_TOTAL_POPULATION_BOTH_SEXES.xlsx
+\item https://worldbank.org
 }
 }
 

@@ -7,7 +7,7 @@
 plot_vaxcoverage(
   df,
   type = c("People", "Fully", "Booster", "Pop18"),
-  by_cat = "State Region",
+  by_cat = c("State Region", "WHO Region", "Income Level"),
   plot = c("Vaccination", "Population")
 )
 }

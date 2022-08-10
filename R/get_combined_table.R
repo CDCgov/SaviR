@@ -1,14 +1,21 @@
-#' @title Create combined Case/Death/Vax data.frame
+#' @title A function to retrieve a dataframe (df) with combined Case/Death/Vaccine data by country
 #'
-#' @param type (character) Whether data should include only WHO information, or WHO+JHU (to include separately HK/Macau/Taiwan)
-#' @param geometry (logical, default: FALSE) should the geometry column be added
+#' @param type (character) Specifies whether df should include disaggregated China data ("Both" separates China, Taiwan, Hong Kong, and Macau data) or combined China data ("WHO" combines China, Taiwan, Hong Kong, and Macau data as China)
+#' @param geometry (logical, default: FALSE) Specifies whether df should include the geometry column
 #'
-#' @returns An object of class \code{data.frame} with n rows and 55(56, if \code{geometry = TRUE}) columns
+#' @returns Returns an object of class \code{data.frame} with n rows and 56(57, if \code{geometry = TRUE}) columns
 #'
 #' @seealso [get_covid_df()], [get_vax()], and [calc_add_risk()] for full column data documentation
 #'
 #' @examples
 #' \dontrun{
+#' # Get the df that combines China with Taiwan, Hong Kong, and Macau data
+#' df_who <- get_combined_table("WHO")
+#' print(df_who)
+#' # Get the df that uses both disagreggated China, Taiwan, Hong Kong, and Macau data (WHO + JHU= "Both")
+#' df_both <- get_combined_table("Both")
+#' print(df_both)
+#'
 #' # get_combined_table() is identical to the following sequence:
 #' onetable %>%
 #'   select(-geometry) %>% # In the case that geometry = FALSE

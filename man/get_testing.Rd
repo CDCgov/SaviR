@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_testing.R
 \name{get_testing}
 \alias{get_testing}
-\title{Get testing data from OWID or FIND}
+\title{Get testing data from Our World in Data (OWID) or FIND}
 \usage{
 get_testing(analysis_date = Sys.Date() - 1L)
 }
@@ -10,7 +10,7 @@ get_testing(analysis_date = Sys.Date() - 1L)
 \item{analysis_date}{(date default: Sys.Date() - 1L) Start date from which to choose OWID or FIND data}
 }
 \value{
-A data frame with n rows and 5 variables:
+Returns a data frame with n rows and 5 columns, including:
 \describe{
 \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
 \item{\code{date}}{  date Date of testing observation}

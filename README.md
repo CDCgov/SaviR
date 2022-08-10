@@ -1,19 +1,44 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# SaviR <img src='logo/hex-SaviR.png' align = "right" height="200" />
+# SaviR <img src='man/figures/hex-SaviR.png' align = "right" height="200" />
 
 <!-- badges: start -->
+
 [![Codecov test
 coverage](https://codecov.io/gh/CDCgov/SaviR/branch/master/graph/badge.svg)](https://app.codecov.io/gh/CDCgov/SaviR?branch=master)
 <!-- badges: end -->
-## Overview The purpose of SaviR is to collect the
-functions needed to access and prepare various COVID data sources.
 
-This package is divided into two main sections: analytical datasets and
-data visualizations.
+## Overview
 
-## Installation
+The purpose of the SaviR package is to collate data from various
+publicly available Coronavirus 2019 (COVID-19) data sources for analysis
+and visualization. This package is divided into two main sections: COVID
+Analytical Datasets (COVAD) and COVID Data Visualizations (COVIS).
+
+### Data Sources
+
+-   [**World Health Organization (WHO)**](https://covid19.who.int/) -
+    COVID-19 Cases and Deaths (China data includes Taiwan, Hong Kong,
+    and Macua data)  
+-   [**Johns Hopkins University
+    (JHU)**](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series) -
+    COVID-19 Cases and Deaths (China, Taiwan, Hong Kong, and Macua data
+    are disaggregated)  
+-   [**Our World In Data
+    (OWID)**](https://github.com/owid/covid-19-data/tree/master/public/data) -
+    COVID-19 Vaccines, Tests, and Hospitalizations  
+-   [**United
+    Nations**](https://population.un.org/wpp/Download/Standard/Population/) -
+    Population Estimates
+-   [**World
+    Bank**](http://api.worldbank.org/v2/country?format=json&per_page=300) -
+    Country Income Classifications
+
+*Note: Please refer to original data sources to ensure data accuracy as
+data models could have changed*
+
+## Installation and Package Load
 
 You can install the released version of SaviR from
 [Github](https://github.com/CDCGov/SaviR) with:
@@ -22,13 +47,21 @@ You can install the released version of SaviR from
 devtools::install_github("CDCgov/SaviR")
 ```
 
+You can also use the code above to update your SaviR package as needed.
+When loading SaviR, be sure to load in this package *last*.
+
 ### COVAD - COVID Analytical Datasets
 
-| Metadata Functions | Get Functions     | Calculation Functions | Production Functions |
-|--------------------|-------------------|-----------------------|----------------------|
-| get_one_table      | get_covid_sources | calc_add_risk         | prod_sitrep          |
-| get_country_coords | get_testing       |                       |                      |
-|                    | get_vaccinations  |                       |                      |
+| Metadata Functions      | Get Functions        | Calculation Functions   |
+|-------------------------|----------------------|-------------------------|
+| get\_onetable           | get\_combined\_table | calc\_add\_risk         |
+| get\_country\_coords    | get\_covid\_sources  | calc\_vax\_carryforward |
+| get\_vax\_dates         | get\_testing         |                         |
+| get\_vax\_manufacturers | get\_testing\_long   |                         |
+|                         | get\_vax             |                         |
+|                         | get\_vax\_by\_type   |                         |
+|                         | get\_hospdata        |                         |
+|                         | get\_gdeltnews       |                         |
 
 -   Metadata is stored in this package and can be called:
 
@@ -37,20 +70,18 @@ metadata <- onetable
 country_coordinates <- country_coords  
 ```
 
-### COVAC - COVID Analytical Checks
-
-IN DEVELOPMENT
-
 ### COVIS - COVID Visualizations
 
-| Plot Functions            | Map Functions    | Table Functions       |
-|---------------------------|------------------|-----------------------|
-| plot_epicurve             | map_template     | table_10mostcases     |
-| plot_epicurve_ind         | map_burden       | table_10mostincidence |
-| plot_epicurve_epidouble   | map_trend        | table_10percentchange |
-| plot_epicurve_dailydouble | map_vaccinations | table_10vaccinations  |
-| plot_riskmatrix           |                  |                       |
-| plot_vaxcoverage          |                  |                       |
+| Plot Functions              | Map Functions     | Table Functions           |
+|-----------------------------|-------------------|---------------------------|
+| plot\_epicurve              | map\_template     | table\_10mostcases        |
+| plot\_epicurve\_ind         | map\_burden       | table\_10incidence        |
+| plot\_epicurve\_epidouble   | map\_trend        | table\_10percentchange    |
+| plot\_epicurve\_dailydouble | map\_vaccinations | table\_10vaccinations     |
+| plot\_riskmatrix            |                   | table\_countriesofconcern |
+| plot\_vaxcoverage           |                   |                           |
+| plot\_vaxcoverage\_pop      |                   |                           |
+| plot\_vaxcurve              |                   |                           |
 
 ## Public Domain Standard Notice
 

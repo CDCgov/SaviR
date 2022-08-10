@@ -1,10 +1,10 @@
 #' @title get_testing_long
-#' @description Download and combine full time series data related to testing as compiled by Our World in Data and FIND
+#' @description Download and combine full time series data related to testing as compiled by Our World in Data (OWID) and FIND. Note that OWID testing data will no longer be updated from 23 June 2022 on.
 #'
 #' @param find_maxgap (numeric, default: 31) Gap between cumulative testing number to linearly interpolate
 #' @param flag_test_increase (numeric, default: 5) Flag for increase in interpolated cumulative tests
 #'
-#' @return Longitudinal data frame with both FIND and OWID data sets with consistent definitions
+#' @return Returns a longitudinal data frame with both FIND and OWID data sets with consistent definitions with n rows and 38 columns.
 #' @import zoo
 #'
 #' @export
@@ -688,7 +688,7 @@ get_preferred_testpos7 <- function(test_long, last_X_days = 14, analysis_date = 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#' @title Get testing data from OWID or FIND
+#' @title Get testing data from Our World in Data (OWID) or FIND
 #' @description Pulls testing data from either OWID or FIND sources based on a 7d testing / 1K and positivity rate.
 #'
 #' - Most recent 7-day average data points for new tests per 1K AND positivity rate for use in risk matrix plots by WHO region.
@@ -696,7 +696,7 @@ get_preferred_testpos7 <- function(test_long, last_X_days = 14, analysis_date = 
 #' - After accounting for flags, we pick OWID by default when both OWID and FIND are available in last X days
 #'
 #' @param analysis_date (date default: Sys.Date() - 1L) Start date from which to choose OWID or FIND data
-#' @return A data frame with n rows and 5 variables:
+#' @return Returns a data frame with n rows and 5 columns, including:
 #' \describe{
 #'   \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
 #'   \item{\code{date}}{  date Date of testing observation}

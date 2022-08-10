@@ -1,10 +1,10 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #' @title get_vax
-#' @description Get vaccination data from OWID
+#' @description Get vaccination data from Our World in Data. (OWID)
 #' Note that all cumulative totals are all carried forward if NA on a given day.
 #'
-#' @return A data frame with n rows and 17 variables:
+#' @return Returns a data frame with n rows and 17 columns, including:
 #'
 #' \describe{
 #'   \item{\code{owid_country}}{  character English country name from OWID}
@@ -47,7 +47,7 @@ get_vax <- function() {
 #' @title Get last non-NA date for key vaccination metrics by country
 #' @description Computes the latest date of vaccination data provided by each country from OWID source.
 #'
-#' @return a data frame with n rows and 5 columns
+#' @return Returns a data frame with n rows and 5 columns, including:
 #' \describe{
 #'   \item{\code{owid_country}}{  character English country name from OWID (may not match WHO country name)}
 #'   \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
@@ -105,9 +105,9 @@ get_vax_dates <- function() {
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #' @title get_vax_manufacturers
-#' @description Get vaccination metadata from OWID
+#' @description Get vaccination metadata from Our World in Data (OWID)
 #'
-#' @return A data frame with 218(-ish) rows and 6 variables:
+#' @return Returns a data frame with 218(-ish) rows and 6 columns, including:
 #'
 #' \itemize{
 #'   \item{\code{owid_country}}{  character English country name from OWID}
@@ -140,7 +140,7 @@ get_vax_manufacturers <- function() {
 #' Only a subset of countries have this data available, and information on which
 #' countries and the associated source of data can be found [here](https://github.com/owid/covid-19-data/blob/master/public/data/vaccinations/locations-manufacturer.csv).
 #'
-#' @return a data frame with n rows and 6 columns
+#' @return Returns a data frame with n rows and 6 columns, including:
 #' \describe{
 #'   \item{\code{owid_country}}{character, English country name from OWID (may not match WHO country name)}
 #'   \item{\code{id}}{character, ISO 3166-1 alpha-3 country code}

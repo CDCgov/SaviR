@@ -2,23 +2,30 @@
 % Please edit documentation in R/get_combined_table.R
 \name{get_combined_table}
 \alias{get_combined_table}
-\title{Create combined Case/Death/Vax data.frame}
+\title{A function to retrieve a dataframe (df) with combined Case/Death/Vaccine data by country}
 \usage{
 get_combined_table(type = c("WHO", "Both"), geometry = FALSE)
 }
 \arguments{
-\item{type}{(character) Whether data should include only WHO information, or WHO+JHU (to include separately HK/Macau/Taiwan)}
+\item{type}{(character) Specifies whether df should include disaggregated China data ("Both" separates China, Taiwan, Hong Kong, and Macau data) or combined China data ("WHO" combines China, Taiwan, Hong Kong, and Macau data as China)}
 
-\item{geometry}{(logical, default: FALSE) should the geometry column be added}
+\item{geometry}{(logical, default: FALSE) Specifies whether df should include the geometry column}
 }
 \value{
-An object of class \code{data.frame} with n rows and 55(56, if \code{geometry = TRUE}) columns
+Returns an object of class \code{data.frame} with n rows and 56(57, if \code{geometry = TRUE}) columns
 }
 \description{
-Create combined Case/Death/Vax data.frame
+A function to retrieve a dataframe (df) with combined Case/Death/Vaccine data by country
 }
 \examples{
 \dontrun{
+# Get the df that combines China with Taiwan, Hong Kong, and Macau data
+df_who <- get_combined_table("WHO")
+print(df_who)
+# Get the df that uses both disagreggated China, Taiwan, Hong Kong, and Macau data (WHO + JHU= "Both")
+df_both <- get_combined_table("Both")
+print(df_both)
+
 # get_combined_table() is identical to the following sequence:
 onetable \%>\%
   select(-geometry) \%>\% # In the case that geometry = FALSE

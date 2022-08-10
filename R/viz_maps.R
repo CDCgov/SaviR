@@ -114,12 +114,16 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
 map_burden <- function(df, region = c("WHO Region", "State Region")) {
 
   region <- match.arg(region)
-  who_region <- unique(df$who_region)
+  if (region == "State Region") {
+    who_region <- unique(df$state_region)
+  } else {
+    who_region <- unique(df$who_region)
+  }
   who_regs <- length(who_region)
 
   # If we pass more than one region, then we set the value to "None"
   # So switch works correctly
-  if (who_regs > 1 || region == "State Region") {
+  if (who_regs > 1) {
     who_region <- "None"
   }
 
@@ -167,12 +171,16 @@ map_burden <- function(df, region = c("WHO Region", "State Region")) {
 map_trend <- function(df, region = c("WHO Region", "State Region")) {
 
   region <- match.arg(region)
-  who_region <- unique(df$who_region)
+  if (region == "State Region") {
+    who_region <- unique(df$state_region)
+  } else {
+    who_region <- unique(df$who_region)
+  }
   who_regs <- length(who_region)
 
   # If we pass more than one region, then we set the value to "None"
   # So switch works correctly
-  if (who_regs > 1 || region == "State Region") {
+  if (who_regs > 1) {
     who_region <- "None"
   }
 
@@ -217,12 +225,17 @@ map_vaccinations <- function(df, region = c("WHO Region", "State Region"), vac_t
   region <- match.arg(region)
   vac_type <- match.arg(vac_type)
 
-  who_region <- unique(df$who_region)
+  if (region == "State Region") {
+    who_region <- unique(df$state_region)
+  } else {
+    who_region <- unique(df$who_region)
+  }
+
   who_regs <- length(who_region)
 
   # If we pass more than one region, then we set the value to "None"
   # So switch works correctly
-  if (who_regs > 1 || region == "State Region") {
+  if (who_regs > 1) {
     who_region <- "None"
   }
 
