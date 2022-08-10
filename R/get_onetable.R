@@ -8,7 +8,7 @@
 #' Note: Department of State (DoS) regions are handled externally in a CSV file.
 
 #' @param usaid_metadata_file (character, optional) A file path to the file containing DoS regions. Expects at least two columns, ["iso_alpha3", "state_region"]
-#' @param vintage (numeric, default: 2021) The year of population projections to use from UN data
+#' @param vintage (numeric, default: 2022) The year of population projections to use from UN data
 #' @param country_geometries (data.frame, default: country_coords) a data.frame/sfc with at least two columns: ["iso3code", "geometry"]
 
 #' @return Returns a df of 238 rows and 10 columns, including:
@@ -41,7 +41,7 @@
 #' usethis::use_data(onetable, overwrite = TRUE)
 #' }
 #'
-get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geometries = country_coords) {
+get_onetable <- function(usaid_metadata_file = NULL, vintage = 2022, country_geometries = country_coords) {
 
   ## Country List
   # From COVID sources.
