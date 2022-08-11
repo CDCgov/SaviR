@@ -26,6 +26,8 @@ test_that("UN Denominator Data is in alignment with OWID", {
 })
 
 test_that("onetable can be reproduced and is up to date", {
+  skip_on_ci()
+  
   new_onetable <- get_onetable()
 
   # If this fails, need to either reproduce the onetable, or see what changed
