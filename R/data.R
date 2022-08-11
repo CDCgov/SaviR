@@ -68,7 +68,7 @@ onetable_addn_countries <- data.frame(
 #' https://www.cia.gov/the-world-factbook/field/population/country-comparison
 #' Currently 2022 projections are being used
 cia_wfb_addn_countries <- data.frame(
-  country = c("Guernsey", "Jersey", "Pitcairn Islands", "Kosovo"),
-  id = c("GGY", "JEY", "PCN", "XKX"),
-  total = c(67491, 102146, 50, 1952701)
+  country = c("Pitcairn Islands", "Kosovo"),
+  id = c("PCN", "XKX"),
+  total = c(50, 1952701)
 )
