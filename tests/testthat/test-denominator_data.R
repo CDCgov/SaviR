@@ -39,20 +39,6 @@ test_that("Onetable geometry matches", {
   new_onetable <- get_onetable()
 
   new_onetable <- new_onetable %>%
-      mutate(
-      # NOTE: This is due to a weird error where left-joining on an sf
-      # object now creates an empty GEOMETRYCOLLECTION instead of MULTIPOLYGON
-      # that's not really of any consequence other than for testing.
-      geometry = lapply(geometry, function(x) {
-          if (length(x) > 0) {
-            return(x)
-          }
-
-        class(x) <- c("XY", "MULTIPOLYGON", "sfg")
-        x
-      }
-      )
-    ) %>%
     st_as_sf(crs=sf::st_crs("+proj=robin +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs")) %>%
     select(id)
 
