@@ -29,7 +29,7 @@
 #' @export
 #'
 #' @section Note:
-#' Population updates for Pitcairn Islands, Jersey, Guernsey, and Kosovo are hardcoded and must be pulled manually via CIA factbook unless another source is found.
+#' Population updates for Pitcairn Islands and Kosovo are hardcoded and must be pulled manually via CIA factbook unless another source is found.
 #'
 #' @seealso [onetable] for more complete data documentation
 #' @examples
@@ -115,8 +115,9 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
 
   # --- Location / Country metadata ------------
   df_un_location_meta <- openxlsx::read.xlsx(datasource_lk$un_location_meta, sheet = 1, startRow = 17) %>%
-    select(country = 2, LocID = 4, id = 5, type = 7) %>%
+    select(country = 3, LocID = 5, id = 6, type = 9) %>%
     filter(type == "Country/Area") %>%
+    distinct() %>%
     as_tibble()
 
   df_un_medium_pop_est <- data.table::fread(datasource_lk$un_overall_projections) %>%
@@ -124,12 +125,11 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
     mutate(total = 1000 * as.numeric(PopTotal)) %>%
     distinct(LocID, Time, total)
 
-  df_un_medium_pop_est_single_year <- data.table::fread(datasource_lk$un_age_projections) %>%
-    semi_join(df_un_location_meta, by = "LocID") %>% # Filter to only countries, to speed up summarize step
-    filter(Time == vintage, Variant == "Medium", AgeGrp >= 18) %>%
-    group_by(LocID, Time) %>%
-    summarize(`18+` = 1000 * sum(PopTotal)) %>%
-    ungroup()
+  df_un_medium_pop_est_single_year <- openxlsx::read.xlsx(datasource_lk$un_age_projections, sheet = 2, startRow = 17) %>%
+    filter(Year == vintage) %>%
+    semi_join(df_un_location_meta, by = c("Location.code" = "LocID")) %>% # Filter to only countries, to speed up summarize step
+    select(LocID = Location.code, Time = Year, `18+`) %>%
+    mutate(Time = as.integer(Time), `18+` = 1000 * as.numeric(`18+`))
 
   # Join all UN pop estimates together and add the manual CIA ones
   df_all_un_pop_est <- df_un_location_meta %>%

@@ -26,6 +26,8 @@ test_that("UN Denominator Data is in alignment with OWID", {
 })
 
 test_that("onetable can be reproduced and is up to date", {
+  skip_on_ci()
+  
   new_onetable <- get_onetable()
 
   # If this fails, need to either reproduce the onetable, or see what changed
@@ -33,23 +35,10 @@ test_that("onetable can be reproduced and is up to date", {
 })
 
 test_that("Onetable geometry matches", {
+  skip_on_ci()
   new_onetable <- get_onetable()
 
   new_onetable <- new_onetable %>%
-      mutate(
-      # NOTE: This is due to a weird error where left-joining on an sf
-      # object now creates an empty GEOMETRYCOLLECTION instead of MULTIPOLYGON
-      # that's not really of any consequence other than for testing.
-      geometry = lapply(geometry, function(x) {
-          if (length(x) > 0) {
-            return(x)
-          }
-
-        class(x) <- c("XY", "MULTIPOLYGON", "sfg")
-        x
-      }
-      )
-    ) %>%
     st_as_sf(crs=sf::st_crs("+proj=robin +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs")) %>%
     select(id)
 

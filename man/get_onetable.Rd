@@ -39,7 +39,7 @@ Note: Department of State (DoS) regions are handled externally in a CSV file.
 }
 \section{Note}{
 
-Population updates for Pitcairn Islands, Jersey, Guernsey, and Kosovo are hardcoded and must be pulled manually via CIA factbook unless another source is found.
+Population updates for Pitcairn Islands and Kosovo are hardcoded and must be pulled manually via CIA factbook unless another source is found.
 }
 
 \examples{

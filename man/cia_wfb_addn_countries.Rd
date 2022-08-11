@@ -4,19 +4,19 @@
 \name{cia_wfb_addn_countries}
 \alias{cia_wfb_addn_countries}
 \title{Countries with no current UNWPP data
-that are manually updated here from CIA world factbook
+that are manually updated here from CIA World Factbook
 https://www.cia.gov/the-world-factbook/field/population/country-comparison
-Currently 2021 projections are being used}
+Currently 2022 estimates are being used}
 \format{
-An object of class \code{data.frame} with 4 rows and 3 columns.
+An object of class \code{data.frame} with 1 rows and 3 columns.
 }
 \usage{
 cia_wfb_addn_countries
 }
 \description{
 Countries with no current UNWPP data
-that are manually updated here from CIA world factbook
+that are manually updated here from CIA World Factbook
 https://www.cia.gov/the-world-factbook/field/population/country-comparison
-Currently 2021 projections are being used
+Currently 2022 estimates are being used
 }
 \keyword{datasets}
