@@ -35,6 +35,7 @@ test_that("onetable can be reproduced and is up to date", {
 })
 
 test_that("Onetable geometry matches", {
+  skip_on_ci()
   new_onetable <- get_onetable()
 
   new_onetable <- new_onetable %>%
