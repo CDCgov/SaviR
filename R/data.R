@@ -14,12 +14,13 @@
 #'   \item{\code{geometry}}{list List of simple features for mapping}
 #' }
 #' @section Notes:
-#' Population figures for Guernsey, Jersey, Pitcairn Islands, and Kosovo augmented from CIA World Factbook.
+#' Population figures for Pitcairn Islands augmented from CIA World Factbook.
 #'
 #' @section Sources:
-#'   * https://population.un.org/wpp/Download/Files/4_Metadata/WPP2019_F01_LOCATIONS.XLSX
-#'   * https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/EXCEL_FILES/1_Population/WPP2019_POP_F08_1_TOTAL_POPULATION_BY_BROAD_AGE_GROUP_BOTH_SEXES.xlsx
-#'   * https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/EXCEL_FILES/1_Population/WPP2019_POP_F01_1_TOTAL_POPULATION_BOTH_SEXES.xlsx
+#'   * https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/EXCEL_FILES/1_General/WPP2022_GEN_F01_DEMOGRAPHIC_INDICATORS_COMPACT_REV1.xlsx
+#'   * https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/CSV_FILES/WPP2022_TotalPopulationBySex.csv
+#'   * https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/EXCEL_FILES/2_Population/WPP2022_POP_F03_1_POPULATION_SELECT_AGE_GROUPS_BOTH_SEXES.xlsx
+#'   * https://www.cia.gov/the-world-factbook/field/population/country-comparison
 #'   * https://worldbank.org
 #'
 #' @md
@@ -64,11 +65,11 @@ onetable_addn_countries <- data.frame(
 )
 
 #' Countries with no current UNWPP data
-#' that are manually updated here from CIA world factbook
+#' that are manually updated here from CIA World Factbook
 #' https://www.cia.gov/the-world-factbook/field/population/country-comparison
 #' Currently 2022 estimates are being used
 cia_wfb_addn_countries <- data.frame(
-  country = c("Pitcairn Islands", "Kosovo"),
-  id = c("PCN", "XKX"),
-  total = c(50, 1952701)
+  country = c("Pitcairn Islands"),
+  id = c("PCN"),
+  total = c(50)
 )
