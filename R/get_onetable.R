@@ -125,7 +125,7 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
     mutate(total = 1000 * as.numeric(PopTotal)) %>%
     distinct(LocID, Time, total)
 
-  df_un_medium_pop_est_single_year <- openxlsx::read.xlsx(datasource_lk$un_age_projections, sheet = 2, startRow = 17) %>%
+  df_un_medium_pop_est_single_year <- openxlsx::read.xlsx(datasource_lk$un_age_projections, sheet = 1, startRow = 17) %>%
     filter(Year == vintage) %>%
     semi_join(df_un_location_meta, by = c("Location.code" = "LocID")) %>% # Filter to only countries, to speed up summarize step
     select(LocID = Location.code, Time = Year, `18+`) %>%
