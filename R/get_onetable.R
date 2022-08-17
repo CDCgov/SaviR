@@ -125,7 +125,7 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
     mutate(total = 1000 * as.numeric(PopTotal)) %>%
     distinct(LocID, Time, total)
 
-  df_un_medium_pop_est_single_year <- openxlsx::read.xlsx(datasource_lk$un_age_projections, sheet = 2, startRow = 17) %>%
+  df_un_medium_pop_est_single_year <- openxlsx::read.xlsx(datasource_lk$un_age_projections, sheet = 1, startRow = 17) %>%
     filter(Year == vintage) %>%
     semi_join(df_un_location_meta, by = c("Location.code" = "LocID")) %>% # Filter to only countries, to speed up summarize step
     select(LocID = Location.code, Time = Year, `18+`) %>%
@@ -145,7 +145,21 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
 
   ## Add Geometries
   df_meta <- df_meta %>%
-    left_join(country_geometries, by = "id")
+    left_join(country_geometries, by = "id") %>%
+    mutate(
+      # NOTE: This is due to a weird error where left-joining on an sf
+      # object now creates an empty GEOMETRYCOLLECTION instead of MULTIPOLYGON
+      geometry = lapply(geometry, function(x) {
+        if (length(x) > 0) {
+          return(x)
+        }
+        
+        class(x) <- c("XY", "MULTIPOLYGON", "sfg")
+        x
+      }
+      ),
+      geometry = st_sfc(geometry, crs = st_crs(country_coords))
+    )
 
   # Add "pretty" WHO region names
   df_meta <- df_meta %>%
