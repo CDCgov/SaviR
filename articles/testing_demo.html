@@ -6,12 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="SaviR">
-<title>Dynamic data source selection for testing data • SaviR</title>
+<title>Testing Demo • SaviR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Dynamic data source selection for testing data">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Testing Demo">
 <meta property="og:description" content="SaviR">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -44,7 +44,7 @@
     <a class="dropdown-item" href="../articles/prod_sitrep.html">COVID Visualizations (COVIS)</a>
     <a class="dropdown-item" href="../articles/routine_report_start_chunk.html">Routine Report Starting Chunk</a>
     <a class="dropdown-item" href="../articles/savir_version_0.2_api_changes.html">SaviR Version 0.2 API Changes</a>
-    <a class="dropdown-item" href="../articles/testing_demo.html">Dynamic data source selection for testing data</a>
+    <a class="dropdown-item" href="../articles/testing_demo.html">Testing Demo</a>
   </div>
 </li>
       </ul>
@@ -71,8 +71,10 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Dynamic data source selection for testing data</h1>
+      <img src="" class="logo" alt=""><h1>Testing Demo</h1>
+                        <h4 data-toc-skip class="author">Randy</h4>
             
+            <h4 data-toc-skip class="date">8/19/2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/CDCgov/SaviR/blob/HEAD/vignettes/testing_demo.Rmd" class="external-link"><code>vignettes/testing_demo.Rmd</code></a></small>
       <div class="d-none name"><code>testing_demo.Rmd</code></div>
@@ -80,443 +82,33 @@
 
     
     
-<div class="section level2">
-<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
-</h2>
-<p>There are two main sources for testing data that we use: Our World in Data (OWID) and FIND. Both are compiling data from various sources to put together their datasets. Briefly, information on tests can be used in several different ways: tests per 1000 persons in a population (relevant for assessing whether the surveillance is sufficient) and test positivity rate (positive samples divided by number of tests for some time period), and variations on these, such as tests per case.</p>
-<p><strong>Note that Our World in Data will no longer be updating after June 23, 2022!</strong></p>
-<p>Therefore, these methods apply to historical data from both these data sources, but for prospective data, these functions will return data from FIND.</p>
-<p>The purpose of this document is to give some explanation of the two datasets and some of the approaches we have taken in extracting relevant metrics from each source for various projects.</p>
-<p>Briefly, for each country we look back 14 days to find the most recent 7-day average of new daily tests per 1K persons and the recent test positivity rate (7-day number of positives or cases divided by 7-day number of tests). We document which countries do not have recent data; we also document which countries have recent data that has a quality flag due to FIND or OWID reporting irregularities in some of the numbers (e.g., total number of tests decreasing or suddenly jumping by a large amount).</p>
-</div>
-<div class="section level2">
-<h2 id="getting-started-with-the-testing-data">Getting started with the testing data<a class="anchor" aria-label="anchor" href="#getting-started-with-the-testing-data"></a>
-</h2>
-<p>To directly get a dataset with all countries and data from the preferred source based on the flags described in detail below:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">testing_processed</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_testing.html">get_testing</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">testing_processed</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 91,471 × 5</span></span></span>
-<span><span class="co">##    id    date       new_tests_smoothed_per_thousand new_tests_smoothed…¹ posit…²</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> USA   2020-01-18                              <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> USA   2020-01-19                              <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> USA   2020-01-20                              <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> TWN   2020-01-21                              <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> USA   2020-01-21                              <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ALB   2020-01-22                              <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> AUS   2020-01-22                              <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> AUT   2020-01-22                              <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> AZE   2020-01-22                              <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> BDI   2020-01-22                              <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 91,461 more rows, and abbreviated variable names</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ¹​new_tests_smoothed_per_thousand_14, ²​positive_rate</span></span></span></code></pre>
-<p><code><a href="../reference/get_testing.html">get_testing()</a></code> uses the SaviR functions <code><a href="../reference/get_testing_long.html">get_testing_long()</a></code> and <code><a href="../reference/get_preferred_testpos7.html">get_preferred_testpos7()</a></code> under the hood. This means that the preferred source is selected based on flags applied to test numbers and test positivity.</p>
-<p>In addition, you can pull data in from both sources directly:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">testing_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_testing_long.html">get_testing_long</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">testing_long</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 344,053 × 38</span></span></span>
-<span><span class="co">##    data_source id    date       popula…¹ total…² new_t…³ total…⁴ new_t…⁵ new_t…⁶</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> FIND        AFG   2020-01-22 38<span style="text-decoration: underline;">928</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> FIND        AFG   2020-01-23 38<span style="text-decoration: underline;">928</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> FIND        AFG   2020-01-24 38<span style="text-decoration: underline;">928</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> FIND        AFG   2020-01-25 38<span style="text-decoration: underline;">928</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> FIND        AFG   2020-01-26 38<span style="text-decoration: underline;">928</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> FIND        AFG   2020-01-27 38<span style="text-decoration: underline;">928</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> FIND        AFG   2020-01-28 38<span style="text-decoration: underline;">928</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> FIND        AFG   2020-01-29 38<span style="text-decoration: underline;">928</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> FIND        AFG   2020-01-30 38<span style="text-decoration: underline;">928</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> FIND        AFG   2020-01-31 38<span style="text-decoration: underline;">928</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 344,043 more rows, 29 more variables: new_tests_daily7_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   new_tests_daily7_per_1k &lt;dbl&gt;, new_tests_daily7_per_1k_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   new_tests_daily14 &lt;dbl&gt;, new_tests_daily14_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   new_tests_daily14_per_1k &lt;dbl&gt;, new_tests_daily14_per_1k_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   new_cases_original &lt;dbl&gt;, new_cases_daily7 &lt;dbl&gt;, new_cases_daily14 &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   positive_rate_7day &lt;dbl&gt;, positive_rate_7day_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   FLAG_negative_tests_7day &lt;dbl&gt;, FLAG_negative_tests_14day &lt;dbl&gt;, …</span></span></span></code></pre>
-<p>To get the preferred data source for each country by date directly, using both test numbers and test positivity lagged seven days from the observation date:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">preferred_source</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_preferred_testpos7.html">get_preferred_testpos7</a></span><span class="op">(</span><span class="va">testing_long</span><span class="op">)</span></span>
-<span><span class="va">preferred_source</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 199 × 58</span></span></span>
-<span><span class="co">##    id    preferred_…¹ preferre…² posit…³ posit…⁴ new_t…⁵ new_t…⁶ new_t…⁷ new_t…⁸</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> AFG   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> AGO   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> AIA   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> ALB   FIND         2022-08-31   0.246   0.441   <span style="text-decoration: underline;">1</span>231    <span style="text-decoration: underline;">1</span>279.   0.428   0.444</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> AND   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ARE   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ARG   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ARM   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> ATG   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> AUS   FIND         2022-08-31   0.257   0.221  <span style="text-decoration: underline;">45</span>394.  <span style="text-decoration: underline;">58</span>264.   1.78    2.28 </span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 189 more rows, 49 more variables: flag_negative_tests_previous7 &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   flag_increase_tests_previous7 &lt;dbl&gt;, flag_negative_cases_previous7 &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_date &lt;date&gt;, owid_new_cases &lt;dbl&gt;, owid_new_cases_daily7 &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_total_tests_orig &lt;dbl&gt;, owid_total_tests_int &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_new_tests_orig &lt;dbl&gt;, owid_new_tests_int &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_tests_daily7 &lt;dbl&gt;, owid_tests_daily7_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_tests_daily7_1k &lt;dbl&gt;, owid_tests_daily7_1k_prev &lt;dbl&gt;, …</span></span></span></code></pre>
-<p>Or just using test numbers over the past 14 days:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">preferred_source_14</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_preferred_tests14.html">get_preferred_tests14</a></span><span class="op">(</span><span class="va">testing_long</span><span class="op">)</span></span></code></pre></div>
-<p>You can also change the date lookback over which the flags are applied using the argument <code>last_X_days</code> and change the maximum date for which to return data using <code>analysis_date</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">preferred_source_custom</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu"><a href="../reference/get_preferred_testpos7.html">get_preferred_testpos7</a></span><span class="op">(</span><span class="va">testing_long</span>, last_X_days <span class="op">=</span> <span class="fl">10</span>, analysis_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2021-03-01"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>To filter <code>testing_long</code> to the data from the preferred source for the most recent 7 days of data for each country:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">preferred_testing</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">testing_long</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">preferred_source</span> <span class="op">%&gt;%</span> </span>
-<span>            <span class="fu">select</span><span class="op">(</span><span class="va">id</span>, <span class="va">preferred_source</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> <span class="va">preferred_source</span><span class="op">)</span></span>
-<span><span class="va">preferred_testing</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 91,471 × 39</span></span></span>
-<span><span class="co">##    data_source id    date       popula…¹ total…² new_t…³ total…⁴ new_t…⁵ new_t…⁶</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> FIND        ALB   2020-01-22  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> FIND        ALB   2020-01-23  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> FIND        ALB   2020-01-24  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> FIND        ALB   2020-01-25  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> FIND        ALB   2020-01-26  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> FIND        ALB   2020-01-27  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> FIND        ALB   2020-01-28  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> FIND        ALB   2020-01-29  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> FIND        ALB   2020-01-30  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> FIND        ALB   2020-01-31  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 91,461 more rows, 30 more variables: new_tests_daily7_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   new_tests_daily7_per_1k &lt;dbl&gt;, new_tests_daily7_per_1k_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   new_tests_daily14 &lt;dbl&gt;, new_tests_daily14_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   new_tests_daily14_per_1k &lt;dbl&gt;, new_tests_daily14_per_1k_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   new_cases_original &lt;dbl&gt;, new_cases_daily7 &lt;dbl&gt;, new_cases_daily14 &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   positive_rate_7day &lt;dbl&gt;, positive_rate_7day_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   FLAG_negative_tests_7day &lt;dbl&gt;, FLAG_negative_tests_14day &lt;dbl&gt;, …</span></span></span></code></pre>
-<p>And to generate the same metrics as <code>get_testing</code> given preferred source information generated by either <code>get_preferred_testpos7</code> and <code>get_preferred_tests_14</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">testing_cleaned</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">preferred_testing</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span></span>
-<span>    new_cases_daily7 <span class="op">=</span> <span class="fu">zoo</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/na.locf.html" class="external-link">na.locf</a></span><span class="op">(</span><span class="va">new_cases_daily7</span>, na.rm <span class="op">=</span> <span class="cn">F</span>, maxgap <span class="op">=</span> <span class="fl">14</span><span class="op">)</span>,</span>
-<span>    new_tests_daily7 <span class="op">=</span> <span class="fu">zoo</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/na.locf.html" class="external-link">na.locf</a></span><span class="op">(</span><span class="va">new_tests_daily7</span>, na.rm <span class="op">=</span> <span class="cn">F</span>, maxgap <span class="op">=</span> <span class="fl">14</span><span class="op">)</span> ,</span>
-<span>    new_tests_smoothed_per_thousand <span class="op">=</span> <span class="fu">zoo</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/na.locf.html" class="external-link">na.locf</a></span><span class="op">(</span><span class="va">new_tests_daily7_per_1k</span>, na.rm <span class="op">=</span> <span class="cn">F</span>, maxgap <span class="op">=</span> <span class="fl">14</span><span class="op">)</span>,</span>
-<span>    positive_rate <span class="op">=</span> <span class="fu">zoo</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/na.locf.html" class="external-link">na.locf</a></span><span class="op">(</span><span class="va">positive_rate_7day</span>, na.rm <span class="op">=</span> <span class="cn">F</span>, maxgap <span class="op">=</span> <span class="fl">14</span><span class="op">)</span>  </span>
-<span>  <span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="quality-and-availability-of-data-by-source-and-country">Quality and availability of data by source and country<a class="anchor" aria-label="anchor" href="#quality-and-availability-of-data-by-source-and-country"></a>
-</h2>
-<p>Looking at which data source is preferred over time and by country historically:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># taking a look at slice of historical data</span></span>
-<span><span class="va">ytd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.Date.html" class="external-link">seq.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2022-03-01"</span><span class="op">)</span>, </span>
-<span>                <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2022-06-09"</span><span class="op">)</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">preferred_timeseries</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_dfr</a></span><span class="op">(</span></span>
-<span>    <span class="va">ytd</span>, </span>
-<span>    <span class="op">~</span><span class="fu"><a href="../reference/get_preferred_testpos7.html">get_preferred_testpos7</a></span><span class="op">(</span><span class="va">testing_long</span>, analysis_date <span class="op">=</span> <span class="va">.x</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>     <span class="fu">mutate</span><span class="op">(</span>analysis_date <span class="op">=</span> <span class="va">.x</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">left_join</span><span class="op">(</span><span class="fu">select</span><span class="op">(</span><span class="fu">SaviR</span><span class="fu">::</span><span class="va"><a href="../reference/onetable.html">onetable</a></span>, <span class="va">id</span>, <span class="va">who_region</span>, <span class="va">who_country</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
-<pre><code><span><span class="co">## Joining, by = "id"</span></span></code></pre>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">preferred_timeseries</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">who_region</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">who_country</span>, x <span class="op">=</span> <span class="va">analysis_date</span>, fill <span class="op">=</span> <span class="va">preferred_source</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_tile</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">scale_fill_brewer</span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span>, na.value <span class="op">=</span> <span class="st">"darkgrey"</span>, name <span class="op">=</span> <span class="st">"Preferred\nsource"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.y <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">who_region</span> <span class="op">~</span> <span class="va">.</span>, scales <span class="op">=</span> <span class="st">"free_y"</span>, space <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="testing_demo_files/figure-html/unnamed-chunk-8-1.png" width="576"></p>
-<p>There are some countries with switching between data sets and some countries where data either is missing or both data sources failed the quality flags.</p>
-<p>Looking at flags over time (focusing on the flags used in <code>get_preferred_testpos7</code>:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">test_flags_recent</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">testing_long</span> <span class="op">%&gt;%</span> </span>
-<span>    <span class="fu">left_join</span><span class="op">(</span><span class="fu">select</span><span class="op">(</span><span class="fu">SaviR</span><span class="fu">::</span><span class="va"><a href="../reference/onetable.html">onetable</a></span>, <span class="va">id</span>, <span class="va">who_region</span>, <span class="va">who_country</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">&gt;</span> <span class="st">"2022-01-01"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">select</span><span class="op">(</span><span class="va">data_source</span>, <span class="va">id</span>, <span class="va">who_region</span>, <span class="va">who_country</span>, <span class="va">date</span>, <span class="fu">starts_with</span><span class="op">(</span><span class="st">"FLAG"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>    <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="fu">starts_with</span><span class="op">(</span><span class="st">"FLAG"</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
-<pre><code><span><span class="co">## Joining, by = "id"</span></span></code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">test_flags_recent</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FLAG_increase_tests_7day"</span>, <span class="st">"FLAG_negative_tests_7day"</span>, <span class="st">"FLAG_negative_cases_7day"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">date</span>, <span class="va">data_source</span>, <span class="va">name</span>, <span class="va">who_region</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">summarize</span><span class="op">(</span>n_countries_flagged <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">value</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_col</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">n_countries_flagged</span>, fill <span class="op">=</span> <span class="va">who_region</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">0.2</span>, </span>
-<span>           position <span class="op">=</span> <span class="st">"stack"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">data_source</span> <span class="op">~</span> <span class="va">name</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## `summarise()` has grouped output by 'date', 'data_source', 'name'. You can</span></span>
-<span><span class="co">## override using the `.groups` argument.</span></span></code></pre>
-<p><img src="testing_demo_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
-<p>Overall few days and countries fail the quality flags for either dataset (and no failures for the flag on 7 day cases).</p>
-<p>Looking at flags over time &amp; by country (in these plots white indicates missing and grey indicates an NA value):</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FLAG_increase_tests_7day"</span>, <span class="st">"FLAG_negative_tests_7day"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html" class="external-link">set_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span></span>
-<span>      <span class="op">~</span><span class="va">test_flags_recent</span> <span class="op">%&gt;%</span> </span>
-<span>        <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">.x</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">who_region</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>        <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">who_country</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        <span class="fu">geom_tile</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        <span class="fu">scale_fill_brewer</span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Passed"</span>, <span class="st">"Failed"</span><span class="op">)</span>, </span>
-<span>                          na.value <span class="op">=</span> <span class="st">"darkgrey"</span>, name <span class="op">=</span> <span class="st">"Quality flag"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Country"</span>, y <span class="op">=</span> <span class="st">"Date"</span>, </span>
-<span>             title <span class="op">=</span> <span class="va">.x</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        <span class="fu">facet_grid</span><span class="op">(</span><span class="va">who_region</span> <span class="op">~</span> <span class="va">data_source</span>, scales <span class="op">=</span> <span class="st">"free_y"</span>, space <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        <span class="fu">theme</span><span class="op">(</span>axis.text.y <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">df_OWID</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/testing/covid-testing-all-observations.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">Entity</span>,</span>
+<span>    id <span class="op">=</span> <span class="va">ISO.code</span>,</span>
+<span>    date <span class="op">=</span> <span class="va">Date</span>,</span>
+<span>    new_tests_OWID <span class="op">=</span> <span class="va">Daily.change.in.cumulative.total</span>,</span>
+<span>    cum_tests_OWID <span class="op">=</span> <span class="va">Cumulative.total</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="testing_demo_files/figure-html/unnamed-chunk-10-1.png" width="576"><img src="testing_demo_files/figure-html/unnamed-chunk-10-2.png" width="576"></p>
-</div>
-<div class="section level2">
-<h2 id="summary-of-testing-data-processing">Summary of testing data processing<a class="anchor" aria-label="anchor" href="#summary-of-testing-data-processing"></a>
-</h2>
-<ul>
-<li>
-<p>For each data source, we do the following:</p>
-<ul>
-<li><p>We interpolate the cumulative number of tests, and calculate the new daily tests and the 7-day average of new daily tests based on this interpolated metric.</p></li>
-<li><p>The maximum number of days we allow between two cumulative testing values for interpolation is 31 days(note that this can be changed by the param <code>find_maxgap</code> in `get_testing_long). Test positivity is based on the ratio of 7-day average of new daily cases (from JHU) to 7-day average of new daily tests.</p></li>
-<li><p>FIND scrapes websites and testing data sources once daily for a given date, thus if the original source does not update, the scraped value is the same. To be precise, if a the scraped cumulative test number has not changed on subsequent days, we interpret this as no update to the number of tests (that is, the original value from FIND provided for “new tests” is 0). To interpolate in a consistent manner across the two datasets, we first only consider an update to have occurred if the cumulative testing number has actually changed. So if the values are recorded as 90, 100, 100, 100, 100, 200 for Sunday through Friday, respectively, the interpolated series would be 90, 100, 125, 150, 175, 200.</p></li>
-<li><p>For a handful of countries,OWID is able to get the test positivity rate directly from the same source as number of tests, and we use this pre-computed value for the positivity rate in these cases as it may be more reliable.</p></li>
-</ul>
-</li>
-<li><p>For each data source, we extract the <strong>most recent available data point in the past 14 days</strong> for the 7-day average of new daily tests per 1000 and the test positivity rate.</p></li>
-<li><p>We flag the data point if in the 7 days used for the calculation there was a drop in the total number of tests, there was a sudden increase in the number of tests suggesting a reporting anomaly (currently set to 5% daily increase in the interpolated number of total tests), or there was a decrease in the total number of cases (with exceptions for a small number countries in OWID where the test positivity rate is not based on this number).</p></li>
-<li><p>We examine countries with recent data points (in the last 14 days) and with no quality flags.</p></li>
-<li><p>Among these countries, if a country/area has data points in both FIND and OWID, we select OWID.</p></li>
-<li><p>If a country has data, but none that pass the quality flags, the preferred data source is set to NA.</p></li>
-</ul>
-<p>We report the recent values for each country/area along with the preferred data source. Note that, it’s plausible that one week to the next, the preferred data source for a country could shift between FIND and OWID.</p>
-<div class="section level3">
-<h3 id="more-details-on-flags">More details on flags<a class="anchor" aria-label="anchor" href="#more-details-on-flags"></a>
-</h3>
-<p>As mentioned, we attempt to flag the following instances for implausibility to prevent bad quality data from being reported:</p>
-<ul>
-<li>
-<p><strong>Flag for negative values in new daily cases</strong>: Did total cases drop (perhaps due to revision) in the 7 days used for the calculation of the test positivity rate? If so, we flag this country/area, as the calculation of test positivity would be impacted by erroneous calculation of the denominator.</p>
-<ul>
-<li><p>Note this only impacts the risk matrix approach, where we look at test positivity. Furthermore, for some countries in OWID, we do not use this flag at all, as the test positivity rate is not calculated from JHU case data, but rather it is taken directly from the same source providing the number of tests.</p></li>
-<li><p>Note that currently, no flags are generated for FIND on this variable. Their dataset reports a <code>new_cases_orig</code> variable and it appears to never be negative – likely there is some handling of negative values by FIND before including it. We will investigate this and consider whether we should import our own JHU case data separately, so that we can generate create our own adjustments to new cases.</p></li>
-</ul>
-</li>
-<li><p><strong>Flag for drops in the cumulative number of tests</strong>: Did the total number of tests drop (perhaps due to revision) in the 7 or 14 days used for the calculations of the metrics? If so, we flag these values.</p></li>
-<li><p><strong>Flag for an implausible increase in the total number of tests</strong>: Did total tests increase by a dramatic amount since the last update? This may reflect either a considerable delay since the last update in cumulative tests reported, or it could be due to a substantial dumping of tests not previously reported, or an issue with the scraper. <strong>This flag requires fine-tuning</strong>, but we tentatively flag if there was greater than a 5% increase in cumulative tests in a day in the 7 or 14 days used in the calculation, after linearly interpolating between dates with no updates. This can be changed with the <code>flag_test_increase</code> parameter in the function <code>get_testing_long</code>.</p></li>
-</ul>
-</div>
-</div>
-<div class="section level2">
-<h2 id="more-details-on-owid-and-find-sources">More details on OWID and FIND sources<a class="anchor" aria-label="anchor" href="#more-details-on-owid-and-find-sources"></a>
-</h2>
-<div class="section level3">
-<h3 id="owid">OWID<a class="anchor" aria-label="anchor" href="#owid"></a>
-</h3>
-<p>A large benefit of OWID data is the detailed methodology listed on both their website and in published research.</p>
-<ul>
-<li>See the article in Scientific Data (Nature): <a href="https://www.nature.com/articles/s41597-020-00688-8" class="external-link uri">https://www.nature.com/articles/s41597-020-00688-8</a>
-</li>
-<li>See a detailed description of the issues at play as well as a detailed description of current methodology: <a href="https://ourworldindata.org/coronavirus-testing" class="external-link uri">https://ourworldindata.org/coronavirus-testing</a>
-</li>
-<li>The data can be accessed here: <a href="https://github.com/owid/covid-19-data/commits/master/public/data/testing" class="external-link uri">https://github.com/owid/covid-19-data/commits/master/public/data/testing</a>
-</li>
-<li>This testing data is slightly transformed and included in their full dataset: <a href="https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-codebook.csv" class="external-link uri">https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-codebook.csv</a>
-<ul>
-<li>Note that it appears their testing-specific dataset <a href="https://github.com/owid/covid-19-data/blob/master/public/data/testing/covid-testing-all-observations.csv" class="external-link">covid-testing-all.csv</a> may be slightly more up to date than their full COVID-19 dataset, <a href="https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-data.csv" class="external-link">owid-covid-data.csv</a>
-</li>
-</ul>
-</li>
-</ul>
-<p>Key features of this data:</p>
-<ul>
-<li><p>Updated about twice a week – but look at the <a href="https://github.com/owid/covid-19-data/blob/master/public/data/testing/covid-testing-all-observations.csv" class="external-link">GitHub commit history</a> to check for recent updates.</p></li>
-<li><p>OWID explicitly states whether the data is based on number of tests or number of individuals. <a href="https://ourworldindata.org/coronavirus-testing" class="external-link">Their metadata from their website</a> states additional information – what kinds of tests are included (e.g., PCR or PCR + Rapid). We scrape this metadata with the function <code>get_owid_metadata</code>.</p></li>
-<li><p>The main data input is the cumulative number of tests performed, or a time series of new daily tests for some number of countries like Sweden and France (whichever is provided). From their Scientific Data paper, <em>“Where a source provides a complete time series for daily tests, we derive an additional cumulative series as the simple running total of the raw daily data. Where a source provides cumulative figures, we derive an additional daily series as the day-to-day change observed in consecutive observations.”</em></p></li>
-<li><p>The cumulative value may not be updated daily – this depends on (1) the country updating and (2) OWID’s report frequency. If a historical time series is not made available, OWID will scan once or twice a week to obtain the cumulative test information. For example, the Dominican Republic reported on 2021/08/09 and 2021/08/16 that the cumulative number of tests was 1,875,579 and 1,910,033, respectively, with no values in between those dates (NAs). This is likely because the website was updating the cumulative number daily.</p></li>
-<li>
-<p>For the purposes of calculating a variable for new tests performed on a given day (7-day average, or <em>smoothed</em>), the OWID methodology assumes that the number of tests added was equal among the days in between. From their codebook: <em>“New tests for COVID-19 (7-day smoothed). For countries that don’t report testing data on a daily basis, we assume that testing changed equally on a daily basis over any periods in which no data was reported. This produces a complete series of daily figures, which is then averaged over a rolling 7-day window”</em></p>
-<ul>
-<li>For example, for the Dominican Republic, each of the 6 days in between 2021/08/09 and 2021/08/16 was assumed to add (1,910,033 - 1,875,579)/7 = 4,922 tests on the previous day’s total. The <em>new tests (smoothed 7-day average)</em> is then based on these values – for example, for 2021/08/16, the value is 4,922 tests.</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section level3">
-<h3 id="find">FIND<a class="anchor" aria-label="anchor" href="#find"></a>
-</h3>
-<p>FIND data has less detailed documentation on their methods – it is essentially all relegated to their code, which can be difficult to follow. Their data can be accessed from the following sources:</p>
-<ul>
-<li>Website with visualizations, and links to dataset at the bottom: <a href="https://www.finddx.org/covid-19/test-tracker/" class="external-link uri">https://www.finddx.org/covid-19/test-tracker/</a>
-</li>
-<li>Github and process description: <a href="https://github.com/dsbbfinddx/FINDCov19TrackerData" class="external-link uri">https://github.com/dsbbfinddx/FINDCov19TrackerData</a>
-</li>
-<li>FIND contains some descriptions of the individual countries, notes and sample types here: <a href="https://github.com/dsbbfinddx/FINDCov19TrackerData/blob/master/processed/unit_info.csv" class="external-link uri">https://github.com/dsbbfinddx/FINDCov19TrackerData/blob/master/processed/unit_info.csv</a>
-</li>
-<li>Codebook: <a href="https://github.com/dsbbfinddx/FINDCov19TrackerData/blob/master/processed/codebook.csv" class="external-link uri">https://github.com/dsbbfinddx/FINDCov19TrackerData/blob/master/processed/codebook.csv</a>
-</li>
-<li>Main dataset with the original and smoothed values for testing data: <a href="https://github.com/dsbbfinddx/FINDCov19TrackerData/blob/master/processed/data_all.csv" class="external-link uri">https://github.com/dsbbfinddx/FINDCov19TrackerData/blob/master/processed/data_all.csv</a>
-</li>
-<li>Additional dataset with the original and <em>corrected</em> values, used for countries with sudden drops in the number of tests: <a href="https://github.com/dsbbfinddx/FINDCov19TrackerData/blob/master/processed/coronavirus_tests.csv" class="external-link uri">https://github.com/dsbbfinddx/FINDCov19TrackerData/blob/master/processed/coronavirus_tests.csv</a>
-</li>
-</ul>
-<p>Key features of this data:</p>
-<ul>
-<li><p>Updated daily (and possibly multiple times per day). Check the <a href="https://github.com/dsbbfinddx/FINDCov19TrackerData/commits/master/processed/data_all.csv" class="external-link">GitHub commit history for updates</a>.<br></p></li>
-<li><p>The key data point is cumulative tests to date – this is scraped from various websites (some automatic, some manual). If a cumulative value scraped from a website is the same on Friday morning and Saturday morning, this is recorded in the file, and the date associated with these cumulative numbers is Friday and Saturday. Their measure of daily new tests is based on this difference and would be 0 (so should not be used, without some kind of smoothing or 7-day averaging).</p></li>
-<li>
-<p>Their data files include an original data series, a “corrected” series that attempts to adjust for large adjustments in the data series, and a smoothed version. It’s unclear what their methodology is, exactly, although all the details are in their code. <a href="https://github.com/dsbbfinddx/FINDCov19TrackerData/issues/117" class="external-link">Their response to a question was as follows</a>:</p>
-<ul>
-<li><p>“Your method fails to recreate the actual numbers because the _orig columns represent the data as reported by countries on that date. Sometimes, countries report lower cumulative number of tests compared to a value in the past, which creates a negative new_tests result. This is why we have added the _corrected columns in the file here. However many countries were reporting not as frequently as expected, which still was creating gaps in our time series, so we decided to smooth out the result before applying the the 7-day average, by filling the gaps between the most recent reported cumulative values. The function can be found <a href="https://github.com/dsbbfinddx/FINDCov19Tracker/blob/07200518ecd7facbb3a6727851bbf82a7e47018b/R/helper.R#L81" class="external-link">here</a>.”</p></li>
-<li><p>As an example similar to the above, whereas Dominican Republic was blank for the days of 2021/08/10 through 2021/08/15 in OWID, these were filled in by FIND. In this case, the values on 2021/08/09 and 2021/08/16 match between OWID and FIND.</p></li>
-</ul>
-</li>
-<li><p>In general, it appears the test positivity measure they provide is based on the smoothed versions of new tests in the last week, and the 7-day average of new cases in the last week (taken from JHU). In their dataset, this is <code>all_new_test</code> divided by <code>all_new_cases</code>.</p></li>
-</ul>
-<p>To <strong>summarize</strong>, there are 3 basic series provided by FIND:</p>
-<ul>
-<li>Original: scraping for total cumulative tests.</li>
-<li>Corrected: handling sudden negative revisions or drops in a particular way. Unclear about the exact details.</li>
-<li>Smoothed: Unclear about the exact details, at least sometimes a 7-day average, and based on the corrected values.</li>
-</ul>
-<p>SaviR functions work from the <strong>original</strong> values that FIND reports, and we use the same quality flags, summarized test metrics, and linear interpolation as with OWID (using a maximum gaps of 31 days).</p>
-</div>
-</div>
-<div class="section level2">
-<h2 id="appendix-checking-functions-to-make-sure-they-return-the-data-even-when-owid-switches-off">Appendix: checking functions to make sure they return the data even when OWID switches off<a class="anchor" aria-label="anchor" href="#appendix-checking-functions-to-make-sure-they-return-the-data-even-when-owid-switches-off"></a>
-</h2>
-<p>Checking functions to make sure they return data even when OWID data stops being updated:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># same as function in pkg except passing through testing_long</span></span>
-<span><span class="va">get_testing_mod</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">testing_long</span>,</span>
-<span>                             <span class="va">analysis_date</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">preferred</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_preferred_testpos7.html">get_preferred_testpos7</a></span><span class="op">(</span><span class="va">testing_long</span>, last_X_days <span class="op">=</span> <span class="fl">14</span>, </span>
-<span>        analysis_date <span class="op">=</span> <span class="va">analysis_date</span><span class="op">)</span></span>
-<span>    <span class="va">preferred_long</span> <span class="op">&lt;-</span> <span class="va">testing_long</span> <span class="op">%&gt;%</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">preferred</span> <span class="op">%&gt;%</span> </span>
-<span>        <span class="fu">select</span><span class="op">(</span><span class="va">id</span>, <span class="va">preferred_source</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> </span>
-<span>        <span class="va">preferred_source</span><span class="op">)</span></span>
-<span>    <span class="va">preferred_long_locf</span> <span class="op">&lt;-</span> </span>
-<span>      <span class="va">preferred_long</span> <span class="op">%&gt;%</span></span>
-<span>        <span class="fu">group_by</span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>        <span class="fu">arrange</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>        <span class="fu">mutate</span><span class="op">(</span>new_tests_smoothed_per_thousand <span class="op">=</span> <span class="fu">zoo</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/na.locf.html" class="external-link">na.locf</a></span><span class="op">(</span><span class="va">new_tests_daily7_per_1k</span>,</span>
-<span>          na.rm <span class="op">=</span> <span class="cn">F</span>, maxgap <span class="op">=</span> <span class="fl">14</span></span>
-<span>        <span class="op">)</span>, new_tests_smoothed_per_thousand_14 <span class="op">=</span> <span class="fu">zoo</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/na.locf.html" class="external-link">na.locf</a></span><span class="op">(</span><span class="va">new_tests_daily14_per_1k</span>,</span>
-<span>          na.rm <span class="op">=</span> <span class="cn">F</span>, maxgap <span class="op">=</span> <span class="fl">14</span></span>
-<span>        <span class="op">)</span>, positive_rate <span class="op">=</span> <span class="fu">zoo</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/na.locf.html" class="external-link">na.locf</a></span><span class="op">(</span><span class="va">positive_rate_7day</span>,</span>
-<span>          na.rm <span class="op">=</span> <span class="cn">F</span>, maxgap <span class="op">=</span> <span class="fl">14</span></span>
-<span>        <span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>        <span class="fu">ungroup</span><span class="op">(</span><span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>        <span class="fu">select</span><span class="op">(</span></span>
-<span>          <span class="va">id</span>,</span>
-<span>          <span class="va">date</span>, <span class="va">new_tests_smoothed_per_thousand</span>, <span class="va">new_tests_smoothed_per_thousand_14</span>,</span>
-<span>          <span class="va">positive_rate</span>, <span class="va">data_source</span></span>
-<span>        <span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">preferred_long_locf</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="co"># seems to work with just the </span></span>
-<span><span class="va">check_test</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">testing_long</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> <span class="st">"FIND"</span> <span class="op">|</span> <span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> <span class="st">"OWID"</span> <span class="op">&amp;</span> <span class="va">date</span> <span class="op">&lt;=</span> <span class="st">"2022-06-01"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">get_testing_mod</span><span class="op">(</span><span class="op">)</span> </span>
-<span></span>
-<span><span class="va">check_test</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">id</span>, fill <span class="op">=</span> <span class="va">new_tests_smoothed_per_thousand</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_tile</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="testing_demo_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">check_test</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">id</span>, fill <span class="op">=</span> <span class="va">data_source</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_tile</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="testing_demo_files/figure-html/unnamed-chunk-11-2.png" width="700"></p>
-<p>And with other sequence of functions:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">preferred_source</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="fu"><a href="../reference/get_preferred_testpos7.html">get_preferred_testpos7</a></span><span class="op">(</span></span>
-<span>    <span class="va">testing_long</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> <span class="st">"FIND"</span> <span class="op">|</span> <span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> <span class="st">"OWID"</span> <span class="op">&amp;</span> <span class="va">date</span> <span class="op">&lt;=</span> <span class="st">"2022-06-01"</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="va">preferred_source</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 199 × 58</span></span></span>
-<span><span class="co">##    id    preferred_…¹ preferre…² posit…³ posit…⁴ new_t…⁵ new_t…⁶ new_t…⁷ new_t…⁸</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> AFG   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> AGO   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> AIA   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> ALB   FIND         2022-08-31   0.246   0.441   <span style="text-decoration: underline;">1</span>231    <span style="text-decoration: underline;">1</span>279.   0.428   0.444</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> AND   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ARE   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ARG   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ARM   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> ATG   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> AUS   FIND         2022-08-31   0.257   0.221  <span style="text-decoration: underline;">45</span>394.  <span style="text-decoration: underline;">58</span>264.   1.78    2.28 </span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 189 more rows, 49 more variables: flag_negative_tests_previous7 &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   flag_increase_tests_previous7 &lt;dbl&gt;, flag_negative_cases_previous7 &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_date &lt;date&gt;, owid_new_cases &lt;dbl&gt;, owid_new_cases_daily7 &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_total_tests_orig &lt;dbl&gt;, owid_total_tests_int &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_new_tests_orig &lt;dbl&gt;, owid_new_tests_int &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_tests_daily7 &lt;dbl&gt;, owid_tests_daily7_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_tests_daily7_1k &lt;dbl&gt;, owid_tests_daily7_1k_prev &lt;dbl&gt;, …</span></span></span></code></pre>
-<p>Or just using test numbers over the past 14 days:</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_preferred_tests14.html">get_preferred_tests14</a></span><span class="op">(</span></span>
-<span>  <span class="va">testing_long</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> <span class="st">"FIND"</span> <span class="op">|</span> <span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> <span class="st">"OWID"</span> <span class="op">&amp;</span> <span class="va">date</span> <span class="op">&lt;=</span> <span class="st">"2022-06-01"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 195 × 39</span></span></span>
-<span><span class="co">##    id    preferred_…¹ preferre…² new_t…³ new_t…⁴ new_t…⁵ new_t…⁶ flag_…⁷ flag_…⁸</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> AFG   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> AGO   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> ALB   FIND         2022-08-31   <span style="text-decoration: underline;">1</span>255.   <span style="text-decoration: underline;">1</span>878.   0.436   0.653       0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> AND   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> ARE   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ARG   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ARM   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ATG   <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> AUS   FIND         2022-08-31  <span style="text-decoration: underline;">51</span>829.  <span style="text-decoration: underline;">68</span>057.   2.03    2.67        0       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> AUT   FIND         2022-08-31  <span style="text-decoration: underline;">65</span>884.  <span style="text-decoration: underline;">64</span>448.   7.32    7.16        0       0</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 185 more rows, 30 more variables: owid_date &lt;date&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_total_tests_orig &lt;dbl&gt;, owid_total_tests_int &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_new_tests_orig &lt;dbl&gt;, owid_new_tests_int &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_tests_daily14 &lt;dbl&gt;, owid_tests_daily14_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_tests_daily14_1k &lt;dbl&gt;, owid_tests_daily14_1k_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_flag_negative_tests &lt;dbl&gt;, owid_flag_increase_tests &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   owid_flag_negative_tests_prev14 &lt;dbl&gt;, …</span></span></span></code></pre>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">testing_long</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> <span class="st">"FIND"</span> <span class="op">|</span> <span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> <span class="st">"OWID"</span> <span class="op">&amp;</span> <span class="va">date</span> <span class="op">&lt;=</span> <span class="st">"2022-06-01"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">preferred_source</span> <span class="op">%&gt;%</span> </span>
-<span>            <span class="fu">select</span><span class="op">(</span><span class="va">id</span>, <span class="va">preferred_source</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> <span class="va">preferred_source</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 91,471 × 39</span></span></span>
-<span><span class="co">##    data_source id    date       popula…¹ total…² new_t…³ total…⁴ new_t…⁵ new_t…⁶</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> FIND        ALB   2020-01-22  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> FIND        ALB   2020-01-23  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> FIND        ALB   2020-01-24  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> FIND        ALB   2020-01-25  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> FIND        ALB   2020-01-26  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> FIND        ALB   2020-01-27  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> FIND        ALB   2020-01-28  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> FIND        ALB   2020-01-29  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> FIND        ALB   2020-01-30  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> FIND        ALB   2020-01-31  2<span style="text-decoration: underline;">878</span>000      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 91,461 more rows, 30 more variables: new_tests_daily7_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   new_tests_daily7_per_1k &lt;dbl&gt;, new_tests_daily7_per_1k_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   new_tests_daily14 &lt;dbl&gt;, new_tests_daily14_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   new_tests_daily14_per_1k &lt;dbl&gt;, new_tests_daily14_per_1k_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   new_cases_original &lt;dbl&gt;, new_cases_daily7 &lt;dbl&gt;, new_cases_daily14 &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   positive_rate_7day &lt;dbl&gt;, positive_rate_7day_prev &lt;dbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   FLAG_negative_tests_7day &lt;dbl&gt;, FLAG_negative_tests_14day &lt;dbl&gt;, …</span></span></span></code></pre>
-</div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_FIND</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/dsbbfinddx/FINDCov19TrackerData/master/processed/data_all.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">set</span> <span class="op">==</span> <span class="st">"country"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span></span>
+<span>    id <span class="op">=</span> <span class="va">unit</span>,</span>
+<span>    date <span class="op">=</span> <span class="va">time</span>,</span>
+<span>    new_tests_FIND <span class="op">=</span> <span class="va">new_tests_orig</span>,</span>
+<span>    cum_tests_FIND <span class="op">=</span> <span class="va">cum_tests_orig</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">onetable</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">right_join</span><span class="op">(</span><span class="fu"><a href="../reference/get_covid_df.html">get_covid_df</a></span><span class="op">(</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"iso2code"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">df_OWID</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"date"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">df_FIND</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"date"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>new_tests <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">new_tests_OWID</span><span class="op">)</span> <span class="op">~</span> <span class="va">new_tests_FIND</span>,</span>
+<span>    <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">new_tests_OWID</span></span>
+<span>  <span class="op">)</span><span class="op">)</span></span></code></pre></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
 </div>
