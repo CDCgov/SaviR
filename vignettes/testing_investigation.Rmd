@@ -8,7 +8,7 @@ vignette: |
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, dev.args = list(type = "cairo"))
+knitr::opts_chunk$set(echo = TRUE)
 library(SaviR)
 library(dplyr)
 library(tidyr)
