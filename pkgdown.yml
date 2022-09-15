@@ -6,5 +6,9 @@ articles:
   routine_report_start_chunk: routine_report_start_chunk.html
   savir_version_0.2_api_changes: savir_version_0.2_api_changes.html
   testing_demo: testing_demo.html
-last_built: 2022-09-12T18:32Z
+  testing_investigation: testing_investigation.html
+last_built: 2022-09-15T19:39Z
+urls:
+  reference: https://cdcgov.github.io/SaviR/reference
+  article: https://cdcgov.github.io/SaviR/articles
 

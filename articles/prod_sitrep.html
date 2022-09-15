@@ -44,7 +44,8 @@
     <a class="dropdown-item" href="../articles/prod_sitrep.html">COVID Visualizations (COVIS)</a>
     <a class="dropdown-item" href="../articles/routine_report_start_chunk.html">Routine Report Starting Chunk</a>
     <a class="dropdown-item" href="../articles/savir_version_0.2_api_changes.html">SaviR Version 0.2 API Changes</a>
-    <a class="dropdown-item" href="../articles/testing_demo.html">Testing Demo</a>
+    <a class="dropdown-item" href="../articles/testing_demo.html">Dynamic data source selection for testing data</a>
+    <a class="dropdown-item" href="../articles/testing_investigation.html">Testing Data Investigation</a>
   </div>
 </li>
       </ul>
@@ -68,8 +69,8 @@
 
 
 
-<link href="prod_sitrep_files/tabwid-1.0.0/tabwid.css" rel="stylesheet">
-<link href="prod_sitrep_files/tabwid-1.0.0/scrool.css" rel="stylesheet">
+<link href="prod_sitrep_files/tabwid-1.1.0/tabwid.css" rel="stylesheet">
+<link href="prod_sitrep_files/tabwid-1.1.0/scrool.css" rel="stylesheet">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>COVID Visualizations (COVIS)</h1>
@@ -725,53 +726,53 @@ New Cases</b></td>
 <tbody class="gt_table_body">
 <tr>
 <td class="gt_row gt_center">Japan</td>
-<td class="gt_row gt_center">789,736</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−28.8</td>
+<td class="gt_row gt_center">537,181</td>
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">−53.9</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Korea (South)</td>
-<td class="gt_row gt_center">516,524</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−15.9</td>
+<td class="gt_row gt_center">435,695</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−25.6</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">United States of America</td>
-<td class="gt_row gt_center">490,518</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−16.0</td>
+<td class="gt_row gt_center">430,048</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−25.6</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Russia</td>
-<td class="gt_row gt_center">330,613</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">4.1</td>
+<td class="gt_row gt_center">337,187</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">4.2</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Taiwan</td>
-<td class="gt_row gt_center">238,344</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">15.2</td>
+<td class="gt_row gt_center">239,152</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">8.0</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Germany</td>
-<td class="gt_row gt_center">199,915</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−2.9</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">Italy</td>
-<td class="gt_row gt_center">116,357</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−18.7</td>
+<td class="gt_row gt_center">203,070</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">0.5</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">France</td>
-<td class="gt_row gt_center">110,532</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">0.4</td>
+<td class="gt_row gt_center">113,083</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">4.8</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">Italy</td>
+<td class="gt_row gt_center">110,644</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−18.8</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">Greece</td>
+<td class="gt_row gt_center">75,984</td>
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">50.2</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Hong Kong</td>
-<td class="gt_row gt_center">71,864</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">9.7</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">Brazil</td>
-<td class="gt_row gt_center">69,970</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−30.2</td>
+<td class="gt_row gt_center">69,575</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">1.7</td>
 </tr>
 </tbody>
 <tfoot class="gt_sourcenotes">
@@ -779,7 +780,7 @@ New Cases</b></td>
 <td class="gt_sourcenote" colspan="3">Data Source: WHO Coronavirus Disease (COVID-19) Dashboard</td>
     </tr>
 <tr>
-<td class="gt_sourcenote" colspan="3">Data as of September 09, 2022</td>
+<td class="gt_sourcenote" colspan="3">Data as of September 11, 2022</td>
     </tr>
 </tfoot>
 <tfoot class="gt_footnotes"><tr>
@@ -1233,10 +1234,10 @@ New Cases<br>This Week
 United States of America
 </td>
 <td class="gt_row gt_center">
-490,518
+430,048
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−16.0
+−25.6
 </td>
 </tr>
 <tr>
@@ -1244,10 +1245,10 @@ United States of America
 Brazil
 </td>
 <td class="gt_row gt_center">
-69,970
+60,594
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−30.2
+−30.5
 </td>
 </tr>
 <tr>
@@ -1255,10 +1256,10 @@ Brazil
 Chile
 </td>
 <td class="gt_row gt_center">
-34,557
+32,268
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−21.9
+−19.5
 </td>
 </tr>
 <tr>
@@ -1266,10 +1267,10 @@ Chile
 Canada
 </td>
 <td class="gt_row gt_center">
-20,843
+18,365
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−9.1
+−11.9
 </td>
 </tr>
 <tr>
@@ -1277,32 +1278,10 @@ Canada
 Peru
 </td>
 <td class="gt_row gt_center">
-14,918
+12,390
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−13.5
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Argentina
-</td>
-<td class="gt_row gt_center">
-11,636
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−41.3
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Puerto Rico
-</td>
-<td class="gt_row gt_center">
-7,995
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−40.9
+−24.4
 </td>
 </tr>
 <tr>
@@ -1310,10 +1289,43 @@ Puerto Rico
 Mexico
 </td>
 <td class="gt_row gt_center">
-7,865
+8,808
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−45.6
+−36.4
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Costa Rica
+</td>
+<td class="gt_row gt_center">
+8,163
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−8.4
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Argentina
+</td>
+<td class="gt_row gt_center">
+7,902
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−32.1
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Puerto Rico
+</td>
+<td class="gt_row gt_center">
+7,793
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−39.2
 </td>
 </tr>
 <tr>
@@ -1321,21 +1333,10 @@ Mexico
 Guatemala
 </td>
 <td class="gt_row gt_center">
-4,199
-</td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−55.4
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Panama
-</td>
-<td class="gt_row gt_center">
-3,641
+6,437
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−32.3
+−19.6
 </td>
 </tr>
 </tbody>
@@ -1347,7 +1348,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -1791,10 +1792,10 @@ New Cases<br>This Week
 Iran
 </td>
 <td class="gt_row gt_center">
-6,756
+7,800
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−40.5
+−31.3
 </td>
 </tr>
 <tr>
@@ -1802,10 +1803,10 @@ Iran
 Qatar
 </td>
 <td class="gt_row gt_center">
-4,190
+4,247
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-8.0
+7.7
 </td>
 </tr>
 <tr>
@@ -1824,10 +1825,10 @@ Jordan
 United Arab Emirates
 </td>
 <td class="gt_row gt_center">
-2,900
+2,880
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−21.0
+−15.6
 </td>
 </tr>
 <tr>
@@ -1835,10 +1836,10 @@ United Arab Emirates
 Lebanon
 </td>
 <td class="gt_row gt_center">
-2,153
+1,931
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−30.9
+−28.3
 </td>
 </tr>
 <tr>
@@ -1846,10 +1847,10 @@ Lebanon
 Afghanistan
 </td>
 <td class="gt_row gt_center">
-1,683
+1,760
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−0.1
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+4.8
 </td>
 </tr>
 <tr>
@@ -1857,10 +1858,10 @@ Afghanistan
 Bahrain
 </td>
 <td class="gt_row gt_center">
-1,394
+1,448
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-3.8
+4.1
 </td>
 </tr>
 <tr>
@@ -1868,10 +1869,10 @@ Bahrain
 Pakistan
 </td>
 <td class="gt_row gt_center">
-1,341
+1,164
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−26.9
+−27.5
 </td>
 </tr>
 <tr>
@@ -1881,8 +1882,8 @@ Tunisia
 <td class="gt_row gt_center">
 962
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−10.0
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+38.4
 </td>
 </tr>
 <tr>
@@ -1890,10 +1891,10 @@ Tunisia
 Saudi Arabia
 </td>
 <td class="gt_row gt_center">
-650
+674
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-14.6
+17.2
 </td>
 </tr>
 </tbody>
@@ -1905,7 +1906,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -2360,32 +2361,10 @@ Réunion
 South Africa
 </td>
 <td class="gt_row gt_center">
-1,482
+1,792
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−0.3
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Nigeria
-</td>
-<td class="gt_row gt_center">
-605
-</td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-62.6
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Mali
-</td>
-<td class="gt_row gt_center">
-536
-</td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">
-211.6
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+40.5
 </td>
 </tr>
 <tr>
@@ -2393,32 +2372,65 @@ Mali
 Mauritius
 </td>
 <td class="gt_row gt_center">
-527
-</td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−65.0
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Tanzania
-</td>
-<td class="gt_row gt_center">
-217
+1,234
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−9.2
+−16.1
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Algeria
+Mali
+</td>
+<td class="gt_row gt_center">
+629
+</td>
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+140.1
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Nigeria
+</td>
+<td class="gt_row gt_center">
+583
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+26.7
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Burundi
+</td>
+<td class="gt_row gt_center">
+229
+</td>
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+104.5
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Benin
 </td>
 <td class="gt_row gt_center">
 148
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−43.5
+<td class="gt_row gt_center" style="background-color: #808080; color: #000000;">
+-
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Zimbabwe
+</td>
+<td class="gt_row gt_center">
+115
+</td>
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+105.4
 </td>
 </tr>
 <tr>
@@ -2426,32 +2438,21 @@ Algeria
 Cote d’Ivoire
 </td>
 <td class="gt_row gt_center">
-125
+111
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−37.5
+−45.0
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Ethiopia
+Algeria
 </td>
 <td class="gt_row gt_center">
-119
-</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-10.2
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Seychelles
-</td>
-<td class="gt_row gt_center">
-94
+106
 </td>
 <td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−59.0
+−57.8
 </td>
 </tr>
 </tbody>
@@ -2463,7 +2464,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -2907,10 +2908,10 @@ New Cases<br>This Week
 Russia
 </td>
 <td class="gt_row gt_center">
-330,613
+337,187
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-4.1
+4.2
 </td>
 </tr>
 <tr>
@@ -2918,21 +2919,10 @@ Russia
 Germany
 </td>
 <td class="gt_row gt_center">
-199,915
+203,070
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−2.9
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Italy
-</td>
-<td class="gt_row gt_center">
-116,357
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−18.7
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+0.5
 </td>
 </tr>
 <tr>
@@ -2940,10 +2930,21 @@ Italy
 France
 </td>
 <td class="gt_row gt_center">
-110,532
+113,083
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-0.4
+4.8
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Italy
+</td>
+<td class="gt_row gt_center">
+110,644
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−18.8
 </td>
 </tr>
 <tr>
@@ -2951,21 +2952,10 @@ France
 Greece
 </td>
 <td class="gt_row gt_center">
-42,155
+75,984
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−16.7
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Türkiye
-</td>
-<td class="gt_row gt_center">
-32,191
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−29.8
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
+50.2
 </td>
 </tr>
 <tr>
@@ -2973,21 +2963,10 @@ Türkiye
 Austria
 </td>
 <td class="gt_row gt_center">
-28,960
+28,883
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−10.6
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-United Kingdom
-</td>
-<td class="gt_row gt_center">
-25,067
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−10.9
+−4.1
 </td>
 </tr>
 <tr>
@@ -2995,10 +2974,21 @@ United Kingdom
 Poland
 </td>
 <td class="gt_row gt_center">
-23,309
+25,153
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-10.9
+24.2
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Türkiye
+</td>
+<td class="gt_row gt_center">
+22,441
+</td>
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−71.3
 </td>
 </tr>
 <tr>
@@ -3006,10 +2996,21 @@ Poland
 Serbia
 </td>
 <td class="gt_row gt_center">
-20,794
+21,176
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−15.5
+−6.9
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+United Kingdom
+</td>
+<td class="gt_row gt_center">
+17,181
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−40.3
 </td>
 </tr>
 </tbody>
@@ -3021,7 +3022,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -3465,10 +3466,10 @@ New Cases<br>This Week
 Japan
 </td>
 <td class="gt_row gt_center">
-789,736
+537,181
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−28.8
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−53.9
 </td>
 </tr>
 <tr>
@@ -3476,10 +3477,10 @@ Japan
 Korea (South)
 </td>
 <td class="gt_row gt_center">
-516,524
+435,695
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−15.9
+−25.6
 </td>
 </tr>
 <tr>
@@ -3487,10 +3488,10 @@ Korea (South)
 Taiwan
 </td>
 <td class="gt_row gt_center">
-238,344
+239,152
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-15.2
+8.0
 </td>
 </tr>
 <tr>
@@ -3498,10 +3499,10 @@ Taiwan
 Hong Kong
 </td>
 <td class="gt_row gt_center">
-71,864
+69,575
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-9.7
+1.7
 </td>
 </tr>
 <tr>
@@ -3509,10 +3510,10 @@ Hong Kong
 Australia
 </td>
 <td class="gt_row gt_center">
-60,987
+58,773
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−23.4
+−23.5
 </td>
 </tr>
 <tr>
@@ -3520,10 +3521,10 @@ Australia
 Viet Nam
 </td>
 <td class="gt_row gt_center">
-17,464
+20,467
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−3.8
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+28.7
 </td>
 </tr>
 <tr>
@@ -3531,10 +3532,10 @@ Viet Nam
 Philippines
 </td>
 <td class="gt_row gt_center">
-14,925
+17,160
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−11.6
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+2.3
 </td>
 </tr>
 <tr>
@@ -3542,10 +3543,10 @@ Philippines
 Malaysia
 </td>
 <td class="gt_row gt_center">
-14,683
+14,072
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−11.5
+−9.5
 </td>
 </tr>
 <tr>
@@ -3553,10 +3554,10 @@ Malaysia
 Singapore
 </td>
 <td class="gt_row gt_center">
-13,167
+13,712
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−6.3
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+1.9
 </td>
 </tr>
 <tr>
@@ -3564,10 +3565,10 @@ Singapore
 New Zealand
 </td>
 <td class="gt_row gt_center">
-11,078
+10,756
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−20.6
+−17.7
 </td>
 </tr>
 </tbody>
@@ -3579,7 +3580,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -4023,10 +4024,10 @@ New Cases<br>This Week
 India
 </td>
 <td class="gt_row gt_center">
-42,222
+38,824
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−20.8
+−19.8
 </td>
 </tr>
 <tr>
@@ -4034,10 +4035,10 @@ India
 Indonesia
 </td>
 <td class="gt_row gt_center">
-21,426
+19,950
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−22.4
+−24.0
 </td>
 </tr>
 <tr>
@@ -4045,10 +4046,10 @@ Indonesia
 Thailand
 </td>
 <td class="gt_row gt_center">
-10,378
+9,004
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−13.2
+−25.8
 </td>
 </tr>
 <tr>
@@ -4056,10 +4057,10 @@ Thailand
 Bangladesh
 </td>
 <td class="gt_row gt_center">
-1,979
+2,126
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-38.2
+47.2
 </td>
 </tr>
 <tr>
@@ -4067,10 +4068,10 @@ Bangladesh
 Burma
 </td>
 <td class="gt_row gt_center">
-1,002
+1,293
 </td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-96.1
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+116.6
 </td>
 </tr>
 <tr>
@@ -4078,10 +4079,10 @@ Burma
 Nepal
 </td>
 <td class="gt_row gt_center">
-882
+875
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−16.4
+−15.4
 </td>
 </tr>
 <tr>
@@ -4089,10 +4090,10 @@ Nepal
 Sri Lanka
 </td>
 <td class="gt_row gt_center">
-299
+268
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−31.7
+−37.2
 </td>
 </tr>
 <tr>
@@ -4100,10 +4101,10 @@ Sri Lanka
 Bhutan
 </td>
 <td class="gt_row gt_center">
-183
+186
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-11.6
+18.5
 </td>
 </tr>
 <tr>
@@ -4111,10 +4112,10 @@ Bhutan
 Maldives
 </td>
 <td class="gt_row gt_center">
-68
+42
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-0.0
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−38.2
 </td>
 </tr>
 <tr>
@@ -4122,10 +4123,10 @@ Maldives
 Timor-Leste
 </td>
 <td class="gt_row gt_center">
-32
+33
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-18.5
+32.0
 </td>
 </tr>
 </tbody>
@@ -4137,7 +4138,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -4582,38 +4583,43 @@ Data as of September 09, 2022
 <tbody class="gt_table_body">
 <tr>
 <td class="gt_row gt_center">Montserrat</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">271.7</td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">236.0</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">278.1</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">34.4</td>
 </tr>
 <tr>
-<td class="gt_row gt_center">Micronesia</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">191.9</td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">76.9</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">Taiwan</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">142.7</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">15.2</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">Korea (South)</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">142.4</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−15.9</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">Hong Kong</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">137.0</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">9.7</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">Cook Islands</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">97.5</td>
+<td class="gt_row gt_center">Martinique</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">152.9</td>
 <td class="gt_row gt_center" style="background-color: #808080; color: #000000;">-</td>
 </tr>
 <tr>
-<td class="gt_row gt_center">Japan</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">90.5</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−28.8</td>
+<td class="gt_row gt_center">Taiwan</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">143.2</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">8.0</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">Hong Kong</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">132.6</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">1.7</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">Korea (South)</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">120.1</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−25.6</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">Micronesia</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">104.4</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−44.3</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">Greece</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">103.9</td>
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">50.2</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">Slovenia</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">74.8</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">25.1</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Réunion</td>
@@ -4621,14 +4627,9 @@ Data as of September 09, 2022
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−33.5</td>
 </tr>
 <tr>
-<td class="gt_row gt_center">Slovenia</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">67.7</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">9.5</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">Greece</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">57.7</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−16.7</td>
+<td class="gt_row gt_center">Japan</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">61.6</td>
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">−53.9</td>
 </tr>
 </tbody>
 <tfoot class="gt_sourcenotes">
@@ -4636,7 +4637,7 @@ Data as of September 09, 2022
 <td class="gt_sourcenote" colspan="3">Data Source: WHO Coronavirus Disease (COVID-19) Dashboard</td>
     </tr>
 <tr>
-<td class="gt_sourcenote" colspan="3">Data as of September 09, 2022</td>
+<td class="gt_sourcenote" colspan="3">Data as of September 11, 2022</td>
     </tr>
 </tfoot>
 <tfoot class="gt_footnotes">
@@ -5096,21 +5097,21 @@ Incidence<br>Per 100,000<sup class="gt_footnote_marks">1</sup>
 Montserrat
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-271.7
+278.1
 </td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">
-236.0
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+34.4
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Puerto Rico
+Martinique
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-35.1
+152.9
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−40.9
+<td class="gt_row gt_center" style="background-color: #808080; color: #000000;">
+-
 </td>
 </tr>
 <tr>
@@ -5126,13 +5127,24 @@ Cayman Islands
 </tr>
 <tr>
 <td class="gt_row gt_center">
+Puerto Rico
+</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
+34.2
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−39.2
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
 Barbados
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-29.3
+30.2
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−38.0
+−13.8
 </td>
 </tr>
 <tr>
@@ -5150,11 +5162,22 @@ Bonaire, Sint Eustatius, and Saba
 <td class="gt_row gt_center">
 Chile
 </td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-25.3
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
+23.6
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−21.9
+−19.5
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Costa Rica
+</td>
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
+22.6
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−8.4
 </td>
 </tr>
 <tr>
@@ -5162,43 +5185,21 @@ Chile
 Virgin Islands, US
 </td>
 <td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-21.1
+20.0
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−45.2
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-United States of America
-</td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-20.8
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−16.0
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−51.7
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Aruba
+Saint Pierre and Miquelon
 </td>
 <td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-16.4
-</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-24.5
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Trinidad and Tobago
-</td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-13.1
+19.4
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−10.2
+−33.3
 </td>
 </tr>
 </tbody>
@@ -5210,7 +5211,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -5661,10 +5662,10 @@ Incidence<br>Per 100,000<sup class="gt_footnote_marks">1</sup>
 Qatar
 </td>
 <td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-22.3
+22.6
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-8.0
+7.7
 </td>
 </tr>
 <tr>
@@ -5672,10 +5673,10 @@ Qatar
 Bahrain
 </td>
 <td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-13.6
+14.1
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-3.8
+4.1
 </td>
 </tr>
 <tr>
@@ -5683,10 +5684,10 @@ Bahrain
 Lebanon
 </td>
 <td class="gt_row gt_center" style="background-color: #E7B351; color: #000000;">
-5.5
+4.9
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−30.9
+−28.3
 </td>
 </tr>
 <tr>
@@ -5697,7 +5698,7 @@ United Arab Emirates
 4.4
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−21.0
+−15.6
 </td>
 </tr>
 <tr>
@@ -5713,24 +5714,24 @@ Jordan
 </tr>
 <tr>
 <td class="gt_row gt_center">
+Iran
+</td>
+<td class="gt_row gt_center" style="background-color: #E7B351; color: #000000;">
+1.3
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−31.3
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
 Tunisia
 </td>
 <td class="gt_row gt_center" style="background-color: #E7B351; color: #000000;">
 1.1
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−10.0
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Iran
-</td>
-<td class="gt_row gt_center" style="background-color: #E7B351; color: #000000;">
-1.1
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−40.5
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+38.4
 </td>
 </tr>
 <tr>
@@ -5751,8 +5752,8 @@ Afghanistan
 <td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
 0.6
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−0.1
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+4.8
 </td>
 </tr>
 <tr>
@@ -5775,7 +5776,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -6234,6 +6235,17 @@ Réunion
 </tr>
 <tr>
 <td class="gt_row gt_center">
+Mauritius
+</td>
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
+13.6
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−16.1
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
 Seychelles
 </td>
 <td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
@@ -6241,17 +6253,6 @@ Seychelles
 </td>
 <td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
 −59.0
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Mauritius
-</td>
-<td class="gt_row gt_center" style="background-color: #E7B351; color: #000000;">
-5.8
-</td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−65.0
 </td>
 </tr>
 <tr>
@@ -6278,24 +6279,13 @@ Sao Tome and Principe
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Cabo Verde
-</td>
-<td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
-0.4
-</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-6.2
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
 South Africa
 </td>
 <td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
 0.4
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−0.3
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+40.5
 </td>
 </tr>
 <tr>
@@ -6303,32 +6293,43 @@ South Africa
 Mali
 </td>
 <td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
+0.4
+</td>
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+140.1
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Cabo Verde
+</td>
+<td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
 0.3
 </td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">
-211.6
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Togo
-</td>
-<td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
-0.1
-</td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−31.8
+−27.8
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Liberia
+Burundi
 </td>
 <td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
-0.1
+0.3
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-24.0
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+104.5
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Comoros
+</td>
+<td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
+0.2
+</td>
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+140.0
 </td>
 </tr>
 </tbody>
@@ -6340,7 +6341,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -6788,24 +6789,24 @@ Incidence<br>Per 100,000<sup class="gt_footnote_marks">1</sup>
 <tbody class="gt_table_body">
 <tr>
 <td class="gt_row gt_center">
-Slovenia
+Greece
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-67.7
+103.9
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-9.5
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
+50.2
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Greece
+Slovenia
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-57.7
+74.8
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−16.7
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+25.1
 </td>
 </tr>
 <tr>
@@ -6824,21 +6825,10 @@ Georgia
 Austria
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-46.4
+46.2
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−10.6
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Serbia
-</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-40.7
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−15.5
+−4.1
 </td>
 </tr>
 <tr>
@@ -6846,10 +6836,43 @@ Serbia
 Latvia
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-40.0
+42.9
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-2.1
+14.5
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Serbia
+</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
+41.5
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−6.9
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Liechtenstein
+</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
+38.4
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−11.0
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Moldova
+</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
+37.9
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+36.3
 </td>
 </tr>
 <tr>
@@ -6857,10 +6880,10 @@ Latvia
 San Marino
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-36.8
+35.6
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-19.2
+13.5
 </td>
 </tr>
 <tr>
@@ -6868,32 +6891,10 @@ San Marino
 Germany
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-34.2
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−2.9
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Russia
-</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-32.5
+34.8
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-4.1
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Italy
-</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-28.1
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−18.7
+0.5
 </td>
 </tr>
 </tbody>
@@ -6905,7 +6906,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -7353,35 +7354,13 @@ Incidence<br>Per 100,000<sup class="gt_footnote_marks">1</sup>
 <tbody class="gt_table_body">
 <tr>
 <td class="gt_row gt_center">
-Micronesia
-</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-191.9
-</td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-76.9
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
 Taiwan
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-142.7
+143.2
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-15.2
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Korea (South)
-</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-142.4
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−15.9
+8.0
 </td>
 </tr>
 <tr>
@@ -7389,21 +7368,32 @@ Korea (South)
 Hong Kong
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-137.0
+132.6
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-9.7
+1.7
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Cook Islands
+Korea (South)
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-97.5
+120.1
 </td>
-<td class="gt_row gt_center" style="background-color: #808080; color: #000000;">
--
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−25.6
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Micronesia
+</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
+104.4
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−44.3
 </td>
 </tr>
 <tr>
@@ -7411,43 +7401,21 @@ Cook Islands
 Japan
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-90.5
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−28.8
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Palau
-</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-43.6
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−20.3
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Niue
-</td>
-<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-36.9
+61.6
 </td>
 <td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−54.5
+−53.9
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Australia
+Brunei Darussalam
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-33.6
+49.7
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−23.4
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+14.0
 </td>
 </tr>
 <tr>
@@ -7455,10 +7423,43 @@ Australia
 Singapore
 </td>
 <td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
-31.7
+33.0
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+1.9
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Australia
+</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
+32.4
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−6.3
+−23.5
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+New Zealand
+</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
+30.0
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−17.7
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Niue
+</td>
+<td class="gt_row gt_center" style="background-color: #AA001E; color: #FFFFFF;">
+29.5
+</td>
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−69.2
 </td>
 </tr>
 </tbody>
@@ -7470,7 +7471,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -7924,7 +7925,7 @@ Bhutan
 3.4
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-11.6
+18.5
 </td>
 </tr>
 <tr>
@@ -7932,10 +7933,10 @@ Bhutan
 Thailand
 </td>
 <td class="gt_row gt_center" style="background-color: #E7B351; color: #000000;">
-2.1
+1.8
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−13.2
+−25.8
 </td>
 </tr>
 <tr>
@@ -7943,10 +7944,10 @@ Thailand
 Maldives
 </td>
 <td class="gt_row gt_center" style="background-color: #E7B351; color: #000000;">
-1.9
+1.2
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-0.0
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−38.2
 </td>
 </tr>
 <tr>
@@ -7954,21 +7955,10 @@ Maldives
 Indonesia
 </td>
 <td class="gt_row gt_center" style="background-color: #E7B351; color: #000000;">
-1.1
+1.0
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−22.4
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-India
-</td>
-<td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
-0.4
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−20.8
+−24.0
 </td>
 </tr>
 <tr>
@@ -7979,7 +7969,18 @@ Nepal
 0.4
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−16.4
+−15.4
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+India
+</td>
+<td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
+0.4
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−19.8
 </td>
 </tr>
 <tr>
@@ -7987,10 +7988,10 @@ Nepal
 Timor-Leste
 </td>
 <td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
-0.3
+0.4
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-18.5
+32.0
 </td>
 </tr>
 <tr>
@@ -8000,19 +8001,8 @@ Burma
 <td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
 0.3
 </td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-96.1
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Sri Lanka
-</td>
-<td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
-0.2
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−31.7
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+116.6
 </td>
 </tr>
 <tr>
@@ -8023,7 +8013,18 @@ Bangladesh
 0.2
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-38.2
+47.2
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Sri Lanka
+</td>
+<td class="gt_row gt_center" style="background-color: #F1E5A1; color: #000000;">
+0.2
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−37.2
 </td>
 </tr>
 </tbody>
@@ -8035,7 +8036,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -8487,34 +8488,44 @@ Data as of September 09, 2022
     </tr></thead>
 <tbody class="gt_table_body">
 <tr>
-<td class="gt_row gt_center">Rwanda</td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">284.6</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">13.6</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">Mali</td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">211.6</td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">6,600.0</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">Burma</td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">96.1</td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">689.0</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">Nigeria</td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">62.6</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−34.9</td>
-</tr>
-<tr>
 <td class="gt_row gt_center">Yemen</td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">50.0</td>
+<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">500.0</td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−25.0</td>
 </tr>
 <tr>
+<td class="gt_row gt_center">Mali</td>
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">140.1</td>
+<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">7,762.5</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">Burma</td>
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">116.6</td>
+<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">577.0</td>
+</tr>
+<tr>
 <td class="gt_row gt_center">Zimbabwe</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">45.2</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">15.4</td>
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">105.4</td>
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">85.5</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">Burundi</td>
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">104.5</td>
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">−69.7</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">Sudan</td>
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">64.3</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−23.3</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">Greece</td>
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">50.2</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−26.8</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">Bangladesh</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">47.2</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">38.5</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Ukraine</td>
@@ -8522,19 +8533,9 @@ Data as of September 09, 2022
 <td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">315.0</td>
 </tr>
 <tr>
-<td class="gt_row gt_center">Bangladesh</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">38.2</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">23.6</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">Madagascar</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">27.3</td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">−78.8</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">Sudan</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">21.1</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">−43.9</td>
+<td class="gt_row gt_center">South Africa</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">40.5</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">38.6</td>
 </tr>
 </tbody>
 <tfoot class="gt_sourcenotes">
@@ -8545,7 +8546,7 @@ Data as of September 09, 2022
 <td class="gt_sourcenote" colspan="3">Data Source: WHO Coronavirus Disease (COVID-19) Dashboard</td>
     </tr>
 <tr>
-<td class="gt_sourcenote" colspan="3">Data as of September 09, 2022</td>
+<td class="gt_sourcenote" colspan="3">Data as of September 11, 2022</td>
     </tr>
 </tfoot>
 <tfoot class="gt_footnotes">
@@ -9005,11 +9006,22 @@ Country/ Area
 <td class="gt_row gt_center">
 Saint Vincent and the Grenadines
 </td>
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+100.0
+</td>
 <td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
 60.0
 </td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Venezuela
+</td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-14.3
+33.8
+</td>
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−52.8
 </td>
 </tr>
 <tr>
@@ -9025,13 +9037,13 @@ Aruba
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Uruguay
+Trinidad and Tobago
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-9.2
+12.6
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-19.7
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−23.3
 </td>
 </tr>
 <tr>
@@ -9047,13 +9059,35 @@ Suriname
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Venezuela
+Bahamas
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+4.3
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−0.7
+−48.4
 </td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−65.7
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Grenada
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+0.0
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−21.9
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Costa Rica
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−8.4
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−28.8
 </td>
 </tr>
 <tr>
@@ -9061,7 +9095,7 @@ Venezuela
 Canada
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−9.1
+−11.9
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
 −27.1
@@ -9069,46 +9103,13 @@ Canada
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Bahamas
+Barbados
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−10.2
+−13.8
 </td>
 <td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−58.1
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Trinidad and Tobago
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−10.2
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−27.6
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Peru
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−13.5
-</td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−75.1
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-United States of America
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−16.0
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−32.0
+−80.3
 </td>
 </tr>
 </tbody>
@@ -9125,7 +9126,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -9575,8 +9576,8 @@ Country/ Area
 <td class="gt_row gt_center">
 Yemen
 </td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-50.0
+<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">
+500.0
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
 −25.0
@@ -9586,11 +9587,22 @@ Yemen
 <td class="gt_row gt_center">
 Sudan
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-21.1
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
+64.3
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−43.9
+−23.3
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Tunisia
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+38.4
+</td>
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−79.0
 </td>
 </tr>
 <tr>
@@ -9598,10 +9610,10 @@ Sudan
 Saudi Arabia
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-14.6
+17.2
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−38.6
+−30.2
 </td>
 </tr>
 <tr>
@@ -9609,10 +9621,21 @@ Saudi Arabia
 Qatar
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-8.0
+7.7
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−30.0
+−17.3
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Afghanistan
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+4.8
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−1.4
 </td>
 </tr>
 <tr>
@@ -9620,32 +9643,10 @@ Qatar
 Bahrain
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-3.8
+4.1
 </td>
 <td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−64.9
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Afghanistan
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−0.1
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−5.2
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Tunisia
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−10.0
-</td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−79.0
+−63.5
 </td>
 </tr>
 <tr>
@@ -9664,10 +9665,10 @@ Jordan
 United Arab Emirates
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−21.0
+−15.6
 </td>
 <td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−55.6
+−53.2
 </td>
 </tr>
 <tr>
@@ -9675,10 +9676,10 @@ United Arab Emirates
 Syria
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−26.1
+−19.2
 </td>
 <td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−62.2
+−64.6
 </td>
 </tr>
 </tbody>
@@ -9695,7 +9696,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -10143,24 +10144,35 @@ Country/ Area
 <tbody class="gt_table_body">
 <tr>
 <td class="gt_row gt_center">
-Rwanda
+Central African Republic
 </td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">
-284.6
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+150.0
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-13.6
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−54.5
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
 Mali
 </td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">
-211.6
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+140.1
 </td>
 <td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">
-6,600.0
+7,762.5
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Comoros
+</td>
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+140.0
+</td>
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−76.5
 </td>
 </tr>
 <tr>
@@ -10176,79 +10188,68 @@ Gabon
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Nigeria
+Liberia
 </td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-62.6
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+106.7
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−34.9
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−59.2
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
 Zimbabwe
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-45.2
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+105.4
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-15.4
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
+85.5
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Sao Tome and Principe
+Burundi
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-41.2
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+104.5
 </td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">
-380.0
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−69.7
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
 Eritrea
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-33.3
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+100.0
 </td>
 <td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−77.1
+−55.6
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Madagascar
+Sierra Leone
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-27.3
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+100.0
 </td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−78.8
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Liberia
-</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-24.0
-</td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−66.3
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−50.0
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Ethiopia
+Equatorial Guinea
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-10.2
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
+85.7
 </td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−53.3
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−18.8
 </td>
 </tr>
 </tbody>
@@ -10265,7 +10266,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -10713,6 +10714,17 @@ Country/ Area
 <tbody class="gt_table_body">
 <tr>
 <td class="gt_row gt_center">
+Greece
+</td>
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
+50.2
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−26.8
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
 Ukraine
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
@@ -10724,57 +10736,13 @@ Ukraine
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Jersey
+Moldova
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-26.2
-</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-3.9
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Slovakia
-</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-12.3
-</td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−58.7
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Poland
-</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-10.9
+36.3
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−5.5
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Armenia
-</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-9.7
-</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-26.0
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Czechia
-</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-9.6
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−5.8
+−19.9
 </td>
 </tr>
 <tr>
@@ -10782,21 +10750,32 @@ Czechia
 Slovenia
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-9.5
+25.1
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-0.5
+12.1
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Netherlands
+Poland
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-8.8
+24.2
 </td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−38.1
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+0.7
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Slovakia
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+22.7
+</td>
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−56.3
 </td>
 </tr>
 <tr>
@@ -10804,21 +10783,43 @@ Netherlands
 Uzbekistan
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-8.0
+17.2
 </td>
 <td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−57.5
+−51.2
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Cyprus
+Czechia
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-6.7
+15.1
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−48.2
+−0.2
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Latvia
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+14.5
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−41.3
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Lithuania
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+11.3
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−32.6
 </td>
 </tr>
 </tbody>
@@ -10835,7 +10836,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -11283,24 +11284,46 @@ Country/ Area
 <tbody class="gt_table_body">
 <tr>
 <td class="gt_row gt_center">
-Micronesia
+Papua New Guinea
 </td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-76.9
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+33.3
 </td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">
-240.0
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+0.0
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Vanuatu
+Viet Nam
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-28.8
+28.7
 </td>
-<td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">
-2,133.3
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+12.3
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Guam
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+16.8
+</td>
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−58.7
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Brunei Darussalam
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+14.0
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−47.9
 </td>
 </tr>
 <tr>
@@ -11308,21 +11331,32 @@ Vanuatu
 Taiwan
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-15.2
+8.0
 </td>
 <td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-59.4
+59.5
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Papua New Guinea
+Philippines
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-14.3
+2.3
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−20.0
+−39.6
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Singapore
+</td>
+<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
+1.9
+</td>
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−62.2
 </td>
 </tr>
 <tr>
@@ -11330,43 +11364,10 @@ Papua New Guinea
 Hong Kong
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-9.7
+1.7
 </td>
 <td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
-136.6
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Laos
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−1.0
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−2.6
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Viet Nam
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−3.8
-</td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−89.7
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Singapore
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−6.3
-</td>
-<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−65.6
+118.9
 </td>
 </tr>
 <tr>
@@ -11374,21 +11375,21 @@ Singapore
 Malaysia
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−11.5
+−9.5
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−45.6
+−47.3
 </td>
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Philippines
+Laos
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−11.6
+−12.8
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−47.0
+−2.2
 </td>
 </tr>
 </tbody>
@@ -11405,7 +11406,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -11855,11 +11856,11 @@ Country/ Area
 <td class="gt_row gt_center">
 Burma
 </td>
-<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
-96.1
+<td class="gt_row gt_center" style="background-color: #C92929; color: #FFFFFF;">
+116.6
 </td>
 <td class="gt_row gt_center" style="background-color: #7C0316; color: #FFFFFF;">
-689.0
+577.0
 </td>
 </tr>
 <tr>
@@ -11867,10 +11868,10 @@ Burma
 Bangladesh
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-38.2
+47.2
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-23.6
+38.5
 </td>
 </tr>
 <tr>
@@ -11878,10 +11879,10 @@ Bangladesh
 Timor-Leste
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-18.5
+32.0
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−15.8
+−25.0
 </td>
 </tr>
 <tr>
@@ -11889,32 +11890,10 @@ Timor-Leste
 Bhutan
 </td>
 <td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-11.6
+18.5
 </td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-39.7
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Maldives
-</td>
-<td class="gt_row gt_center" style="background-color: #E57E51; color: #000000;">
-0.0
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−35.8
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
-Thailand
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−13.2
-</td>
-<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−33.2
+<td class="gt_row gt_center" style="background-color: #D26230; color: #FFFFFF;">
+60.3
 </td>
 </tr>
 <tr>
@@ -11922,10 +11901,10 @@ Thailand
 Nepal
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−16.4
+−15.4
 </td>
 <td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−72.6
+−69.9
 </td>
 </tr>
 <tr>
@@ -11933,10 +11912,10 @@ Nepal
 India
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−20.8
+−19.8
 </td>
 <td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−63.6
+−64.0
 </td>
 </tr>
 <tr>
@@ -11944,10 +11923,21 @@ India
 Indonesia
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−22.4
+−24.0
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−43.6
+−47.2
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Thailand
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−25.8
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−39.2
 </td>
 </tr>
 <tr>
@@ -11955,10 +11945,21 @@ Indonesia
 Sri Lanka
 </td>
 <td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
-−31.7
+−37.2
 </td>
 <td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
-−77.4
+−78.5
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
+Maldives
+</td>
+<td class="gt_row gt_center" style="background-color: #C0EBEC; color: #000000;">
+−38.2
+</td>
+<td class="gt_row gt_center" style="background-color: #1F9FA9; color: #FFFFFF;">
+−57.1
 </td>
 </tr>
 </tbody>
@@ -11975,7 +11976,7 @@ Data Source: WHO Coronavirus Disease (COVID-19) Dashboard
 </tr>
 <tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr>
 </tfoot>
@@ -12436,13 +12437,13 @@ Data as of September 09, 2022
 </tr>
 <tr>
 <td class="gt_row gt_center">Qatar</td>
-<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">103.3</td>
-<td class="gt_row gt_center">NA</td>
+<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">103.6</td>
+<td class="gt_row gt_center">0.12</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Cuba</td>
 <td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">95.1</td>
-<td class="gt_row gt_center">0.33</td>
+<td class="gt_row gt_center">0.26</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Portugal</td>
@@ -12452,21 +12453,21 @@ Data as of September 09, 2022
 <tr>
 <td class="gt_row gt_center">Chile</td>
 <td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">92.7</td>
-<td class="gt_row gt_center">0.09</td>
+<td class="gt_row gt_center">0.10</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Singapore</td>
 <td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">92.1</td>
-<td class="gt_row gt_center">NA</td>
+<td class="gt_row gt_center">0.02</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Viet Nam</td>
-<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">91.6</td>
+<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">92.0</td>
 <td class="gt_row gt_center">NA</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Cambodia</td>
-<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">91.4</td>
+<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">91.5</td>
 <td class="gt_row gt_center">NA</td>
 </tr>
 <tr>
@@ -12475,13 +12476,13 @@ Data as of September 09, 2022
 <td class="gt_row gt_center">0.01</td>
 </tr>
 <tr>
-<td class="gt_row gt_center">Argentina</td>
+<td class="gt_row gt_center">Hong Kong</td>
 <td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">91.2</td>
-<td class="gt_row gt_center">0.04</td>
+<td class="gt_row gt_center">0.40</td>
 </tr>
 </tbody>
 <tfoot class="gt_sourcenotes"><tr>
-<td class="gt_sourcenote" colspan="3">Data as of September 09, 2022</td>
+<td class="gt_sourcenote" colspan="3">Data as of September 11, 2022</td>
     </tr></tfoot>
 <tfoot class="gt_footnotes">
 <tr>
@@ -12952,7 +12953,7 @@ Cuba
 95.1
 </td>
 <td class="gt_row gt_center">
-0.33
+0.26
 </td>
 </tr>
 <tr>
@@ -12963,7 +12964,7 @@ Chile
 92.7
 </td>
 <td class="gt_row gt_center">
-0.09
+0.10
 </td>
 </tr>
 <tr>
@@ -12985,7 +12986,7 @@ Peru
 88.5
 </td>
 <td class="gt_row gt_center">
-NA
+0.09
 </td>
 </tr>
 <tr>
@@ -12996,7 +12997,7 @@ Nicaragua
 88.3
 </td>
 <td class="gt_row gt_center">
-0.04
+NA
 </td>
 </tr>
 <tr>
@@ -13018,7 +13019,7 @@ Brazil
 87.1
 </td>
 <td class="gt_row gt_center">
-0.04
+0.03
 </td>
 </tr>
 <tr>
@@ -13057,7 +13058,7 @@ NA
 </tbody>
 <tfoot class="gt_sourcenotes"><tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr></tfoot>
 <tfoot class="gt_footnotes">
@@ -13523,10 +13524,10 @@ NA
 Qatar
 </td>
 <td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">
-103.3
+103.6
 </td>
 <td class="gt_row gt_center">
-NA
+0.12
 </td>
 </tr>
 <tr>
@@ -13548,7 +13549,7 @@ Kuwait
 81.0
 </td>
 <td class="gt_row gt_center">
-NA
+0.01
 </td>
 </tr>
 <tr>
@@ -13603,7 +13604,7 @@ Morocco
 67.4
 </td>
 <td class="gt_row gt_center">
-NA
+0.00
 </td>
 </tr>
 <tr>
@@ -13620,7 +13621,7 @@ Pakistan
 </tbody>
 <tfoot class="gt_sourcenotes"><tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr></tfoot>
 <tfoot class="gt_footnotes">
@@ -14105,10 +14106,10 @@ NA
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Botswana
+Liberia
 </td>
 <td class="gt_row gt_center" style="background-color: #193D3D; color: #FFFFFF;">
-65.5
+67.5
 </td>
 <td class="gt_row gt_center">
 NA
@@ -14127,10 +14128,21 @@ NA
 </tr>
 <tr>
 <td class="gt_row gt_center">
+Botswana
+</td>
+<td class="gt_row gt_center" style="background-color: #335B5A; color: #FFFFFF;">
+58.1
+</td>
+<td class="gt_row gt_center">
+NA
+</td>
+</tr>
+<tr>
+<td class="gt_row gt_center">
 Sao Tome and Principe
 </td>
 <td class="gt_row gt_center" style="background-color: #335B5A; color: #FFFFFF;">
-56.8
+57.0
 </td>
 <td class="gt_row gt_center">
 NA
@@ -14149,21 +14161,10 @@ NA
 </tr>
 <tr>
 <td class="gt_row gt_center">
-Liberia
-</td>
-<td class="gt_row gt_center" style="background-color: #335B5A; color: #FFFFFF;">
-51.0
-</td>
-<td class="gt_row gt_center">
-NA
-</td>
-</tr>
-<tr>
-<td class="gt_row gt_center">
 Mauritania
 </td>
 <td class="gt_row gt_center" style="background-color: #335B5A; color: #FFFFFF;">
-43.4
+43.5
 </td>
 <td class="gt_row gt_center">
 NA
@@ -14174,7 +14175,7 @@ NA
 Mozambique
 </td>
 <td class="gt_row gt_center" style="background-color: #335B5A; color: #FFFFFF;">
-41.9
+42.0
 </td>
 <td class="gt_row gt_center">
 NA
@@ -14183,7 +14184,7 @@ NA
 </tbody>
 <tfoot class="gt_sourcenotes"><tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr></tfoot>
 <tfoot class="gt_footnotes">
@@ -14707,7 +14708,7 @@ Ireland
 82.1
 </td>
 <td class="gt_row gt_center">
-NA
+0.01
 </td>
 </tr>
 <tr>
@@ -14718,7 +14719,7 @@ Finland
 81.7
 </td>
 <td class="gt_row gt_center">
-NA
+0.15
 </td>
 </tr>
 <tr>
@@ -14740,13 +14741,13 @@ Norway
 80.4
 </td>
 <td class="gt_row gt_center">
-NA
+0.16
 </td>
 </tr>
 </tbody>
 <tfoot class="gt_sourcenotes"><tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr></tfoot>
 <tfoot class="gt_footnotes">
@@ -15204,7 +15205,7 @@ Samoa
 104.8
 </td>
 <td class="gt_row gt_center">
-NA
+0.45
 </td>
 </tr>
 <tr>
@@ -15212,7 +15213,7 @@ NA
 Brunei Darussalam
 </td>
 <td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">
-100.8
+100.9
 </td>
 <td class="gt_row gt_center">
 NA
@@ -15226,7 +15227,7 @@ Singapore
 92.1
 </td>
 <td class="gt_row gt_center">
-NA
+0.02
 </td>
 </tr>
 <tr>
@@ -15234,7 +15235,7 @@ NA
 Viet Nam
 </td>
 <td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">
-91.6
+92.0
 </td>
 <td class="gt_row gt_center">
 NA
@@ -15245,7 +15246,7 @@ NA
 Cambodia
 </td>
 <td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">
-91.4
+91.5
 </td>
 <td class="gt_row gt_center">
 NA
@@ -15267,10 +15268,10 @@ China
 Hong Kong
 </td>
 <td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">
-91.0
+91.2
 </td>
 <td class="gt_row gt_center">
-NA
+0.40
 </td>
 </tr>
 <tr>
@@ -15292,7 +15293,7 @@ Taiwan
 90.6
 </td>
 <td class="gt_row gt_center">
-0.17
+0.14
 </td>
 </tr>
 <tr>
@@ -15303,13 +15304,13 @@ Korea (South)
 87.0
 </td>
 <td class="gt_row gt_center">
-NA
+0.02
 </td>
 </tr>
 </tbody>
 <tfoot class="gt_sourcenotes"><tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr></tfoot>
 <tfoot class="gt_footnotes">
@@ -15767,7 +15768,7 @@ Bhutan
 89.5
 </td>
 <td class="gt_row gt_center">
-NA
+0.00
 </td>
 </tr>
 <tr>
@@ -15778,7 +15779,7 @@ Nepal
 86.6
 </td>
 <td class="gt_row gt_center">
-NA
+0.36
 </td>
 </tr>
 <tr>
@@ -15789,7 +15790,7 @@ Thailand
 79.6
 </td>
 <td class="gt_row gt_center">
-0.02
+0.03
 </td>
 </tr>
 <tr>
@@ -15800,7 +15801,7 @@ Sri Lanka
 78.6
 </td>
 <td class="gt_row gt_center">
-NA
+0.04
 </td>
 </tr>
 <tr>
@@ -15811,7 +15812,7 @@ Bangladesh
 77.5
 </td>
 <td class="gt_row gt_center">
-0.08
+0.09
 </td>
 </tr>
 <tr>
@@ -15822,7 +15823,7 @@ Maldives
 76.5
 </td>
 <td class="gt_row gt_center">
-NA
+0.00
 </td>
 </tr>
 <tr>
@@ -15833,7 +15834,7 @@ Indonesia
 74.3
 </td>
 <td class="gt_row gt_center">
-NA
+0.01
 </td>
 </tr>
 <tr>
@@ -15866,13 +15867,13 @@ Timor-Leste
 64.3
 </td>
 <td class="gt_row gt_center">
-NA
+0.04
 </td>
 </tr>
 </tbody>
 <tfoot class="gt_sourcenotes"><tr>
 <td class="gt_sourcenote" colspan="3">
-Data as of September 09, 2022
+Data as of September 11, 2022
 </td>
 </tr></tfoot>
 <tfoot class="gt_footnotes">
@@ -16341,18 +16342,18 @@ Data as of September 09, 2022
 </tr>
 <tr>
 <td class="gt_row gt_center">Qatar</td>
-<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">103.3</td>
-<td class="gt_row gt_center">NA</td>
+<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">103.6</td>
+<td class="gt_row gt_center">0.12</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Singapore</td>
 <td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">91.8</td>
-<td class="gt_row gt_center">NA</td>
+<td class="gt_row gt_center">0.02</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Chile</td>
-<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">90.6</td>
-<td class="gt_row gt_center">0.09</td>
+<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">90.7</td>
+<td class="gt_row gt_center">0.10</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">China</td>
@@ -16362,16 +16363,16 @@ Data as of September 09, 2022
 <tr>
 <td class="gt_row gt_center">Cuba</td>
 <td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">88.7</td>
-<td class="gt_row gt_center">0.33</td>
+<td class="gt_row gt_center">0.26</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Hong Kong</td>
-<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">88.1</td>
-<td class="gt_row gt_center">NA</td>
+<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">88.5</td>
+<td class="gt_row gt_center">0.40</td>
 </tr>
 <tr>
 <td class="gt_row gt_center">Cambodia</td>
-<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">87.4</td>
+<td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">87.5</td>
 <td class="gt_row gt_center">NA</td>
 </tr>
 <tr>
@@ -16382,11 +16383,11 @@ Data as of September 09, 2022
 <tr>
 <td class="gt_row gt_center">Korea (South)</td>
 <td class="gt_row gt_center" style="background-color: #002020; color: #FFFFFF;">86.2</td>
-<td class="gt_row gt_center">NA</td>
+<td class="gt_row gt_center">0.02</td>
 </tr>
 </tbody>
 <tfoot class="gt_sourcenotes"><tr>
-<td class="gt_sourcenote" colspan="3">Data as of September 09, 2022</td>
+<td class="gt_sourcenote" colspan="3">Data as of September 11, 2022</td>
     </tr></tfoot>
 <tfoot class="gt_footnotes">
 <tr>
@@ -16424,7 +16425,7 @@ Data as of September 09, 2022
 <span><span class="va">vax_man</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_vax_manufacturers.html">get_vax_manufacturers</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/table_countriesofconcern.html">table_countriesofconcern</a></span><span class="op">(</span><span class="va">df_both_latest</span>, <span class="va">vax_man</span>, <span class="va">c_list_iso</span><span class="op">)</span></span></code></pre></div>
-<template id="42c93e4b-4c44-471e-8a17-78ba3693f935"><style>
+<template id="b2ea64c1-ef1d-4ff6-a695-7d27baf9b8c4"><style>
 .tabwid table{
   border-spacing:0px !important;
   border-collapse:collapse;
@@ -16433,8 +16434,6 @@ Data as of September 09, 2022
   margin-right:auto;
   border-width: 0;
   display: table;
-  margin-top: 1.275em;
-  margin-bottom: 1.275em;
   border-color: transparent;
 }
 .tabwid_left table{
@@ -16463,191 +16462,189 @@ background-color: transparent;
 }
 </style>
 <div class="tabwid">
-<style>.cl-5d8a2634{}.cl-5d82c088{font-family:'Calibri';font-size:9pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-5d82c09c{font-family:'Calibri';font-size:9pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-5d82dc6c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-5d82dc76{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-5d833ab8{width:72pt;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(128, 128, 128, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(128, 128, 128, 1.00);border-right: 1pt solid rgba(128, 128, 128, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5d833acc{width:180pt;background-color:rgba(214, 214, 214, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(128, 128, 128, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(128, 128, 128, 1.00);border-right: 1pt solid rgba(128, 128, 128, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5d833acd{width:72pt;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(128, 128, 128, 1.00);border-top: 1pt solid rgba(128, 128, 128, 1.00);border-left: 1pt solid rgba(128, 128, 128, 1.00);border-right: 1pt solid rgba(128, 128, 128, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5d833ad6{width:180pt;background-color:rgba(214, 214, 214, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(128, 128, 128, 1.00);border-top: 1pt solid rgba(128, 128, 128, 1.00);border-left: 1pt solid rgba(128, 128, 128, 1.00);border-right: 1pt solid rgba(128, 128, 128, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5d833ad7{width:180pt;background-color:rgba(31, 73, 125, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(128, 128, 128, 1.00);border-top: 1pt solid rgba(128, 128, 128, 1.00);border-left: 1pt solid rgba(128, 128, 128, 1.00);border-right: 1pt solid rgba(128, 128, 128, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5d833ae0{width:72pt;background-color:rgba(31, 73, 125, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(128, 128, 128, 1.00);border-top: 1pt solid rgba(128, 128, 128, 1.00);border-left: 1pt solid rgba(128, 128, 128, 1.00);border-right: 1pt solid rgba(128, 128, 128, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table class="table cl-5d8a2634">
+<style>.cl-5611c008{}.cl-5604fbc0{font-family:'Calibri';font-size:9pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-5604fbd4{font-family:'Calibri';font-size:9pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-560a7b04{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-560a7b18{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-560a9d14{width:180pt;background-color:rgba(31, 73, 125, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(128, 128, 128, 1.00);border-top: 1pt solid rgba(128, 128, 128, 1.00);border-left: 1pt solid rgba(128, 128, 128, 1.00);border-right: 1pt solid rgba(128, 128, 128, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-560a9d1e{width:72pt;background-color:rgba(31, 73, 125, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(128, 128, 128, 1.00);border-top: 1pt solid rgba(128, 128, 128, 1.00);border-left: 1pt solid rgba(128, 128, 128, 1.00);border-right: 1pt solid rgba(128, 128, 128, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-560a9d28{width:180pt;background-color:rgba(214, 214, 214, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(128, 128, 128, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(128, 128, 128, 1.00);border-right: 1pt solid rgba(128, 128, 128, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-560a9d32{width:72pt;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(128, 128, 128, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(128, 128, 128, 1.00);border-right: 1pt solid rgba(128, 128, 128, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-560a9d3c{width:180pt;background-color:rgba(214, 214, 214, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(128, 128, 128, 1.00);border-top: 1pt solid rgba(128, 128, 128, 1.00);border-left: 1pt solid rgba(128, 128, 128, 1.00);border-right: 1pt solid rgba(128, 128, 128, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-560a9d3d{width:72pt;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(128, 128, 128, 1.00);border-top: 1pt solid rgba(128, 128, 128, 1.00);border-left: 1pt solid rgba(128, 128, 128, 1.00);border-right: 1pt solid rgba(128, 128, 128, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table class="table cl-5611c008">
 <thead><tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad7"><p class="cl-5d82dc6c"><span class="cl-5d82c088">Country</span></p></td>
-<td class="cl-5d833ae0"><p class="cl-5d82dc76"><span class="cl-5d82c088">Denmark</span></p></td>
-<td class="cl-5d833ae0"><p class="cl-5d82dc76"><span class="cl-5d82c088">United Kingdom</span></p></td>
-<td class="cl-5d833ae0"><p class="cl-5d82dc76"><span class="cl-5d82c088">Kenya</span></p></td>
-<td class="cl-5d833ae0"><p class="cl-5d82dc76"><span class="cl-5d82c088">Portugal</span></p></td>
-<td class="cl-5d833ae0"><p class="cl-5d82dc76"><span class="cl-5d82c088">United States of America</span></p></td>
-<td class="cl-5d833ae0"><p class="cl-5d82dc76"><span class="cl-5d82c088">South Africa</span></p></td>
-<td class="cl-5d833ae0"><p class="cl-5d82dc76"><span class="cl-5d82c088">Zambia</span></p></td>
+<td class="cl-560a9d14"><p class="cl-560a7b04"><span class="cl-5604fbc0">Country</span></p></td>
+<td class="cl-560a9d1e"><p class="cl-560a7b18"><span class="cl-5604fbc0">Denmark</span></p></td>
+<td class="cl-560a9d1e"><p class="cl-560a7b18"><span class="cl-5604fbc0">United Kingdom</span></p></td>
+<td class="cl-560a9d1e"><p class="cl-560a7b18"><span class="cl-5604fbc0">Kenya</span></p></td>
+<td class="cl-560a9d1e"><p class="cl-560a7b18"><span class="cl-5604fbc0">Portugal</span></p></td>
+<td class="cl-560a9d1e"><p class="cl-560a7b18"><span class="cl-5604fbc0">United States of America</span></p></td>
+<td class="cl-560a9d1e"><p class="cl-560a7b18"><span class="cl-5604fbc0">South Africa</span></p></td>
+<td class="cl-560a9d1e"><p class="cl-560a7b18"><span class="cl-5604fbc0">Zambia</span></p></td>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833acc"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">Date</span></p></td>
-<td class="cl-5d833ab8"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-09-12</span></p></td>
-<td class="cl-5d833ab8"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-09-12</span></p></td>
-<td class="cl-5d833ab8"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-09-12</span></p></td>
-<td class="cl-5d833ab8"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-09-12</span></p></td>
-<td class="cl-5d833ab8"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-09-12</span></p></td>
-<td class="cl-5d833ab8"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-09-12</span></p></td>
-<td class="cl-5d833ab8"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-09-12</span></p></td>
+<td class="cl-560a9d28"><p class="cl-560a7b04"><span class="cl-5604fbd4">Date</span></p></td>
+<td class="cl-560a9d32"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-15</span></p></td>
+<td class="cl-560a9d32"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-15</span></p></td>
+<td class="cl-560a9d32"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-15</span></p></td>
+<td class="cl-560a9d32"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-15</span></p></td>
+<td class="cl-560a9d32"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-15</span></p></td>
+<td class="cl-560a9d32"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-15</span></p></td>
+<td class="cl-560a9d32"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-15</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">New Cases 7 Day Average</span><br><span class="cl-5d82c09c">(7 Day Average Case Incidence per 100,000)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">   781.3</span><br><span class="cl-5d82c09c">(13.35)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c"> 1,980.9</span><br><span class="cl-5d82c09c">(2.94)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">     8.6</span><br><span class="cl-5d82c09c">(0.02)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c"> 1,741.7</span><br><span class="cl-5d82c09c">(16.93)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">40,262.7</span><br><span class="cl-5d82c09c">(11.95)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">   227.6</span><br><span class="cl-5d82c09c">(0.38)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">    58.1</span><br><span class="cl-5d82c09c">(0.3)</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">New Cases 7 Day Average</span><br><span class="cl-5604fbd4">(7 Day Average Case Incidence per 100,000)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">   766.6</span><br><span class="cl-5604fbd4">(13.09)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">     299</span><br><span class="cl-5604fbd4">(0.44)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">       7</span><br><span class="cl-5604fbd4">(0.01)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4"> 2,396.9</span><br><span class="cl-5604fbd4">(23.29)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">59,468.7</span><br><span class="cl-5604fbd4">(17.65)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">   310.6</span><br><span class="cl-5604fbd4">(0.52)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">    58.1</span><br><span class="cl-5604fbd4">(0.3)</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">7 Day Cases</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">5,469</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">13,866</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">60</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">12,192</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">281,839</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">1,593</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">407</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">7 Day Cases</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">5,366</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">2,093</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">49</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">16,778</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">416,281</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">2,174</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">407</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">Previous 7 Day Cases</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">5,255</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">29,032</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">74</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">17,217</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">546,433</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">1,455</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">295</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">Previous 7 Day Cases</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">5,135</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">27,542</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">76</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">16,596</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">514,989</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">875</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">0</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">% Change in Cases from Previous 7 Days</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">4.1%</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">-52.2%</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">-18.9%</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">-29.2%</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">-48.4%</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">9.5%</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">38%</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">% Change in Cases from Previous 7 Days</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">4.5%</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">-92.4%</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">-35.5%</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">1.1%</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">-19.2%</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">148.5%</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4"></span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">New Deaths 7 Day Average</span><br><span class="cl-5d82c09c">(7 Day Average Death Incidence per 100,000)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">  4.6</span><br><span class="cl-5d82c09c">(0.08)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">  7.6</span><br><span class="cl-5d82c09c">(0.01)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">  0</span><br><span class="cl-5d82c09c">(0)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">  4.1</span><br><span class="cl-5d82c09c">(0.04)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">201.4</span><br><span class="cl-5d82c09c">(0.06)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">  3</span><br><span class="cl-5d82c09c">(0.01)</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">  0.1</span><br><span class="cl-5d82c09c">(0)</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">New Deaths 7 Day Average</span><br><span class="cl-5604fbd4">(7 Day Average Death Incidence per 100,000)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">  3.4</span><br><span class="cl-5604fbd4">(0.06)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">  0</span><br><span class="cl-5604fbd4">(0)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">  0.1</span><br><span class="cl-5604fbd4">(0)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">  6</span><br><span class="cl-5604fbd4">(0.06)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">370</span><br><span class="cl-5604fbd4">(0.11)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">  0</span><br><span class="cl-5604fbd4">(0)</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">  0.1</span><br><span class="cl-5604fbd4">(0)</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">7 Day Deaths</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">32</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">53</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">0</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">29</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">1,410</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">21</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">1</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">7 Day Deaths</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">24</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">0</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">1</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">42</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">2,590</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">0</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">1</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">Previous 7 Day Deaths</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">43</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">400</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">0</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">48</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2,691</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">24</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">0</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">Previous 7 Day Deaths</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">40</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">266</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">0</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">43</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">2,529</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">21</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">0</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">% Change in Deaths from Previous 7 Days</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">-25.6%</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">-86.8%</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c"></span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">-39.6%</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">-47.6%</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">-12.5%</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c"></span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">% Change in Deaths from Previous 7 Days</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">-40%</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">-100%</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4"></span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">-2.3%</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">2.4%</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">-100%</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4"></span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">Most Recent Date for Vaccinations</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-09-09</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-08-31</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-08-21</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-09-02</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-09-06</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-09-11</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">2022-08-29</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">Most Recent Date for Vaccinations</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-11</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-08-31</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-04</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-02</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-06</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-14</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">2022-09-13</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">People Vaccinated Per 100 People</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">82.28</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">79.96</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">23.85</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">94.77</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">79.25</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">37.52</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">38.72</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">People Vaccinated Per 100 People</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">82.28</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">79.96</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">25.39</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">94.77</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">79.25</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">37.54</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">38.72</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">People who completed primary</span><br><span class="cl-5d82c09c"> vaccination series per 100 People</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">81.68</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">75.40</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">17.65</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">86.63</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">67.58</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">32.59</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">29.32</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">People who completed primary</span><br><span class="cl-5604fbd4"> vaccination series per 100 People</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">81.68</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">75.40</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">18.84</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">86.63</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">67.58</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">32.60</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">30.05</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">Total Vaccinations Per 100 People</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">225.52</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">224.74</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c"> 39.47</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">241.97</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">183.94</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c"> 63.20</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c"> 45.82</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">Total Vaccinations Per 100 People</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">225.52</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">224.74</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4"> 39.82</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">241.97</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">183.94</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4"> 63.23</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4"> 46.77</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">Vaccines in Use</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Johnson&amp;Johnson, Moderna, Pfizer/BioNTech</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Moderna, Oxford/AstraZeneca, Pfizer/BioNTech</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Johnson&amp;Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Covaxin, Johnson&amp;Johnson, Moderna, Novavax, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Johnson&amp;Johnson, Moderna, Pfizer/BioNTech</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Johnson&amp;Johnson, Pfizer/BioNTech</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Johnson&amp;Johnson, Oxford/AstraZeneca, Sinopharm/Beijing</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">Vaccines in Use</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Johnson&amp;Johnson, Moderna, Pfizer/BioNTech</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Moderna, Oxford/AstraZeneca, Pfizer/BioNTech</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Johnson&amp;Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Covaxin, Johnson&amp;Johnson, Moderna, Novavax, Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinovac</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Johnson&amp;Johnson, Moderna, Pfizer/BioNTech</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Johnson&amp;Johnson, Pfizer/BioNTech</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Johnson&amp;Johnson, Oxford/AstraZeneca, Sinopharm/Beijing</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">% Delta since January 1, 2022</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">% Delta since January 1, 2022</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-5d833ad6"><p class="cl-5d82dc6c"><span class="cl-5d82c09c">% Omicron since January 1, 2022</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
-<td class="cl-5d833acd"><p class="cl-5d82dc76"><span class="cl-5d82c09c">Fill manually</span></p></td>
+<td class="cl-560a9d3c"><p class="cl-560a7b04"><span class="cl-5604fbd4">% Omicron since January 1, 2022</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
+<td class="cl-560a9d3d"><p class="cl-560a7b18"><span class="cl-5604fbd4">Fill manually</span></p></td>
 </tr>
 </tbody>
 </table>
-</div></template><div class="flextable-shadow-host" id="e53dec00-41cc-427b-9109-cd43d081500b"></div>
+</div></template><div class="flextable-shadow-host" id="8718c4fc-fa70-4f46-b6f5-68eea7498b1f"></div>
 <script>
-var dest = document.getElementById("e53dec00-41cc-427b-9109-cd43d081500b");
-var template = document.getElementById("42c93e4b-4c44-471e-8a17-78ba3693f935");
+var dest = document.getElementById("8718c4fc-fa70-4f46-b6f5-68eea7498b1f");
+var template = document.getElementById("b2ea64c1-ef1d-4ff6-a695-7d27baf9b8c4");
 var caption = template.content.querySelector("caption");
 if(caption) {
-  caption.style.cssText = "display:block;text-align:center;";
-  var newcapt = document.createElement("p");
-  newcapt.appendChild(caption)
-  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+  caption.style.cssText = caption.style.cssText+"display:block;";
+  dest.parentNode.insertBefore(caption, dest.previousSibling);
 }
 var fantome = dest.attachShadow({mode: 'open'});
 var templateContent = template.content;
