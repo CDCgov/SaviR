@@ -153,7 +153,7 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
         if (length(x) > 0) {
           return(x)
         }
-
+        
         class(x) <- c("XY", "MULTIPOLYGON", "sfg")
         x
       }

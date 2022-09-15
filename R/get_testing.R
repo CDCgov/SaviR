@@ -16,9 +16,30 @@
 #'
 get_testing_long <- function(find_maxgap = 31, flag_test_increase = 5) {
 
-
-
   # Download various OWID/FIND datasets
+  owid_longdata <- get_owid_testing_long(find_maxgap, flag_test_increase)
+  find_longdata <- get_find_testing_long(find_maxgap, flag_test_increase)
+
+  # Combine into a single longitudinal dataset and output
+  test_long <-
+    rbind(
+      owid_longdata %>%
+        mutate(data_source = "OWID"),
+      find_longdata[, names(owid_longdata)] %>%
+        mutate(data_source = "FIND")
+    ) %>%
+    relocate(data_source, id, date) %>%
+    arrange(data_source, id, date)
+
+  return(test_long)
+}
+
+#' @title Pulling and processing OWID Testing Data
+#' @param find_maxgap (numeric, default: 31) Gap between cumulative testing number to linearly interpolate
+#' @param flag_test_increase (numeric, default: 5) Flag for increase in interpolated cumulative tests
+#'
+#' @keywords internal
+get_owid_testing_long <- function(find_maxgap = 31, flag_test_increase = 5) {
   ## The testing-specific OWID dataset may be more up to date than the overall OWID dataset
   testing_OWID <- data.table::fread(datasource_lk$owid_testing, data.table = F, showProgress = F, verbose = F) %>%
     filter(!(Entity %in% c(
@@ -58,23 +79,6 @@ get_testing_long <- function(find_maxgap = 31, flag_test_increase = 5) {
     )
 
   full_OWID_tests <- full_join(full_OWID, testing_OWID, by = c("id", "date"))
-
-  full_FIND <-
-    data.table::fread(datasource_lk$find_testing, data.table = F, verbose = F, showProgress = F) %>%
-    filter(set == "country")
-
-  find_meta <-
-    data.table::fread(datasource_lk$find_metadata, data.table = F, verbose = F, showProgress = F) %>%
-    filter(set == "country") %>%
-    select(
-      id = unit,
-      tests_units = tests_description,
-      test_definition = tests_type
-    ) %>%
-    mutate(
-      case_definition = NA,
-      posrate_definition = NA
-    )
 
   owid_meta <- owid_testing_meta %>%
     rename(posrate_definition_old = posrate_definition) %>%
@@ -162,6 +166,58 @@ get_testing_long <- function(find_maxgap = 31, flag_test_increase = 5) {
       positive_rate_7day_prev = lag(positive_rate, 7)
     ) %>%
     ungroup()
+
+  owid_longdata <- left_join(owid_data, owid_meta, by = "id") %>%
+    mutate(
+      # When positivity rate is directly calculated from source, ignore the flag
+      FLAG_negative_cases_7day = replace(FLAG_negative_cases_7day, posrate_direct == TRUE, 0),
+      FLAG_negative_cases_14day = replace(FLAG_negative_cases_14day, posrate_direct == TRUE, 0),
+      FLAG_negative_cases_7day_prev = replace(FLAG_negative_cases_7day, posrate_direct == TRUE, 0),
+      FLAG_negative_cases_14day_prev = replace(FLAG_negative_cases_14day, posrate_direct == TRUE, 0)
+    ) %>%
+    rename(
+      total_tests_original = total_tests,
+      new_tests_original = new_tests,
+      new_cases_original = new_cases
+    ) %>%
+    select(
+      id, date, population,
+      total_tests_original, new_tests_original,
+      total_tests_int,
+      new_tests_int = new_tests_int2,
+      new_tests_daily7, new_tests_daily7_prev, new_tests_daily7_per_1k, new_tests_daily7_per_1k_prev,
+      new_tests_daily14, new_tests_daily14_prev, new_tests_daily14_per_1k, new_tests_daily14_per_1k_prev,
+      new_cases_original, new_cases_daily7, new_cases_daily14,
+      positive_rate_7day, positive_rate_7day_prev,
+      starts_with("FLAG_"),
+      tests_units, test_definition:posrate_definition, cumtest_available
+    ) %>%
+    select(-posrate_direct) %>%
+    arrange(id, date)
+}
+
+#' @title Pulling and processing OWID Testing Data
+#' @param find_maxgap (numeric, default: 31) Gap between cumulative testing number to linearly interpolate
+#' @param flag_test_increase (numeric, default: 5) Flag for increase in interpolated cumulative tests
+#'
+#' @keywords internal
+get_find_testing_long <- function(find_maxgap = 31, flag_test_increase = 5) {
+  full_FIND <-
+    data.table::fread(datasource_lk$find_testing, data.table = F, verbose = F, showProgress = F) %>%
+    filter(set == "country")
+
+  find_meta <-
+    data.table::fread(datasource_lk$find_metadata, data.table = F, verbose = F, showProgress = F) %>%
+    filter(set == "country") %>%
+    select(
+      id = unit,
+      tests_units = tests_description,
+      test_definition = tests_type
+    ) %>%
+    mutate(
+      case_definition = NA,
+      posrate_definition = NA
+    )
 
   #### Clean FIND ####
   find_countries <- full_FIND %>%
@@ -259,46 +315,7 @@ get_testing_long <- function(find_maxgap = 31, flag_test_increase = 5) {
     ) %>%
     arrange(id, date)
 
-  owid_longdata <- left_join(owid_data, owid_meta, by = "id") %>%
-    mutate(
-      # When positivity rate is directly calculated from source, ignore the flag
-      FLAG_negative_cases_7day = replace(FLAG_negative_cases_7day, posrate_direct == TRUE, 0),
-      FLAG_negative_cases_14day = replace(FLAG_negative_cases_14day, posrate_direct == TRUE, 0),
-      FLAG_negative_cases_7day_prev = replace(FLAG_negative_cases_7day, posrate_direct == TRUE, 0),
-      FLAG_negative_cases_14day_prev = replace(FLAG_negative_cases_14day, posrate_direct == TRUE, 0)
-    ) %>%
-    rename(
-      total_tests_original = total_tests,
-      new_tests_original = new_tests,
-      new_cases_original = new_cases
-    ) %>%
-    select(
-      id, date, population,
-      total_tests_original, new_tests_original,
-      total_tests_int,
-      new_tests_int = new_tests_int2,
-      new_tests_daily7, new_tests_daily7_prev, new_tests_daily7_per_1k, new_tests_daily7_per_1k_prev,
-      new_tests_daily14, new_tests_daily14_prev, new_tests_daily14_per_1k, new_tests_daily14_per_1k_prev,
-      new_cases_original, new_cases_daily7, new_cases_daily14,
-      positive_rate_7day, positive_rate_7day_prev,
-      starts_with("FLAG_"),
-      tests_units, test_definition:posrate_definition, cumtest_available
-    ) %>%
-    select(-posrate_direct) %>%
-    arrange(id, date)
-
-  # Combine into a single longitudinal dataset and output
-  test_long <-
-    rbind(
-      owid_longdata %>%
-        mutate(data_source = "OWID"),
-      find_longdata[, names(owid_longdata)] %>%
-        mutate(data_source = "FIND")
-    ) %>%
-    relocate(data_source, id, date) %>%
-    arrange(data_source, id, date)
-
-  return(test_long)
+  return(find_longdata)
 }
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
