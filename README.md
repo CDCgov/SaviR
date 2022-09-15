@@ -55,7 +55,7 @@ When loading SaviR, be sure to load in this package *last*.
 | Metadata Functions      | Get Functions        | Calculation Functions   |
 |-------------------------|----------------------|-------------------------|
 | get\_onetable           | get\_combined\_table | calc\_add\_risk         |
-| get\_country\_coords    | get\_covid\_sources  | calc\_vax\_carryforward |
+| get\_country\_coords    | get\_covid\_df       | calc\_vax\_carryforward |
 | get\_vax\_dates         | get\_testing         |                         |
 | get\_vax\_manufacturers | get\_testing\_long   |                         |
 |                         | get\_vax             |                         |
