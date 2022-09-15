@@ -34,7 +34,7 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
       ggplot2::theme_void() +
       ggplot2::scale_fill_manual(
         values = category_color_values, # Param
-        na.value = "white",
+        na.value = "#cccccc",
         drop = F,
         na.translate = T
       ) +
@@ -70,7 +70,7 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
     ggplot2::theme_void() +
     ggplot2::scale_fill_manual(
       values = category_color_values, # Param
-      na.value = "white",
+      na.value = "#cccccc",
       drop = F,
       labels = category_color_labels, # Param
       na.translate = T
