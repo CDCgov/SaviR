@@ -16,7 +16,6 @@ library(tidyr)
 library(lubridate)
 library(ggplot2)
 library(RcppRoll)
-library(lme4)
 ```
 
 ```{r Pull testing data}
