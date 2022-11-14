@@ -84,7 +84,9 @@
 <div class="section level2">
 <h2 id="background">Background<a class="anchor" aria-label="anchor" href="#background"></a>
 </h2>
-<p>SaviR version 0.2 brings some major revisions to the SaviR API design; some complementary and some breaking. I’ll highlight a few of them below.</p>
+<p>SaviR version 0.2 brings some major revisions to the SaviR API
+design; some complementary and some breaking. I’ll highlight a few of
+them below.</p>
 </div>
 <div class="section level2">
 <h2 id="standardization-of-geography-columns-across-datasets">Standardization of geography columns across datasets<a class="anchor" aria-label="anchor" href="#standardization-of-geography-columns-across-datasets"></a>
@@ -92,13 +94,20 @@
 <div class="section level3">
 <h3 id="black-box-warning">Black box warning<a class="anchor" aria-label="anchor" href="#black-box-warning"></a>
 </h3>
-<p><strong>This will have a pretty substantial impact on all products, and will likely break most existing downstream code…</strong></p>
+<p><strong>This will have a pretty substantial impact on all products,
+and will likely break most existing downstream code…</strong></p>
 </div>
 <div class="section level3">
 <h3 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
 </h3>
-<p>All data pull functions use different naming schemes for ISO country codes and country names. It’s never apparent which column to join on, and after joining, it’s very difficult to reason what came from where. I’m attempting to standardize all ISO code columns to either iso2code or id (iso3code) depending on their value.</p>
-<p>There should be no guesswork involved when joining disparate datasets (it’s always id or iso2code, and they should join without specifying a <code>by</code> argument).</p>
+<p>All data pull functions use different naming schemes for ISO country
+codes and country names. It’s never apparent which column to join on,
+and after joining, it’s very difficult to reason what came from where.
+I’m attempting to standardize all ISO code columns to either iso2code or
+id (iso3code) depending on their value.</p>
+<p>There should be no guesswork involved when joining disparate datasets
+(it’s always id or iso2code, and they should join without specifying a
+<code>by</code> argument).</p>
 </div>
 <div class="section level3">
 <h3 id="impact">Impact<a class="anchor" aria-label="anchor" href="#impact"></a>
@@ -129,7 +138,9 @@
 </li>
 <li>Removing <code>who_region</code>, <code>region</code>
 <ul>
-<li>These are both provided in <code>onetable</code>, and <code><a href="../reference/get_covid_df.html">get_covid_df()</a></code> is never used without joining to this metadata table</li>
+<li>These are both provided in <code>onetable</code>, and
+<code><a href="../reference/get_covid_df.html">get_covid_df()</a></code> is never used without joining to this
+metadata table</li>
 </ul>
 </li>
 </ul>
@@ -144,7 +155,8 @@
 <li>
 <code>location</code> -&gt; <code>owid_country</code>
 <ul>
-<li>Still not ideal, but it should be apparent where that column comes from</li>
+<li>Still not ideal, but it should be apparent where that column comes
+from</li>
 </ul>
 </li>
 <li>URL for <code><a href="../reference/get_vax_manufacturers.html">get_vax_manufacturers()</a></code> changed</li>
@@ -204,7 +216,8 @@
 <div class="section level2">
 <h2 id="new-starting-block-function-get_combined_table">New “Starting Block” function <code>get_combined_table()</code><a class="anchor" aria-label="anchor" href="#new-starting-block-function-get_combined_table"></a>
 </h2>
-<p>Many scripts accomplished this task differently, and it was never clear to most exactly how to pull and join these data together.</p>
+<p>Many scripts accomplished this task differently, and it was never
+clear to most exactly how to pull and join these data together.</p>
 <p>No one is forced to use it, but there is now an automated way to:</p>
 <ul>
 <li>Pull metadata, case + death data, and vaccine data</li>
@@ -215,7 +228,8 @@
 <p><code><a href="../reference/get_combined_table.html">get_combined_table()</a></code> takes two arguments:</p>
 <ul>
 <li>type: one of “WHO” or “Both”, based on which source you’d like</li>
-<li>geometry: TRUE/FALSE (default:TRUE) based on whether you’d like geometry or not.</li>
+<li>geometry: TRUE/FALSE (default:TRUE) based on whether you’d like
+geometry or not.</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">who_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_combined_table.html">get_combined_table</a></span><span class="op">(</span><span class="st">"WHO"</span><span class="op">)</span></span>
@@ -250,13 +264,17 @@
 <div class="section level2">
 <h2 id="vaccine-carry-forward">Vaccine carry-forward<a class="anchor" aria-label="anchor" href="#vaccine-carry-forward"></a>
 </h2>
-<p>We were running into issues where vaccination data were sometimes carried forward, but not always.</p>
-<p>Since this is generally the behavior we want, I’ve applied it within SaviR using a new function, <code><a href="../reference/calc_vax_carryforward.html">calc_vax_carryforward()</a></code></p>
+<p>We were running into issues where vaccination data were sometimes
+carried forward, but not always.</p>
+<p>Since this is generally the behavior we want, I’ve applied it within
+SaviR using a new function, <code><a href="../reference/calc_vax_carryforward.html">calc_vax_carryforward()</a></code></p>
 <div class="section level3">
 <h3 id="calc_vax_carryforward">
 <code>calc_vax_carryforward()</code><a class="anchor" aria-label="anchor" href="#calc_vax_carryforward"></a>
 </h3>
-<p>This function is used internally in <code><a href="../reference/get_vax.html">get_vax()</a></code> and <code><a href="../reference/get_combined_table.html">get_combined_table()</a></code> to carry-forward the following columns:</p>
+<p>This function is used internally in <code><a href="../reference/get_vax.html">get_vax()</a></code> and
+<code><a href="../reference/get_combined_table.html">get_combined_table()</a></code> to carry-forward the following
+columns:</p>
 <ul>
 <li><code>total_vaccinations</code></li>
 <li><code>people_vaccinated</code></li>
@@ -267,25 +285,31 @@
 <li><code>people_fully_vaccinated_per_hundred</code></li>
 <li><code>total_boosters_per_hundred</code></li>
 </ul>
-<p>Passing columns to <code>calc_vax_carryforward</code> overrides that behavior, but there isn’t presently a need for that.</p>
+<p>Passing columns to <code>calc_vax_carryforward</code> overrides that
+behavior, but there isn’t presently a need for that.</p>
 </div>
 <div class="section level3">
 <h3 id="get_vax_dates">
 <code>get_vax_dates()</code><a class="anchor" aria-label="anchor" href="#get_vax_dates"></a>
 </h3>
-<p>Because vaccine data are carried-forward, the old way of computing the date the vaccine data were last updated is no longer possible. Instead, I’ve created a function which computes those dates automatically, <code><a href="../reference/get_vax_dates.html">get_vax_dates()</a></code></p>
-<p><code><a href="../reference/get_vax_dates.html">get_vax_dates()</a></code> takes no arguments, but returns a data frame with 1 row per country detailing when each vaccine metric was last updated.</p>
+<p>Because vaccine data are carried-forward, the old way of computing
+the date the vaccine data were last updated is no longer possible.
+Instead, I’ve created a function which computes those dates
+automatically, <code><a href="../reference/get_vax_dates.html">get_vax_dates()</a></code></p>
+<p><code><a href="../reference/get_vax_dates.html">get_vax_dates()</a></code> takes no arguments, but returns a data
+frame with 1 row per country detailing when each vaccine metric was last
+updated.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">vax_dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_vax_dates.html">get_vax_dates</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">vax_dates</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    owid_country  id total_doses_date partial_date fully_date booster_date</span></span>
-<span><span class="co">#&gt; 1:  Afghanistan AFG       2022-09-12   2022-09-12 2022-09-12         &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 2:      Albania ALB       2022-09-04   2022-09-04 2022-09-04   2022-09-04</span></span>
+<span><span class="co">#&gt; 1:  Afghanistan AFG       2022-11-08   2022-11-08 2022-11-08         &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2:      Albania ALB       2022-10-23   2022-10-23 2022-10-23   2022-10-23</span></span>
 <span><span class="co">#&gt; 3:      Algeria DZA       2022-09-04   2022-09-04 2022-09-04   2022-09-04</span></span>
-<span><span class="co">#&gt; 4:      Andorra AND       2022-09-04   2022-09-04 2022-09-04   2022-09-04</span></span>
-<span><span class="co">#&gt; 5:       Angola AGO       2022-09-04   2022-09-04 2022-09-04   2022-09-04</span></span>
-<span><span class="co">#&gt; 6:     Anguilla AIA       2022-08-19   2022-08-19 2022-08-19   2022-08-19</span></span></code></pre></div>
+<span><span class="co">#&gt; 4:      Andorra AND       2022-10-16   2022-10-16 2022-10-16   2022-10-16</span></span>
+<span><span class="co">#&gt; 5:       Angola AGO       2022-10-30   2022-10-30 2022-10-30   2022-10-30</span></span>
+<span><span class="co">#&gt; 6:     Anguilla AIA       2022-10-21   2022-10-21 2022-10-21   2022-10-21</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
