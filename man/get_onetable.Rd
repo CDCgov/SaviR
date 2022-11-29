@@ -6,14 +6,14 @@
 \usage{
 get_onetable(
   usaid_metadata_file = NULL,
-  vintage = 2021,
+  vintage = 2022,
   country_geometries = country_coords
 )
 }
 \arguments{
 \item{usaid_metadata_file}{(character, optional) A file path to the file containing DoS regions. Expects at least two columns, \link{"iso_alpha3", "state_region"}}
 
-\item{vintage}{(numeric, default: 2021) The year of population projections to use from UN data}
+\item{vintage}{(numeric, default: 2022) The year of population projections to use from UN data}
 
 \item{country_geometries}{(data.frame, default: country_coords) a data.frame/sfc with at least two columns: \link{"iso3code", "geometry"}}
 }

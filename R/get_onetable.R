@@ -8,7 +8,7 @@
 #' Note: Department of State (DoS) regions are handled externally in a CSV file.
 
 #' @param usaid_metadata_file (character, optional) A file path to the file containing DoS regions. Expects at least two columns, ["iso_alpha3", "state_region"]
-#' @param vintage (numeric, default: 2021) The year of population projections to use from UN data
+#' @param vintage (numeric, default: 2022) The year of population projections to use from UN data
 #' @param country_geometries (data.frame, default: country_coords) a data.frame/sfc with at least two columns: ["iso3code", "geometry"]
 
 #' @return Returns a df of 238 rows and 10 columns, including:
@@ -41,7 +41,13 @@
 #' usethis::use_data(onetable, overwrite = TRUE)
 #' }
 #'
-get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geometries = country_coords) {
+get_onetable <- function(usaid_metadata_file = NULL, vintage = 2022, country_geometries = country_coords) {
+
+  # Downloading the only excel file we need ahead of time
+  un_age_projections_file <- tempfile(fileext = ".xlsx")
+  download.file(datasource_lk$un_age_projections, un_age_projections_file)
+
+  on.exit(unlink(un_age_projections_file), add = TRUE)
 
   ## Country List
   # From COVID sources.
@@ -125,7 +131,10 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2021, country_geo
     mutate(total = 1000 * as.numeric(PopTotal)) %>%
     distinct(LocID, Time, total)
 
-  df_un_medium_pop_est_single_year <- openxlsx::read.xlsx(datasource_lk$un_age_projections, sheet = 1, startRow = 17) %>%
+  df_un_medium_pop_est_single_year <- bind_rows(
+    openxlsx::read.xlsx(un_age_projections_file, sheet = 1, startRow = 17), # Estimates in current vintage
+    openxlsx::read.xlsx(un_age_projections_file, sheet = 2, startRow = 17) # Medium-variant projectsion in current vintage
+  ) %>%
     filter(Year == vintage) %>%
     semi_join(df_un_location_meta, by = c("Location.code" = "LocID")) %>% # Filter to only countries, to speed up summarize step
     select(LocID = Location.code, Time = Year, `18+`) %>%
