@@ -139,7 +139,9 @@ manual_iso3_lk <- list(
 #' to be updated as needed.
 datasource_lk <- list(
   # OWID cases and deaths
-  owid_all = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv",
+  # SB Note: Beginning Mar 8, 2023 OWID has ceased pulling from JHU
+  # and JHU will cease operations itself on Mar 10, 2023. This will contain legacy data
+  owid_all = "https://covid.ourworldindata.org/data/owid-covid-data-old.csv",
   # OWID Testing dataset
   owid_testing = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/testing/covid-testing-all-observations.csv",
   # Testing data and metadata from FIND
