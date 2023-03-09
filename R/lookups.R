@@ -142,6 +142,11 @@ datasource_lk <- list(
   # SB Note: Beginning Mar 8, 2023 OWID has ceased pulling from JHU
   # and JHU will cease operations itself on Mar 10, 2023. This will contain legacy data
   owid_all = "https://covid.ourworldindata.org/data/owid-covid-data-old.csv",
+  # HK Cases and Deaths
+  hk_case_deaths = "http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_covid_19_eng.csv",
+  # Taiwan Cases and Deaths
+  taiwan_cases = "https://data.cdc.gov.tw/en/download?resourceid=a65c7cb5-8a3c-4859-a27a-9019f65dd66e&dataurl=https://od.cdc.gov.tw/eic/Day_Confirmation_Age_County_Gender_19CoV.csv",
+  taiwan_deaths = "https://data.cdc.gov.tw/en/download?resourceid=a12dfeba-0dea-4b3f-b1b0-1bf3524b3ca9&dataurl=https://od.cdc.gov.tw/eic/open_data_death_date_statistics_19CoV_5.csv",
   # OWID Testing dataset
   owid_testing = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/testing/covid-testing-all-observations.csv",
   # Testing data and metadata from FIND
