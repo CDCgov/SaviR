@@ -140,14 +140,14 @@ get_hk_data <- function() {
       # Started tracking new deaths via this variable in Jan 2023
       cumulative_deaths = if_else(
         !is.na(`Number of death cases related to COVID-19`),
-        cumulative_deaths + cumsum(tidyr::replace_na(`Number of death cases related to COVID-19`, 0)),
-        cumulative_deaths
+        as.double(cumulative_deaths + cumsum(tidyr::replace_na(`Number of death cases related to COVID-19`, 0))),
+        as.double(cumulative_deaths)
       ),
       # Started tracking new cases via this variable in Jan 2023
       cumulative_cases = if_else(
         !is.na(`Number of positive nucleic acid test laboratory detections`),
-        cumulative_cases + cumsum(tidyr::replace_na(`Number of positive nucleic acid test laboratory detections`, 0)),
-        cumulative_cases
+        as.double(cumulative_cases + cumsum(tidyr::replace_na(`Number of positive nucleic acid test laboratory detections`, 0))),
+        as.double(cumulative_cases)
       ),
       new_cases = cumulative_cases - lag(cumulative_cases, default = 0),
       new_deaths = cumulative_deaths - lag(cumulative_deaths, default = 0)
