@@ -4,8 +4,14 @@
 #' @description Get and prepare COVID data.
 #'
 #' Pull in current case and death counts from WHO source.
-#' For disaggregated China, Taiwan, Hong Kong, and Macau data we pull from primary sources.
+#' For disaggregated China, Taiwan, Hong Kong, and Macau data we pull from JHU or primary sources.
 #'
+#' @param sources one of "all", "WHO", "WHO+JHU", "WHO+Primary" specifying the data sources to pull from. See details.
+#' 
+#' @details 
+#' In legacy versions, the default was to pull "all" sources, which included the WHO case/death time-series and JHU data for China Mainland, HK, Macau, and Taiwan.
+#' Due to sun-setting and changes in reporting, we now capture HK and Taiwan data from primary sources ("WHO+Primary"). Note that this also includes JHU data on Macau
+#' which will be reported thru Mar 10, 2023 when JHU closes their dashboard.
 #'
 #' @return Returns a data frame with n rows and 8 columns, including:
 #' \itemize{
@@ -22,7 +28,38 @@
 #' @importFrom data.table fread
 #' @export
 
-get_covid_df <- function() {
+get_covid_df <- function(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary")) {
+  sources <- match.arg(sources)
+
+  out <- get_who_data()
+
+  if (sources == "WHO") {
+    return(out)
+  }
+
+  jhu_data <- get_jhu_data()
+  out <- bind_rows(out, jhu_data)
+
+  if (sources == "WHO+JHU") {
+    return(out)
+  }
+
+  hk_data <- get_hk_data()
+  tw_data <- get_taiwan_data()
+
+  out <- bind_rows(out, hk_data, tw_data)
+
+  # Keep only Macau data from JHU if we want primary sources + WHO
+  # else, keep all of it
+  if (sources %in% c("WHO+Primary")) {
+    out <- out |>
+      filter(!(source == "JHU" & country %in% c("Hong Kong", "China", "Taiwan")))
+  }
+
+  return(out)
+}
+
+get_who_data <- function() {
   who_data <- fread(datasource_lk$who_all, stringsAsFactors = FALSE, encoding = "UTF-8") %>%
     rename_all(tolower) %>%
     rename(iso2code = country_code) %>%
@@ -42,7 +79,11 @@ get_covid_df <- function() {
       source = "WHO"
     ) %>%
     select(-who_region)
+  
+  return(who_data)
+}
 
+get_jhu_data <- function() {
   jhu_cases <- fread(datasource_lk$jhu_case, stringsAsFactors = FALSE, check.names = FALSE) %>%
     rename_all(tolower) %>%
     filter(`country/region` %in% c("Taiwan*", "China")) %>%
@@ -99,12 +140,8 @@ get_covid_df <- function() {
       source = "JHU"
     ) %>%
     arrange(country, date)
-
-  hk_data <- get_hk_data()
-  tw_data <- get_taiwan_data()
-  df <- bind_rows(who_data, jhu_data, hk_data, tw_data)
-
-  return(df)
+  
+  return(jhu_data)
 }
 
 get_hk_data <- function() {
