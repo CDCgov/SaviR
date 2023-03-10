@@ -68,7 +68,7 @@ get_owid_testing_long <- function(find_maxgap = 31, flag_test_increase = 5) {
     stop("Check testing dataset in get_testing_long() -- multiple values per country-date")
   }
 
-  full_OWID <- data.table::fread(datasource_lk$owid_all, data.table = F, showProgress = F, verbose = F) %>%
+  full_OWID <- data.table::fread(datasource_lk$owid_all, data.table = F, showProgress = F, verbose = F, encoding = "UTF-8") %>%
     rename(id = iso_code) %>%
     mutate(date = as.Date(date)) %>%
     mutate(id = recode(id, "OWID_KOS" = "XKX")) %>%
