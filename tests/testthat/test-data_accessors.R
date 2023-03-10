@@ -31,12 +31,57 @@ test_that("COVID Vaccination latest dates are accessible", {
   expect_equal(ncol(df), 6)
 })
 
-test_that("COVID Case Data is accessible", {
-  df <- get_covid_df()
+test_that("All COVID Case/Death Data is accessible", {
+  df <- get_covid_df("all")
 
   # Should have at least 1 row and 8 cols
   expect_gt(nrow(df), 0)
   expect_equal(ncol(df), 8)
+})
+
+test_that("WHO data returns correctly", {
+  df <- get_covid_df("WHO")
+
+  # Should have at least 1 row and 8 cols
+  expect_gt(nrow(df), 0)
+  expect_equal(ncol(df), 8)
+
+  # Should contain only WHO data
+  sources <- unique(df$source)
+  sources <- sources[order(sources)]
+  expect_equal(sources, "WHO")
+})
+
+test_that("WHO+JHU data returns correctly", {
+  df <- get_covid_df("WHO+JHU")
+
+  # Should have at least 1 row and 8 cols
+  expect_gt(nrow(df), 0)
+  expect_equal(ncol(df), 8)
+
+  # Should contain both JHU and WHO data
+  sources <- unique(df$source)
+  sources <- sources[order(sources)]
+  expect_equal(sources, c("WHO", "JHU"))
+})
+
+test_that("WHO+Primary data returns correctly", {
+  df <- get_covid_df("WHO+Primary")
+
+  # Should have at least 1 row and 8 cols
+  expect_gt(nrow(df), 0)
+  expect_equal(ncol(df), 8)
+
+  # Should contain all sources
+  sources <- unique(df$source)
+  sources <- sources[order(sources)]
+  expect_equal(sources, c("WHO", "JHU", "Taiwan CDC", "HK CHP"))
+
+  # China data should be from WHO
+  china_source <- filter(df, iso2code == "CN") |>
+    distinct(source)
+  
+  expect_equal(china_source, "WHO")
 })
 
 test_that("OWID+FIND Time Series data is available", {
