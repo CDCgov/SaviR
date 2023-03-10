@@ -1,7 +1,6 @@
 #' @title A function to retrieve a dataframe (df) with combined Case/Death/Vaccine data by country
 #'
 #' @param type (character) Specifies what data streams to include for case/death data. See details for further information
-#' whether df should include disaggregated China data ("Both" separates China, Taiwan, Hong Kong, and Macau data) or combined China data ("WHO" combines China, Taiwan, Hong Kong, and Macau data as China)
 #' @param geometry (logical, default: FALSE) Specifies whether df should include the geometry column
 #'
 #' @returns Returns an object of class \code{data.frame} with n rows and 56(57, if \code{geometry = TRUE}) columns
