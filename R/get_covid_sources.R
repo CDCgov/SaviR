@@ -4,25 +4,62 @@
 #' @description Get and prepare COVID data.
 #'
 #' Pull in current case and death counts from WHO source.
-#' For disaggregated China, Taiwan, Hong Kong, and Macau data we pull from John Hopkins source.
+#' For disaggregated China, Taiwan, Hong Kong, and Macau data we pull from JHU or primary sources.
 #'
+#' @param sources one of "all", "WHO", "WHO+JHU", "WHO+Primary" specifying the data sources to pull from. See details.
+#'
+#' @details
+#' In legacy versions, the default was to pull "all" sources, which included the WHO case/death time-series and JHU data for China Mainland, HK, Macau, and Taiwan.
+#' Due to sun-setting and changes in reporting, we now capture HK and Taiwan data from primary sources ("WHO+Primary"). Note that this also includes JHU data on Macau
+#' which will be reported thru Mar 10, 2023 when JHU closes their dashboard.
 #'
 #' @return Returns a data frame with n rows and 8 columns, including:
 #' \itemize{
 #'   \item{\code{date}}{  date Date of observation}
 #'   \item{\code{iso2code}}{  character ISO 3166-1 alpha-2 country code}
-#'   \item{\code{country}}{  character WHO/JHU english country name}
+#'   \item{\code{country}}{  character WHO english country name}
 #'   \item{\code{new_cases}}{  integer Number of new cases reported on date}
 #'   \item{\code{cumulative_cases}}{  integer Number of cumulative cases to date}
 #'   \item{\code{new_deaths}}{  integer Number of new deaths reported on date}
 #'   \item{\code{cumulative_deaths}}{  integer Number of cumulative deaths to date}
-#'   \item{\code{source}}{  character Data Source (JHU, WHO)}
+#'   \item{\code{source}}{  character Data Source}
 #' }
 #' @import dplyr
 #' @importFrom data.table fread
 #' @export
 
-get_covid_df <- function() {
+get_covid_df <- function(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary")) {
+  sources <- match.arg(sources)
+
+  out <- get_who_data()
+
+  if (sources == "WHO") {
+    return(out)
+  }
+
+  jhu_data <- get_jhu_data()
+  out <- bind_rows(out, jhu_data)
+
+  if (sources == "WHO+JHU") {
+    return(out)
+  }
+
+  hk_data <- get_hk_data()
+  tw_data <- get_taiwan_data()
+
+  out <- bind_rows(out, hk_data, tw_data)
+
+  # Keep only Macau data from JHU if we want primary sources + WHO
+  # else, keep all of it
+  if (sources %in% c("WHO+Primary")) {
+    out <- out |>
+      filter(!(source == "JHU" & country %in% c("Hong Kong", "China", "Taiwan")))
+  }
+
+  return(out)
+}
+
+get_who_data <- function() {
   who_data <- fread(datasource_lk$who_all, stringsAsFactors = FALSE, encoding = "UTF-8") %>%
     rename_all(tolower) %>%
     rename(iso2code = country_code) %>%
@@ -43,6 +80,10 @@ get_covid_df <- function() {
     ) %>%
     select(-who_region)
 
+  return(who_data)
+}
+
+get_jhu_data <- function() {
   jhu_cases <- fread(datasource_lk$jhu_case, stringsAsFactors = FALSE, check.names = FALSE) %>%
     rename_all(tolower) %>%
     filter(`country/region` %in% c("Taiwan*", "China")) %>%
@@ -100,7 +141,110 @@ get_covid_df <- function() {
     ) %>%
     arrange(country, date)
 
-  df <- bind_rows(who_data, jhu_data)
+  return(jhu_data)
+}
 
-  return(df)
+get_hk_data <- function() {
+  hk_data_raw <- fread(datasource_lk$hk_case_deaths, stringsAsFactors = FALSE, encoding = "UTF-8", data.table = FALSE, check.names = FALSE) |>
+    as_tibble()
+
+  hk_data_raw[["pcr_and_rat"]] <- rowSums(
+    hk_data_raw[, c("Number of cases tested positive for SARS-CoV-2 virus by nucleic acid tests", "Number of cases tested positive for SARS-CoV-2 virus by rapid antigen tests")],
+    na.rm = TRUE
+  )
+
+  hk_data <- hk_data_raw |>
+    mutate(
+      date = as.Date(`As of date`, "%d/%m/%Y"),
+      iso2code = "HK",
+      country = "Hong Kong",
+      source = "HK CHP",
+      # Number of confirmed cases used to be used
+      # prior to Omicron wave, but was replaced by
+      # the two other vars that stratified by PCR or RAT pos
+      cumulative_cases = case_when(
+        !is.na(`Number of confirmed cases`) ~ as.numeric(`Number of confirmed cases`),
+        pcr_and_rat != 0 ~ pcr_and_rat,
+        TRUE ~ NA_real_
+      )
+    ) |>
+    rename(cumulative_deaths = `Number of death cases`) |>
+    # Cumultive case reporting stopped for some reason
+    # so we need to fill downwards to continue it
+    arrange(date) |>
+    tidyr::fill(cumulative_cases, cumulative_deaths) |>
+    mutate(
+      # Started tracking new deaths via this variable in Jan 2023
+      cumulative_deaths = if_else(
+        !is.na(`Number of death cases related to COVID-19`),
+        as.double(cumulative_deaths + cumsum(tidyr::replace_na(`Number of death cases related to COVID-19`, 0))),
+        as.double(cumulative_deaths)
+      ),
+      # Started tracking new cases via this variable in Jan 2023
+      cumulative_cases = if_else(
+        !is.na(`Number of positive nucleic acid test laboratory detections`),
+        as.double(cumulative_cases + cumsum(tidyr::replace_na(`Number of positive nucleic acid test laboratory detections`, 0))),
+        as.double(cumulative_cases)
+      ),
+      new_cases = cumulative_cases - lag(cumulative_cases, default = 0),
+      new_deaths = cumulative_deaths - lag(cumulative_deaths, default = 0)
+    ) |>
+    select(date, iso2code, country, new_cases, cumulative_cases, new_deaths, cumulative_deaths, source)
+
+  return(hk_data)
+}
+
+get_taiwan_data <- function() {
+  tw_case_raw <- data.table::fread(
+    datasource_lk$taiwan_cases,
+    encoding = "UTF-8",
+    data.table = FALSE,
+    check.names = FALSE
+  )
+
+  tw_death_raw <- data.table::fread(
+    datasource_lk$taiwan_deaths,
+    encoding = "UTF-8",
+    data.table = FALSE,
+    check.names = FALSE
+  )
+
+  tw_cases <- tw_case_raw |>
+    rename(
+      date = `個案研判日`,
+      cases = `確定病例數`
+    ) |>
+    mutate(
+      date = as.Date(date, "%Y/%m/%d")
+    ) |>
+    group_by(date) |>
+    summarise(
+      new_cases = sum(cases, na.rm = TRUE)
+    ) |>
+    ungroup() |>
+    arrange(date) |>
+    mutate(cumulative_cases = cumsum(new_cases))
+
+  tw_deaths <- tw_death_raw |>
+    rename(
+      date = `發病日`,
+      deaths = `死亡病例數`
+    ) |>
+    mutate(date = as.Date(date, "%Y/%m/%d")) |>
+    group_by(date) |>
+    summarise(new_deaths = sum(deaths, na.rm = TRUE)) |>
+    arrange(date) |>
+    mutate(cumulative_deaths = cumsum(new_deaths))
+
+  tw_data <- full_join(
+    tw_cases, tw_deaths,
+    by = "date"
+  ) |>
+    mutate(
+      iso2code = "TW",
+      country = "Taiwan",
+      source = "Taiwan CDC"
+    )
+
+  return(tw_data)
 }

@@ -21,8 +21,8 @@ test_that("Combined table returns WHO data appropriately", {
   expect_identical(resulting, comp_shell)
 })
 
-test_that("Combined table returns JHU+WHO data appropriately", {
-  df <- get_combined_table(type = "Both")
+test_that("Combined table returns JHU+WHO in a legacy way", {
+  df <- get_combined_table(type = "legacy")
   dims <- dim(df)
 
   # Should have at least 1 row and 55 cols
@@ -34,6 +34,34 @@ test_that("Combined table returns JHU+WHO data appropriately", {
   sources <- sources[order(sources)]
 
   expect_equal(sources, c("JHU", "WHO"))
+
+  # ...thus, should have HK, Macau, Taiwan, and China
+  expected_countries <- c(onetable_addn_countries$iso2code, "CN")
+  expected_countries <- expected_countries[order(expected_countries)]
+
+  resulting <- df %>%
+    filter(iso2code %in% expected_countries)
+
+  resulting_countries <- unique(resulting$iso2code)
+  resulting_countries <- resulting_countries[order(resulting_countries)]
+
+  expect_gt(nrow(resulting), 0)
+  expect_identical(resulting_countries, expected_countries)
+})
+
+test_that("Combined table returns JHU+HK+Taiwan data appropriately", {
+  df <- get_combined_table(type = "Both")
+  dims <- dim(df)
+
+  # Should have at least 1 row and 55 cols
+  expect_gt(dims[1], 0)
+  expect_equal(dims[2], 56)
+
+  # Should contain both JHU and WHO data
+  sources <- unique(df$source)
+  sources <- sources[order(sources)]
+
+  expect_equal(sources, c("HK CHP", "JHU", "Taiwan CDC", "WHO"))
 
   # ...thus, should have HK, Macau, Taiwan, and China
   expected_countries <- c(onetable_addn_countries$iso2code, "CN")

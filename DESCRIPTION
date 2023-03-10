@@ -1,10 +1,10 @@
 Package: SaviR
 Type: Package
 Title: ITF Situational Awareness and Visualization
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: c(
     person("Sean", "Browning", email = "sbrowning@cdc.gov", role = c("aut", "cre")),
-    person("Kimberly", "Wong", email = "nvj5@cdc.gov", role = "aut"),
+    person("Kimberly", "Lockwood", email = "nvj5@cdc.gov", role = "aut"),
     person("Nartlada", "Chantharojwong", email = "nartlada@gmail.com", role = "aut"),
     person("James", "Fuller", role = "aut"),
     person("Dante", "Bugli", role = "ctb"),
@@ -39,7 +39,7 @@ Imports:
     bit64
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)
 Suggests: 
     rmarkdown,
