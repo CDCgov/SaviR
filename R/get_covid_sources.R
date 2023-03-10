@@ -7,8 +7,8 @@
 #' For disaggregated China, Taiwan, Hong Kong, and Macau data we pull from JHU or primary sources.
 #'
 #' @param sources one of "all", "WHO", "WHO+JHU", "WHO+Primary" specifying the data sources to pull from. See details.
-#' 
-#' @details 
+#'
+#' @details
 #' In legacy versions, the default was to pull "all" sources, which included the WHO case/death time-series and JHU data for China Mainland, HK, Macau, and Taiwan.
 #' Due to sun-setting and changes in reporting, we now capture HK and Taiwan data from primary sources ("WHO+Primary"). Note that this also includes JHU data on Macau
 #' which will be reported thru Mar 10, 2023 when JHU closes their dashboard.
@@ -79,7 +79,7 @@ get_who_data <- function() {
       source = "WHO"
     ) %>%
     select(-who_region)
-  
+
   return(who_data)
 }
 
@@ -140,12 +140,12 @@ get_jhu_data <- function() {
       source = "JHU"
     ) %>%
     arrange(country, date)
-  
+
   return(jhu_data)
 }
 
 get_hk_data <- function() {
-  hk_data_raw <- fread(datasource_lk$hk_case_deaths, stringsAsFactors = FALSE, encoding = "UTF-8", data.table = FALSE) |>
+  hk_data_raw <- fread(datasource_lk$hk_case_deaths, stringsAsFactors = FALSE, encoding = "UTF-8", data.table = FALSE, check.names = FALSE) |>
     as_tibble()
 
   hk_data_raw[["pcr_and_rat"]] <- rowSums(
@@ -198,13 +198,15 @@ get_taiwan_data <- function() {
   tw_case_raw <- data.table::fread(
     datasource_lk$taiwan_cases,
     encoding = "UTF-8",
-    data.table = FALSE
+    data.table = FALSE,
+    check.names = FALSE
   )
 
   tw_death_raw <- data.table::fread(
     datasource_lk$taiwan_deaths,
     encoding = "UTF-8",
-    data.table = FALSE
+    data.table = FALSE,
+    check.names = FALSE
   )
 
   tw_cases <- tw_case_raw |>
@@ -217,7 +219,7 @@ get_taiwan_data <- function() {
     ) |>
     group_by(date) |>
     summarise(
-      new_cases = sum(cases, na.rm = T)
+      new_cases = sum(cases, na.rm = TRUE)
     ) |>
     ungroup() |>
     arrange(date) |>
@@ -230,7 +232,7 @@ get_taiwan_data <- function() {
     ) |>
     mutate(date = as.Date(date, "%Y/%m/%d")) |>
     group_by(date) |>
-    summarise(new_deaths = sum(deaths, na.rm = T)) |>
+    summarise(new_deaths = sum(deaths, na.rm = TRUE)) |>
     arrange(date) |>
     mutate(cumulative_deaths = cumsum(new_deaths))
 

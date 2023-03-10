@@ -62,7 +62,7 @@ test_that("WHO+JHU data returns correctly", {
   # Should contain both JHU and WHO data
   sources <- unique(df$source)
   sources <- sources[order(sources)]
-  expect_equal(sources, c("WHO", "JHU"))
+  expect_equal(sources, c("JHU", "WHO"))
 })
 
 test_that("WHO+Primary data returns correctly", {
@@ -75,11 +75,12 @@ test_that("WHO+Primary data returns correctly", {
   # Should contain all sources
   sources <- unique(df$source)
   sources <- sources[order(sources)]
-  expect_equal(sources, c("WHO", "JHU", "Taiwan CDC", "HK CHP"))
+  expect_equal(sources, c("HK CHP", "JHU", "Taiwan CDC", "WHO"))
 
   # China data should be from WHO
   china_source <- filter(df, iso2code == "CN") |>
-    distinct(source)
+    distinct(source) |>
+    pull()
   
   expect_equal(china_source, "WHO")
 })
