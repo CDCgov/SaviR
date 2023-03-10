@@ -141,7 +141,7 @@ datasource_lk <- list(
   # OWID cases and deaths
   # SB Note: Beginning Mar 8, 2023 OWID has ceased pulling from JHU
   # and JHU will cease operations itself on Mar 10, 2023. This will contain legacy data
-  owid_all = "https://covid.ourworldindata.org/data/owid-covid-data-old.csv",
+  owid_all = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data-old.csv",
   # HK Cases and Deaths
   hk_case_deaths = "http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_covid_19_eng.csv",
   # Taiwan Cases and Deaths
