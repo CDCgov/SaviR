@@ -4,14 +4,17 @@
 \alias{calc_window_pct_change}
 \title{Compute Percent-change in Cases Over a Specified Window}
 \usage{
-calc_window_pct_change(df, window = 14L, grp = NULL)
+calc_window_pct_change(df, window = 14L, return_totals = FALSE)
 }
 \arguments{
 \item{df}{Dataframe with at least \link{date, new_cases} columns}
 
 \item{window}{(default: 14) number of days the comparison windows should be}
 
-\item{grp}{optional grouping variable (such as isocode, country name, region, etc.)}
+\item{return_totals}{(default: FALSE) return running sums used to compute \code{pct_change}?}
+}
+\value{
+a df summarized by date with new column \code{pct_change}, or \link{pct_change, cases_current_{window}, cases_prev_{window}} if \code{return_totals} is \code{TRUE}
 }
 \description{
 Given a time series of new cases over a certain date range, compute a windowed percent change
@@ -24,6 +27,12 @@ if data are not complete for every date.
 }
 \examples{
 \dontrun{
+data <- get_covid_df()
+calc_window_pct_change(data, window = 14)
+# For grouped operations, group data beforehand and pipe:
+data |>
+  group_by(iso2code, country) |>
+  calc_window_pct_change(data, window = 14)
 }
 
 }
