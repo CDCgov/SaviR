@@ -157,7 +157,8 @@ map_burden <- function(df, region = c("WHO Region", "State Region")) {
 #' @title map_trend
 #' @description Cross-sectional map: Average daily incidence for the past 7 days for each country.
 #' @param df A dataframe with the following: region, country, date, percent_change as 6-level factors (0- <1, 1- <10, 10- <25, 25+).
-#' @param region one of "WHO Region" or "State Region"
+#' @param region (optional) one of "WHO Region" or "State Region" if you're creating a regional map
+#' @param timestep (default: 7) time step in days the percent-change represents
 #'
 #' @return
 #' Produces a map of trend (% change in the past 7 days)
@@ -168,41 +169,51 @@ map_burden <- function(df, region = c("WHO Region", "State Region")) {
 #'
 #' @export
 
-map_trend <- function(df, region = c("WHO Region", "State Region")) {
+map_trend <- function(df, region = NULL, time_step = 7) {
 
-  region <- match.arg(region)
-  if (region == "State Region") {
-    who_region <- unique(df$state_region)
-  } else {
-    who_region <- unique(df$who_region)
-  }
-  who_regs <- length(who_region)
 
-  # If we pass more than one region, then we set the value to "None"
-  # So switch works correctly
-  if (who_regs > 1) {
-    who_region <- "None"
-  }
 
   if (length(unique(df$date)) > 1) {
     warning("Your dataframe has more than 1 date! This is a cross-sectional visualization!")
   }
 
-  bbox <- bbox_fun(who_region, df)
 
   cat_labs <- c(">=50% decrease", "0 - <50% decrease", ">0 - <=50% increase", ">50 - <=100% increase", ">100 - <=200% increase", ">200% increase")
   cat_vals <- c("#1f9fa9", "#c0ebec", "#e57e51", "#d26230", "#c92929", "#7c0316")
 
-  map_template(df, cat_labs, cat_vals) +
-    ggplot2::coord_sf(
-      xlim = bbox[c(1, 3)],
-      ylim = bbox[c(2, 4)]
-    ) +
-    ggplot2::labs(fill = "Percent \nChange From \nPrevious Week") +
+  map_out <- map_template(df, cat_labs, cat_vals) +
     ggplot2::labs(
       title = "Recent Trends",
-      subtitle = paste0("Percent change in cases from 7-day period ending ", format((unique(df$date)), "%B %d, %Y"), "\ncompared to previous 7-day period ending ", format(max(df$date) - 7, "%B %d, %Y"))
+      subtitle = paste0(
+        "Percent change in cases from ", time_step, "-day period ending ",
+        format((unique(df$date)), "%B %d, %Y"),
+        "\ncompared to previous ", time_step, "-day period ending ",
+        format(max(df$date) - time_step, "%B %d, %Y")
+      ),
+      fill = sprintf("Percent \nChange From \nPrevious %d Days", time_step)
     )
+  
+    if (!missing(region)) {
+    region <- match.arg(region)
+
+    if (region == "State Region") {
+      who_region <- unique(df$state_region)
+    } else {
+      who_region <- unique(df$who_region)
+    }
+
+    who_regs <- length(who_region)
+
+    bbox <- bbox_fun(who_region, df)
+
+    map_out <- map_out +
+      ggplot2::coord_sf(
+        xlim = bbox[c(1, 3)],
+        ylim = bbox[c(2, 4)]
+      )
+  }
+
+  return(map_out)
 }
 
 
