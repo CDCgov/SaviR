@@ -14,7 +14,7 @@ calc_window_pct_change(df, window = 14L, return_totals = FALSE)
 \item{return_totals}{(default: FALSE) return running sums used to compute \code{pct_change}?}
 }
 \value{
-a df summarized by date with new column \code{pct_change}, or \link{pct_change, cases_current_{window}, cases_prev_{window}} if \code{return_totals} is \code{TRUE}
+a df summarized by date with new column \code{pct_change}, or [pct_change, cases_current_{window}, cases_prev_{window}] if \code{return_totals} is \code{TRUE}
 }
 \description{
 Given a time series of new cases over a certain date range, compute a windowed percent change
