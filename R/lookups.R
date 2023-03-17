@@ -181,16 +181,41 @@ datasource_lk <- list(
 #'  with the min and max xy coordinates of the bounding box
 #' @keywords internal
 bbox_fun <- function(region, df) {
-
+  check_region(region)
+  
   switch(region,
+        `Europe and Eurasia` = sf::st_bbox(c(xmin = -1400000, ymin = 200000, xmax = 6500000, ymax = 8200000)),
          EURO = sf::st_bbox(c(xmin = -1400000, ymin = 200000, xmax = 6500000, ymax = 8200000)),
+         `Western Hemisphere` =,
          AMRO = sf::st_bbox(c(xmin = -14300000, ymin = -5500074, xmax = -3872374, ymax = 5000000)),
+         `South and Central Asia` =,
          SEARO = sf::st_bbox(c(xmin = 6484395, ymin = -2008021, xmax = 12915540, ymax = 4596098)),
+        `Near East (Middle East and Northern Africa)` = sf::st_bbox(c(xmin = -1300000, ymin = 100000, xmax = 4900000, ymax = 6000000)),
          EMRO = sf::st_bbox(c(xmin = -1600000, ymin = -1800026.8, xmax = 6418436.7, ymax = 6245846.3)),
+        `Sub-Saharan Africa` =,
          AFRO = sf::st_bbox(c(xmin = -2400000, ymin = -4200074, xmax = 6000000, ymax = 4218372)),
+         `East Asia and the Pacific` =,
          WPRO = sf::st_bbox(c(xmin = 5884395, ymin = -5308021, xmax = 16500000, ymax = 5396098)),
-         `Europe and Eurasia` = sf::st_bbox(c(xmin = -1400000, ymin = 200000, xmax = 6500000, ymax = 8200000)),
-         `Near East (Middle East and Northern Africa)` = sf::st_bbox(c(xmin = -1300000, ymin = 100000, xmax = 4900000, ymax = 6000000)),
+         US =,
          sf::st_bbox(sf::st_as_sf(df))
   )
+}
+
+# A dynamic lookup of WHO + DoS Regions
+known_regions <- c(
+  names(who_region_lk),
+  state_aes$cat_values
+)
+
+# A quick helper to check if the region passed is known
+check_region <- function(x) {
+  if (!x %in% known_regions) {
+    warning(
+      sprintf(
+        r"{Region "%s" supplied not recognized, defaulting to standard bbox}",
+        x
+      ),
+      immediate. = TRUE
+    )
+  }
 }

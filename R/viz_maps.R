@@ -194,17 +194,8 @@ map_trend <- function(df, region = NULL, time_step = 7) {
     )
   
     if (!missing(region)) {
-    region <- match.arg(region)
 
-    if (region == "State Region") {
-      who_region <- unique(df$state_region)
-    } else {
-      who_region <- unique(df$who_region)
-    }
-
-    who_regs <- length(who_region)
-
-    bbox <- bbox_fun(who_region, df)
+    bbox <- bbox_fun(region, df)
 
     map_out <- map_out +
       ggplot2::coord_sf(
