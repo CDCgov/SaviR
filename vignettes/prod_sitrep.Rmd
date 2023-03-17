@@ -17,30 +17,22 @@ knitr::opts_chunk$set(
   dev.opts = list(type = "cairo-png")
 )
 
-# phantomjs is needed to save/render images in this document
-# so we need to install it if it's not already
-if (!webshot::is_phantomjs_installed()) {
-  webshot::install_phantomjs()
-}
-
 library(SaviR)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(passport)
 library(gt)
-
-sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
 ```
 After installing SaviR, you are ready to use the following functions to read in the data and create visualizations. There are functions to create plots, maps, or tables by World Health Organization (WHO) Region, Department of State (DoS) Region, or globally.
 
 ## Data: The Frankenstein Dataset  
 
 `onetable` - stored metadata with iso2 and iso3 codes, country names, WHO/DoS/World Bank regions, and UN population estimates  
-`get_covid_df()` - COVID dataframe from WHO and appended with select Johns Hopkins University (JHU) observations  
+`get_covid_df(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary"))` - COVID cases/deaths dataframe from WHO and other sources.
 `calc_add_risk()` - Add risk matrix calculations to dataframe (df)  
 `get_vax()` - Get vaccination data from Our World In Data (OWID)  
-`get_combined_table(type=c("WHO", "Both"), geometry=FALSE)` - Combine all of the above into one large df, optionally add geometry
+`get_combined_table(type = c("WHO", "Both", "legacy"), geometry=FALSE)` - Combine all of the above into one large df, optionally add geometry
 
 This snippet produces the master df with all the variables required for all of the following graphics.  
 
@@ -50,15 +42,13 @@ df_who <- get_combined_table("WHO") # China includes Taiwan, Hong Kong, and Maca
 df_both <- get_combined_table("Both") # China, Taiwan, Hong Kong, and Macau data disaggregated
 
 # Data for visuals are typically as of Sunday of the current week
-sunday_date <- lubridate::floor_date(Sys.Date(), "week", week_start = 7)
-```
-
-```{r date-fix, echo = FALSE, include = FALSE}
-# Roll back to Friday as a contingency for data not being
-# available Monday Morning
-if (weekdays(Sys.Date()) == "Monday") {
-  sunday_date <- sunday_date - 2L
-}
+# but this can be determined dynamically using WHO data.
+sunday_date <- df_who |>
+  distinct(date, dow = weekdays(date)) |>
+  arrange(desc(date)) |>
+  filter(dow == "Sunday") |>
+  slice(1) |>
+  pull(date)
 ```
 
 ## Plots {.tabset}
@@ -81,7 +71,7 @@ epi_curve_global
 plot_epicurve(df_who, transparent = F)
 
 # Epi Curves for DoS -- Global
-state_epi_curve <- plot_epicurve(filter(df_both, date <= sunday_date), 
+state_epi_curve <- plot_epicurve(filter(df_both, date <= sunday_date),
                                  type = "cases", 
                                  by_cat = "State Region")
 state_epi_curve
@@ -96,8 +86,6 @@ for (r in unique(na.omit(df_who$who_region))) {
   print(epi_curve_regional)
 }
 
-# epi_curve_regional <- plot_epicurve(filter(df_who, who_region == 'AMRO'), transparent = F) ##change who_region to region of interest.
-# print(epi_curve_regional)
 ```
 
 ### Risk Matrix (Global Only)
@@ -181,9 +169,15 @@ for (r in unique(na.omit(df_both$who_region))) {
 
 ### Trend Map  
   
-`map_trend(df)`
+`map_trend(df, region, time_step = 7)`
   
-The "map_trend" function requires a result column where weekly percent change is converted into factors using "cut". The df normally used is WHO appended with JHU and filtered for the report date. The region maps can also be produced by simply filtering the input df for the specific region. Again the function will detect the number of regions provided and will act accordingly.  
+The "map_trend" function requires a `result` column where weekly percent change is converted into factors using "cut".
+
+The default behavior is to visualize a global trend map, but passing a data frame filtered to a specific region 
+and providing the region name as a `region` argument will change the bounding box accordingly.
+
+A different `time_step` can be provided. The default assumes you are comparing two 7d periods,
+but this can be increased or decreased accordingly. 
   
 ```{r, fig.width = 7.5, fig.height = 4.2}
 trend_map_global <- df_both_mapping %>%
@@ -199,11 +193,30 @@ for (r in unique(na.omit(df_both_mapping$who_region))) {
   trend_map_reg <- df_both_mapping %>%
     filter(who_region == r) %>%
     mutate(result = cut(percent_change_case, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf))) %>%
-    map_trend()
-
+    map_trend(region = r)
 
   print(trend_map_reg)
 }
+```
+
+and an example producing the same with different time_step:
+
+```{r trend_map_14d, fig.width = 7.5, fig.height = 4.2}
+df_both |>
+  filter(date <= sunday_date) |>
+  group_by(id) |>
+  calc_window_pct_change(window = 14L, return_totals = TRUE) |>
+  filter(date == sunday_date) |>
+  mutate(
+    # pct change will already be NaN if cases were 0 in the previous period
+    # due to division, but we want to also NA out any observations that
+    # are not reporting in the current period that were in the previous
+    # since we can't ascertain the trajectory
+    pct_change = if_else(cases_current_14 == 0, NA_real_, pct_change),
+    result = cut((pct_change - 1) * 100, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf)),
+  ) |>
+  left_join(country_coords, by = "id") |>
+  map_trend(time_step = 14)
 ```
 
 ### Vaccine Map (Global Only)

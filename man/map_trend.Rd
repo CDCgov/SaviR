@@ -4,12 +4,12 @@
 \alias{map_trend}
 \title{map_trend}
 \usage{
-map_trend(df, region = c("WHO Region", "State Region"))
+map_trend(df, region = NULL, time_step = 7)
 }
 \arguments{
 \item{df}{A dataframe with the following: region, country, date, percent_change as 6-level factors (0- <1, 1- <10, 10- <25, 25+).}
 
-\item{region}{one of "WHO Region" or "State Region"}
+\item{region}{(optional) one of "WHO Region" or "State Region" if you're creating a regional map}
 }
 \value{
 Produces a map of trend (\% change in the past 7 days)
