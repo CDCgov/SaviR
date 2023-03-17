@@ -7,11 +7,11 @@
 #' 
 #' Note that because we're computing based on index rather than calendar time, results will be erroneous
 #' if data are not complete for every date.
-#' @param df Dataframe with at least [date, new_cases] columns
+#' @param df Dataframe with at least date, new_cases columns
 #' @param window (default: 14) number of days the comparison windows should be
 #' @param return_totals (default: FALSE) return running sums used to compute `pct_change`?
 #' 
-#' @return a df summarized by date with new column `pct_change`, or [pct_change, cases_current_{window}, cases_prev_{window}] if `return_totals` is `TRUE`
+#' @return a df summarized by date with new column `pct_change`, or pct_change, cases_current_{window}, cases_prev_{window} if `return_totals` is `TRUE`
 #' @importFrom RcppRoll roll_sum
 #' @export
 #'
