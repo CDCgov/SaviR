@@ -239,24 +239,33 @@ global_vax_map
 
 ### Top 10 Most Cases Table
 
+`table_10mostcases(df, time_step = 7, region = NULL, data_as_of = NULL)`
+
+This function presents a top-10 table of countries based on cases reported in the past `time_step`.  
+The default is a 7 day period, but this can be adjusted. Additionally, you can tweak the title and
+data-as-of footnote using those variables respectively, or they will be inferred internally.  
+
+#### 7-day Table
+
 ```{r}
-df_both %>%
-  filter(date == sunday_date) %>%
-  select(country = who_country, value1 = week_case, value2 = percent_change_case) %>%
-  arrange(desc(value1)) %>%
-  head(10) %>%
-  table_10mostcases(run_date = format(sunday_date, "%B %d, %Y"))
+df_both |>
+  filter(date <= sunday_date) |>
+  table_10mostcases(data_as_of = format(sunday_date, "%B %d, %Y"))
 ```
 
+#### 14-day Table
+```{r}
+df_both |>
+  filter(date <= sunday_date) |>
+  table_10mostcases(time_step = 14)
+```
+
+#### By region
 ```{r, results="asis"}
 for (r in unique(na.omit(df_both$who_region))) {
-  tab_out <- df_both %>%
-    filter(date == sunday_date) %>%
-    filter(who_region == r) %>%
-    select(country = who_country, value1 = week_case, value2 = percent_change_case) %>%
-    arrange(desc(value1)) %>%
-    head(10) %>%
-    table_10mostcases(., type = r, run_date = format(sunday_date, "%B %d, %Y"))
+  tab_out <- df_both |>
+    filter(date <= sunday_date, who_region == r) |>
+    table_10mostcases(region = r, data_as_of = format(Sys.Date(), "%B %d, %Y"))
   
   print(htmltools::tagList(tab_out))
 }

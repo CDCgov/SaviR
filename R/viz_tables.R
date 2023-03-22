@@ -142,50 +142,80 @@ table_countriesofconcern <- function(df, df_vax_man, country_list, df_variant_pc
 
 #' @title table_10mostcases
 #' @description Table for displaying top 10's.
-#' @param df A dataframe with the following and in this order: country, value1 - cases, value2 - percent change
+#' @param df A data.frame with at least the following columns: id, date, new_cases 
+#' @param time_step (default: 7) time step in days to compute values over  
+#' @param region (optional) a character string specifying a DoS or WHO region for title, or NULL if none
+#' @param data_as_of (optional) a character string for the data-as-of date. If NULL, inferred from latest date in data.
+
+#' @return A pretty {gt} table with the top-10 countries by total cases reported in the time period specified
 
 #' @import gt
 #' @export
 
-table_10mostcases <- function(df, type = "Global", run_date = "Enter a date") {
-  if (type == "Global") {
-    title_label <- gt::html(paste0("<b>10 Countries/ Areas with Most \nNew Cases", "</b>"))
+table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NULL) {
+
+  stopifnot(all(c("id", "date", "new_cases") %in% colnames(df)))
+
+  if (!missing(region)) {
+    title_label <- gt::html(sprintf("<b>10 (%s) Countries/ Areas with Most \nNew Cases</b>", region))
   } else {
-    title_label <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Most \nNew Cases", "</b>"))
+    title_label <- gt::html("<b>10 Countries/ Areas with Most \nNew Cases</b>")
   }
+
+  if (missing(data_as_of)) {
+    data_as_of <- max(df[["date"]])
+  }
+
+  tbl_pct_change <- df |>
+    group_by(id) |>
+    calc_window_pct_change(window = time_step, return_totals = TRUE) |>
+    ungroup() |>
+    filter(date == max(date)) |>
+    mutate(
+      # pct change will already be NaN if cases were 0 in the previous period
+      # due to division, but we want to also NA out any observations that
+      # are not reporting in the current period that were in the previous
+      # since we can't ascertain the trajectory
+      pct_change = if_else(cases_current == 0, NA_real_, pct_change),
+      result = cut((pct_change - 1) * 100, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf))
+    ) |>
+    arrange(desc(cases_current)) |>
+    slice(1:10) |>
+    left_join(distinct(onetable, id, who_country), by = "id") |>
+    select(who_country, cases_current, pct_change)
 
   gt::gt(df) %>%
     gt::tab_header(title = title_label) %>%
     gt::data_color(
-      columns = c(value2),
+      columns = c(pct_change),
       colors = scales::col_bin(
         palette = c("#1f9fa9", "#c0ebec", "#e57e51", "#d26230", "#c92929", "#7c0316"),
         bins = c(-Inf, -50, 0, 50, 100, 200, Inf)
       )
     ) %>%
     gt::fmt_number(
-      columns = c(value1),
+      columns = c(cases_current),
       sep_mark = ",",
       decimals = 0
     ) %>%
     gt::fmt_number(
-      columns = c(value2),
+      columns = c(pct_change),
       decimals = 1
     ) %>%
     gt::sub_missing(
-      columns = c(value1, value2),
+      columns = c(cases_current, pct_change),
       missing_text = "-"
     ) %>%
     gt::cols_label(
-      country = gt::html("Country/ Area"),
-      value1 = gt::html("New Cases<br>This Week"),
-      value2 = gt::html("% Change<br>Last Week")
+      who_country = gt::html("Country/ Area"),
+      cases_current = gt::html(sprintf("New Cases<br>Past %d Days", time_step)),
+      pct_change = gt::html(sprintf("%% Change<br>Past %d Days", time_step))
     ) %>%
     gt::cols_align("center") %>%
     gt::cols_width(
-      c(country) ~ gt::px(175),
-      c(value1) ~ gt::px(100),
-      c(value2) ~ gt::px(100)
+      c(who_country) ~ gt::px(175),
+      c(cases_current) ~ gt::px(100),
+      c(pct_change) ~ gt::px(100)
     ) %>%
     gt::tab_options(
       table.width = gt::px(400),
@@ -197,10 +227,10 @@ table_10mostcases <- function(df, type = "Global", run_date = "Enter a date") {
       footnotes.padding = 0
     ) %>%
     gt::tab_source_note(source_note = gt::md("Data Source: WHO Coronavirus Disease (COVID-19) Dashboard")) %>%
-    gt::tab_source_note(source_note = paste0("Data as of ", run_date)) %>%
+    gt::tab_source_note(source_note = paste0("Data as of ", data_as_of)) %>%
     gt::tab_footnote(
-      footnote = "Percent change in cases of most recent 7 days to 7 days prior",
-      locations = gt::cells_column_labels(columns = c(value2))
+      footnote = sprintf("Percent change in cases of most recent %d days to %d days prior", time_step, time_step),
+      locations = gt::cells_column_labels(columns = c(pct_change))
     )
 }
 
