@@ -10,6 +10,7 @@
 #' The function assumes that data passed has observations for each day for each country, since we use
 #' and index-based approach to compute average incidence, not calendar-time.
 #' @return a data.frame of summarized incidence values (ave_incidence) by id, from the latest date provided
+#' @keywords internal
 calc_window_incidence <- function(data, window = 7) {
   stopifnot(all(c("id", "date", "new_cases", "population") %in% colnames(data)))
 
