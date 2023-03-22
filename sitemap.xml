@@ -49,6 +49,9 @@
     <loc>https://cdcgov.github.io/SaviR/reference/calc_vax_carryforward.html</loc>
   </url>
   <url>
+    <loc>https://cdcgov.github.io/SaviR/reference/calc_window_incidence.html</loc>
+  </url>
+  <url>
     <loc>https://cdcgov.github.io/SaviR/reference/calc_window_pct_change.html</loc>
   </url>
   <url>
@@ -70,6 +73,9 @@
     <loc>https://cdcgov.github.io/SaviR/reference/get_covid_df.html</loc>
   </url>
   <url>
+    <loc>https://cdcgov.github.io/SaviR/reference/get_find_testing_long.html</loc>
+  </url>
+  <url>
     <loc>https://cdcgov.github.io/SaviR/reference/get_gdeltnews.html</loc>
   </url>
   <url>
@@ -77,6 +83,9 @@
   </url>
   <url>
     <loc>https://cdcgov.github.io/SaviR/reference/get_onetable.html</loc>
+  </url>
+  <url>
+    <loc>https://cdcgov.github.io/SaviR/reference/get_owid_testing_long.html</loc>
   </url>
   <url>
     <loc>https://cdcgov.github.io/SaviR/reference/get_owid_testing_meta.html</loc>
