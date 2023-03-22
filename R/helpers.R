@@ -46,7 +46,7 @@ calc_window_incidence <- function(data, window = 7) {
 #' @param window (default: 14) number of days the comparison windows should be
 #' @param return_totals (default: FALSE) return running sums used to compute `pct_change`?
 #' 
-#' @return a df summarized by date with new column `pct_change`, or pct_change, cases_current_{window}, cases_prev_{window} if `return_totals` is `TRUE`
+#' @return a df summarized by date with new column `pct_change`, or pct_change, cases_current, cases_prev if `return_totals` is `TRUE`
 #' @importFrom RcppRoll roll_sum
 #' @export
 #'
@@ -64,22 +64,19 @@ calc_window_pct_change <- function(df, window = 14L, return_totals = FALSE) {
   # Assert that we have the cols we need
   stopifnot(all(c("date", "new_cases") %in% colnames(df)))
 
-  current_col <- as.name(sprintf("cases_current_%d", window))
-  prev_col <- as.name(sprintf("cases_prev_%d", window))
-
   out <- df |>
     group_by(date, .add = TRUE) |>
     summarize(new_cases = sum(new_cases, na.rm = TRUE), .groups = "drop_last") |>
     arrange(date) |>
     mutate(
-      !!current_col := roll_sum(new_cases, n = window, align = "right", fill = NA),
-      !!prev_col := roll_sum(dplyr::lag(new_cases, n = window), n = window, align = "right", fill = NA),
-      pct_change = !!current_col / !!prev_col
+      cases_current = roll_sum(new_cases, n = window, align = "right", fill = NA),
+      cases_prev = roll_sum(dplyr::lag(new_cases, n = window), n = window, align = "right", fill = NA),
+      pct_change = cases_current / cases_prev
     ) |>
     ungroup()
 
   if (!return_totals) {
-    out <- select(out, -!!prev_col, -!!current_col)
+    out <- select(out, -cases_prev, -cases_current)
   }
 
   return(out)
