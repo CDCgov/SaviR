@@ -152,38 +152,50 @@ map_burden <- function(df, region = NULL, time_step = 7) {
 
 #' @title map_trend
 #' @description Cross-sectional map: Average daily incidence for the past 7 days for each country.
-#' @param df A dataframe with the following: region, country, date, percent_change as 6-level factors (0- <1, 1- <10, 10- <25, 25+).
-#' @param region (optional) one of "WHO Region" or "State Region" if you're creating a regional map
-#' @param timestep (default: 7) time step in days the percent-change represents
+#' @param df A data.frame with at least the following columns: id, date, new_cases
+#' @param region (optional) a character string specifying a DoS or WHO region to zoom to, or NULL if none
+#' @param time_step (default: 7) time step in days the percent-change represents
 #'
 #' @return
-#' Produces a map of trend (% change in the past 7 days)
+#' Produces a map of trend (% change in the past `time_step` days)
 #'
 #' @details
-#' Input df SHOULD ONLY HAVE ONE DATE!
+#' percent change is always computed relative to the latest date in the data.frame passed, so pre-filter as needed.
+#' 
 
 #' @export
 
 map_trend <- function(df, region = NULL, time_step = 7) {
 
-
-
-  if (length(unique(df$date)) > 1) {
-    warning("Your dataframe has more than 1 date! This is a cross-sectional visualization!")
-  }
-
+  # Assert that we have the appropriate columns
+  stopifnot(all(c("id", "date", "new_cases") %in% colnames(df)))
 
   cat_labs <- c(">=50% decrease", "0 - <50% decrease", ">0 - <=50% increase", ">50 - <=100% increase", ">100 - <=200% increase", ">200% increase")
   cat_vals <- c("#1f9fa9", "#c0ebec", "#e57e51", "#d26230", "#c92929", "#7c0316")
 
-  map_out <- map_template(df, cat_labs, cat_vals) +
+  map_df <- df |>
+    group_by(id) |>
+    calc_window_pct_change(window = time_step, return_totals = TRUE) |>
+    ungroup() |>
+    filter(date == max(date)) |>
+    mutate(
+      # pct change will already be NaN if cases were 0 in the previous period
+      # due to division, but we want to also NA out any observations that
+      # are not reporting in the current period that were in the previous
+      # since we can't ascertain the trajectory
+      pct_change = if_else(cases_current == 0, NA_real_, pct_change),
+      result = cut((pct_change - 1) * 100, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf))
+    ) |>
+    left_join(country_coords, by = "id")
+
+  map_out <- map_template(map_df, cat_labs, cat_vals) +
     ggplot2::labs(
       title = "Recent Trends",
       subtitle = paste0(
         "Percent change in cases from ", time_step, "-day period ending ",
-        format((unique(df$date)), "%B %d, %Y"),
+        format((unique(map_df$date)), "%B %d, %Y"),
         "\ncompared to previous ", time_step, "-day period ending ",
-        format(max(df$date) - time_step, "%B %d, %Y")
+        format(max(map_df$date) - time_step, "%B %d, %Y")
       ),
       fill = sprintf("Percent \nChange From \nPrevious %d Days", time_step)
     )
