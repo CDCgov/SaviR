@@ -163,7 +163,7 @@ table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NUL
   }
 
   if (missing(data_as_of)) {
-    data_as_of <- max(df[["date"]])
+    data_as_of <- format(max(df[["date"]], "%B %d, %Y")
   }
 
   tbl_pct_change <- df |>
@@ -177,14 +177,14 @@ table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NUL
       # are not reporting in the current period that were in the previous
       # since we can't ascertain the trajectory
       pct_change = if_else(cases_current == 0, NA_real_, pct_change),
-      result = cut((pct_change - 1) * 100, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf))
+      pct_change = (pct_change - 1) * 100
     ) |>
     arrange(desc(cases_current)) |>
     slice(1:10) |>
     left_join(distinct(onetable, id, who_country), by = "id") |>
     select(who_country, cases_current, pct_change)
 
-  gt::gt(df) %>%
+  gt::gt(tbl_pct_change) %>%
     gt::tab_header(title = title_label) %>%
     gt::data_color(
       columns = c(pct_change),
