@@ -31,8 +31,8 @@ To scrape the OWID coronavirus testing website for data related to the source an
 \section{Functions}{
 \itemize{
 \item \code{owid_testing_meta}: Saved dataset
-}}
 
+}}
 \examples{
 \dontrun{
 owid_testing_meta <- get_owid_testing_meta()

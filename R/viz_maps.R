@@ -97,58 +97,54 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#' @title map_burden
-#' @description Cross-sectional map: Average daily incidence for the past 7 days for each country.
-#' @param df A dataframe with the following: region, country, date, incidence as 4-level factors (0- <1, 1- <10, 10- <25, 25+)
-#' @param region one of "WHO Region" or "State Region"
+#' @title Burden Map
+#' @description A Cross-sectional map: Average daily incidence for the past number of days specified for each country.
+#' @param df A data.frame with at least the following columns [id, date, new_cases]
+#' @param region (optional) a character string specifying a DoS or WHO region to zoom to, or NULL if none
+#' @param time_step (numeric) number of days to average incidence over
 #'
 #' @return
 #' Produces a map of burden (incidence per 100,000)
 #'
 #' @details
-#' Input df SHOULD ONLY HAVE ONE DATE!
+#' map_burden always produces an average incidence map based on the latest date included in the input data.frame.
+#' You should ensure that data are completely observed for each timestep, as average incidence is computed based
+#' on index rather than calendar date.
 
-#'
 #' @export
 
-map_burden <- function(df, region = c("WHO Region", "State Region")) {
+map_burden <- function(df, region = NULL, time_step = 7) {
 
-  region <- match.arg(region)
-  if (region == "State Region") {
-    who_region <- unique(df$state_region)
-  } else {
-    who_region <- unique(df$who_region)
-  }
-  who_regs <- length(who_region)
-
-  # If we pass more than one region, then we set the value to "None"
-  # So switch works correctly
-  if (who_regs > 1) {
-    who_region <- "None"
-  }
-
-  if (length(unique(df$date)) > 1) {
-    warning("Your dataframe has more than 1 date! This is a cross-sectional visualization!")
-  }
-
-
-  bbox <- bbox_fun(who_region, df)
-
-
-  subt <- paste0("Average daily incidence over the past 7 days per 100,000 population as of ", str_squish(format(max(df$date), "%B %e, %Y")))
   cat_labs <- c("0- <1", "1- <10", "10- <25", "25+")
   cat_vals <- c("#f1e5a1", "#e7b351", "#d26230", "#aa001e")
 
-  map_template(df, cat_labs, cat_vals) +
-    ggplot2::coord_sf(
-      xlim = bbox[c(1, 3)],
-      ylim = bbox[c(2, 4)]
-    ) +
-    ggplot2::labs(fill = "Average \nDaily \nIncidence \n(past 7 days) \nper 100,000") +
+  map_df <- calc_window_incidence(df, time_step) |>
+    mutate(result = cut(ave_incidence, c(0, 1, 10, 25, Inf))) |>
+    left_join(country_coords, by = "id")
+  
+  map_out <- map_template(map_df, cat_labs, cat_vals) +
+    ggplot2::labs(fill = sprintf("Average \nDaily \nIncidence \n(past %d days) \nper 100,000", time_step)) +
     ggplot2::labs(
       title = "Burden",
-      subtitle = subt
+      subtitle = sprintf(
+        "Average daily incidence over the past %d days per 100,000 population as of %s",
+        time_step,
+        str_squish(format(max(map_df$date), "%B %e, %Y"))
+      )
     )
+
+  if (!missing(region)) {
+
+    bbox <- bbox_fun(region, map_df)
+
+    map_out <- map_out +
+      ggplot2::coord_sf(
+        xlim = bbox[c(1, 3)],
+        ylim = bbox[c(2, 4)]
+      )
+  }
+
+  return(map_out)
 }
 
 
@@ -156,39 +152,50 @@ map_burden <- function(df, region = c("WHO Region", "State Region")) {
 
 #' @title map_trend
 #' @description Cross-sectional map: Average daily incidence for the past 7 days for each country.
-#' @param df A dataframe with the following: region, country, date, percent_change as 6-level factors (0- <1, 1- <10, 10- <25, 25+).
-#' @param region (optional) one of "WHO Region" or "State Region" if you're creating a regional map
-#' @param timestep (default: 7) time step in days the percent-change represents
+#' @param df A data.frame with at least the following columns: id, date, new_cases
+#' @param region (optional) a character string specifying a DoS or WHO region to zoom to, or NULL if none
+#' @param time_step (default: 7) time step in days the percent-change represents
 #'
 #' @return
-#' Produces a map of trend (% change in the past 7 days)
+#' Produces a map of trend (% change in the past `time_step` days)
 #'
 #' @details
-#' Input df SHOULD ONLY HAVE ONE DATE!
+#' percent change is always computed relative to the latest date in the data.frame passed, so pre-filter as needed.
+#' 
 
-#'
 #' @export
 
 map_trend <- function(df, region = NULL, time_step = 7) {
 
-
-
-  if (length(unique(df$date)) > 1) {
-    warning("Your dataframe has more than 1 date! This is a cross-sectional visualization!")
-  }
-
+  # Assert that we have the appropriate columns
+  stopifnot(all(c("id", "date", "new_cases") %in% colnames(df)))
 
   cat_labs <- c(">=50% decrease", "0 - <50% decrease", ">0 - <=50% increase", ">50 - <=100% increase", ">100 - <=200% increase", ">200% increase")
   cat_vals <- c("#1f9fa9", "#c0ebec", "#e57e51", "#d26230", "#c92929", "#7c0316")
 
-  map_out <- map_template(df, cat_labs, cat_vals) +
+  map_df <- df |>
+    group_by(id) |>
+    calc_window_pct_change(window = time_step, return_totals = TRUE) |>
+    ungroup() |>
+    filter(date == max(date)) |>
+    mutate(
+      # pct change will already be NaN if cases were 0 in the previous period
+      # due to division, but we want to also NA out any observations that
+      # are not reporting in the current period that were in the previous
+      # since we can't ascertain the trajectory
+      pct_change = if_else(cases_current == 0, NA_real_, pct_change),
+      result = cut((pct_change - 1) * 100, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf))
+    ) |>
+    left_join(country_coords, by = "id")
+
+  map_out <- map_template(map_df, cat_labs, cat_vals) +
     ggplot2::labs(
       title = "Recent Trends",
       subtitle = paste0(
         "Percent change in cases from ", time_step, "-day period ending ",
-        format((unique(df$date)), "%B %d, %Y"),
+        format((unique(map_df$date)), "%B %d, %Y"),
         "\ncompared to previous ", time_step, "-day period ending ",
-        format(max(df$date) - time_step, "%B %d, %Y")
+        format(max(map_df$date) - time_step, "%B %d, %Y")
       ),
       fill = sprintf("Percent \nChange From \nPrevious %d Days", time_step)
     )
