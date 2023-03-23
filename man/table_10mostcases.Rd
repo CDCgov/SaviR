@@ -3,20 +3,31 @@
 \name{table_10mostcases}
 \alias{table_10mostcases}
 \alias{table_10incidence}
-\title{SaviR Tables for Various CDC Documents}
+\alias{table_10percentchange}
+\title{SaviR Case Tables for Various CDC Documents}
 \usage{
 table_10mostcases(df, time_step = 7, region = NULL, data_as_of = NULL)
 
 table_10incidence(df, time_step = 7, region = NULL, data_as_of = NULL)
+
+table_10percentchange(
+  df,
+  time_step = 7,
+  second_time_step = 28,
+  region = NULL,
+  data_as_of = NULL
+)
 }
 \arguments{
 \item{df}{A data.frame with at least the following columns: id, date, new_cases}
 
-\item{time_step}{(default: 7) time step in days to compute values over}
+\item{time_step}{(numeric, default: 7) time step in days to compute values over}
 
 \item{region}{(optional) a character string specifying a DoS or WHO region for title, or NULL if none}
 
 \item{data_as_of}{(optional) a character string for the data-as-of date. If NULL, inferred from latest date in data.}
+
+\item{second_time_step}{(numeric, default: 28) for table_10percentchange, time in days to compute percent change over for second column}
 }
 \value{
 A pretty {gt} table
@@ -27,5 +38,6 @@ These tables are computed using a standard data.frame of cases and deaths provid
 \itemize{
 \item \code{table_10mostcases} displays a table with the top-10 countries by total cases reported in the time period specified
 \item \code{table_10incidence} displays a table with the top-10 countries by average incidence in the time period specified
+\item \code{table_10percentchange} displays a table with the top-10 countries by percent change in the time period specified
 }
 }
