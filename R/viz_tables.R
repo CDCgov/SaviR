@@ -140,14 +140,20 @@ table_countriesofconcern <- function(df, df_vax_man, country_list, df_variant_pc
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#' @title table_10mostcases
-#' @description Table for displaying top 10's.
+#' @title SaviR Tables for Various CDC Documents 
+#' @description 
+#' All table functions provide an interface to produce {gt} tables for CDC Reports.
+#' These tables are computed using a standard data.frame of cases and deaths provided from `get_covid_df()` or `get_combined_table()`
+#' 
+#' - `table_10mostcases` displays a table with the top-10 countries by total cases reported in the time period specified
+#' - `table_10incidence` displays a table with the top-10 countries by average incidence in the time period specified
+#' 
 #' @param df A data.frame with at least the following columns: id, date, new_cases 
-#' @param time_step (default: 7) time step in days to compute values over  
+#' @param time_step (default: 7) time step in days to compute values over
 #' @param region (optional) a character string specifying a DoS or WHO region for title, or NULL if none
 #' @param data_as_of (optional) a character string for the data-as-of date. If NULL, inferred from latest date in data.
 
-#' @return A pretty {gt} table with the top-10 countries by total cases reported in the time period specified
+#' @returns A pretty {gt} table
 
 #' @import gt
 #' @export
@@ -163,7 +169,7 @@ table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NUL
   }
 
   if (missing(data_as_of)) {
-    data_as_of <- format(max(df[["date"]], "%B %d, %Y")
+    data_as_of <- format(max(df[["date"]]), "%B %d, %Y")
   }
 
   tbl_pct_change <- df |>
@@ -177,7 +183,8 @@ table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NUL
       # are not reporting in the current period that were in the previous
       # since we can't ascertain the trajectory
       pct_change = if_else(cases_current == 0, NA_real_, pct_change),
-      pct_change = (pct_change - 1) * 100
+      pct_change = (pct_change - 1) * 100,
+      pct_change = if_else(is.infinite(pct_change), NA_real_, pct_change)
     ) |>
     arrange(desc(cases_current)) |>
     slice(1:10) |>
@@ -237,24 +244,51 @@ table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NUL
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#' @title table_10incidence
-#' @description Table for displaying top 10's.
-#' @param df A dataframe with the following and in this order: country, value1 - incidence, value2 - percent change, date
-
-#'
+#' @rdname table_10mostcases
 #' @export
 
-table_10incidence <- function(df, type = "Global", run_date = "Enter a date") {
-  if (type == "Global") {
-    title_label <- gt::html(paste0("<b>10 Countries/ Areas with Highest Incidence", "</b>"))
+table_10incidence <- function(df, time_step = 7, region = NULL, data_as_of = NULL) {
+  stopifnot(all(c("id", "date", "new_cases") %in% colnames(df)))
+
+  if (!missing(region)) {
+    title_label <- gt::html(sprintf("<b>10 (%s) Countries/ Areas with Highest Incidence</b>", region))
   } else {
-    title_label <- gt::html(paste0("<b>10 (", type, ") Countries/ Areas with Highest Incidence", "</b>"))
+    title_label <- gt::html("<b>10 Countries/ Areas with Highest Incidence</b>")
   }
 
-  gt::gt(df) %>%
+  if (missing(data_as_of)) {
+    data_as_of <- format(max(df[["date"]]), "%B %d, %Y")
+  }
+
+  incidence_df <- calc_window_incidence(df, time_step)
+  pct_change_df <- df |>
+    group_by(id) |>
+    calc_window_pct_change(window = time_step, return_totals = TRUE) |>
+    ungroup() |>
+    filter(date == max(date)) |>
+    mutate(
+      # pct change will already be NaN if cases were 0 in the previous period
+      # due to division, but we want to also NA out any observations that
+      # are not reporting in the current period that were in the previous
+      # since we can't ascertain the trajectory
+      pct_change = if_else(cases_current == 0, NA_real_, pct_change),
+      pct_change = (pct_change - 1) * 100,
+      pct_change = if_else(is.infinite(pct_change), NA_real_, pct_change)
+    ) |>
+    select(id, date, pct_change)
+  
+  table_df <- incidence_df |>
+    full_join(pct_change_df, by = c("id", "date")) |>
+    arrange(desc(ave_incidence)) |>
+    slice(1:10) |>
+    left_join(distinct(onetable, id, who_country), by = "id") |>
+    select(who_country, ave_incidence, pct_change)
+
+
+  gt::gt(table_df) %>%
     gt::tab_header(title = title_label) %>%
     gt::data_color(
-      columns = c(value1),
+      columns = c(ave_incidence),
       colors = scales::col_bin(
         palette = c("#f1e5a1", "#e7b351", "#d26230", "#aa001e"),
         bins = c(0, 1, 10, 25, Inf),
@@ -262,36 +296,36 @@ table_10incidence <- function(df, type = "Global", run_date = "Enter a date") {
       )
     ) %>%
     gt::data_color(
-      columns = c(value2),
+      columns = c(pct_change),
       colors = scales::col_bin(
         palette = c("#1f9fa9", "#c0ebec", "#e57e51", "#d26230", "#c92929", "#7c0316"),
         bins = c(-Inf, -50, 0, 50, 100, 200, Inf)
       )
     ) %>%
     gt::fmt_number(
-      columns = c(value1),
+      columns = c(ave_incidence),
       sep_mark = ",",
       decimals = 1
     ) %>%
     gt::fmt_number(
-      columns = c(value2),
+      columns = c(pct_change),
       sep_mark = ",",
       decimals = 1
     ) %>%
     gt::sub_missing(
-      columns = c(value1, value2),
+      columns = c(ave_incidence, pct_change),
       missing_text = "-"
     ) %>%
     gt::cols_label(
-      country = gt::html("Country/ Area"),
-      value1 = gt::html("Incidence<br>Per 100,000"),
-      value2 = gt::html("% Change<br>Last Week")
+      who_country = gt::html("Country/ Area"),
+      ave_incidence = gt::html("Incidence<br>Per 100,000"),
+      pct_change = gt::html(sprintf("%% Change<br>Past %d Days", time_step))
     ) %>%
     gt::cols_align("center") %>%
     gt::cols_width(
-      c(country) ~ gt::px(175),
-      c(value1) ~ gt::px(100),
-      c(value2) ~ gt::px(100)
+      c(who_country) ~ gt::px(175),
+      c(ave_incidence) ~ gt::px(100),
+      c(pct_change) ~ gt::px(100)
     ) %>%
     gt::tab_options(
       table.width = gt::px(400),
@@ -303,14 +337,14 @@ table_10incidence <- function(df, type = "Global", run_date = "Enter a date") {
       footnotes.padding = 0
     ) %>%
     gt::tab_source_note(source_note = gt::md("Data Source: WHO Coronavirus Disease (COVID-19) Dashboard ")) %>%
-    gt::tab_source_note(source_note = paste0("Data as of ", run_date)) %>%
+    gt::tab_source_note(source_note = paste0("Data as of ", data_as_of)) %>%
     gt::tab_footnote(
-      footnote = "Percent change in cases of most recent 7 days to 7 days prior",
-      locations = cells_column_labels(columns = c(value2))
+      footnote = sprintf("Percent change in cases of most recent %d days to %d days prior", time_step, time_step),
+      locations = cells_column_labels(columns = c(pct_change))
     ) %>%
     gt::tab_footnote(
-      footnote = "Average daily incidence per 100,000 in past 7 days",
-      locations = cells_column_labels(columns = c(value1))
+      footnote = sprintf("Average daily incidence per 100,000 in past %d days", time_step),
+      locations = cells_column_labels(columns = c(ave_incidence))
     )
 }
 

@@ -273,24 +273,28 @@ for (r in unique(na.omit(df_both$who_region))) {
 
 ### Top 10 Incidence Table
 
+#### 7-day table
 ```{r}
-df_both %>%
-  filter(date == sunday_date) %>%
-  select(country = who_country, value1 = week_case_incidence, value2 = percent_change_case) %>%
-  arrange(desc(value1)) %>%
-  head(10) %>%
-  table_10incidence(., run_date = format(sunday_date, "%B %d, %Y"))
+df_both |>
+  filter(date <= sunday_date) |>
+  table_10incidence(data_as_of = format(sunday_date, "%B %d, %Y"))
 ```
 
+#### 14-day table
+
+```{r}
+df_both |>
+  filter(date <= sunday_date) |>
+  table_10incidence(time_step = 14)
+```
+
+
+#### By Region
 ```{r, results="asis"}
 for (r in unique(na.omit(df_both$who_region))) {
   tab_out <- df_both %>%
-    filter(date == sunday_date) %>%
-    filter(who_region == r) %>%
-    select(country = who_country, value1 = week_case_incidence, value2 = percent_change_case) %>%
-    arrange(desc(value1)) %>%
-    head(10) %>%
-    table_10incidence(., type = r, run_date = format(sunday_date, "%B %d, %Y"))
+    filter(date <= sunday_date, who_region == r) |>
+    table_10incidence(region = r, data_as_of = format(Sys.Date(), "%B %d, %Y"))
 
   print(htmltools::tagList(tab_out))
 }
