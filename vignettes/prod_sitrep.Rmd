@@ -273,6 +273,11 @@ for (r in unique(na.omit(df_both$who_region))) {
 
 ### Top 10 Incidence Table
 
+`table_10incidence(df, time_step = 7, region = NULL, data_as_of = NULL)`
+
+Similar to the above, but computes top-10 countries baseed on incidence over past `time_step`.
+
+
 #### 7-day table
 ```{r}
 df_both |>
@@ -330,7 +335,7 @@ df_both %>%
 for (r in unique(na.omit(df_both$who_region))) {
   tab_out <- df_both %>%
     filter(date <= sunday_date, population >= 100000, who_region == r) |> # Exclude population less than 100,000
-    table_10percentchange(region = r, run_date = format(sunday_date, "%B %d, %Y")) 
+    table_10percentchange(region = r, data_as_of = format(sunday_date, "%B %d, %Y")) 
     
   print(htmltools::tagList(tab_out))
 }
