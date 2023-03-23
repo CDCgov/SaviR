@@ -399,7 +399,7 @@ table_10percentchange <- function(df, time_step = 7, second_time_step = 28, regi
       # due to division, but we want to also NA out any observations that
       # are not reporting in the current period that were in the previous
       # since we can't ascertain the trajectory
-      pct_change_2 = if_else(cases_current == 0, NA_real_, pct_change_2),
+      pct_change_2 = if_else(cases_current == 0, NA_real_, pct_change),
       pct_change_2 = (pct_change_2 - 1) * 100,
       pct_change_2 = if_else(is.infinite(pct_change_2), NA_real_, pct_change_2)
     ) |>
