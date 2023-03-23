@@ -164,52 +164,51 @@ from</li>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">onetable</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 237 × 10</span></span></span>
-<span><span class="co">#&gt;    id    iso2code state_region   who_r…¹ who_r…² who_c…³ incom…⁴ popul…⁵ eight…⁶</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ABW   AW       <span style="color: #BB0000;">NA</span>             AMRO    Americ… Aruba   High i…  1.06<span style="color: #949494;">e</span>5  8.49<span style="color: #949494;">e</span>4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> AFG   AF       South and Cen… EMRO    Easter… Afghan… Low in…  4.11<span style="color: #949494;">e</span>7  2.04<span style="color: #949494;">e</span>7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> AGO   AO       Sub-Saharan A… AFRO    Africa  Angola  Lower …  3.56<span style="color: #949494;">e</span>7  1.72<span style="color: #949494;">e</span>7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> AIA   AI       <span style="color: #BB0000;">NA</span>             AMRO    Americ… Anguil… <span style="color: #BB0000;">NA</span>       1.59<span style="color: #949494;">e</span>4  1.26<span style="color: #949494;">e</span>4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ALB   AL       Europe and Eu… EURO    Europe  Albania Upper …  2.84<span style="color: #949494;">e</span>6  2.28<span style="color: #949494;">e</span>6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> AND   AD       Europe and Eu… EURO    Europe  Andorra High i…  7.98<span style="color: #949494;">e</span>4  6.72<span style="color: #949494;">e</span>4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ARE   AE       Near East (Mi… EMRO    Easter… United… High i…  9.44<span style="color: #949494;">e</span>6  7.80<span style="color: #949494;">e</span>6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ARG   AR       Western Hemis… AMRO    Americ… Argent… Upper …  4.55<span style="color: #949494;">e</span>7  3.29<span style="color: #949494;">e</span>7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ARM   AM       Europe and Eu… EURO    Europe  Armenia Upper …  2.78<span style="color: #949494;">e</span>6  2.11<span style="color: #949494;">e</span>6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ASM   AS       <span style="color: #BB0000;">NA</span>             WPRO    Wester… Americ… Upper …  4.43<span style="color: #949494;">e</span>4  3.00<span style="color: #949494;">e</span>4</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 227 more rows, 1 more variable: geometry &lt;MULTIPOLYGON [m]&gt;, and</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   abbreviated variable names ¹​who_region, ²​who_region_desc, ³​who_country,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ⁴​incomelevel_value, ⁵​population, ⁶​eighteenplus</span></span></span></code></pre></div>
+<span><span class="co">#&gt;    id    iso2code state_region            who_region who_region_desc who_country</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ABW   AW       <span style="color: #BB0000;">NA</span>                      AMRO       Americas        Aruba      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> AFG   AF       South and Central Asia  EMRO       Eastern Medite… Afghanistan</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> AGO   AO       Sub-Saharan Africa      AFRO       Africa          Angola     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> AIA   AI       <span style="color: #BB0000;">NA</span>                      AMRO       Americas        Anguilla   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ALB   AL       Europe and Eurasia      EURO       Europe          Albania    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> AND   AD       Europe and Eurasia      EURO       Europe          Andorra    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ARE   AE       Near East (Middle East… EMRO       Eastern Medite… United Ara…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ARG   AR       Western Hemisphere      AMRO       Americas        Argentina  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ARM   AM       Europe and Eurasia      EURO       Europe          Armenia    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ASM   AS       <span style="color: #BB0000;">NA</span>                      WPRO       Western Pacific American S…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 227 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4 more variables: incomelevel_value &lt;chr&gt;, population &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   eighteenplus &lt;dbl&gt;, geometry &lt;MULTIPOLYGON [m]&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_covid_df.html">get_covid_df</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
-<span><span class="co">#&gt;   date       iso2code country             new_c…¹ cumul…² new_d…³ cumul…⁴ source</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2020-01-03 AD       Andorra                   0       0       0       0 WHO   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2020-01-03 AE       United Arab Emirat…       0       0       0       0 WHO   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2020-01-03 AF       Afghanistan               0       0       0       0 WHO   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2020-01-03 AG       Antigua and Barbuda       0       0       0       0 WHO   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2020-01-03 AI       Anguilla                  0       0       0       0 WHO   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2020-01-03 AL       Albania                   0       0       0       0 WHO   </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​new_cases, ²​cumulative_cases, ³​new_deaths,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ⁴​cumulative_deaths</span></span></span></code></pre></div>
+<span><span class="co">#&gt;   date       iso2code country              new_cases cumulative_cases new_deaths</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2020-01-03 AD       Andorra                      0                0          0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2020-01-03 AE       United Arab Emirates         0                0          0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2020-01-03 AF       Afghanistan                  0                0          0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2020-01-03 AG       Antigua and Barbuda          0                0          0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2020-01-03 AI       Anguilla                     0                0          0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2020-01-03 AL       Albania                      0                0          0</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: cumulative_deaths &lt;dbl&gt;, source &lt;chr&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_vax.html">get_vax</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 17</span></span></span>
-<span><span class="co">#&gt;   owid_country id    date       total_…¹ peopl…² peopl…³ total…⁴ daily…⁵ daily…⁶</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Aruba        ABW   2021-03-29    <span style="text-decoration: underline;">25</span>766   <span style="text-decoration: underline;">15</span>600   <span style="text-decoration: underline;">10</span>166      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Aruba        ABW   2021-03-30    <span style="text-decoration: underline;">25</span>766   <span style="text-decoration: underline;">15</span>600   <span style="text-decoration: underline;">10</span>166      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    <span style="text-decoration: underline;">1</span>278</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Aruba        ABW   2021-03-31    <span style="text-decoration: underline;">25</span>766   <span style="text-decoration: underline;">15</span>600   <span style="text-decoration: underline;">10</span>166      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    <span style="text-decoration: underline;">1</span>278</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Aruba        ABW   2021-04-01    <span style="text-decoration: underline;">25</span>766   <span style="text-decoration: underline;">15</span>600   <span style="text-decoration: underline;">10</span>166      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    <span style="text-decoration: underline;">1</span>278</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Aruba        ABW   2021-04-02    <span style="text-decoration: underline;">25</span>766   <span style="text-decoration: underline;">15</span>600   <span style="text-decoration: underline;">10</span>166      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    <span style="text-decoration: underline;">1</span>278</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Aruba        ABW   2021-04-03    <span style="text-decoration: underline;">25</span>766   <span style="text-decoration: underline;">15</span>600   <span style="text-decoration: underline;">10</span>166      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    <span style="text-decoration: underline;">1</span>278</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 8 more variables: total_vaccinations_per_hundred &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   people_vaccinated_per_hundred &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt;   owid_country id    date       total_vaccinations people_vaccinated</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Aruba        ABW   2021-03-29              <span style="text-decoration: underline;">25</span>766             <span style="text-decoration: underline;">15</span>600</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Aruba        ABW   2021-03-30              <span style="text-decoration: underline;">25</span>766             <span style="text-decoration: underline;">15</span>600</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Aruba        ABW   2021-03-31              <span style="text-decoration: underline;">25</span>766             <span style="text-decoration: underline;">15</span>600</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Aruba        ABW   2021-04-01              <span style="text-decoration: underline;">25</span>766             <span style="text-decoration: underline;">15</span>600</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Aruba        ABW   2021-04-02              <span style="text-decoration: underline;">25</span>766             <span style="text-decoration: underline;">15</span>600</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Aruba        ABW   2021-04-03              <span style="text-decoration: underline;">25</span>766             <span style="text-decoration: underline;">15</span>600</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 12 more variables: people_fully_vaccinated &lt;dbl&gt;, total_boosters &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   daily_vaccinations_raw &lt;int&gt;, daily_vaccinations &lt;int&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   total_vaccinations_per_hundred &lt;dbl&gt;, people_vaccinated_per_hundred &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   people_fully_vaccinated_per_hundred &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   total_boosters_per_hundred &lt;dbl&gt;, daily_vaccinations_per_million &lt;int&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   daily_people_vaccinated &lt;int&gt;, daily_people_vaccinated_per_hundred &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   daily_vaccinations_per_hundred &lt;dbl&gt;, and abbreviated variable names</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ¹​total_vaccinations, ²​people_vaccinated, ³​people_fully_vaccinated, …</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;">#   daily_vaccinations_per_hundred &lt;dbl&gt;</span></span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -245,21 +244,21 @@ geometry or not.</li>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">who_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 56</span></span></span>
-<span><span class="co">#&gt;   id    iso2code state_region who_region who_r…¹ who_c…² incom…³ popul…⁴ eight…⁵</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ABW   AW       <span style="color: #BB0000;">NA</span>           AMRO       Americ… Aruba   High i…  <span style="text-decoration: underline;">106</span>445   <span style="text-decoration: underline;">84</span>909</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ABW   AW       <span style="color: #BB0000;">NA</span>           AMRO       Americ… Aruba   High i…  <span style="text-decoration: underline;">106</span>445   <span style="text-decoration: underline;">84</span>909</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> ABW   AW       <span style="color: #BB0000;">NA</span>           AMRO       Americ… Aruba   High i…  <span style="text-decoration: underline;">106</span>445   <span style="text-decoration: underline;">84</span>909</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> ABW   AW       <span style="color: #BB0000;">NA</span>           AMRO       Americ… Aruba   High i…  <span style="text-decoration: underline;">106</span>445   <span style="text-decoration: underline;">84</span>909</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> ABW   AW       <span style="color: #BB0000;">NA</span>           AMRO       Americ… Aruba   High i…  <span style="text-decoration: underline;">106</span>445   <span style="text-decoration: underline;">84</span>909</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> ABW   AW       <span style="color: #BB0000;">NA</span>           AMRO       Americ… Aruba   High i…  <span style="text-decoration: underline;">106</span>445   <span style="text-decoration: underline;">84</span>909</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 47 more variables: date &lt;date&gt;, country &lt;chr&gt;, new_cases &lt;int&gt;,</span></span></span>
+<span><span class="co">#&gt;   id    iso2code state_region who_region who_region_desc who_country</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ABW   AW       <span style="color: #BB0000;">NA</span>           AMRO       Americas        Aruba      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ABW   AW       <span style="color: #BB0000;">NA</span>           AMRO       Americas        Aruba      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> ABW   AW       <span style="color: #BB0000;">NA</span>           AMRO       Americas        Aruba      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> ABW   AW       <span style="color: #BB0000;">NA</span>           AMRO       Americas        Aruba      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> ABW   AW       <span style="color: #BB0000;">NA</span>           AMRO       Americas        Aruba      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> ABW   AW       <span style="color: #BB0000;">NA</span>           AMRO       Americas        Aruba      </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 50 more variables: incomelevel_value &lt;chr&gt;, population &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   eighteenplus &lt;dbl&gt;, date &lt;date&gt;, country &lt;chr&gt;, new_cases &lt;int&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   cumulative_cases &lt;int&gt;, new_deaths &lt;int&gt;, cumulative_deaths &lt;int&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   source &lt;chr&gt;, new_cases_copy &lt;dbl&gt;, new_deaths_copy &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   cumulative_cases_copy &lt;dbl&gt;, cumulative_deaths_copy &lt;dbl&gt;, weekdate &lt;date&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   new_cases_7dav &lt;dbl&gt;, new_deaths_7dav &lt;dbl&gt;, daily_case_incidence &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   daily_death_incidence &lt;dbl&gt;, week_case &lt;dbl&gt;, prev_week_case &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   prev_4week_case &lt;dbl&gt;, week_death &lt;dbl&gt;, prev_week_death &lt;dbl&gt;, …</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;">#   daily_death_incidence &lt;dbl&gt;, week_case &lt;dbl&gt;, prev_week_case &lt;dbl&gt;, …</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="vaccine-carry-forward">Vaccine carry-forward<a class="anchor" aria-label="anchor" href="#vaccine-carry-forward"></a>
@@ -308,8 +307,8 @@ updated.</p>
 <span><span class="co">#&gt; 2:      Albania ALB       2023-02-05   2023-02-05 2023-02-05   2023-02-05</span></span>
 <span><span class="co">#&gt; 3:      Algeria DZA       2022-09-04   2022-09-04 2022-09-04   2022-09-04</span></span>
 <span><span class="co">#&gt; 4:      Andorra AND       2023-01-29   2023-01-29 2023-01-29   2023-01-29</span></span>
-<span><span class="co">#&gt; 5:       Angola AGO       2023-03-12   2023-03-12 2023-03-12   2023-03-12</span></span>
-<span><span class="co">#&gt; 6:     Anguilla AIA       2023-03-03   2023-02-10 2023-02-10   2023-03-03</span></span></code></pre></div>
+<span><span class="co">#&gt; 5:       Angola AGO       2023-03-19   2023-03-19 2023-03-19   2023-03-19</span></span>
+<span><span class="co">#&gt; 6:     Anguilla AIA       2023-03-03   2023-03-17 2023-03-17   2023-03-03</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
