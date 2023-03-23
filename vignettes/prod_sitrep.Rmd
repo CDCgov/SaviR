@@ -239,24 +239,33 @@ global_vax_map
 
 ### Top 10 Most Cases Table
 
+`table_10mostcases(df, time_step = 7, region = NULL, data_as_of = NULL)`
+
+This function presents a top-10 table of countries based on cases reported in the past `time_step`.  
+The default is a 7 day period, but this can be adjusted. Additionally, you can tweak the title and
+data-as-of footnote using those variables respectively, or they will be inferred internally.  
+
+#### 7-day Table
+
 ```{r}
-df_both %>%
-  filter(date == sunday_date) %>%
-  select(country = who_country, value1 = week_case, value2 = percent_change_case) %>%
-  arrange(desc(value1)) %>%
-  head(10) %>%
-  table_10mostcases(run_date = format(sunday_date, "%B %d, %Y"))
+df_both |>
+  filter(date <= sunday_date) |>
+  table_10mostcases(data_as_of = format(sunday_date, "%B %d, %Y"))
 ```
 
+#### 14-day Table
+```{r}
+df_both |>
+  filter(date <= sunday_date) |>
+  table_10mostcases(time_step = 14)
+```
+
+#### By region
 ```{r, results="asis"}
 for (r in unique(na.omit(df_both$who_region))) {
-  tab_out <- df_both %>%
-    filter(date == sunday_date) %>%
-    filter(who_region == r) %>%
-    select(country = who_country, value1 = week_case, value2 = percent_change_case) %>%
-    arrange(desc(value1)) %>%
-    head(10) %>%
-    table_10mostcases(., type = r, run_date = format(sunday_date, "%B %d, %Y"))
+  tab_out <- df_both |>
+    filter(date <= sunday_date, who_region == r) |>
+    table_10mostcases(region = r, data_as_of = format(Sys.Date(), "%B %d, %Y"))
   
   print(htmltools::tagList(tab_out))
 }
@@ -264,24 +273,28 @@ for (r in unique(na.omit(df_both$who_region))) {
 
 ### Top 10 Incidence Table
 
+#### 7-day table
 ```{r}
-df_both %>%
-  filter(date == sunday_date) %>%
-  select(country = who_country, value1 = week_case_incidence, value2 = percent_change_case) %>%
-  arrange(desc(value1)) %>%
-  head(10) %>%
-  table_10incidence(., run_date = format(sunday_date, "%B %d, %Y"))
+df_both |>
+  filter(date <= sunday_date) |>
+  table_10incidence(data_as_of = format(sunday_date, "%B %d, %Y"))
 ```
 
+#### 14-day table
+
+```{r}
+df_both |>
+  filter(date <= sunday_date) |>
+  table_10incidence(time_step = 14)
+```
+
+
+#### By Region
 ```{r, results="asis"}
 for (r in unique(na.omit(df_both$who_region))) {
   tab_out <- df_both %>%
-    filter(date == sunday_date) %>%
-    filter(who_region == r) %>%
-    select(country = who_country, value1 = week_case_incidence, value2 = percent_change_case) %>%
-    arrange(desc(value1)) %>%
-    head(10) %>%
-    table_10incidence(., type = r, run_date = format(sunday_date, "%B %d, %Y"))
+    filter(date <= sunday_date, who_region == r) |>
+    table_10incidence(region = r, data_as_of = format(Sys.Date(), "%B %d, %Y"))
 
   print(htmltools::tagList(tab_out))
 }
@@ -289,27 +302,35 @@ for (r in unique(na.omit(df_both$who_region))) {
 
 ### Top 10 Percent Change Table
 
+`table_10percentchange(df, time_step = 7, second_time_step = 28, region = NULL, data_as_of = NULL)`
+
+Works similarly to the above, but selects top 10 countries based on percent change over `time_step`.  
+There's an additional argument `second_time_step` that specifies a second (normally longer) period to compute a percent change over.  
+The default visualization is using weekly change and 4 week change.  
+
+This table is usually filtered to only countries over a certain population size, but this should be handled  
+externally.  
+
+#### Global table (7d and 28d pct change)
 ```{r}
 df_both %>%
-  filter(date == sunday_date) %>%
-  filter(population >= 10000000) %>% # Exclude population less than 10M
-  select(country = who_country, value1 = percent_change_case, value2 = percent_change4_case) %>%
-  arrange(desc(value1)) %>%
-  head(10) %>%
-  table_10percentchange(., run_date = format(sunday_date, "%B %d, %Y"))
-
+  filter(date <= sunday_date, population >= 10000000) |>
+  table_10percentchange(data_as_of = format(sunday_date, "%B %d, %Y"))
 ```
 
+#### Global table (14d and 28d pct change)
+```{r}
+df_both %>%
+  filter(date <= sunday_date, population >= 10000000) |>
+  table_10percentchange(time_step = 14)
+```
+
+#### Regional Tables
 ```{r, results="asis"}
 for (r in unique(na.omit(df_both$who_region))) {
   tab_out <- df_both %>%
-    filter(date == sunday_date) %>%
-    filter(population >= 100000) %>% # Exclude population less than 100,000
-    filter(who_region == r) %>%
-    select(country = who_country, value1 = percent_change_case, value2 = percent_change4_case) %>%
-    arrange(desc(value1)) %>%
-    head(10) %>%
-    table_10percentchange(type = r, run_date = format(sunday_date, "%B %d, %Y")) 
+    filter(date <= sunday_date, population >= 100000, who_region == r) |> # Exclude population less than 100,000
+    table_10percentchange(region = r, run_date = format(sunday_date, "%B %d, %Y")) 
     
   print(htmltools::tagList(tab_out))
 }
