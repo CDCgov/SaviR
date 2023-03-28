@@ -384,7 +384,7 @@ table_10percentchange <- function(df, time_step = 7, second_time_step = 28, regi
       pct_change = (pct_change - 1) * 100,
       pct_change = if_else(is.infinite(pct_change), NA_real_, pct_change)
     ) |>
-    arrange(desc(cases_current)) |>
+    arrange(desc(pct_change)) |>
     slice(1:10) |>
     left_join(distinct(onetable, id, who_country), by = "id")
 
