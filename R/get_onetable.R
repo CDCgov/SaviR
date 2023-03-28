@@ -1,7 +1,9 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#' @title get_onetable
+#' @title Generate COVID-19 Country Metadata Table
+#' 
 #' @description
+#' 
 #' One table to rule them all and in keys bind them!
 #' Output is available through the package as "onetable," but this function can be used to recreate this dataset.
 #'
@@ -10,9 +12,13 @@
 #' @param usaid_metadata_file (character, optional) A file path to the file containing DoS regions. Expects at least two columns, ["iso_alpha3", "state_region"]
 #' @param vintage (numeric, default: 2022) The year of population projections to use from UN data
 #' @param country_geometries (data.frame, default: country_coords) a data.frame/sfc with at least two columns: ["iso3code", "geometry"]
-
-#' @return Returns a df of 238 rows and 10 columns, including:
-#'#' \itemize{
+#' @details Note:
+#' Population updates for Pitcairn Islands and Kosovo are hardcoded and must be pulled manually via CIA factbook unless another source is found.
+#'
+#' @seealso [onetable] for more complete data documentation
+#' 
+#' @returns Returns a df of 238 rows and 10 columns, including:
+#' \itemize{
 #'   \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
 #'   \item{\code{iso2code}}{  character ISO 3166-1 alpha-2 country code}
 #'   \item{\code{state_region}}{  character Department of State Region}
@@ -23,22 +29,19 @@
 #'   \item{\code{population}}{  numeric Total population}
 #'   \item{\code{eighteenplus}}{  numeric Population age 18 years or older}
 #'   \item{\code{geometry}}{  sfc_GEOMETRY Geometry}
+#' }
 #' @import sf
 #' @import passport
 #' @importFrom openxlsx read.xlsx
 #' @export
 #'
-#' @section Note:
-#' Population updates for Pitcairn Islands and Kosovo are hardcoded and must be pulled manually via CIA factbook unless another source is found.
-#'
-#' @seealso [onetable] for more complete data documentation
 #' @examples
 #' \dontrun{
-#' # UPDATING ONETABLE
-#' # This is the typical location of the USAID DoS file:
-#' usaid_file <- file.path(Sys.getenv("USERPROFILE"), "CDC", "ITF-COVID19-SAVI - Documents", "usaid_dos_regions.csv")
-#' onetable <- get_onetable(usaid_file)
-#' usethis::use_data(onetable, overwrite = TRUE)
+#'   # UPDATING ONETABLE
+#'   # This is the typical location of the USAID DoS file:
+#'   usaid_file <- file.path(Sys.getenv("USERPROFILE"), "CDC", "ITF-COVID19-SAVI - Documents", "usaid_dos_regions.csv")
+#'   onetable <- get_onetable(usaid_file)
+#'   usethis::use_data(onetable, overwrite = TRUE)
 #' }
 #'
 get_onetable <- function(usaid_metadata_file = NULL, vintage = 2022, country_geometries = country_coords) {

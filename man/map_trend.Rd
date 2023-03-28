@@ -7,16 +7,18 @@
 map_trend(df, region = NULL, time_step = 7)
 }
 \arguments{
-\item{df}{A dataframe with the following: region, country, date, percent_change as 6-level factors (0- <1, 1- <10, 10- <25, 25+).}
+\item{df}{A data.frame with at least the following columns: id, date, new_cases}
 
-\item{region}{(optional) one of "WHO Region" or "State Region" if you're creating a regional map}
+\item{region}{(optional) a character string specifying a DoS or WHO region to zoom to, or NULL if none}
+
+\item{time_step}{(default: 7) time step in days the percent-change represents}
 }
 \value{
-Produces a map of trend (\% change in the past 7 days)
+Produces a map of trend (\% change in the past \code{time_step} days)
 }
 \description{
 Cross-sectional map: Average daily incidence for the past 7 days for each country.
 }
 \details{
-Input df SHOULD ONLY HAVE ONE DATE!
+percent change is always computed relative to the latest date in the data.frame passed, so pre-filter as needed.
 }

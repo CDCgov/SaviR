@@ -188,7 +188,6 @@ bbox_fun <- function(region, df) {
          EURO = sf::st_bbox(c(xmin = -1400000, ymin = 200000, xmax = 6500000, ymax = 8200000)),
          `Western Hemisphere` =,
          AMRO = sf::st_bbox(c(xmin = -14300000, ymin = -5500074, xmax = -3872374, ymax = 5000000)),
-         `South and Central Asia` =,
          SEARO = sf::st_bbox(c(xmin = 6484395, ymin = -2008021, xmax = 12915540, ymax = 4596098)),
         `Near East (Middle East and Northern Africa)` = sf::st_bbox(c(xmin = -1300000, ymin = 100000, xmax = 4900000, ymax = 6000000)),
          EMRO = sf::st_bbox(c(xmin = -1600000, ymin = -1800026.8, xmax = 6418436.7, ymax = 6245846.3)),
@@ -197,6 +196,7 @@ bbox_fun <- function(region, df) {
          `East Asia and the Pacific` =,
          WPRO = sf::st_bbox(c(xmin = 5884395, ymin = -5308021, xmax = 16500000, ymax = 5396098)),
          US =,
+        `South and Central Asia` =,
          sf::st_bbox(sf::st_as_sf(df))
   )
 }

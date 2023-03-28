@@ -2,21 +2,25 @@
 % Please edit documentation in R/viz_maps.R
 \name{map_burden}
 \alias{map_burden}
-\title{map_burden}
+\title{Burden Map}
 \usage{
-map_burden(df, region = c("WHO Region", "State Region"))
+map_burden(df, region = NULL, time_step = 7)
 }
 \arguments{
-\item{df}{A dataframe with the following: region, country, date, incidence as 4-level factors (0- <1, 1- <10, 10- <25, 25+)}
+\item{df}{A data.frame with at least the following columns \link{id, date, new_cases}}
 
-\item{region}{one of "WHO Region" or "State Region"}
+\item{region}{(optional) a character string specifying a DoS or WHO region to zoom to, or NULL if none}
+
+\item{time_step}{(numeric) number of days to average incidence over}
 }
 \value{
 Produces a map of burden (incidence per 100,000)
 }
 \description{
-Cross-sectional map: Average daily incidence for the past 7 days for each country.
+A Cross-sectional map: Average daily incidence for the past number of days specified for each country.
 }
 \details{
-Input df SHOULD ONLY HAVE ONE DATE!
+map_burden always produces an average incidence map based on the latest date included in the input data.frame.
+You should ensure that data are completely observed for each timestep, as average incidence is computed based
+on index rather than calendar date.
 }

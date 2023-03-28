@@ -2,9 +2,9 @@
 % Please edit documentation in R/lookups.R
 \name{bbox_fun}
 \alias{bbox_fun}
-\title{Function to get bounding boxes for maps by WHO region}
+\title{Function to get bounding boxes for maps by WHO/DoS region}
 \usage{
-bbox_fun(who_region, df)
+bbox_fun(region, df)
 }
 \value{
 a vector of class bbox (from the sf package)

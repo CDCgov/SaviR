@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_onetable.R
 \name{get_onetable}
 \alias{get_onetable}
-\title{get_onetable}
+\title{Generate COVID-19 Country Metadata Table}
 \usage{
 get_onetable(
   usaid_metadata_file = NULL,
@@ -19,7 +19,7 @@ get_onetable(
 }
 \value{
 Returns a df of 238 rows and 10 columns, including:
-#' \itemize{
+\itemize{
 \item{\code{id}}{  character ISO 3166-1 alpha-3 country code}
 \item{\code{iso2code}}{  character ISO 3166-1 alpha-2 country code}
 \item{\code{state_region}}{  character Department of State Region}
@@ -31,24 +31,24 @@ Returns a df of 238 rows and 10 columns, including:
 \item{\code{eighteenplus}}{  numeric Population age 18 years or older}
 \item{\code{geometry}}{  sfc_GEOMETRY Geometry}
 }
+}
 \description{
 One table to rule them all and in keys bind them!
 Output is available through the package as "onetable," but this function can be used to recreate this dataset.
 
 Note: Department of State (DoS) regions are handled externally in a CSV file.
 }
-\section{Note}{
-
+\details{
+Note:
 Population updates for Pitcairn Islands and Kosovo are hardcoded and must be pulled manually via CIA factbook unless another source is found.
 }
-
 \examples{
 \dontrun{
-# UPDATING ONETABLE
-# This is the typical location of the USAID DoS file:
-usaid_file <- file.path(Sys.getenv("USERPROFILE"), "CDC", "ITF-COVID19-SAVI - Documents", "usaid_dos_regions.csv")
-onetable <- get_onetable(usaid_file)
-usethis::use_data(onetable, overwrite = TRUE)
+  # UPDATING ONETABLE
+  # This is the typical location of the USAID DoS file:
+  usaid_file <- file.path(Sys.getenv("USERPROFILE"), "CDC", "ITF-COVID19-SAVI - Documents", "usaid_dos_regions.csv")
+  onetable <- get_onetable(usaid_file)
+  usethis::use_data(onetable, overwrite = TRUE)
 }
 
 }
