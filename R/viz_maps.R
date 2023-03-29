@@ -118,7 +118,10 @@ map_burden <- function(df, region = NULL, time_step = 7) {
   cat_labs <- c("0- <1", "1- <10", "10- <25", "25+")
   cat_vals <- c("#f1e5a1", "#e7b351", "#d26230", "#aa001e")
 
-  map_df <- calc_window_incidence(df, time_step) |>
+  map_df <- df |>
+    group_by(id) |>
+    calc_window_incidence(time_step) |>
+    filter(date == max(date)) |>
     mutate(result = cut(ave_incidence, c(0, 1, 10, 25, Inf))) |>
     left_join(country_coords, by = "id")
   

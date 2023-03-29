@@ -261,7 +261,11 @@ table_10incidence <- function(df, time_step = 7, region = NULL, data_as_of = NUL
     data_as_of <- format(max(df[["date"]]), "%B %d, %Y")
   }
 
-  incidence_df <- calc_window_incidence(df, time_step)
+  incidence_df <- df |>
+    group_by(id) |>
+    calc_window_incidence(time_step) |>
+    filter(date == max(date))
+
   pct_change_df <- df |>
     group_by(id) |>
     calc_window_pct_change(window = time_step, return_totals = TRUE) |>

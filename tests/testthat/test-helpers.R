@@ -11,7 +11,7 @@ test_that("Window Calculation works for ungrouped data", {
   # to half-size by date
   b <- calc_window_pct_change(a, 7)
 
-  expect_identical(dim(b), c(49L, 3L))
+  expect_identical(dim(b), c(49L, 2L))
 
   # If we ask to return totals, that should be included
   d <- calc_window_pct_change(a, window = 7, return_totals = TRUE)
@@ -36,7 +36,7 @@ test_that("Window calculation works for grouped data", {
     group_by(my_var) |>
     calc_window_pct_change(window = 14)
   
-  expect_identical(dim(b), c(98L, 4L))
+  expect_identical(dim(b), c(98L, 3L))
   expect_true("my_var" %in% colnames(b))
 
   # If we ask to return totals, that should be included
@@ -71,7 +71,9 @@ test_that("Computing 7-day incidence matches other", {
 
   df_comp <- df_who |>
     filter(date <= sunday_date) |>
-    calc_window_incidence(window = 7)
+    group_by(id) |>
+    calc_window_incidence(window = 7) |>
+    filter(date == sunday_date)
   
   # Our two different approaches should match
   # NOTE: obviously we'd prefer to do this in one place and avoid
@@ -79,7 +81,8 @@ test_that("Computing 7-day incidence matches other", {
   expect_identical(
     df_who |>
       filter(date == sunday_date) |>
-      select(id, date, ave_incidence = week_case_incidence),
+      select(id, date, ave_incidence = week_case_incidence) |>
+      arrange(id),
     df_comp,
     tolerance = 1e-15 # not really significant past this level
   )
