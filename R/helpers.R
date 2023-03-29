@@ -53,11 +53,11 @@ calc_window_incidence <- function(data, window = 7) {
 #' @examples
 #' \dontrun{
 #' data <- get_covid_df()
-#' calc_window_pct_change(data, window = 14)
+#' calc_window_pct_change(window = 14)
 #' # For grouped operations, group data beforehand and pipe:
 #' data |>
 #'   group_by(iso2code, country) |>
-#'   calc_window_pct_change(data, window = 14)
+#'   calc_window_pct_change(window = 14)
 #' }
 #'
 calc_window_pct_change <- function(df, window = 14L, return_totals = FALSE) {
