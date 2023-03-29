@@ -80,7 +80,7 @@ if data are not complete for every date.</p>
 
 
 <dt>window</dt>
-<dd><p>(default: 14) number of days the comparison windows should be</p></dd>
+<dd><p>(numeric, default: 14) number of days the comparison windows should be</p></dd>
 
 
 <dt>return_totals</dt>
@@ -100,11 +100,11 @@ if data are not complete for every date.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_covid_df.html">get_covid_df</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">calc_window_pct_change</span><span class="op">(</span><span class="va">data</span>, window <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">calc_window_pct_change</span><span class="op">(</span>window <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># For grouped operations, group data beforehand and pipe:</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">iso2code</span>, <span class="va">country</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>  <span class="fu">calc_window_pct_change</span><span class="op">(</span><span class="va">data</span>, window <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">calc_window_pct_change</span><span class="op">(</span>window <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

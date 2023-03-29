@@ -116,7 +116,7 @@ preferred source based on the flags described in detail below:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">testing_processed</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_testing.html">get_testing</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">testing_processed</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 2,157 × 5</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 2,159 × 5</span></span></span>
 <span><span class="co">##    id    date       new_tests_smoothed_pe…¹ new_tests_smoothed_p…² positive_rate</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> MEX   2020-03-11                <span style="color: #BB0000;">NA</span>                           <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span></span></span>
@@ -129,7 +129,7 @@ preferred source based on the flags described in detail below:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> MEX   2020-03-18                 0.001<span style="text-decoration: underline;">04</span>                     <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> MEX   2020-03-19                 0.001<span style="text-decoration: underline;">27</span>                     <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> MEX   2020-03-20                 0.001<span style="text-decoration: underline;">58</span>                     <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 2,147 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 2,149 more rows</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ abbreviated names: ¹​new_tests_smoothed_per_thousand,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   ²​new_tests_smoothed_per_thousand_14</span></span></span></code></pre>
 <p><code><a href="../reference/get_testing.html">get_testing()</a></code> uses the SaviR functions
@@ -141,7 +141,7 @@ and test positivity.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">testing_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_testing_long.html">get_testing_long</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">testing_long</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 416,429 × 38</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 416,608 × 38</span></span></span>
 <span><span class="co">##    data_source id    date       population total_tests_original</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> FIND        AFG   2020-01-22   38<span style="text-decoration: underline;">928</span>000                   <span style="color: #BB0000;">NA</span></span></span>
@@ -154,7 +154,7 @@ and test positivity.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> FIND        AFG   2020-01-29   38<span style="text-decoration: underline;">928</span>000                   <span style="color: #BB0000;">NA</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> FIND        AFG   2020-01-30   38<span style="text-decoration: underline;">928</span>000                   <span style="color: #BB0000;">NA</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> FIND        AFG   2020-01-31   38<span style="text-decoration: underline;">928</span>000                   <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 416,419 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 416,598 more rows</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 33 more variables: new_tests_original &lt;dbl&gt;, total_tests_int &lt;dbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   new_tests_int &lt;dbl&gt;, new_tests_daily7 &lt;dbl&gt;, new_tests_daily7_prev &lt;dbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   new_tests_daily7_per_1k &lt;dbl&gt;, new_tests_daily7_per_1k_prev &lt;dbl&gt;,</span></span></span>
@@ -206,7 +206,7 @@ source for the most recent 7 days of data for each country:</p>
 <span>            <span class="fu">select</span><span class="op">(</span><span class="va">id</span>, <span class="va">preferred_source</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> <span class="va">preferred_source</span><span class="op">)</span></span>
 <span><span class="va">preferred_testing</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 2,157 × 39</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 2,159 × 39</span></span></span>
 <span><span class="co">##    data_source id    date       population total_tests_original</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> FIND        BMU   2020-05-19      <span style="text-decoration: underline;">62</span>000                 <span style="text-decoration: underline;">5</span>705</span></span>
@@ -219,7 +219,7 @@ source for the most recent 7 days of data for each country:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> FIND        BMU   2020-05-26      <span style="text-decoration: underline;">62</span>000                 <span style="text-decoration: underline;">6</span>603</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> FIND        BMU   2020-05-27      <span style="text-decoration: underline;">62</span>000                 <span style="text-decoration: underline;">6</span>773</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> FIND        BMU   2020-05-28      <span style="text-decoration: underline;">62</span>000                 <span style="text-decoration: underline;">6</span>941</span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 2,147 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 2,149 more rows</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 34 more variables: new_tests_original &lt;dbl&gt;, total_tests_int &lt;dbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   new_tests_int &lt;dbl&gt;, new_tests_daily7 &lt;dbl&gt;, new_tests_daily7_prev &lt;dbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   new_tests_daily7_per_1k &lt;dbl&gt;, new_tests_daily7_per_1k_prev &lt;dbl&gt;,</span></span></span>
@@ -657,7 +657,7 @@ stops being updated:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ARM   <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>                                  <span style="color: #BB0000;">NA</span> </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ATG   <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>                                  <span style="color: #BB0000;">NA</span> </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> AUS   <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>                                  <span style="color: #BB0000;">NA</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> AUT   FIND             2023-03-25                       <span style="text-decoration: underline;">22</span>584.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> AUT   FIND             2023-03-28                       <span style="text-decoration: underline;">21</span>437.</span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 185 more rows</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 35 more variables: new_tests_daily14_prev &lt;dbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   new_tests_daily14_1k &lt;dbl&gt;, new_tests_daily14_1k_prev &lt;dbl&gt;,</span></span></span>
@@ -671,7 +671,7 @@ stops being updated:</p>
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">preferred_source</span> <span class="op">%&gt;%</span> </span>
 <span>            <span class="fu">select</span><span class="op">(</span><span class="va">id</span>, <span class="va">preferred_source</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">data_source</span> <span class="op">==</span> <span class="va">preferred_source</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 2,157 × 39</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 2,159 × 39</span></span></span>
 <span><span class="co">##    data_source id    date       population total_tests_original</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> FIND        BMU   2020-05-19      <span style="text-decoration: underline;">62</span>000                 <span style="text-decoration: underline;">5</span>705</span></span>
@@ -684,7 +684,7 @@ stops being updated:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> FIND        BMU   2020-05-26      <span style="text-decoration: underline;">62</span>000                 <span style="text-decoration: underline;">6</span>603</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> FIND        BMU   2020-05-27      <span style="text-decoration: underline;">62</span>000                 <span style="text-decoration: underline;">6</span>773</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> FIND        BMU   2020-05-28      <span style="text-decoration: underline;">62</span>000                 <span style="text-decoration: underline;">6</span>941</span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 2,147 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 2,149 more rows</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 34 more variables: new_tests_original &lt;dbl&gt;, total_tests_int &lt;dbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   new_tests_int &lt;dbl&gt;, new_tests_daily7 &lt;dbl&gt;, new_tests_daily7_prev &lt;dbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   new_tests_daily7_per_1k &lt;dbl&gt;, new_tests_daily7_per_1k_prev &lt;dbl&gt;,</span></span></span>
