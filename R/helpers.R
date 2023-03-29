@@ -70,7 +70,7 @@ calc_window_pct_change <- function(df, window = 14L, return_totals = FALSE) {
     arrange(date) |>
     mutate(
       cases_current = roll_sum(new_cases, n = window, align = "right", fill = NA),
-      cases_prev = roll_sum(dplyr::lag(new_cases, n = window), n = window, align = "right", fill = NA),
+      cases_prev = dplyr::lag(cases_current, n = window),
       pct_change = cases_current / cases_prev
     ) |>
     ungroup()
