@@ -2,6 +2,7 @@
 
 export(calc_add_risk)
 export(calc_vax_carryforward)
+export(calc_window_incidence)
 export(calc_window_pct_change)
 export(get_combined_table)
 export(get_country_coords)

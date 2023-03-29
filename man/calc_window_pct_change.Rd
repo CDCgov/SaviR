@@ -9,7 +9,7 @@ calc_window_pct_change(df, window = 14L, return_totals = FALSE)
 \arguments{
 \item{df}{Dataframe with at least date, new_cases columns}
 
-\item{window}{(default: 14) number of days the comparison windows should be}
+\item{window}{(numeric, default: 14) number of days the comparison windows should be}
 
 \item{return_totals}{(default: FALSE) return running sums used to compute \code{pct_change}?}
 }
@@ -28,11 +28,11 @@ if data are not complete for every date.
 \examples{
 \dontrun{
 data <- get_covid_df()
-calc_window_pct_change(data, window = 14)
+calc_window_pct_change(window = 14)
 # For grouped operations, group data beforehand and pipe:
 data |>
   group_by(iso2code, country) |>
-  calc_window_pct_change(data, window = 14)
+  calc_window_pct_change(window = 14)
 }
 
 }

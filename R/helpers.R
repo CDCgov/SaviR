@@ -2,33 +2,51 @@
 
 
 #' @title Compute average incidence over a set day interval
-#' @param data a data.frame with at least [date, id, new_cases, and population] columns to compute incidence
-#' @param window a numeric representing days to compute average incidence over
+#' @param data a data.frame with at least [date, new_cases, and population] columns to compute incidence
+#' @param window (numeric, default: 14) a numeric representing days to compute average incidence over
 #' 
 #' @details 
 #' Note that incidence here is per 100K population.
 #' The function assumes that data passed has observations for each day for each country, since we use
 #' and index-based approach to compute average incidence, not calendar-time.
-#' @return a data.frame of summarized incidence values (ave_incidence) by id, from the latest date provided
-#' @keywords internal
-calc_window_incidence <- function(data, window = 7) {
-  stopifnot(all(c("id", "date", "new_cases", "population") %in% colnames(data)))
+#' @return a data.frame of summarized incidence values (ave_incidence) by date, possibly including grouping vars if data were grouped.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' data <- get_covid_df("WHO")
+#' # 14d average incidence world-wide
+#' calc_window_incidence(window = 14)
+#' # For grouped operations, group data beforehand and pipe:
+#' # 14d average incidence by country
+#' data |>
+#'   group_by(iso2code, country) |>
+#'   calc_window_incidence(window = 14)
+#' }
+#'
+calc_window_incidence <- function(data, window = 14) {
+  stopifnot(all(c("date", "new_cases", "population") %in% colnames(data)))
 
   out <- data |>
-    group_by(id) |>
+    group_by(date, .add = TRUE) |>
+    summarize(
+      new_cases = sum(new_cases, na.rm = TRUE),
+      population = sum(population, na.rm = TRUE),
+      .groups = "drop_last"
+    ) |>
     arrange(date) |>
     mutate(
       weekly_cases = RcppRoll::roll_sum(
         new_cases,
         n = window,
         align = "right",
-        fill = NA
+        fill = NA,
+        na.rm = TRUE
       ),
       ave_incidence = 1e5 * (weekly_cases / population) / window
     ) |>
-    ungroup() |>
-    filter(date == max(date)) |>
-    select(id, date, ave_incidence)
+    select(-weekly_cases, -new_cases, -population) |>
+    ungroup()
   
   return(out)
 }
@@ -43,7 +61,7 @@ calc_window_incidence <- function(data, window = 7) {
 #' Note that because we're computing based on index rather than calendar time, results will be erroneous
 #' if data are not complete for every date.
 #' @param df Dataframe with at least date, new_cases columns
-#' @param window (default: 14) number of days the comparison windows should be
+#' @param window (numeric, default: 14) number of days the comparison windows should be
 #' @param return_totals (default: FALSE) return running sums used to compute `pct_change`?
 #' 
 #' @return a df summarized by date with new column `pct_change`, or pct_change, cases_current, cases_prev if `return_totals` is `TRUE`
@@ -53,11 +71,11 @@ calc_window_incidence <- function(data, window = 7) {
 #' @examples
 #' \dontrun{
 #' data <- get_covid_df()
-#' calc_window_pct_change(data, window = 14)
+#' calc_window_pct_change(window = 14)
 #' # For grouped operations, group data beforehand and pipe:
 #' data |>
 #'   group_by(iso2code, country) |>
-#'   calc_window_pct_change(data, window = 14)
+#'   calc_window_pct_change(window = 14)
 #' }
 #'
 calc_window_pct_change <- function(df, window = 14L, return_totals = FALSE) {
@@ -70,13 +88,13 @@ calc_window_pct_change <- function(df, window = 14L, return_totals = FALSE) {
     arrange(date) |>
     mutate(
       cases_current = roll_sum(new_cases, n = window, align = "right", fill = NA),
-      cases_prev = roll_sum(dplyr::lag(new_cases, n = window), n = window, align = "right", fill = NA),
+      cases_prev = dplyr::lag(cases_current, n = window),
       pct_change = cases_current / cases_prev
     ) |>
     ungroup()
 
   if (!return_totals) {
-    out <- select(out, -cases_prev, -cases_current)
+    out <- select(out, -new_cases, -cases_prev, -cases_current)
   }
 
   return(out)
