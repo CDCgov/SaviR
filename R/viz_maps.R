@@ -102,7 +102,8 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
 #' @param df A data.frame with at least the following columns [id, date, new_cases]
 #' @param region (optional) a character string specifying a DoS or WHO region to zoom to, or NULL if none
 #' @param time_step (numeric) number of days to average incidence over
-#'
+#' @param bin_breaks (numeric) a vector of incidence cut points interpretable by `cut`
+#' @param bin_colors (character) a vector of hex or ggplot colors for the legend. If named, names will be used to label `bin_breaks`.
 #' @return
 #' Produces a map of burden (incidence per 100,000)
 #'
@@ -113,19 +114,28 @@ map_template <- function(df, category_color_labels = "None", category_color_valu
 
 #' @export
 
-map_burden <- function(df, region = NULL, time_step = 7) {
+map_burden <- function(
+  df,
+  region = NULL,
+  time_step = 7,
+  bin_breaks = c(0, 1, 10, 25, Inf),
+  bin_colors = c("0- <1" = "#f1e5a1", "1- <10" = "#e7b351", "10- <25" = "#d26230", "25+" = "#aa001e")
+) {
 
-  cat_labs <- c("0- <1", "1- <10", "10- <25", "25+")
-  cat_vals <- c("#f1e5a1", "#e7b351", "#d26230", "#aa001e")
+  # Pretty labels for incidence bins, NULL otherwise
+  bin_labels <- names(bin_colors)
 
   map_df <- df |>
     group_by(id) |>
     calc_window_incidence(time_step) |>
     filter(date == max(date)) |>
-    mutate(result = cut(ave_incidence, c(0, 1, 10, 25, Inf))) |>
+    mutate(result = cut(ave_incidence, bin_breaks, labels = bin_labels)) |>
     left_join(country_coords, by = "id")
   
-  map_out <- map_template(map_df, cat_labs, cat_vals) +
+  # gut-check that the colors we've passed match the levels we've requested
+  stopifnot(length(levels(map_df[["result"]])) == length(bin_colors))
+  
+  map_out <- map_template(map_df, levels(map_df[["result"]]), bin_colors) +
     ggplot2::labs(fill = sprintf("Average \nDaily \nIncidence \n(past %d days) \nper 100,000", time_step)) +
     ggplot2::labs(
       title = "Burden",

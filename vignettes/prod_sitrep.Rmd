@@ -149,6 +149,7 @@ df_both_mapping <- df_both %>%
 The "map_burden" function takes in a pre-filtered data.frame and computes and displays average incidence for each country over the time period selected.  
 The `region` argument is optional, but it is used to specify a specific DoS/WHO region to zoom to, if desired.  
 `time_step` is used to specify the days used to average incidence over. This is always relative to the latest date in the data.frame.  
+`bin_breaks` and `bin_colors` can be used to over-ride sensible defaults for incidence cutpoints and color scheme, if desired.  
 
 ```{r, fig.width = 9, fig.height = 4}
 burden_map_global <- df_both |>
@@ -177,6 +178,21 @@ burden_map_global_14 <- df_both |>
 
 
 burden_map_global_14
+```
+
+We can also over-ride the incidence cut-points, like so:
+
+```{r 14d_burden_map_with_ctpts, fig.width = 9, fig.height = 4}
+# same map with 0-1, 1-5, 5-10, 10+ breaks
+burden_map_global_14_2 <- df_both |>
+  filter(date <= sunday_date) |>
+  map_burden(
+    time_step = 14,
+    bin_breaks = c(0, 1, 5, 10, Inf),
+    bin_colors = c("0- <1" = "#f1e5a1", "1- <5" = "#e7b351", "5- <10" = "#d26230", "10+" = "#aa001e")
+  )
+
+burden_map_global_14_2
 ```
 
 ### Trend Map  
