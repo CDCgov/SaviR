@@ -4,7 +4,14 @@
 \alias{map_burden}
 \title{Burden Map}
 \usage{
-map_burden(df, region = NULL, time_step = 7)
+map_burden(
+  df,
+  region = NULL,
+  time_step = 7,
+  bin_breaks = c(0, 1, 10, 25, Inf),
+  bin_colors = c(`0- <1` = "#f1e5a1", `1- <10` = "#e7b351", `10- <25` = "#d26230", `25+`
+    = "#aa001e")
+)
 }
 \arguments{
 \item{df}{A data.frame with at least the following columns \link{id, date, new_cases}}
@@ -12,6 +19,10 @@ map_burden(df, region = NULL, time_step = 7)
 \item{region}{(optional) a character string specifying a DoS or WHO region to zoom to, or NULL if none}
 
 \item{time_step}{(numeric) number of days to average incidence over}
+
+\item{bin_breaks}{(numeric) a vector of incidence cut points interpretable by \code{cut}}
+
+\item{bin_colors}{(character) a vector of hex or ggplot colors for the legend. If named, names will be used to label \code{bin_breaks}.}
 }
 \value{
 Produces a map of burden (incidence per 100,000)
