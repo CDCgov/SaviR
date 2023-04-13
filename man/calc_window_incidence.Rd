@@ -4,12 +4,14 @@
 \alias{calc_window_incidence}
 \title{Compute average incidence over a set day interval}
 \usage{
-calc_window_incidence(data, window = 14)
+calc_window_incidence(data, type = c("cases", "deaths"), window = 14)
 }
 \arguments{
-\item{data}{a data.frame with at least \link{date, new_cases, and population} columns to compute incidence}
+\item{data}{a data.frame with required columns to compute the metric}
 
-\item{window}{(numeric, default: 14) a numeric representing days to compute average incidence over}
+\item{type}{(character) one of cases or deaths, specifying the appropriate basis for the metric}
+
+\item{window}{(numeric, default: 14) a numeric representing days to calculate the metric over}
 }
 \value{
 a data.frame of summarized incidence values (ave_incidence) by date, possibly including grouping vars if data were grouped.
@@ -18,6 +20,9 @@ a data.frame of summarized incidence values (ave_incidence) by date, possibly in
 Compute average incidence over a set day interval
 }
 \details{
+For \code{type} == "cases", data should contain at least date, new_cases, and population columns.
+For \code{type} == "deaths", data should contain new_deaths instead.
+
 Note that incidence here is per 100K population.
 The function assumes that data passed has observations for each day for each country, since we use
 and index-based approach to compute average incidence, not calendar-time.

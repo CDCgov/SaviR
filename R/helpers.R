@@ -2,13 +2,18 @@
 
 
 #' @title Compute average incidence over a set day interval
-#' @param data a data.frame with at least [date, new_cases, and population] columns to compute incidence
-#' @param window (numeric, default: 14) a numeric representing days to compute average incidence over
+#' @param data a data.frame with required columns to compute the metric
+#' @param type (character) one of cases or deaths, specifying the appropriate basis for the metric
+#' @param window (numeric, default: 14) a numeric representing days to calculate the metric over
 #' 
 #' @details 
+#' For `type` == "cases", data should contain at least date, new_cases, and population columns.  
+#' For `type` == "deaths", data should contain new_deaths instead.  
+#' 
 #' Note that incidence here is per 100K population.
 #' The function assumes that data passed has observations for each day for each country, since we use
 #' and index-based approach to compute average incidence, not calendar-time.
+#' 
 #' @return a data.frame of summarized incidence values (ave_incidence) by date, possibly including grouping vars if data were grouped.
 #' @export
 #'
@@ -24,20 +29,29 @@
 #'   calc_window_incidence(window = 14)
 #' }
 #'
-calc_window_incidence <- function(data, window = 14) {
-  stopifnot(all(c("date", "new_cases", "population") %in% colnames(data)))
+calc_window_incidence <- function(data, type = c("cases", "deaths"), window = 14) {
+  type <- match.arg(type)
+
+  # Check that required columns are present
+  # for cases: new_cases, date, population
+  # for deaths: new_deaths, date, population
+  required_cols <- c("date", "population", sprintf("new_%s", type))
+  stopifnot(all(required_cols %in% colnames(data)))
+
+  # dynamic col name based on cases/deaths
+  calc_col <- as.name(sprintf("new_%s", type))
 
   out <- data |>
     group_by(date, .add = TRUE) |>
     summarize(
-      new_cases = sum(new_cases, na.rm = TRUE),
+      !!calc_col := sum(!!calc_col, na.rm = TRUE),
       population = sum(population, na.rm = TRUE),
       .groups = "drop_last"
     ) |>
     arrange(date) |>
     mutate(
       weekly_cases = RcppRoll::roll_sum(
-        new_cases,
+        !!calc_col,
         n = window,
         align = "right",
         fill = NA,
@@ -45,7 +59,7 @@ calc_window_incidence <- function(data, window = 14) {
       ),
       ave_incidence = 1e5 * (weekly_cases / population) / window
     ) |>
-    select(-weekly_cases, -new_cases, -population) |>
+    select(-weekly_cases, -!!calc_col, -population) |>
     ungroup()
   
   return(out)
@@ -60,12 +74,15 @@ calc_window_incidence <- function(data, window = 14) {
 #' 
 #' Note that because we're computing based on index rather than calendar time, results will be erroneous
 #' if data are not complete for every date.
-#' @param df Dataframe with at least date, new_cases columns
-#' @param window (numeric, default: 14) number of days the comparison windows should be
+#' 
+#' For `type` == "cases", data should contain at least "date" and "new_cases" columns.
+#' For `type` == "deaths", data should contain at least "date" and "new_deaths" columns.  
+#' 
 #' @param return_totals (default: FALSE) return running sums used to compute `pct_change`?
 #' 
 #' @return a df summarized by date with new column `pct_change`, or pct_change, cases_current, cases_prev if `return_totals` is `TRUE`
 #' @importFrom RcppRoll roll_sum
+#' @inheritParams calc_window_incidence
 #' @export
 #'
 #' @examples
@@ -76,25 +93,35 @@ calc_window_incidence <- function(data, window = 14) {
 #' data |>
 #'   group_by(iso2code, country) |>
 #'   calc_window_pct_change(window = 14)
+#' 
 #' }
 #'
-calc_window_pct_change <- function(df, window = 14L, return_totals = FALSE) {
-  # Assert that we have the cols we need
-  stopifnot(all(c("date", "new_cases") %in% colnames(df)))
+calc_window_pct_change <- function(data, type = c("cases", "deaths"), window = 14L, return_totals = FALSE) {
+  
+  type <- match.arg(type)
 
-  out <- df |>
+  # Check that required columns are present
+  # for cases: new_cases, date, population
+  # for deaths: new_deaths, date, population
+  required_cols <- c("date", sprintf("new_%s", type))
+  stopifnot(all(required_cols %in% colnames(data)))
+
+  # dynamic col name based on cases/deaths
+  calc_col <- as.name(sprintf("new_%s", type))
+
+  out <- data |>
     group_by(date, .add = TRUE) |>
-    summarize(new_cases = sum(new_cases, na.rm = TRUE), .groups = "drop_last") |>
+    summarize(!!calc_col := sum(!!calc_col, na.rm = TRUE), .groups = "drop_last") |>
     arrange(date) |>
     mutate(
-      cases_current = roll_sum(new_cases, n = window, align = "right", fill = NA),
-      cases_prev = dplyr::lag(cases_current, n = window),
-      pct_change = cases_current / cases_prev
+      current = roll_sum(!!calc_col, n = window, align = "right", fill = NA),
+      prev = dplyr::lag(current, n = window),
+      pct_change = current / prev
     ) |>
     ungroup()
 
   if (!return_totals) {
-    out <- select(out, -new_cases, -cases_prev, -cases_current)
+    out <- select(out, -!!calc_col, -prev, -current)
   }
 
   return(out)

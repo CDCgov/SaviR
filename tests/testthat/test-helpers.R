@@ -17,7 +17,7 @@ test_that("Window Calculation works for ungrouped data", {
   d <- calc_window_pct_change(a, window = 7, return_totals = TRUE)
   
   expect_identical(dim(d), c(49L, 5L))
-  expect_true(all(c("cases_current", "cases_prev") %in% colnames(d)))
+  expect_true(all(c("current", "prev") %in% colnames(d)))
 })
 
 test_that("Window calculation works for grouped data", {
@@ -46,7 +46,7 @@ test_that("Window calculation works for grouped data", {
   
   expect_identical(dim(d), c(98L, 6L))
   expect_true("my_var" %in% colnames(d))
-  expect_true(all(c("cases_current", "cases_prev") %in% colnames(d)))
+  expect_true(all(c("current", "prev") %in% colnames(d)))
 
 })
 
