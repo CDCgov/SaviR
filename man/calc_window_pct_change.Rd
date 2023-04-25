@@ -43,6 +43,7 @@ calc_window_pct_change(window = 14)
 data |>
   group_by(iso2code, country) |>
   calc_window_pct_change(window = 14)
+
 }
 
 }
