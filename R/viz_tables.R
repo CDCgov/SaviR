@@ -263,7 +263,7 @@ table_10incidence <- function(df, time_step = 7, region = NULL, data_as_of = NUL
 
   incidence_df <- df |>
     group_by(id) |>
-    calc_window_incidence(time_step) |>
+    calc_window_incidence(window = time_step) |>
     filter(date == max(date))
 
   pct_change_df <- df |>
