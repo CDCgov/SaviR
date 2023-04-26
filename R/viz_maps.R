@@ -127,15 +127,15 @@ map_burden <- function(
 
   map_df <- df |>
     group_by(id) |>
-    calc_window_incidence(time_step) |>
+    calc_window_incidence(type = "cases", window = time_step) |>
     filter(date == max(date)) |>
     mutate(result = cut(ave_incidence, bin_breaks, labels = bin_labels)) |>
-    left_join(country_coords, by = "id")
+    full_join(country_coords, by = "id")
   
   # gut-check that the colors we've passed match the levels we've requested
   stopifnot(length(levels(map_df[["result"]])) == length(bin_colors))
   
-  map_out <- map_template(map_df, levels(map_df[["result"]]), bin_colors) +
+  map_out <- map_template(map_df, levels(map_df[["result"]]), unname(bin_colors)) +
     ggplot2::labs(fill = sprintf("Average \nDaily \nIncidence \n(past %d days) \nper 100,000", time_step)) +
     ggplot2::labs(
       title = "Burden",
@@ -188,7 +188,7 @@ map_trend <- function(df, region = NULL, time_step = 7) {
 
   map_df <- df |>
     group_by(id) |>
-    calc_window_pct_change(window = time_step, return_totals = TRUE) |>
+    calc_window_pct_change(type = "cases", window = time_step, return_totals = TRUE) |>
     ungroup() |>
     filter(date == max(date)) |>
     mutate(
@@ -196,7 +196,7 @@ map_trend <- function(df, region = NULL, time_step = 7) {
       # due to division, but we want to also NA out any observations that
       # are not reporting in the current period that were in the previous
       # since we can't ascertain the trajectory
-      pct_change = if_else(cases_current == 0, NA_real_, pct_change),
+      pct_change = if_else(current == 0, NA_real_, pct_change),
       result = cut((pct_change - 1) * 100, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf))
     ) |>
     left_join(country_coords, by = "id")

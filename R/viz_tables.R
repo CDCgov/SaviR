@@ -175,7 +175,7 @@ table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NUL
 
   tbl_pct_change <- df |>
     group_by(id) |>
-    calc_window_pct_change(window = time_step, return_totals = TRUE) |>
+    calc_window_pct_change(type = "cases", window = time_step, return_totals = TRUE) |>
     ungroup() |>
     filter(date == max(date)) |>
     mutate(
@@ -183,14 +183,14 @@ table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NUL
       # due to division, but we want to also NA out any observations that
       # are not reporting in the current period that were in the previous
       # since we can't ascertain the trajectory
-      pct_change = if_else(cases_current == 0, NA_real_, pct_change),
+      pct_change = if_else(current == 0, NA_real_, pct_change),
       pct_change = (pct_change - 1) * 100,
       pct_change = if_else(is.infinite(pct_change), NA_real_, pct_change)
     ) |>
-    arrange(desc(cases_current)) |>
+    arrange(desc(current)) |>
     slice(1:10) |>
     left_join(distinct(onetable, id, who_country), by = "id") |>
-    select(who_country, cases_current, pct_change)
+    select(who_country, current, pct_change)
 
   gt::gt(tbl_pct_change) %>%
     gt::tab_header(title = title_label) %>%
@@ -202,7 +202,7 @@ table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NUL
       )
     ) %>%
     gt::fmt_number(
-      columns = c(cases_current),
+      columns = c(current),
       sep_mark = ",",
       decimals = 0
     ) %>%
@@ -211,18 +211,18 @@ table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NUL
       decimals = 1
     ) %>%
     gt::sub_missing(
-      columns = c(cases_current, pct_change),
+      columns = c(current, pct_change),
       missing_text = "-"
     ) %>%
     gt::cols_label(
       who_country = gt::html("Country/ Area"),
-      cases_current = gt::html(sprintf("New Cases<br>Past %d Days", time_step)),
+      current = gt::html(sprintf("New Cases<br>Past %d Days", time_step)),
       pct_change = gt::html(sprintf("%% Change<br>Past %d Days", time_step))
     ) %>%
     gt::cols_align("center") %>%
     gt::cols_width(
       c(who_country) ~ gt::px(175),
-      c(cases_current) ~ gt::px(100),
+      c(current) ~ gt::px(100),
       c(pct_change) ~ gt::px(100)
     ) %>%
     gt::tab_options(
@@ -263,7 +263,7 @@ table_10incidence <- function(df, time_step = 7, region = NULL, data_as_of = NUL
 
   incidence_df <- df |>
     group_by(id) |>
-    calc_window_incidence(time_step) |>
+    calc_window_incidence(window = time_step) |>
     filter(date == max(date))
 
   pct_change_df <- df |>
@@ -276,7 +276,7 @@ table_10incidence <- function(df, time_step = 7, region = NULL, data_as_of = NUL
       # due to division, but we want to also NA out any observations that
       # are not reporting in the current period that were in the previous
       # since we can't ascertain the trajectory
-      pct_change = if_else(cases_current == 0, NA_real_, pct_change),
+      pct_change = if_else(current == 0, NA_real_, pct_change),
       pct_change = (pct_change - 1) * 100,
       pct_change = if_else(is.infinite(pct_change), NA_real_, pct_change)
     ) |>
@@ -384,7 +384,7 @@ table_10percentchange <- function(df, time_step = 7, second_time_step = 28, regi
       # due to division, but we want to also NA out any observations that
       # are not reporting in the current period that were in the previous
       # since we can't ascertain the trajectory
-      pct_change = if_else(cases_current == 0, NA_real_, pct_change),
+      pct_change = if_else(current == 0, NA_real_, pct_change),
       pct_change = (pct_change - 1) * 100,
       pct_change = if_else(is.infinite(pct_change), NA_real_, pct_change)
     ) |>
@@ -403,7 +403,7 @@ table_10percentchange <- function(df, time_step = 7, second_time_step = 28, regi
       # due to division, but we want to also NA out any observations that
       # are not reporting in the current period that were in the previous
       # since we can't ascertain the trajectory
-      pct_change_2 = if_else(cases_current == 0, NA_real_, pct_change),
+      pct_change_2 = if_else(current == 0, NA_real_, pct_change),
       pct_change_2 = (pct_change_2 - 1) * 100,
       pct_change_2 = if_else(is.infinite(pct_change_2), NA_real_, pct_change_2)
     ) |>

@@ -9,7 +9,7 @@ test_that("Window Calculation works for ungrouped data", {
 
   # ungrouped operation should summarize
   # to half-size by date
-  b <- calc_window_pct_change(a, 7)
+  b <- calc_window_pct_change(a, type = "cases", window = 7)
 
   expect_identical(dim(b), c(49L, 2L))
 
@@ -17,7 +17,7 @@ test_that("Window Calculation works for ungrouped data", {
   d <- calc_window_pct_change(a, window = 7, return_totals = TRUE)
   
   expect_identical(dim(d), c(49L, 5L))
-  expect_true(all(c("cases_current", "cases_prev") %in% colnames(d)))
+  expect_true(all(c("current", "prev") %in% colnames(d)))
 })
 
 test_that("Window calculation works for grouped data", {
@@ -34,7 +34,7 @@ test_that("Window calculation works for grouped data", {
   # - grouped var should still be in place
   b <- a |>
     group_by(my_var) |>
-    calc_window_pct_change(window = 14)
+    calc_window_pct_change(type = "cases", window =  14)
   
   expect_identical(dim(b), c(98L, 3L))
   expect_true("my_var" %in% colnames(b))
@@ -42,11 +42,11 @@ test_that("Window calculation works for grouped data", {
   # If we ask to return totals, that should be included
   d <- a |>
     group_by(my_var) |>
-    calc_window_pct_change(window = 14, return_totals = TRUE)
+    calc_window_pct_change(type = "cases", window = 14, return_totals = TRUE)
   
   expect_identical(dim(d), c(98L, 6L))
   expect_true("my_var" %in% colnames(d))
-  expect_true(all(c("cases_current", "cases_prev") %in% colnames(d)))
+  expect_true(all(c("current", "prev") %in% colnames(d)))
 
 })
 

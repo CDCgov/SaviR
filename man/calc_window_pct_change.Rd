@@ -4,12 +4,19 @@
 \alias{calc_window_pct_change}
 \title{Compute Percent-change in Cases Over a Specified Window}
 \usage{
-calc_window_pct_change(df, window = 14L, return_totals = FALSE)
+calc_window_pct_change(
+  data,
+  type = c("cases", "deaths"),
+  window = 14L,
+  return_totals = FALSE
+)
 }
 \arguments{
-\item{df}{Dataframe with at least date, new_cases columns}
+\item{data}{a data.frame with required columns to compute the metric}
 
-\item{window}{(numeric, default: 14) number of days the comparison windows should be}
+\item{type}{(character) one of cases or deaths, specifying the appropriate basis for the metric}
+
+\item{window}{(numeric, default: 14) a numeric representing days to calculate the metric over}
 
 \item{return_totals}{(default: FALSE) return running sums used to compute \code{pct_change}?}
 }
@@ -24,6 +31,9 @@ The window is right-aligned by the date column (beginning the most recent date s
 
 Note that because we're computing based on index rather than calendar time, results will be erroneous
 if data are not complete for every date.
+
+For \code{type} == "cases", data should contain at least "date" and "new_cases" columns.
+For \code{type} == "deaths", data should contain at least "date" and "new_deaths" columns.
 }
 \examples{
 \dontrun{
@@ -33,6 +43,7 @@ calc_window_pct_change(window = 14)
 data |>
   group_by(iso2code, country) |>
   calc_window_pct_change(window = 14)
+
 }
 
 }
