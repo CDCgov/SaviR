@@ -2,6 +2,11 @@
 # listed
 
 test_that("All Data Sources Accessible", {
+  # BUG: I think repeated requests here are causing
+  # this test to fail on covr. We really only need to
+  # run on R CMD Check, which runs 3x per push anyways
+  skip_on_covr()
+
   # For each data source, check that we have an OK HTTP response (200)
   # to indicate that we're still able to pull data from that source
   for (datasource_name in names(datasource_lk)) {
