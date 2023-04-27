@@ -142,7 +142,7 @@ map_burden <- function(
       subtitle = sprintf(
         "Average daily incidence over the past %d days per 100,000 population as of %s",
         time_step,
-        str_squish(format(max(map_df$date), "%B %e, %Y"))
+        str_squish(format(max(map_df$date, na.rm = TRUE), "%B %e, %Y"))
       )
     )
 
