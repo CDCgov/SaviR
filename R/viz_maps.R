@@ -129,13 +129,14 @@ map_burden <- function(
     group_by(id) |>
     calc_window_incidence(type = "cases", window = time_step) |>
     filter(date == max(date)) |>
-    mutate(result = cut(ave_incidence, bin_breaks, labels = bin_labels)) |>
-    full_join(country_coords, by = "id")
+    mutate(result = cut(ave_incidence, bin_breaks, labels = bin_labels))
   
   # gut-check that the colors we've passed match the levels we've requested
   stopifnot(length(levels(map_df[["result"]])) == length(bin_colors))
   
-  map_out <- map_template(map_df, levels(map_df[["result"]]), unname(bin_colors)) +
+  map_out <- map_df |>
+    full_join(country_coords, by = "id") |>
+    map_template(levels(map_df[["result"]]), unname(bin_colors)) +
     ggplot2::labs(fill = sprintf("Average \nDaily \nIncidence \n(past %d days) \nper 100,000", time_step)) +
     ggplot2::labs(
       title = "Burden",
@@ -148,7 +149,7 @@ map_burden <- function(
 
   if (!missing(region)) {
 
-    bbox <- bbox_fun(region, map_df)
+    bbox <- bbox_fun(region, left_join(map_df, country_coords, by = "id"))
 
     map_out <- map_out +
       ggplot2::coord_sf(
