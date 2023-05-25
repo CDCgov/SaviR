@@ -154,9 +154,10 @@ table_countriesofconcern <- function(df, df_vax_man, country_list, df_variant_pc
 #' @param region (optional) a character string specifying a DoS or WHO region for title, or NULL if none
 #' @param data_as_of (optional) a character string for the data-as-of date. If NULL, inferred from latest date in data.
 
-#' @returns A pretty {gt} table
+#' @returns A pretty {flextable}/{gt} table
 
 #' @import gt
+#' @import flextable
 #' @export
 
 table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NULL) {
@@ -164,9 +165,9 @@ table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NUL
   stopifnot(all(c("id", "date", "new_cases") %in% colnames(df)))
 
   if (!missing(region)) {
-    title_label <- gt::html(sprintf("<b>10 (%s) Countries/ Areas with Most \nNew Cases</b>", region))
+    title_label <- sprintf("10 (%s) Countries/ Areas with Most \nNew Cases", region)
   } else {
-    title_label <- gt::html("<b>10 Countries/ Areas with Most \nNew Cases</b>")
+    title_label <- "10 Countries/ Areas with Most \nNew Cases"
   }
 
   if (missing(data_as_of)) {
@@ -192,54 +193,52 @@ table_10mostcases <- function(df, time_step = 7, region = NULL, data_as_of = NUL
     left_join(distinct(onetable, id, who_country), by = "id") |>
     select(who_country, current, pct_change)
 
-  gt::gt(tbl_pct_change) %>%
-    gt::tab_header(title = title_label) %>%
-    gt::data_color(
-      columns = c(pct_change),
-      colors = scales::col_bin(
+  str_border <- officer::fp_border(color = "#808080")
+
+  tbl_pct_change |>
+    select(
+      `Country/ Area` = who_country,
+      !!sprintf("New Cases\nPast %d Days", time_step) := current,
+      !!sprintf("%% Change\nPast %d Days", time_step) := pct_change
+    ) |>
+  flextable::flextable(theme_fun = theme_alafoli) |>
+  flextable::add_header_row(top = TRUE, as_paragraph(as_b(title_label)), colwidths = c(3)) |>
+  flextable::footnote(
+    part = "header",
+    j = 3,
+    i = 1,
+    ref_symbols = "1",
+    value = as_paragraph(sprintf("Percent change in cases of most recent %d days to %d days prior", time_step, time_step))
+  ) |>
+  flextable::add_footer_lines(
+    as_paragraph("Data Source: WHO Coronavirus Disease (COVID-19) Dashboard")
+  ) |>
+  flextable::add_footer_lines(
+    as_paragraph(paste0("Data as of ", data_as_of))
+  ) |>
+  flextable::align(part = "header", align = "center") |>
+  flextable::align(part = "body", align = "center") |>
+  flextable::font(fontname = "Calibri", part = "all") |>
+  flextable::fontsize(size = 12, i = 1, part = "header") |>
+  flextable::fontsize(size = 12, part = "body") |>
+  flextable::fontsize(size = 8.5, part = "footer") |>
+  flextable::color(color = "black", part = "header") |>
+  flextable::bold(bold = TRUE, i = 1, part = "header") |>
+  flextable::hline(border = str_border) |>
+  flextable::bg(
+    j = 3,
+    part = "body",
+    bg = scales::col_bin(
         palette = c("#1f9fa9", "#c0ebec", "#e57e51", "#d26230", "#c92929", "#7c0316"),
         bins = c(-Inf, -50, 0, 50, 100, 200, Inf)
       )
-    ) %>%
-    gt::fmt_number(
-      columns = c(current),
-      sep_mark = ",",
-      decimals = 0
-    ) %>%
-    gt::fmt_number(
-      columns = c(pct_change),
-      decimals = 1
-    ) %>%
-    gt::sub_missing(
-      columns = c(current, pct_change),
-      missing_text = "-"
-    ) %>%
-    gt::cols_label(
-      who_country = gt::html("Country/ Area"),
-      current = gt::html(sprintf("New Cases<br>Past %d Days", time_step)),
-      pct_change = gt::html(sprintf("%% Change<br>Past %d Days", time_step))
-    ) %>%
-    gt::cols_align("center") %>%
-    gt::cols_width(
-      c(who_country) ~ gt::px(175),
-      c(current) ~ gt::px(100),
-      c(pct_change) ~ gt::px(100)
-    ) %>%
-    gt::tab_options(
-      table.width = gt::px(400),
-      column_labels.font.weight = "bold",
-      table.font.weight = "bold",
-      footnotes.font.size = gt::pct(70),
-      source_notes.font.size = gt::pct(70),
-      source_notes.padding = 0,
-      footnotes.padding = 0
-    ) %>%
-    gt::tab_source_note(source_note = gt::md("Data Source: WHO Coronavirus Disease (COVID-19) Dashboard")) %>%
-    gt::tab_source_note(source_note = paste0("Data as of ", data_as_of)) %>%
-    gt::tab_footnote(
-      footnote = sprintf("Percent change in cases of most recent %d days to %d days prior", time_step, time_step),
-      locations = gt::cells_column_labels(columns = c(pct_change))
-    )
+  ) |>
+  flextable::colformat_double(j = 3, digits = 1, na_str = "-") |>
+  flextable::colformat_double(j = 2, big.mark = ",", digits = 0, na_str = "-") |>
+  flextable::width(j = 1, width = 1.8) |>
+  flextable::width(j = 2, width = 1) |>
+  flextable::width(j = 3, width = 1) |>
+  flextable::padding(padding = 0, part = "footer")
 }
 
 

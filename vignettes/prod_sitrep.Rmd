@@ -271,19 +271,19 @@ df_both |>
 
 #### 14-day Table
 ```{r}
-df_both |>
+df_who |>
   filter(date <= sunday_date) |>
   table_10mostcases(time_step = 14)
 ```
 
 #### By region
 ```{r, results="asis"}
-for (r in unique(na.omit(df_both$who_region))) {
-  tab_out <- df_both |>
+for (r in unique(na.omit(df_who$who_region))) {
+  tab_out <- df_who |>
     filter(date <= sunday_date, who_region == r) |>
-    table_10mostcases(region = r, data_as_of = format(Sys.Date(), "%B %d, %Y"))
+    table_10mostcases(region = r, data_as_of = format(Sys.Date(), "%B %d, %Y"), time_step = 14)
   
-  print(htmltools::tagList(tab_out))
+  flextable_to_rmd(tab_out)
 }
 ```
 
