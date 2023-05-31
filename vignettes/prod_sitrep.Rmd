@@ -71,10 +71,24 @@ epi_curve_global
 plot_epicurve(df_who, transparent = F)
 
 # Epi Curves for DoS -- Global
-state_epi_curve <- plot_epicurve(filter(df_both, date <= sunday_date),
+state_epi_curve <- plot_epicurve(filter(df_who, date <= sunday_date),
                                  type = "cases", 
                                  by_cat = "State Region")
 state_epi_curve
+```
+
+#### Inset plots
+- We can pre-filter the data and remove elements post-hoc to get an "inset" plot
+
+
+```{r fig.width = 5, fig.height = 2}
+inset_epi_curve <- df_who |>
+  filter(date >= (sunday_date - weeks(10) + 1), date <= sunday_date) |>
+  plot_epicurve(type = "cases", by_cat = "State Region", transparent = FALSE) +
+  guides(fill = "none") +
+  labs(title = "")
+
+inset_epi_curve
 ```
 
 ```{r, fig.width = 9, fig.height = 2.5}
