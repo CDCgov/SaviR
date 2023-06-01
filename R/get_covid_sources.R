@@ -260,7 +260,7 @@ get_taiwan_data <- function() {
   tw_deaths <- tw_death_raw |>
     select(date, deaths) |>
     mutate(
-      date = lubridate::ymd(date, "%Y/%m/%d"),
+      date = lubridate::ymd(date),
       deaths = as.integer(deaths)
     ) |>
     group_by(date) |>
