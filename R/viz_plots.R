@@ -7,13 +7,16 @@
 #' Produces an epi curve, stacked bar plot for each epi-week (Monday-Sunday).
 #' @param by_cat = "WHO Region" (default), "State Region" or "Income Level"
 #' @param legend Default "in" - position legend inside the plot area.
+#' @param inset (default: FALSE)
 #' @param transparent Default TRUE - returns a transparent plot.
 #'
 
 #' @import scales
+#' @importFrom patchwork inset_element
+#' @importFrom lubridate weeks floor_date
 #' @export
 
-plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "in", transparent = T) {
+plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "in", inset = FALSE, transparent = T) {
   if (!type %in% c("cases", "deaths")) {
     stop("Wrong Type! You must use either cases or deaths!")
   }
@@ -121,17 +124,57 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
     g <- g + ggplot2::theme(legend.position = "none")
   }
 
-  if (transparent == T) {
-    return(g +
+  if (transparent == TRUE) {
+    g <- g +
       ggplot2::theme(
         panel.background = ggplot2::element_rect(fill = "transparent"),
         plot.background = ggplot2::element_rect(fill = "transparent"),
         panel.grid = ggplot2::element_blank(),
         legend.background = ggplot2::element_rect(fill = "transparent")
-      ))
-  } else {
-    return(g)
+      )
   }
+  
+  # -- Add inset plot if requested -------------------
+  if (inset) {
+    # Take the max of either 9wks from the latest date
+    # or 1 week from the min, whichever is later
+    inset_start <- pmax(
+      lubridate::floor_date(min(df[["date"]], na.rm = TRUE) + lubridate::weeks(1), "week", week_start = 1),
+      lubridate::floor_date(max(df[["date"]], na.rm = TRUE) - lubridate::weeks(9), "week", week_start = 1)
+    )
+
+    # Re-run function to produce an inset plot
+    inset_plot <- df |>
+      filter(date >= inset_start) |>
+      plot_epicurve(type = type, by_cat = by_cat, transparent = transparent, inset = FALSE) +
+        guides(fill = "none") +
+        labs(title = "", y = "", x = "")
+
+    if (type == "cases") {
+      g <- g +
+        patchwork::inset_element(
+          inset_plot,
+          left = 0.05, # .5
+          right = 0.5, # .95
+          bottom = 0.2, # 0.6
+          top = 0.6 # 0.95
+        )
+    } else {
+      g <- g +
+        patchwork::inset_element(
+          inset_plot,
+          left = 0.5,
+          right = 0.95,
+          bottom = 0.6,
+          top = 1.0
+        )
+    }
+
+    
+  }
+  
+  return(g)
+
 }
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
