@@ -144,8 +144,15 @@ get_jhu_data <- function() {
   return(jhu_data)
 }
 
+#' @importFrom lubridate dmy
 get_hk_data <- function() {
-  hk_data_raw <- fread(datasource_lk$hk_case_deaths, stringsAsFactors = FALSE, encoding = "UTF-8", data.table = FALSE, check.names = FALSE) |>
+  hk_data_raw <- fread(
+    datasource_lk$hk_case_deaths,
+    stringsAsFactors = FALSE,
+    encoding = "UTF-8",
+    data.table = FALSE,
+    check.names = FALSE
+  ) |>
     as_tibble()
 
   hk_data_raw[["pcr_and_rat"]] <- rowSums(
@@ -155,7 +162,7 @@ get_hk_data <- function() {
 
   hk_data <- hk_data_raw |>
     mutate(
-      date = as.Date(`As of date`, "%d/%m/%Y"),
+      date = lubridate::dmy(`As of date`),
       iso2code = "HK",
       country = "Hong Kong",
       source = "HK CHP",
@@ -194,10 +201,34 @@ get_hk_data <- function() {
   return(hk_data)
 }
 
+#' @importFrom lubridate ymd
 get_taiwan_data <- function() {
+  case_cols <- c(
+    "disease_name",
+    "date",
+    "county",
+    "township",
+    "gender",
+    "imported",
+    "age_group",
+    "cases"
+  )
+
+  death_cols <- c(
+    "disease_name",
+    "date",
+    "county",
+    "township",
+    "gender",
+    "imported",
+    "age_group",
+    "deaths"
+  )
+
   tw_case_raw <- data.table::fread(
     datasource_lk$taiwan_cases,
     encoding = "UTF-8",
+    col.names = case_cols,
     data.table = FALSE,
     check.names = FALSE
   )
@@ -205,17 +236,16 @@ get_taiwan_data <- function() {
   tw_death_raw <- data.table::fread(
     datasource_lk$taiwan_deaths,
     encoding = "UTF-8",
+    col.names = death_cols,
     data.table = FALSE,
     check.names = FALSE
   )
 
   tw_cases <- tw_case_raw |>
-    rename(
-      date = `個案研判日`,
-      cases = `確定病例數`
-    ) |>
+    select(date, cases) |>
     mutate(
-      date = as.Date(date, "%Y/%m/%d")
+      date = lubridate::ymd(date),
+      cases = as.integer(cases)
     ) |>
     group_by(date) |>
     summarise(
@@ -225,12 +255,14 @@ get_taiwan_data <- function() {
     arrange(date) |>
     mutate(cumulative_cases = cumsum(new_cases))
 
+  # Note: "date" here is date of case onset
+  # which is different from other place.
   tw_deaths <- tw_death_raw |>
-    rename(
-      date = `發病日`,
-      deaths = `死亡病例數`
+    select(date, deaths) |>
+    mutate(
+      date = lubridate::ymd(date, "%Y/%m/%d"),
+      deaths = as.integer(deaths)
     ) |>
-    mutate(date = as.Date(date, "%Y/%m/%d")) |>
     group_by(date) |>
     summarise(new_deaths = sum(deaths, na.rm = TRUE)) |>
     arrange(date) |>
