@@ -7,8 +7,7 @@
 get_combined_table(type = c("WHO", "Both", "legacy"), geometry = FALSE)
 }
 \arguments{
-\item{type}{(character) Specifies what data streams to include for case/death data. See details for further information
-whether df should include disaggregated China data ("Both" separates China, Taiwan, Hong Kong, and Macau data) or combined China data ("WHO" combines China, Taiwan, Hong Kong, and Macau data as China)}
+\item{type}{(character) Specifies what data streams to include for case/death data. See details for further information}
 
 \item{geometry}{(logical, default: FALSE) Specifies whether df should include the geometry column}
 }

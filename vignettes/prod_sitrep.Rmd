@@ -68,8 +68,6 @@ epi_curve_global <- plot_epicurve(df_who, transparent = T)
 
 epi_curve_global
 
-plot_epicurve(df_who, transparent = F)
-
 # Epi Curves for DoS -- Global
 state_epi_curve <- plot_epicurve(filter(df_who, date <= sunday_date),
                                  type = "cases", 
@@ -78,15 +76,16 @@ state_epi_curve
 ```
 
 #### Inset plots
-- We can pre-filter the data and remove elements post-hoc to get an "inset" plot
+- We can also pass `inset = TRUE` to plot an inset plot for the most recent weeks
+  - By default, the inset for the case plot is slightly left and cener in the plot window
+  - Deaths plot inset is slightly up and to the right
+- Looks at the past 9 weeks of data in the inset, or `min(date) + weeks(1)`, whichever is later
 
 
-```{r fig.width = 5, fig.height = 2}
+```{r fig.width = 13, fig.height = 7}
 inset_epi_curve <- df_who |>
-  filter(date >= (sunday_date - weeks(10) + 1), date <= sunday_date) |>
-  plot_epicurve(type = "cases", by_cat = "State Region", transparent = FALSE) +
-  guides(fill = "none") +
-  labs(title = "")
+  filter(date >= (sunday_date - lubridate::weeks(10) + 1), date <= sunday_date) |>
+  plot_epicurve(type = "cases", by_cat = "State Region", transparent = FALSE, inset = TRUE)
 
 inset_epi_curve
 ```
