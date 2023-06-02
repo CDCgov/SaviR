@@ -143,7 +143,7 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
       lubridate::floor_date(max(df[["date"]], na.rm = TRUE) - lubridate::weeks(9), "week", week_start = 1)
     )
 
-    inset_total_weeks <- days(max(df[["date"]], na.rm = TRUE) - inset_start) %/% weeks(1)
+    inset_total_weeks <- ceiling(days(max(df[["date"]], na.rm = TRUE) - inset_start) / weeks(1))
 
     # Re-run function to produce an inset plot
     inset_plot <- df |>
