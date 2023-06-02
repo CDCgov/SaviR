@@ -9,6 +9,7 @@ plot_epicurve(
   type = "cases",
   by_cat = "WHO Region",
   legend = "in",
+  inset = FALSE,
   transparent = T
 )
 }
@@ -19,6 +20,8 @@ Produces an epi curve, stacked bar plot for each epi-week (Monday-Sunday).}
 \item{by_cat}{= "WHO Region" (default), "State Region" or "Income Level"}
 
 \item{legend}{Default "in" - position legend inside the plot area.}
+
+\item{inset}{(default: FALSE)}
 
 \item{transparent}{Default TRUE - returns a transparent plot.}
 }
