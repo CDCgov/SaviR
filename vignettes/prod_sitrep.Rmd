@@ -84,7 +84,7 @@ state_epi_curve
 
 ```{r fig.width = 13, fig.height = 7}
 inset_epi_curve <- df_who |>
-  filter(date >= (sunday_date - lubridate::weeks(10) + 1), date <= sunday_date) |>
+  filter(date <= sunday_date) |>
   plot_epicurve(type = "cases", by_cat = "State Region", transparent = FALSE, inset = TRUE)
 
 inset_epi_curve
