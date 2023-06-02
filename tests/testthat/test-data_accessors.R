@@ -86,6 +86,7 @@ test_that("WHO+Primary data returns correctly", {
 })
 
 test_that("OWID+FIND Time Series data is available", {
+  skip("Testing Data No Longer Updated")
   df <- get_testing_long()
 
   # Should have at least 1 row and 38 cols
@@ -94,6 +95,7 @@ test_that("OWID+FIND Time Series data is available", {
 })
 
 test_that("OWID+FIND Testing pipeline returns data", {
+  skip("Testing Data No Longer Updated")
   df <- get_testing()
 
   # Should have at least 1 row and 5 cols
