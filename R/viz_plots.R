@@ -13,7 +13,7 @@
 
 #' @import scales
 #' @importFrom patchwork inset_element
-#' @importFrom lubridate weeks floor_date
+#' @importFrom lubridate weeks days floor_date
 #' @export
 
 plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "in", inset = FALSE, transparent = T) {
@@ -143,12 +143,18 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
       lubridate::floor_date(max(df[["date"]], na.rm = TRUE) - lubridate::weeks(9), "week", week_start = 1)
     )
 
+    inset_total_weeks <- days(max(df[["date"]], na.rm = TRUE) - inset_start) %/% weeks(1)
+
     # Re-run function to produce an inset plot
     inset_plot <- df |>
       filter(date >= inset_start) |>
       plot_epicurve(type = type, by_cat = by_cat, transparent = transparent, inset = FALSE) +
         guides(fill = "none") +
-        labs(title = "", y = "", x = "")
+        labs(
+          title = sprintf("Past %d Weeks", inset_total_weeks),
+          y = "",
+          x = ""
+        )
 
     if (type == "cases") {
       g <- g +
