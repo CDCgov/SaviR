@@ -60,7 +60,11 @@ get_covid_df <- function(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary")) {
 }
 
 get_who_data <- function() {
-  who_data <- fread(datasource_lk$who_all, stringsAsFactors = FALSE, encoding = "UTF-8") %>%
+  who_data <- .fetch_data(
+    "who_all",
+    stringsAsFactors = FALSE,
+    encoding = "UTF-8"
+  ) %>%
     rename_all(tolower) %>%
     rename(iso2code = country_code) %>%
     mutate(country = recode(country, !!!who_lk)) %>%
@@ -84,7 +88,11 @@ get_who_data <- function() {
 }
 
 get_jhu_data <- function() {
-  jhu_cases <- fread(datasource_lk$jhu_case, stringsAsFactors = FALSE, check.names = FALSE) %>%
+  jhu_cases <- .fetch_data(
+    "jhu_case",
+    stringsAsFactors = FALSE,
+    check.names = FALSE
+  ) %>%
     rename_all(tolower) %>%
     filter(`country/region` %in% c("Taiwan*", "China")) %>%
     mutate(`country/region` = case_when(
@@ -106,7 +114,11 @@ get_jhu_data <- function() {
     )) %>%
     ungroup()
 
-  jhu_deaths <- fread(datasource_lk$jhu_death, stringsAsFactors = FALSE, check.names = FALSE) %>%
+  jhu_deaths <- .fetch_data(
+    "jhu_death",
+    stringsAsFactors = FALSE,
+    check.names = FALSE
+  ) %>%
     rename_all(tolower) %>%
     filter(`country/region` %in% c("Taiwan*", "China")) %>%
     mutate(`country/region` = case_when(
@@ -146,14 +158,13 @@ get_jhu_data <- function() {
 
 #' @importFrom lubridate dmy
 get_hk_data <- function() {
-  hk_data_raw <- fread(
-    datasource_lk$hk_case_deaths,
+  hk_data_raw <- .fetch_data(
+    "hk_case_deaths",
     stringsAsFactors = FALSE,
     encoding = "UTF-8",
     data.table = FALSE,
     check.names = FALSE
-  ) |>
-    as_tibble()
+  )
 
   hk_data_raw[["pcr_and_rat"]] <- rowSums(
     hk_data_raw[, c("Number of cases tested positive for SARS-CoV-2 virus by nucleic acid tests", "Number of cases tested positive for SARS-CoV-2 virus by rapid antigen tests")],
@@ -225,21 +236,21 @@ get_taiwan_data <- function() {
     "deaths"
   )
 
-  tw_case_raw <- data.table::fread(
-    datasource_lk$taiwan_cases,
+  tw_case_raw <- .fetch_data(
+    "taiwan_cases",
     encoding = "UTF-8",
-    col.names = case_cols,
     data.table = FALSE,
     check.names = FALSE
-  )
+  ) |>
+  setNames(case_cols)
 
-  tw_death_raw <- data.table::fread(
-    datasource_lk$taiwan_deaths,
+  tw_death_raw <- .fetch_data(
+    "taiwan_deaths",
     encoding = "UTF-8",
-    col.names = death_cols,
     data.table = FALSE,
     check.names = FALSE
-  )
+  ) |>
+  setNames(deaths_cols)
 
   tw_cases <- tw_case_raw |>
     select(date, cases) |>
@@ -279,4 +290,29 @@ get_taiwan_data <- function() {
     )
 
   return(tw_data)
+}
+
+# A helper function to pull from web or data lake,
+# depending on availability of data lake
+.fetch_data <- function(lookup_name, ...) {
+  if (getOption("savir.use_datalake", FALSE)) {
+    rlang::check_installed("pins")
+    rlang::check_installed("arrow")
+
+    pin_board <- pins::board_azure(az_container, path = "DGHT/ITF-SAVI/COVID-19 Data Ingest")
+
+    raw_data <- pins::pin_read(
+      board = pin_board,
+      name = sprintf("%s_data", lookup_name)
+    ) |>
+    as_tibble()
+  } else {
+    raw_data <- data.table::fread(
+      datasource_lk[[lookup_name]],
+      ...
+    ) |>
+    as_tibble()
+  }
+
+  return(raw_data)
 }
