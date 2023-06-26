@@ -31,35 +31,59 @@
 get_covid_df <- function(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary")) {
   sources <- match.arg(sources)
 
-  out <- get_who_data()
+  # Pull WHO Data (which will always be included)
+  out <- .fetch_data(
+    "who_all",
+    stringsAsFactors = FALSE,
+    encoding = "UTF-8"
+  ) |>
+    process_who_data()
 
   if (sources == "WHO") {
     return(out)
   }
 
-  jhu_data <- get_jhu_data()
+  # Pull JHU data
+  jhu_cases <- .fetch_data(
+    "jhu_case",
+    stringsAsFactors = FALSE,
+    check.names = FALSE
+  )  |>
+  process_jhu_case_data()
+
+  jhu_deaths <- .fetch_data(
+    "jhu_death",
+    stringsAsFactors = FALSE,
+    check.names = FALSE
+  ) |>
+  process_jhu_death_data()
+
+  jhu_data <- left_join(jhu_cases, jhu_deaths, by = c("country/region", "date")) %>%
+    rename(country = `country/region`) %>%
+    mutate(
+      iso2code = case_when(
+        country == "China" ~ "CN",
+        country == "Taiwan" ~ "TW",
+        country == "Hong Kong" ~ "HK",
+        country == "Macau" ~ "MO"
+      ),
+      source = "JHU"
+    ) %>%
+    arrange(country, date)
+  
   out <- bind_rows(out, jhu_data)
 
   if (sources == "WHO+JHU") {
     return(out)
   }
 
-  hk_data <- .fetch_data(
-    "hk_case_deaths",
-    stringsAsFactors = FALSE,
-    encoding = "UTF-8",
-    data.table = FALSE,
-    check.names = FALSE
-  ) |>
+  # Fetch HK data from HK CHP
+  hk_data <- .fetch_data("hk_case_deaths") |>
     process_hk_data()
 
-  # Get Taiwan case and death data
-  tw_cases <- .fetch_data(
-    "taiwan_cases",
-    encoding = "UTF-8",
-    data.table = FALSE,
-    check.names = FALSE
-  ) |>
+  # Fetch Taiwan case and death data
+  # from Taiwan CDC
+  tw_cases <- .fetch_data("taiwan_cases") |>
     process_taiwan_case_data()
 
   tw_deaths <- .fetch_data(
@@ -92,22 +116,23 @@ get_covid_df <- function(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary")) {
   return(out)
 }
 
-get_who_data <- function() {
-  who_data <- .fetch_data(
-    "who_all",
-    stringsAsFactors = FALSE,
-    encoding = "UTF-8"
-  ) %>%
+process_who_data <- function(raw_data) {
+
+  names(raw_data) <- c("date", names(raw_data)[-1])
+
+  out <- raw_data |>
     rename_all(tolower) %>%
     rename(iso2code = country_code) %>%
     mutate(country = recode(country, !!!who_lk)) %>%
-    mutate(iso2code = case_when(
-      country == "Namibia" ~ "NA",
-      country == "Other" ~ "OT",
-      country == "Bonaire, Sint Eustatius, and Saba" ~ "BQ",
-      TRUE ~ iso2code
-    )) %>%
-    rename("date" = names(.)[1]) %>%
+    mutate(
+      iso2code = case_match(
+        country,
+        "Namibia" ~ "NA",
+        "Other" ~ "OT",
+        "Bonaire, Sint Eustatius, and Saba" ~ "BQ",
+      .default =  iso2code
+      )
+    ) %>%
     group_by_if(~ is.character(.) | lubridate::is.Date(.)) %>%
     summarize_all(list(~ sum(., na.rm = T))) %>%
     ungroup() %>%
@@ -117,15 +142,11 @@ get_who_data <- function() {
     ) %>%
     select(-who_region)
 
-  return(who_data)
+  return(out)
 }
 
-get_jhu_data <- function() {
-  jhu_cases <- .fetch_data(
-    "jhu_case",
-    stringsAsFactors = FALSE,
-    check.names = FALSE
-  ) %>%
+process_jhu_case_data <- function(raw_data) {
+  out <- raw_data |>
     rename_all(tolower) %>%
     filter(`country/region` %in% c("Taiwan*", "China")) %>%
     mutate(`country/region` = case_when(
@@ -134,24 +155,25 @@ get_jhu_data <- function() {
       TRUE ~ `country/region`
     )) %>%
     select(-lat, -long) %>%
-    group_by(`country/region`) %>%
+    group_by(`country/region`, data_date) %>%
     summarise_if(is.numeric, sum, na.rm = TRUE) %>%
     ungroup() %>%
     tidyr::pivot_longer(cols = where(is.numeric), names_to = "date", values_to = "cumulative_cases") %>%
     mutate(date = lubridate::mdy(date)) %>%
     mutate(`country/region` = recode(`country/region`, "Taiwan*" = "Taiwan")) %>%
-    group_by(`country/region`) %>%
+    group_by(`country/region`, data_date) %>%
     mutate(new_cases = case_when(
       is.na(lag(cumulative_cases)) ~ cumulative_cases,
       TRUE ~ cumulative_cases - lag(cumulative_cases)
     )) %>%
     ungroup()
+  
+  return(out)
+}
 
-  jhu_deaths <- .fetch_data(
-    "jhu_death",
-    stringsAsFactors = FALSE,
-    check.names = FALSE
-  ) %>%
+process_jhu_death_data <- function(raw_data) {
+  
+  out <- raw_data %>%
     rename_all(tolower) %>%
     filter(`country/region` %in% c("Taiwan*", "China")) %>%
     mutate(`country/region` = case_when(
@@ -160,33 +182,20 @@ get_jhu_data <- function() {
       TRUE ~ `country/region`
     )) %>%
     select(-lat, -long) %>%
-    group_by(`country/region`) %>%
+    group_by(`country/region`, data_date) %>%
     summarise_if(is.numeric, sum, na.rm = TRUE) %>%
     ungroup() %>%
     tidyr::pivot_longer(cols = where(is.numeric), names_to = "date", values_to = "cumulative_deaths") %>%
     mutate(date = lubridate::mdy(date)) %>%
     mutate(`country/region` = recode(`country/region`, "Taiwan*" = "Taiwan")) %>%
-    group_by(`country/region`) %>%
+    group_by(`country/region`, data_date) %>%
     mutate(new_deaths = case_when(
       is.na(lag(cumulative_deaths)) ~ cumulative_deaths,
       TRUE ~ cumulative_deaths - lag(cumulative_deaths)
     )) %>%
     ungroup()
 
-  jhu_data <- left_join(jhu_cases, jhu_deaths, by = c("country/region", "date")) %>%
-    rename(country = `country/region`) %>%
-    mutate(
-      iso2code = case_when(
-        country == "China" ~ "CN",
-        country == "Taiwan" ~ "TW",
-        country == "Hong Kong" ~ "HK",
-        country == "Macau" ~ "MO"
-      ),
-      source = "JHU"
-    ) %>%
-    arrange(country, date)
-
-  return(jhu_data)
+  return(out)
 }
 
 #' @importFrom lubridate dmy
@@ -215,6 +224,7 @@ process_hk_data <- function(data_raw) {
     rename(cumulative_deaths = `Number of death cases`) |>
     # Cumultive case reporting stopped for some reason
     # so we need to fill downwards to continue it
+    group_by(data_date) |>
     arrange(date) |>
     tidyr::fill(cumulative_cases, cumulative_deaths) |>
     mutate(
@@ -233,7 +243,8 @@ process_hk_data <- function(data_raw) {
       new_cases = cumulative_cases - lag(cumulative_cases, default = 0),
       new_deaths = cumulative_deaths - lag(cumulative_deaths, default = 0)
     ) |>
-    select(date, iso2code, country, new_cases, cumulative_cases, new_deaths, cumulative_deaths, source)
+    ungroup() |>
+    select(date, data_date, iso2code, country, new_cases, cumulative_cases, new_deaths, cumulative_deaths, source)
 
   return(out)
 }
@@ -247,23 +258,24 @@ process_taiwan_case_data <- function(data_raw) {
     "gender",
     "imported",
     "age_group",
-    "cases"
+    "cases",
+    "data_date"
   )
 
-  out <- raw_data |>
+  out <- data_raw |>
     setNames(case_cols) |>
-    select(date, cases) |>
+    select(date, data_date, cases) |>
     mutate(
       date = lubridate::ymd(date),
       cases = as.integer(cases)
     ) |>
-    group_by(date) |>
+    group_by(data_date, date) |>
     summarise(
       new_cases = sum(cases, na.rm = TRUE)
     ) |>
-    ungroup() |>
     arrange(date) |>
-    mutate(cumulative_cases = cumsum(new_cases))
+    mutate(cumulative_cases = cumsum(new_cases)) |>
+    ungroup()
   
   return(out)
 }
@@ -277,22 +289,24 @@ process_taiwan_death_data <- function(data_raw) {
     "gender",
     "imported",
     "age_group",
-    "deaths"
+    "deaths",
+    "data_date"
   )
   
   # Note: "date" here is date of case onset
   # which is different from other place.
   out <- data_raw |>
     setNames(death_cols) |>
-    select(date, deaths) |>
+    select(date, data_date, deaths) |>
     mutate(
       date = lubridate::ymd(date),
       deaths = as.integer(deaths)
     ) |>
-    group_by(date) |>
+    group_by(data_date, date) |>
     summarise(new_deaths = sum(deaths, na.rm = TRUE)) |>
     arrange(date) |>
-    mutate(cumulative_deaths = cumsum(new_deaths))
+    mutate(cumulative_deaths = cumsum(new_deaths)) |>
+    ungroup()
 
   return(out)
 }
