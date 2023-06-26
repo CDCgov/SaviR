@@ -61,11 +61,12 @@ get_covid_df <- function(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary")) {
   jhu_data <- left_join(jhu_cases, jhu_deaths, by = c("country/region", "date")) %>%
     rename(country = `country/region`) %>%
     mutate(
-      iso2code = case_when(
-        country == "China" ~ "CN",
-        country == "Taiwan" ~ "TW",
-        country == "Hong Kong" ~ "HK",
-        country == "Macau" ~ "MO"
+      iso2code = case_match(
+        country,
+        "China" ~ "CN",
+        "Taiwan" ~ "TW",
+        "Hong Kong" ~ "HK",
+        "Macau" ~ "MO"
       ),
       source = "JHU"
     ) %>%
