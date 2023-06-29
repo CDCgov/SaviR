@@ -171,8 +171,8 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
           inset_plot,
           left = 0.55,
           right = 1.0,
-          bottom = 0.6,
-          top = 1.0
+          bottom = 0.65,
+          top = 1.05
         )
     }
 
