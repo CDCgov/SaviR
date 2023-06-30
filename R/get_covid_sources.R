@@ -317,6 +317,8 @@ process_taiwan_death_data <- function(data_raw) {
 .fetch_data <- function(lookup_name, ..., past_n = NULL) {
 
   if (getOption("savir.use_datalake", FALSE)) {
+    pin_lookup_name <- sprintf("%s_data", lookup_name)
+
     rlang::check_installed("pins")
     rlang::check_installed("arrow")
 
@@ -326,13 +328,13 @@ process_taiwan_death_data <- function(data_raw) {
     # pull the version numbers and download all
     if (!is.null(past_n)) {
       versions_to_pull <- pin_board |>
-        pins::pin_versions(lookup_name) |>
+        pins::pin_versions(pin_lookup_name) |>
         arrange(desc(created)) |>
         top_n(past_n)
       
       # Helper function to read in pinned data and append a timestamp
-      pin_append_created_dt <- function(version, created, pin_board = pin_board, lookup_name = lookup_name) {
-        raw_data <- pins::pin_read(board = pin_board, name = lookup_name, version = version) |>
+      pin_append_created_dt <- function(version, created, board = pin_board, pin = pin_lookup_name) {
+        raw_data <- pins::pin_read(board = board, name = pin, version = version) |>
           mutate(data_date = as.Date(created))
     
         return(raw_data)
@@ -342,13 +344,13 @@ process_taiwan_death_data <- function(data_raw) {
       raw_data <- Map(pin_append_created_dt, versions_to_pull[["version"]], versions_to_pull[["created"]])
 
       # Combine all data prior to return
-      raw_data <- data.table::rbindlist(raw_data) |>
+      raw_data <- data.table::rbindlist(raw_data, use.names = TRUE) |>
         as_tibble()
     # Standard operation -> return only most recent version
     } else {
       raw_data <- pins::pin_read(
         board = pin_board,
-        name = sprintf("%s_data", lookup_name)
+        name = pin_lookup_name
       ) |>
       # HACK: to streamline the cleaning process
       # upstream, we just add an NA date here
