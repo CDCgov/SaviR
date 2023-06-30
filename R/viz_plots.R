@@ -169,10 +169,10 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
       g <- g +
         patchwork::inset_element(
           inset_plot,
-          left = 0.5,
-          right = 0.95,
-          bottom = 0.6,
-          top = 1.0
+          left = 0.6,
+          right = 1.0,
+          bottom = 0.7,
+          top = 1.05
         )
     }
 
