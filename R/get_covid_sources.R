@@ -37,7 +37,8 @@ get_covid_df <- function(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary")) {
     stringsAsFactors = FALSE,
     encoding = "UTF-8"
   ) |>
-    process_who_data()
+    process_who_data() |>
+    select(-data_date)
 
   if (sources == "WHO") {
     return(out)
@@ -49,14 +50,16 @@ get_covid_df <- function(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary")) {
     stringsAsFactors = FALSE,
     check.names = FALSE
   )  |>
-  process_jhu_case_data()
+  process_jhu_case_data() |>
+  select(-data_date)
 
   jhu_deaths <- .fetch_data(
     "jhu_death",
     stringsAsFactors = FALSE,
     check.names = FALSE
   ) |>
-  process_jhu_death_data()
+  process_jhu_death_data() |>
+  select(-data_date)
 
   jhu_data <- left_join(jhu_cases, jhu_deaths, by = c("country/region", "date")) %>%
     rename(country = `country/region`) %>%
@@ -80,12 +83,14 @@ get_covid_df <- function(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary")) {
 
   # Fetch HK data from HK CHP
   hk_data <- .fetch_data("hk_case_deaths") |>
-    process_hk_data()
+    process_hk_data() |>
+    select(-data_date)
 
   # Fetch Taiwan case and death data
   # from Taiwan CDC
   tw_cases <- .fetch_data("taiwan_cases") |>
-    process_taiwan_case_data()
+    process_taiwan_case_data() |>
+    select(-data_date)
 
   tw_deaths <- .fetch_data(
     "taiwan_deaths",
@@ -93,7 +98,8 @@ get_covid_df <- function(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary")) {
     data.table = FALSE,
     check.names = FALSE
   ) |>
-    process_taiwan_death_data()
+    process_taiwan_death_data() |>
+    select(-data_date)
   
   tw_data <- full_join(
     tw_cases, tw_deaths,
