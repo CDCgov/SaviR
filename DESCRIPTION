@@ -45,8 +45,12 @@ Roxygen: list(markdown = TRUE)
 Suggests: 
     rmarkdown,
     htmltools,
+    pins,
+    arrow,
+    AzureRMR,
+    AzureStor,
     tidyr,
-    webshot,
+    webshot2,
     knitr,
     vdiffr,
     httr,
