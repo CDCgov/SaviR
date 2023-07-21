@@ -33,8 +33,6 @@ Imports:
     openxlsx,
     magrittr,
     memoise,
-    rgdal,
-    sp,
     tibble,
     bit64,
     patchwork
