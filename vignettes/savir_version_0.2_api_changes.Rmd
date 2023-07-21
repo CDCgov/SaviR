@@ -67,7 +67,7 @@ onetable
 ```
 
 ```{r Geography column changes 2}
-head(get_covid_df())
+head(get_covid_df("WHO"))
 ```
 
 ```{r Geography column changes 3}
