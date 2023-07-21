@@ -1,7 +1,7 @@
 Package: SaviR
 Type: Package
 Title: ITF Situational Awareness and Visualization
-Version: 0.3.1
+Version: 0.4.0
 Authors@R: c(
     person("Sean", "Browning", email = "sbrowning@cdc.gov", role = c("aut", "cre")),
     person("Kimberly", "Lockwood", email = "nvj5@cdc.gov", role = "aut"),
