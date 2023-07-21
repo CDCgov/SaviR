@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">SaviR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -180,17 +180,17 @@ from</li>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4 more variables: incomelevel_value &lt;chr&gt;, population &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   eighteenplus &lt;dbl&gt;, geometry &lt;MULTIPOLYGON [m]&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_covid_df.html">get_covid_df</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_covid_df.html">get_covid_df</a></span><span class="op">(</span><span class="st">"WHO"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
 <span><span class="co">#&gt;   date       iso2code country              new_cases cumulative_cases new_deaths</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2020-01-03 AD       Andorra                      0                0          0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2020-01-03 AE       United Arab Emirates         0                0          0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2020-01-03 AF       Afghanistan                  0                0          0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2020-01-03 AG       Antigua and Barbuda          0                0          0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2020-01-03 AI       Anguilla                     0                0          0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2020-01-03 AL       Albania                      0                0          0</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: cumulative_deaths &lt;dbl&gt;, source &lt;chr&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: cumulative_deaths &lt;int&gt;, source &lt;chr&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_vax.html">get_vax</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 17</span></span></span>
@@ -303,7 +303,7 @@ updated.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">vax_dates</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    owid_country  id total_doses_date partial_date fully_date booster_date</span></span>
-<span><span class="co">#&gt; 1:  Afghanistan AFG       2023-06-18   2023-06-18 2023-06-18   2023-06-18</span></span>
+<span><span class="co">#&gt; 1:  Afghanistan AFG       2023-07-11   2023-07-11 2023-07-11   2023-07-11</span></span>
 <span><span class="co">#&gt; 2:      Albania ALB       2023-05-14   2023-05-14 2023-05-14   2023-05-14</span></span>
 <span><span class="co">#&gt; 3:      Algeria DZA       2022-09-04   2022-09-04 2022-09-04   2022-09-04</span></span>
 <span><span class="co">#&gt; 4:      Andorra AND       2023-05-21   2023-05-21 2023-05-21   2023-05-21</span></span>
