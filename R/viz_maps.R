@@ -197,7 +197,6 @@ map_trend <- function(df, region = NULL, time_step = 7) {
       # due to division, but we want to also NA out any observations that
       # are not reporting in the current period that were in the previous
       # since we can't ascertain the trajectory
-      pct_change = if_else(is.infinite(pct_change), NA_real_, pct_change),
       pct_change = if_else(current == 0, NA_real_, pct_change),
       result = cut((pct_change - 1) * 100, breaks = c(-Inf, -50, 0, 50, 100, 200, Inf))
     ) |>

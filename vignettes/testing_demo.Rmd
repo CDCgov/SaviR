@@ -1,9 +1,7 @@
 ---
 title: "Dynamic data source selection for testing data"
 vignette: |
-  %\VignetteIndexEntry{Testing data}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{Testing data} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
