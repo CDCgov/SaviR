@@ -15,12 +15,6 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-# phantomjs is needed to save/render images in this document
-# so we need to install it if it's not already
-if (!webshot::is_phantomjs_installed()) {
-  webshot::install_phantomjs()
-}
-
 library(SaviR)
 library(dplyr)
 library(tidyr)
