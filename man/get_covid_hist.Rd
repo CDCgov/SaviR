@@ -12,7 +12,7 @@ get_covid_hist(source = "WHO", last_n = Inf)
 \item{last_n}{(numeric, default: Inf) number of historical releases to download (from the most recent)}
 }
 \value{
-A dataframe with
+A large dataframe with an additional \code{data_date} column that defines the data release date
 }
 \description{
 Retrieve Current and Archival Reports of Various COVID-19 Data
