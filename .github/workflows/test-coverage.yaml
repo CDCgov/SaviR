@@ -21,6 +21,10 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: CA Cert
+        run: sudo apt-get install ca-certificates
+        shell: bash
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: covr
