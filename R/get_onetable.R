@@ -205,8 +205,7 @@ get_onetable <- function(usaid_metadata_file = NULL, vintage = 2022, country_geo
 #'
 get_country_coords <- function(world = file.choose()) {
   df <- sf::st_read(world) %>%
-    sf:st_transform(crs = "+proj=robin +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") %>%
-    sf::st_as_sf() %>%
+    sf::st_transform(crs = "+proj=robin +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") %>%
     select(TYPE, ADMIN, id = ISO_A3) %>%
     mutate(id = passport::parse_country(ADMIN, to = "iso3c")) %>%
     mutate(id = if_else(ADMIN == "eSwatini", "SWZ", id)) %>%
