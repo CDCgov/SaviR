@@ -296,7 +296,7 @@ table_10incidence <- function(df, time_step = 7, region = NULL, data_as_of = NUL
       columns = c(ave_incidence),
       colors = scales::col_bin(
         palette = c("#f1e5a1", "#e7b351", "#d26230", "#aa001e"),
-        bins = c(0, 1, 10, 25, Inf),
+        bins = c(0, 1, 5, 10, Inf),
         na.color = "white"
       )
     ) %>%
