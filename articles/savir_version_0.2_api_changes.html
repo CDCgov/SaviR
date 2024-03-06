@@ -8,8 +8,8 @@
 <meta name="description" content="SaviR">
 <title>SaviR Version 0.2 API Changes • SaviR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="SaviR Version 0.2 API Changes">
 <meta property="og:description" content="SaviR">
@@ -184,12 +184,12 @@ from</li>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
 <span><span class="co">#&gt;   date       iso2code country              new_cases cumulative_cases new_deaths</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2020-01-03 AD       Andorra                      0                0          0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2020-01-03 AE       United Arab Emirates         0                0          0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2020-01-03 AF       Afghanistan                  0                0          0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2020-01-03 AG       Antigua and Barbuda          0                0          0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2020-01-03 AI       Anguilla                     0                0          0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2020-01-03 AL       Albania                      0                0          0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2023-01-01 AD       Andorra                     65            <span style="text-decoration: underline;">47</span>751          0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2023-01-01 AE       United Arab Emirates       459          1<span style="text-decoration: underline;">047</span>008          0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2023-01-01 AF       Afghanistan                257           <span style="text-decoration: underline;">207</span>579          4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2023-01-01 AG       Antigua and Barbuda          0             <span style="text-decoration: underline;">9</span>106          0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2023-01-01 AI       Anguilla                     0             <span style="text-decoration: underline;">3</span>904          0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2023-01-01 AL       Albania                    124           <span style="text-decoration: underline;">332</span>794          0</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: cumulative_deaths &lt;int&gt;, source &lt;chr&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_vax.html">get_vax</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
@@ -302,13 +302,14 @@ updated.</p>
 <code class="sourceCode R"><span><span class="va">vax_dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_vax_dates.html">get_vax_dates</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">vax_dates</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    owid_country  id total_doses_date partial_date fully_date booster_date</span></span>
-<span><span class="co">#&gt; 1:  Afghanistan AFG       2023-07-30   2023-07-30 2023-07-30   2023-07-30</span></span>
-<span><span class="co">#&gt; 2:      Albania ALB       2023-05-14   2023-05-14 2023-05-14   2023-05-14</span></span>
-<span><span class="co">#&gt; 3:      Algeria DZA       2022-09-04   2022-09-04 2022-09-04   2022-09-04</span></span>
-<span><span class="co">#&gt; 4:      Andorra AND       2023-05-21   2023-05-21 2023-05-21   2023-05-21</span></span>
-<span><span class="co">#&gt; 5:       Angola AGO       2023-07-23   2023-07-23 2023-07-23   2023-07-23</span></span>
-<span><span class="co">#&gt; 6:     Anguilla AIA       2023-03-10   2023-03-17 2023-03-17   2023-03-03</span></span></code></pre></div>
+<span><span class="co">#&gt;    owid_country     id total_doses_date partial_date fully_date booster_date</span></span>
+<span><span class="co">#&gt;          &lt;char&gt; &lt;char&gt;           &lt;Date&gt;       &lt;Date&gt;     &lt;Date&gt;       &lt;Date&gt;</span></span>
+<span><span class="co">#&gt; 1:  Afghanistan    AFG       2023-11-26   2023-11-26 2023-11-26   2023-11-26</span></span>
+<span><span class="co">#&gt; 2:      Albania    ALB       2023-09-10   2023-09-10 2023-09-10   2023-09-10</span></span>
+<span><span class="co">#&gt; 3:      Algeria    DZA       2022-09-04   2022-09-04 2022-09-04   2022-09-04</span></span>
+<span><span class="co">#&gt; 4:      Andorra    AND       2023-09-24   2023-09-24 2023-09-24   2023-09-24</span></span>
+<span><span class="co">#&gt; 5:       Angola    AGO       2023-11-19   2023-11-19 2023-11-19   2023-11-19</span></span>
+<span><span class="co">#&gt; 6:     Anguilla    AIA       2023-03-10   2023-03-17 2023-03-17   2023-03-03</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
