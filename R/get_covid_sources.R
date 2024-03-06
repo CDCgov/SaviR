@@ -74,7 +74,7 @@ get_covid_df <- function(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary")) {
       source = "JHU"
     ) %>%
     arrange(country, date)
-  
+
   out <- bind_rows(out, jhu_data)
 
   if (sources == "WHO+JHU") {
@@ -100,7 +100,7 @@ get_covid_df <- function(sources = c("all", "WHO", "WHO+JHU", "WHO+Primary")) {
   ) |>
     process_taiwan_death_data() |>
     select(-data_date)
-  
+
   tw_data <- full_join(
     tw_cases, tw_deaths,
     by = "date"
@@ -144,7 +144,8 @@ process_who_data <- function(raw_data) {
     summarize_all(list(~ sum(., na.rm = T))) %>%
     ungroup() %>%
     mutate(
-      date = as.Date(date),
+      #date = as.Date(date), ### ---- 6-MAR-2024: modifying date to new format (%d/%m/%y)
+      date = as.Date(date, format = "%d/%m/%y"),
       source = "WHO"
     ) %>%
     select(-who_region)
@@ -174,12 +175,12 @@ process_jhu_case_data <- function(raw_data) {
       TRUE ~ cumulative_cases - lag(cumulative_cases)
     )) %>%
     ungroup()
-  
+
   return(out)
 }
 
 process_jhu_death_data <- function(raw_data) {
-  
+
   out <- raw_data %>%
     rename_all(tolower) %>%
     filter(`country/region` %in% c("Taiwan*", "China")) %>%
@@ -283,7 +284,7 @@ process_taiwan_case_data <- function(data_raw) {
     arrange(date) |>
     mutate(cumulative_cases = cumsum(new_cases)) |>
     ungroup()
-  
+
   return(out)
 }
 
@@ -299,7 +300,7 @@ process_taiwan_death_data <- function(data_raw) {
     "deaths",
     "data_date"
   )
-  
+
   # Note: "date" here is date of case onset
   # which is different from other place.
   out <- data_raw |>
@@ -337,12 +338,12 @@ process_taiwan_death_data <- function(data_raw) {
         pins::pin_versions(pin_lookup_name) |>
         arrange(desc(created)) |>
         top_n(past_n)
-      
+
       # Helper function to read in pinned data and append a timestamp
       pin_append_created_dt <- function(version, created, board = pin_board, pin = pin_lookup_name) {
         raw_data <- pins::pin_read(board = board, name = pin, version = version) |>
           mutate(data_date = as.Date(created))
-    
+
         return(raw_data)
       }
 
