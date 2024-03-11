@@ -144,8 +144,8 @@ process_who_data <- function(raw_data) {
     summarize_all(list(~ sum(., na.rm = T))) %>%
     ungroup() %>%
     mutate(
-      #date = as.Date(date), ### ---- 6-MAR-2024: modifying date to new format (%d/%m/%y)
-      date = as.Date(date, format = "%d/%m/%y"),
+      date = as.Date(date), ### 11-MAR-2024: reverting back to old date format (%m/%d/%y)
+      #date = as.Date(date, format = "%d/%m/%y"), ### ---- 6-MAR-2024: modifying date to new format (%d/%m/%y)
       source = "WHO"
     ) %>%
     select(-who_region)
