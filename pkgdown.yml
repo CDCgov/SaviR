@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.0.7
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   prod_sitrep: prod_sitrep.html
@@ -7,8 +7,7 @@ articles:
   savir_version_0.2_api_changes: savir_version_0.2_api_changes.html
   testing_demo: testing_demo.html
   testing_investigation: testing_investigation.html
-last_built: 2024-03-11T14:11Z
+last_built: 2024-11-29T18:30Z
 urls:
   reference: https://cdcgov.github.io/SaviR/reference
   article: https://cdcgov.github.io/SaviR/articles
-

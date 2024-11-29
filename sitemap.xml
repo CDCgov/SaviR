@@ -1,201 +1,67 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/404.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/DISCLAIMER.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/articles/prod_sitrep.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/articles/routine_report_start_chunk.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/articles/savir_version_0.2_api_changes.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/articles/testing_demo.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/articles/testing_investigation.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/code-of-conduct.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/index.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/bbox_fun.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/calc_add_risk.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/calc_vax_carryforward.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/calc_window_incidence.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/calc_window_pct_change.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/cia_wfb_addn_countries.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/country_coords.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/datasource_lk.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_combined_table.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_country_coords.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_covid_df.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_covid_hist.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_find_testing_long.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_gdeltnews.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_hospdata.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_onetable.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_owid_testing_long.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_owid_testing_meta.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_preferred_testpos7.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_preferred_tests14.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_testing.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_testing_long.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_vax.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_vax_by_type.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_vax_dates.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/get_vax_manufacturers.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/income_aes.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/manual_iso3_lk.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/map_burden.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/map_template.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/map_trend.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/map_vaccinations.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/onetable.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/onetable_addn_countries.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/owid_lk.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/plot_epicurve.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/plot_epicurve_dailydouble.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/plot_epicurve_epidouble.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/plot_epicurve_ind.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/plot_riskmatrix.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/plot_vaxcoverage.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/plot_vaxcoverage_pop.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/plot_vaxcurve.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/state_aes.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/table_10incidence.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/table_10mostcases.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/table_10percentchange.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/table_10vaccinations.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/table_countriesofconcern.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/who_aes.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/who_lk.html</loc>
-  </url>
-  <url>
-    <loc>https://cdcgov.github.io/SaviR/reference/who_region_lk.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://cdcgov.github.io/SaviR/404.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/CONTRIBUTING.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/DISCLAIMER.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/LICENSE-text.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/articles/index.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/articles/prod_sitrep.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/articles/routine_report_start_chunk.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/articles/savir_version_0.2_api_changes.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/articles/testing_demo.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/articles/testing_investigation.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/authors.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/code-of-conduct.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/index.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/bbox_fun.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/calc_add_risk.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/calc_vax_carryforward.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/calc_window_incidence.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/calc_window_pct_change.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/cia_wfb_addn_countries.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/country_coords.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/datasource_lk.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_combined_table.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_country_coords.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_covid_df.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_covid_hist.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_find_testing_long.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_gdeltnews.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_hospdata.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_onetable.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_owid_testing_long.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_owid_testing_meta.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_preferred_testpos7.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_preferred_tests14.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_testing.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_testing_long.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_vax.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_vax_by_type.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_vax_dates.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/get_vax_manufacturers.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/income_aes.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/index.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/manual_iso3_lk.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/map_burden.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/map_template.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/map_trend.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/map_vaccinations.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/onetable.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/onetable_addn_countries.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/owid_lk.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/plot_epicurve.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/plot_epicurve_dailydouble.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/plot_epicurve_epidouble.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/plot_epicurve_ind.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/plot_riskmatrix.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/plot_vaxcoverage.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/plot_vaxcoverage_pop.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/plot_vaxcurve.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/state_aes.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/table_10mostcases.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/table_10vaccinations.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/table_countriesofconcern.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/who_aes.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/who_lk.html</loc></url>
+<url><loc>https://cdcgov.github.io/SaviR/reference/who_region_lk.html</loc></url>
 </urlset>
+
