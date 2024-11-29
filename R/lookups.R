@@ -157,7 +157,7 @@ datasource_lk <- list(
   # OWID vaccination metadata that lists current vaccines in use by country
   owid_vax_manufacturers = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/locations.csv",
   # WHO Case and Death data
-  who_all = "https://covid19.who.int/WHO-COVID-19-global-data.csv",
+  who_all = "https://srhdpeuwpubsa.blob.core.windows.net/whdh/COVID/WHO-COVID-19-global-data.csv",
   # Cases and Deaths from JHU (for HK, Macau, Taiwan)
   jhu_case = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv",
   jhu_death = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv",
