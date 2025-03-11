@@ -133,7 +133,7 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
         legend.background = ggplot2::element_rect(fill = "transparent")
       )
   }
-  
+
   # -- Add inset plot if requested -------------------
   if (inset) {
     # Take the max of either 9wks from the latest date
@@ -160,10 +160,10 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
       g <- g +
         patchwork::inset_element(
           inset_plot,
-          left = 0.05, # .5
-          right = 0.5, # .95
-          bottom = 0.2, # 0.6
-          top = 0.6 # 0.95
+          left = 0.6, # .5
+          right = 1.0, # .95
+          bottom = 0.7, # 0.6
+          top = 1.05 # 0.95
         )
     } else {
       g <- g +
@@ -176,9 +176,9 @@ plot_epicurve <- function(df, type = "cases", by_cat = "WHO Region", legend = "i
         )
     }
 
-    
+
   }
-  
+
   return(g)
 
 }
